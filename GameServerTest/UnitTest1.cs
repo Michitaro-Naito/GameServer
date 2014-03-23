@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using ApiScheme.Client;
 using ApiScheme.Scheme;
 using GameServer;
+using System.Collections.Concurrent;
+using System.Threading;
+using System.Threading.Tasks;
 
 
 namespace GameServerTest
@@ -40,6 +43,43 @@ namespace GameServerTest
             Assert.IsFalse(foo1 == bar);
             Assert.AreEqual(foo1, foo2);
             Assert.AreNotEqual(foo1, bar);
+        }
+
+        [TestMethod]
+        public void Concurrent()
+        {
+            var q = new ConcurrentQueue<int>();
+
+            // Populates the queue.
+            for (int i = 0; i < 10000; i++)
+                q.Enqueue(i);
+
+            // Peek at the first element.
+            int result;
+            if (!q.TryPeek(out result))
+            {
+                Assert.Fail("CQ: TryPeek failed when it should have succeeded");
+            }
+            else if (result != 0)
+            {
+                Assert.AreEqual(0, result);
+            }
+
+            int outerSum = 0;
+            // An action to consume the ConcurrentQueue.
+            Action action = () =>
+            {
+                int localSum = 0;
+                int localValue;
+                while (q.TryDequeue(out localValue))
+                    localSum += localValue;
+                Interlocked.Add(ref outerSum, localSum);
+            };
+
+            // Start 4 concurrent consuming actions.
+            Parallel.Invoke(action, action, action, action);
+
+            Assert.AreEqual(49995000, outerSum);
         }
     }
 }

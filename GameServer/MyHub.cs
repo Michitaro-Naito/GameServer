@@ -170,9 +170,9 @@ namespace GameServer
                             case "QuitRoom":
                                 QuitRoom();
                                 break;
-                            case "Room":
+                            /*case "Room":
                                 CallRoom(param);
-                                break;
+                                break;*/
                             default:
                                 SystemMessage(string.Format("Unknown command: {0}", command));
                                 break;
@@ -186,6 +186,28 @@ namespace GameServer
                 }
             }
             Clients.All.addMessage(Player.userId, message);
+        }
+
+        public void RoomSend(int roomSendMode, int actorId, string message)
+        {
+            Clients.Caller.addMessage(string.Format("RoomSend called. {0} {1} {2}", roomSendMode, actorId, message));
+        }
+
+        public void RoomConfigure(string roomName, int maxActors, int intervalSeconds)
+        {
+            var room = Room;
+            if (room == null)
+                SystemMessage("You are not in Room.");
+            var conf = new Room.Configuration() { name = roomName, max = maxActors, interval = intervalSeconds };
+            room.Queue(new RoomCommand.Configure(Player, conf));
+        }
+
+        public void RoomStart()
+        {
+            var room = Room;
+            if (room == null)
+                SystemMessage("You are not in Room.");
+            room.Queue(new RoomCommand.Start(Player));
         }
 
         void GetCharacters()
@@ -269,21 +291,7 @@ namespace GameServer
         {
             var room = Room;
             SystemMessage(string.Format("Quitting from {0}", room));
-            room.RemoveAll(Player);
-            if (room.IsEmpty)
-                _rooms.Remove(room);
-            BroughtTo(ClientState.Rooms);
-        }
-
-        void CallRoom(List<string> parameters)
-        {
-            var room = Room;
-            if (room == null)
-            {
-                SystemMessage("Join Room first.");
-                return;
-            }
-            room.Command(this, Character, parameters);
+            room.Queue(new RoomCommand.RemovePlayer(Player, Player));
         }
 
 
@@ -330,10 +338,8 @@ namespace GameServer
                 return;
             }
 
-            _rooms.ForEach(r => r.RemoveAll(Player));
-            room.Add(this, Player.Character);
-            SystemMessage("Joined.");
-            BroughtTo(ClientState.Playing);
+            _rooms.ForEach(r => r.Queue(new RoomCommand.RemovePlayer(Player, Player)));
+            room.Queue(new RoomCommand.AddCharacter(Player, Player.Character));
         }
     }
 }

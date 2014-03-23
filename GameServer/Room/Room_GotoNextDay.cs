@@ -21,7 +21,7 @@ namespace GameServer
                 _Z_CheckForVictory,
                 _Z_IncrementDay
             }.Do();
-            Sync();
+            _needSync = true;
         }
 
         bool _Z_CheckForVictory()
@@ -187,7 +187,7 @@ namespace GameServer
         bool _Z_IncrementDay()
         {
             // Increment Day
-            duration = interval;
+            duration = conf.interval;
             day++;
 
             SystemMessageAll(string.Format("Day {0} dawns.", day));
