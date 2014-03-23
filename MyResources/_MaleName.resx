@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Aaron" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Abel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Abraham" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Abram" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Adam" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Adelbert" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Adolf" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Adolph" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Adolphus" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Adrian" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alan" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alastair" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Albert" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alex" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alexander" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alexis" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alf" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alfie" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alfonse" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alfred" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Algernon" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Allan" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Allen" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alphonse" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alvin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ambrose" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Andrew" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Andy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Anthony" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Anton" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Archibald" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ariel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Arman" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Armand" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Armin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Arnold" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Arthur" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ashley" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ashton" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Aubrey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="August" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Augustus" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Aylmer" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bacchus" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Baldwin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Barnaby" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Barnard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Barry" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bartholomew" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bartlemy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Basil" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ben" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Benedict" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Benjamin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bennet" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bernard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bernhard" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bert" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bertrand" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bill" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Billy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bob" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bobby" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Brad" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bradley" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Brandon" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Brendan" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Brent" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Brett" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Brian" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Brown" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bruce" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bruno" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bryan" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Byron" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Caesar" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Calvin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cameron" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Carey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Carl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Carles" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Carlie" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Carol" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Casey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cecil" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cedric" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Chad" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Chester" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Chris" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Christian" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Christopher" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Clarence" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Clark" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Clifford" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Clive" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Clyde" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cody" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Colin" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Conan" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Conrad" xml:space="preserve">
+    <value />
+  </data>
+</root>

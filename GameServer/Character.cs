@@ -38,7 +38,8 @@ namespace GameServer
 
         public override string ToString()
         {
-            return string.Format("[Character Player:{0} Name:{1} UserId:{2}]", Player, Name, UserId);
+            return string.Format("[{0}({1})]", Name, Player.userId);
+            //return string.Format("[Character Player:{0} Name:{1} UserId:{2}]", Player, Name, UserId);
         }
     }
 }

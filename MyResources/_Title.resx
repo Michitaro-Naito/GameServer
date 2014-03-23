@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Alchemist" xml:space="preserve">
+    <value>Alchemist</value>
+  </data>
+  <data name="AleBrewer" xml:space="preserve">
+    <value>Ale Brewer</value>
+  </data>
+  <data name="Anarchist" xml:space="preserve">
+    <value>Anarchist</value>
+  </data>
+  <data name="Aristocrat" xml:space="preserve">
+    <value>Aristocrat</value>
+  </data>
+  <data name="Baker" xml:space="preserve">
+    <value>Baker</value>
+  </data>
+  <data name="BeerBrewer" xml:space="preserve">
+    <value>Beer Brewer</value>
+  </data>
+  <data name="Bishop" xml:space="preserve">
+    <value>Bishop</value>
+  </data>
+  <data name="Blacksmith" xml:space="preserve">
+    <value>Blacksmith</value>
+  </data>
+  <data name="Bricklayer" xml:space="preserve">
+    <value>Bricklayer</value>
+  </data>
+  <data name="Carrier" xml:space="preserve">
+    <value>Carrier</value>
+  </data>
+  <data name="CastleEngineer" xml:space="preserve">
+    <value>Castle Builder</value>
+  </data>
+  <data name="Chamberlain" xml:space="preserve">
+    <value>Chamberlain</value>
+  </data>
+  <data name="Cleric" xml:space="preserve">
+    <value>Cleric</value>
+  </data>
+  <data name="Clown" xml:space="preserve">
+    <value>Clown</value>
+  </data>
+  <data name="Coachman" xml:space="preserve">
+    <value>Coachman</value>
+  </data>
+  <data name="Cook" xml:space="preserve">
+    <value>Cook</value>
+  </data>
+  <data name="Detective" xml:space="preserve">
+    <value>Detective</value>
+  </data>
+  <data name="Doctor" xml:space="preserve">
+    <value>Doctor</value>
+  </data>
+  <data name="Dyer" xml:space="preserve">
+    <value>Dyper</value>
+  </data>
+  <data name="Farmer" xml:space="preserve">
+    <value>Farmer</value>
+  </data>
+  <data name="Fisher" xml:space="preserve">
+    <value>Fisher</value>
+  </data>
+  <data name="Florist" xml:space="preserve">
+    <value>Florist</value>
+  </data>
+  <data name="Forester" xml:space="preserve">
+    <value>Forester</value>
+  </data>
+  <data name="GraveKeeper" xml:space="preserve">
+    <value>Grave Keeper</value>
+  </data>
+  <data name="Grocer" xml:space="preserve">
+    <value>Grocer</value>
+  </data>
+  <data name="HayMerchant" xml:space="preserve">
+    <value>Hay Merchant</value>
+  </data>
+  <data name="HorseGearCraftman" xml:space="preserve">
+    <value>Horse-gear Craftman</value>
+  </data>
+  <data name="InjuredSoldier" xml:space="preserve">
+    <value>Injured Soldier</value>
+  </data>
+  <data name="Innkeeper" xml:space="preserve">
+    <value>Innkeeper</value>
+  </data>
+  <data name="Inquisitor" xml:space="preserve">
+    <value>Inquisitor</value>
+  </data>
+  <data name="Judge" xml:space="preserve">
+    <value>Judge</value>
+  </data>
+  <data name="LeatherCraftman" xml:space="preserve">
+    <value>Leather Craftman</value>
+  </data>
+  <data name="Lumberjack" xml:space="preserve">
+    <value>Lumberjack</value>
+  </data>
+  <data name="Magistrate" xml:space="preserve">
+    <value>Magistrate</value>
+  </data>
+  <data name="Mercenary" xml:space="preserve">
+    <value>Mercenary</value>
+  </data>
+  <data name="Merchant" xml:space="preserve">
+    <value>Merchant</value>
+  </data>
+  <data name="Miller" xml:space="preserve">
+    <value>Miller</value>
+  </data>
+  <data name="Moneylender" xml:space="preserve">
+    <value>Moneylender</value>
+  </data>
+  <data name="Monk" xml:space="preserve">
+    <value>Monk</value>
+  </data>
+  <data name="Nomad" xml:space="preserve">
+    <value>Nomad</value>
+  </data>
+  <data name="Official" xml:space="preserve">
+    <value>Official</value>
+  </data>
+  <data name="OldKnight" xml:space="preserve">
+    <value>OldKnight</value>
+  </data>
+  <data name="Optimist" xml:space="preserve">
+    <value>Optimist</value>
+  </data>
+  <data name="Pacifist" xml:space="preserve">
+    <value>Pacifist</value>
+  </data>
+  <data name="Painter" xml:space="preserve">
+    <value>Painter</value>
+  </data>
+  <data name="Pastor" xml:space="preserve">
+    <value>Pastor</value>
+  </data>
+  <data name="Peddler" xml:space="preserve">
+    <value>Peddler</value>
+  </data>
+  <data name="Pharmacist" xml:space="preserve">
+    <value>Pharmacist</value>
+  </data>
+  <data name="Philosopher" xml:space="preserve">
+    <value>Philosopher</value>
+  </data>
+  <data name="Pilgrim" xml:space="preserve">
+    <value>Pilgrim</value>
+  </data>
+  <data name="Pioneer" xml:space="preserve">
+    <value>Pioneer</value>
+  </data>
+  <data name="Potter" xml:space="preserve">
+    <value>Potter</value>
+  </data>
+  <data name="Priest" xml:space="preserve">
+    <value>Priest</value>
+  </data>
+  <data name="PrisonGuard" xml:space="preserve">
+    <value>Prison Guard</value>
+  </data>
+  <data name="PrivateTeacher" xml:space="preserve">
+    <value>Private Teacher</value>
+  </data>
+  <data name="Scholar" xml:space="preserve">
+    <value>Scholar</value>
+  </data>
+  <data name="SecretAgent" xml:space="preserve">
+    <value>Secret Agent</value>
+  </data>
+  <data name="SecurityGuard" xml:space="preserve">
+    <value>Security Guard</value>
+  </data>
+  <data name="Settler" xml:space="preserve">
+    <value>Settler</value>
+  </data>
+  <data name="Shepherd" xml:space="preserve">
+    <value>Shepherd</value>
+  </data>
+  <data name="ShipBuilder" xml:space="preserve">
+    <value>Ship Builder</value>
+  </data>
+  <data name="SiegeEngineer" xml:space="preserve">
+    <value>Siege Engineer</value>
+  </data>
+  <data name="SilkTailor" xml:space="preserve">
+    <value>Silk Tailor</value>
+  </data>
+  <data name="Tailor" xml:space="preserve">
+    <value>Tailor</value>
+  </data>
+  <data name="Traveler" xml:space="preserve">
+    <value>Traveler</value>
+  </data>
+  <data name="Valet" xml:space="preserve">
+    <value>Valet</value>
+  </data>
+  <data name="VillageChief" xml:space="preserve">
+    <value>Village Chief</value>
+  </data>
+  <data name="WineBrewer" xml:space="preserve">
+    <value>Wine Brewer</value>
+  </data>
+</root>

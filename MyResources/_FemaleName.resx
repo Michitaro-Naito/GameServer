@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abbie" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Abigail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ada" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Adela" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Adelaide" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Adele" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Adeline" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Agatha" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Agnes" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Aileen" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Aimee" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alberta" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alda" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alexandra" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Alicia" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Amber" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Amelia" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Amy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ana" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Andrea" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Angela" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Angelia" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Angelica" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Angelina" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Angeline" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Anita" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ann" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Anna" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Annabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Annabella" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Anne" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Annie" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Anthonia" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Antonia" xml:space="preserve">
+    <value />
+  </data>
+  <data name="April" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Arabella" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ariel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Arlene" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ashley" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Audrey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Augusta" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Aurelia" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Averil" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Barbara" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Beatrice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Beatrix" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Becky" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Belinda" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bella" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bertha" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Betty" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Beverley" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Beverly" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Blythe" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bonnie" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Brenda" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Brianna" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Bridget" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Brigid" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Britney" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Brittany" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Calista" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cameron" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Camilla" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Carey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Carla" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Carlie" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Carol" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Carolina" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Caroline" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Carolyn" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Casey" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Catherine" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cecilia" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cecily" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Celeste" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Celestia" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Charlotte" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Chelsea" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cherie" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cherry" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cheryl" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Chloe" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Christian" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Christiana" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Christina" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Christine" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Cindy" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Claire" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Clara" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Clarissa" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Claudia" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Clementine" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Colleen" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Connie" xml:space="preserve">
+    <value />
+  </data>
+</root>

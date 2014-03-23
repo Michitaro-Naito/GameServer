@@ -16,6 +16,8 @@ namespace GameServer
         // ----- Static Variable -----
         static List<Player> _players = new List<Player>();
         static List<Room> _rooms = new List<Room>();
+        static DateTime _lastUpdate = DateTime.UtcNow;
+        public static double Elapsed { get; private set; }
 
 
 
@@ -82,6 +84,18 @@ namespace GameServer
 
 
 
+        // ----- Static Method -----
+        public static void Update()
+        {
+            var now = DateTime.UtcNow;
+            Elapsed = (now - _lastUpdate).TotalSeconds;
+            _lastUpdate = now;
+            var hub = GlobalHost.ConnectionManager.GetHubContext<MyHub>();
+            _rooms.ForEach(r => r.Update(hub));
+        }
+
+
+
         // ----- Method ( Client to Server ) -----
 
         /// <summary>
@@ -107,6 +121,7 @@ namespace GameServer
             player.userId = pass.data.userId;
             player.Culture = new System.Globalization.CultureInfo(culture);
             SystemMessage("Authenticated:" + pass.data.userId);
+            BroughtTo(ClientState.Characters);
         }
 
         public void Send(string message)
@@ -183,6 +198,7 @@ namespace GameServer
             {
                 SystemMessage(c.name);
             });
+            Clients.Caller.gotCharacters(o.characters);
         }
 
         void CreateCharacter(string name)
@@ -202,6 +218,7 @@ namespace GameServer
             }
             Player.Character = character;
             SystemMessage("Character found and selected.");
+            BroughtTo(ClientState.Rooms);
         }
 
         void GetRooms()
@@ -213,11 +230,13 @@ namespace GameServer
             }
             _rooms.ForEach(r =>
             {
-                if (r.IsConfigured)
+                if (r.IsVisibleToJoin)
                     SystemMessage(r.ToString());
                 else
                     SystemMessage(r.ToString() + "(Hidden)");
             });
+            var info = _rooms.Select(r => new RoomInfo(r)).ToList();
+            Clients.Caller.gotRooms(info);
         }
 
         /// <summary>
@@ -253,6 +272,7 @@ namespace GameServer
             room.RemoveAll(Player);
             if (room.IsEmpty)
                 _rooms.Remove(room);
+            BroughtTo(ClientState.Rooms);
         }
 
         void CallRoom(List<string> parameters)
@@ -280,6 +300,11 @@ namespace GameServer
             Clients.Client(player.connectionId).addMessage("SYSTEM", Player.GetString(message));
         }
 
+        public void BroughtTo(ClientState state)
+        {
+            Clients.Caller.broughtTo(state);
+        }
+
 
 
         // ----- Method (Utility) -----
@@ -299,7 +324,7 @@ namespace GameServer
                 return;
             }
 
-            if (!room.IsEmpty && !room.IsConfigured)
+            if (!room.IsEmpty && !room.CanJoin)
             {
                 SystemMessage("RoomMaster is configuring Room. Couldn't join at this moment.");
                 return;
@@ -308,6 +333,7 @@ namespace GameServer
             _rooms.ForEach(r => r.RemoveAll(Player));
             room.Add(Player.Character);
             SystemMessage("Joined.");
+            BroughtTo(ClientState.Playing);
         }
     }
 }
