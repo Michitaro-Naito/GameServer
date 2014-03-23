@@ -21,6 +21,7 @@ namespace GameServer
                 _Z_CheckForVictory,
                 _Z_IncrementDay
             }.Do();
+            Sync();
         }
 
         bool _Z_CheckForVictory()

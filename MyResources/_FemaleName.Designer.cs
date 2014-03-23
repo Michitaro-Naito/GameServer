@@ -61,7 +61,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Abbie.
         /// </summary>
         public static string Abbie {
             get {
@@ -70,7 +70,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Abigail.
         /// </summary>
         public static string Abigail {
             get {
@@ -79,7 +79,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Ada.
         /// </summary>
         public static string Ada {
             get {
@@ -88,7 +88,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Adela.
         /// </summary>
         public static string Adela {
             get {
@@ -97,7 +97,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Adelaide.
         /// </summary>
         public static string Adelaide {
             get {
@@ -106,7 +106,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Adele.
         /// </summary>
         public static string Adele {
             get {
@@ -115,7 +115,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Adeline.
         /// </summary>
         public static string Adeline {
             get {
@@ -124,7 +124,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Agatha.
         /// </summary>
         public static string Agatha {
             get {
@@ -133,7 +133,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Agnes.
         /// </summary>
         public static string Agnes {
             get {
@@ -142,7 +142,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Aileen.
         /// </summary>
         public static string Aileen {
             get {
@@ -151,7 +151,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Aimee.
         /// </summary>
         public static string Aimee {
             get {
@@ -160,7 +160,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Alberta.
         /// </summary>
         public static string Alberta {
             get {
@@ -169,7 +169,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Alda.
         /// </summary>
         public static string Alda {
             get {
@@ -178,7 +178,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Alexandra.
         /// </summary>
         public static string Alexandra {
             get {
@@ -187,7 +187,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Alice.
         /// </summary>
         public static string Alice {
             get {
@@ -196,7 +196,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Alicia.
         /// </summary>
         public static string Alicia {
             get {
@@ -205,7 +205,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Amber.
         /// </summary>
         public static string Amber {
             get {
@@ -214,7 +214,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Amelia.
         /// </summary>
         public static string Amelia {
             get {
@@ -223,7 +223,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Amy.
         /// </summary>
         public static string Amy {
             get {
@@ -232,7 +232,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Ana.
         /// </summary>
         public static string Ana {
             get {
@@ -241,7 +241,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Andrea.
         /// </summary>
         public static string Andrea {
             get {
@@ -250,7 +250,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Angela.
         /// </summary>
         public static string Angela {
             get {
@@ -259,7 +259,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Angelia.
         /// </summary>
         public static string Angelia {
             get {
@@ -268,7 +268,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Angelica.
         /// </summary>
         public static string Angelica {
             get {
@@ -277,7 +277,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Angelina.
         /// </summary>
         public static string Angelina {
             get {
@@ -286,7 +286,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Angeline.
         /// </summary>
         public static string Angeline {
             get {
@@ -295,7 +295,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Anita.
         /// </summary>
         public static string Anita {
             get {
@@ -304,7 +304,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Ann.
         /// </summary>
         public static string Ann {
             get {
@@ -313,7 +313,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Anna.
         /// </summary>
         public static string Anna {
             get {
@@ -322,7 +322,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Annabel.
         /// </summary>
         public static string Annabel {
             get {
@@ -331,7 +331,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Annabella.
         /// </summary>
         public static string Annabella {
             get {
@@ -340,7 +340,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Anne.
         /// </summary>
         public static string Anne {
             get {
@@ -349,7 +349,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Annie.
         /// </summary>
         public static string Annie {
             get {
@@ -358,7 +358,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Anthonia.
         /// </summary>
         public static string Anthonia {
             get {
@@ -367,7 +367,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Antonia.
         /// </summary>
         public static string Antonia {
             get {
@@ -376,7 +376,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to April.
         /// </summary>
         public static string April {
             get {
@@ -385,7 +385,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Arabella.
         /// </summary>
         public static string Arabella {
             get {
@@ -394,7 +394,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Ariel.
         /// </summary>
         public static string Ariel {
             get {
@@ -403,7 +403,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Arlene.
         /// </summary>
         public static string Arlene {
             get {
@@ -412,7 +412,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Ashley.
         /// </summary>
         public static string Ashley {
             get {
@@ -421,7 +421,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Audrey.
         /// </summary>
         public static string Audrey {
             get {
@@ -430,7 +430,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Augusta.
         /// </summary>
         public static string Augusta {
             get {
@@ -439,7 +439,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Aurelia.
         /// </summary>
         public static string Aurelia {
             get {
@@ -448,7 +448,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Averil.
         /// </summary>
         public static string Averil {
             get {
@@ -457,7 +457,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Barbara.
         /// </summary>
         public static string Barbara {
             get {
@@ -466,7 +466,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Beatrice.
         /// </summary>
         public static string Beatrice {
             get {
@@ -475,7 +475,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Beatrix.
         /// </summary>
         public static string Beatrix {
             get {
@@ -484,7 +484,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Becky.
         /// </summary>
         public static string Becky {
             get {
@@ -493,7 +493,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Belinda.
         /// </summary>
         public static string Belinda {
             get {
@@ -502,7 +502,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Bella.
         /// </summary>
         public static string Bella {
             get {
@@ -511,7 +511,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Bertha.
         /// </summary>
         public static string Bertha {
             get {
@@ -520,7 +520,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Betty.
         /// </summary>
         public static string Betty {
             get {
@@ -529,7 +529,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Beverley.
         /// </summary>
         public static string Beverley {
             get {
@@ -538,7 +538,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Beverly.
         /// </summary>
         public static string Beverly {
             get {
@@ -547,7 +547,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Blythe.
         /// </summary>
         public static string Blythe {
             get {
@@ -556,7 +556,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Bonnie.
         /// </summary>
         public static string Bonnie {
             get {
@@ -565,7 +565,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Brenda.
         /// </summary>
         public static string Brenda {
             get {
@@ -574,7 +574,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Brianna.
         /// </summary>
         public static string Brianna {
             get {
@@ -583,7 +583,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Bridget.
         /// </summary>
         public static string Bridget {
             get {
@@ -592,7 +592,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Brigid.
         /// </summary>
         public static string Brigid {
             get {
@@ -601,7 +601,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Britney.
         /// </summary>
         public static string Britney {
             get {
@@ -610,7 +610,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Brittany.
         /// </summary>
         public static string Brittany {
             get {
@@ -619,7 +619,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Calista.
         /// </summary>
         public static string Calista {
             get {
@@ -628,7 +628,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Cameron.
         /// </summary>
         public static string Cameron {
             get {
@@ -637,7 +637,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Camilla.
         /// </summary>
         public static string Camilla {
             get {
@@ -646,7 +646,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Carey.
         /// </summary>
         public static string Carey {
             get {
@@ -655,7 +655,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Carla.
         /// </summary>
         public static string Carla {
             get {
@@ -664,7 +664,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Carlie.
         /// </summary>
         public static string Carlie {
             get {
@@ -673,7 +673,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Carol.
         /// </summary>
         public static string Carol {
             get {
@@ -682,7 +682,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Carolina.
         /// </summary>
         public static string Carolina {
             get {
@@ -691,7 +691,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Caroline.
         /// </summary>
         public static string Caroline {
             get {
@@ -700,7 +700,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Carolyn.
         /// </summary>
         public static string Carolyn {
             get {
@@ -709,7 +709,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Casey.
         /// </summary>
         public static string Casey {
             get {
@@ -718,7 +718,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Catherine.
         /// </summary>
         public static string Catherine {
             get {
@@ -727,7 +727,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Cecilia.
         /// </summary>
         public static string Cecilia {
             get {
@@ -736,7 +736,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Cecily.
         /// </summary>
         public static string Cecily {
             get {
@@ -745,7 +745,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Celeste.
         /// </summary>
         public static string Celeste {
             get {
@@ -754,7 +754,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Celestia.
         /// </summary>
         public static string Celestia {
             get {
@@ -763,7 +763,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Charlotte.
         /// </summary>
         public static string Charlotte {
             get {
@@ -772,7 +772,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Chelsea.
         /// </summary>
         public static string Chelsea {
             get {
@@ -781,7 +781,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Cherie.
         /// </summary>
         public static string Cherie {
             get {
@@ -790,7 +790,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Cherry.
         /// </summary>
         public static string Cherry {
             get {
@@ -799,7 +799,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Cheryl.
         /// </summary>
         public static string Cheryl {
             get {
@@ -808,7 +808,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Chloe.
         /// </summary>
         public static string Chloe {
             get {
@@ -817,7 +817,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Christian.
         /// </summary>
         public static string Christian {
             get {
@@ -826,7 +826,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Christiana.
         /// </summary>
         public static string Christiana {
             get {
@@ -835,7 +835,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Christina.
         /// </summary>
         public static string Christina {
             get {
@@ -844,7 +844,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Christine.
         /// </summary>
         public static string Christine {
             get {
@@ -853,7 +853,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Cindy.
         /// </summary>
         public static string Cindy {
             get {
@@ -862,7 +862,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Claire.
         /// </summary>
         public static string Claire {
             get {
@@ -871,7 +871,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Clara.
         /// </summary>
         public static string Clara {
             get {
@@ -880,7 +880,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Clarissa.
         /// </summary>
         public static string Clarissa {
             get {
@@ -889,7 +889,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Claudia.
         /// </summary>
         public static string Claudia {
             get {
@@ -898,7 +898,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Clementine.
         /// </summary>
         public static string Clementine {
             get {
@@ -907,7 +907,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Colleen.
         /// </summary>
         public static string Colleen {
             get {
@@ -916,7 +916,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Connie.
         /// </summary>
         public static string Connie {
             get {

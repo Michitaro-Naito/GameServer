@@ -49,15 +49,27 @@ namespace GameServer
             return (int)Math.Floor(value);
         }
 
+        public static List<string> Keys(this System.Resources.ResourceManager resourceManager)
+        {
+            var keys = new List<string>();
+            var set = resourceManager.GetResourceSet(new System.Globalization.CultureInfo("en-US"), true, true);
+            foreach (System.Collections.DictionaryEntry entry in set)
+            {
+                keys.Add(entry.Key.ToString());
+            }
+            return keys;
+        }
+
         public static string RandomKey(this System.Resources.ResourceManager resourceManager)
         {
-            var set = resourceManager.GetResourceSet(new System.Globalization.CultureInfo("en-US"), true, true);
+            /*var set = resourceManager.GetResourceSet(new System.Globalization.CultureInfo("en-US"), true, true);
             var keys = new List<string>();
             foreach (System.Collections.DictionaryEntry entry in set)
             {
                 keys.Add(entry.Key.ToString());
             }
-            return keys.RandomElement();
+            return keys.RandomElement();*/
+            return resourceManager.Keys().RandomElement();
         }
 
         public static void Do(this List<Func<bool>> funcs)

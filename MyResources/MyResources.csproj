@@ -55,6 +55,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="_FemaleName.ja-JP.Designer.cs">
+      <DependentUpon>_FemaleName.ja-JP.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="_MaleName.ja-JP.Designer.cs">
+      <DependentUpon>_MaleName.ja-JP.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="_MaleName.Designer.cs">
       <DependentUpon>_MaleName.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -83,6 +93,14 @@
     <EmbeddedResource Include="_FemaleName.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_FemaleName.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_FemaleName.ja-JP.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>_FemaleName.ja-JP.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_MaleName.ja-JP.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>_MaleName.ja-JP.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="_MaleName.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

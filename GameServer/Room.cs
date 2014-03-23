@@ -10,11 +10,11 @@ namespace GameServer
 {
     public enum RoomState
     {
-        Configuring         = 0,
-        Matchmaking         = 1,
-        Playing             = 2,
-        Ending              = 3,
-        Ended               = 4
+        Configuring         = 0000,
+        Matchmaking         = 0001,
+        Playing             = 0002,
+        Ending              = 0003,
+        Ended               = 0004
     }
 
     public class RoomInfo
@@ -49,7 +49,6 @@ namespace GameServer
         public int day;
         public double duration;
 
-        //public bool IsConfigured { get; private set; }
         public bool IsVisibleToJoin
         {
             get
@@ -94,7 +93,7 @@ namespace GameServer
             return _characters.Any(c => c == character);
         }
 
-        public void Add(Character character)
+        public void Add(MyHub hub, Character character)
         {
             _characters.Add(character);
             var actor = _actors.Where(a => a.character == null).RandomElement();
@@ -103,6 +102,8 @@ namespace GameServer
                 actor.character = character;
                 SystemMessageAll(string.Format("{0} joined as {1}", _characters, actor));
             }
+            //CallPlayer(character.Player, c => c.gotRoomState(RoomState));
+            hub.Clients.Caller.gotRoomState(RoomState);
         }
 
         public void RemoveAll(Player player)
@@ -128,19 +129,16 @@ namespace GameServer
                     hub.SystemMessage(string.Format("Characters at {0}:", this));
                     _characters.ForEach(c => hub.SystemMessage(c.ToString()));
                     break;
-                case "GetActors":
+                /*case "GetActors":
                     hub.SystemMessage(string.Format("Actors at {0}:", this));
-                    _actors.ForEach(a => hub.SystemMessage(a.ToString()));
-                    /*_actors.ForEach(a =>
-                    {
-                        hub.SystemMessage(a.title.GetStringFor(hub.Player) + a.name.GetStringFor(hub.Player));
-                    });*/
-                    break;
+                    var info = _actors.Select(a => new ActorInfo(a)).ToList();
+                    hub.Clients.Caller.gotActors(info);
+                    break;*/
                 case "Chat":
                     _characters.ForEach(c => hub.SystemMessage(c.Player, parameters[1]));
                     break;
                 case "Configure":
-                    Configure(parameters[1], parameters[2], parameters[3]);
+                    Configure(hub, parameters[1], parameters[2], parameters[3]);
                     break;
                 case "Start":
                     if(RoomState != RoomState.Matchmaking)
@@ -149,9 +147,12 @@ namespace GameServer
                         break;
                     }
                     var count = Math.Max(7, _characters.Count);
-                    for (var n = 0; n < count; n++)
+
+                    // Remove NPC until count
+                    while (_actors.Count > 7 && _actors.Any(a => a.character == null))
                     {
-                        _actors.Add(new Actor());
+                        var npcToRemove = _actors.Where(a => a.character == null).RandomElement();
+                        _actors.Remove(npcToRemove);
                     }
 
                     // Casts Roles
@@ -162,18 +163,12 @@ namespace GameServer
                             _actors.Where(a => a.role == Role.None).RandomElement().role = p.Key;
                     }
 
-                    // Assigns Characters to Actors
-                    _characters.ForEach(c =>
-                    {
-                        var npcActor = _actors.FirstOrDefault(a => a.character == null);
-                        if (npcActor != null)
-                            npcActor.character = c;
-                    });
-
                     // Changes State
                     RoomState = RoomState.Playing;
                     duration = interval;
 
+                    //CallPlayers(c => c.gotRoomState(RoomState.Playing));
+                    Sync();
                     hub.SystemMessage(string.Format("Game started at {0}", this));
                     break;
                 default:
@@ -182,7 +177,7 @@ namespace GameServer
             }
         }
 
-        public void Configure(string name, string max, string interval)
+        public void Configure(MyHub hub, string name, string max, string interval)
         {
             if (RoomState != RoomState.Configuring)
                 return;
@@ -191,7 +186,18 @@ namespace GameServer
             this.max = int.Parse(max);
             this.interval = int.Parse(interval);
 
+            _actors = Actor.Create(this.max);
+            // Assigns Characters to Actors
+            _characters.ForEach(c =>
+            {
+                var npcActor = _actors.FirstOrDefault(a => a.character == null);
+                if (npcActor != null)
+                    npcActor.character = c;
+            });
             RoomState = RoomState.Matchmaking;
+
+            //hub.Clients.Caller.gotRoomState(RoomState.Matchmaking);
+            Sync();
         }
 
         public void Update(IHubContext hub)
@@ -202,17 +208,23 @@ namespace GameServer
             {
                 duration -= MyHub.Elapsed;
                 if (duration < 0)
-                {
-                    /*duration = interval;
-                    day++;*/
                     GotoNextDay();
-                }
             }
+        }
 
-            /*_characters.ForEach(c =>
+        /*void CallPlayer(Player player, Action<dynamic> action)
+        {
+            var client = _updateHub.Clients.Client(player.connectionId);
+            action(client);
+        }*/
+
+        void CallPlayers(Action<dynamic> action)
+        {
+            _characters.ForEach(c =>
             {
-                hub.Clients.Client(c.Player.connectionId).addMessage("SYSTEM.Room", string.Format("Update State:{0} Elapsed:{1} Day:{2} Duration:{3}", RoomState, MyHub.Elapsed, day, duration));
-            });*/
+                var client = _updateHub.Clients.Client(c.Player.connectionId);
+                action(client);
+            });
         }
 
         void SystemMessageAll(string message)
@@ -221,6 +233,23 @@ namespace GameServer
             {
                 _updateHub.Clients.Client(c.Player.connectionId).addMessage("SYSTEM.Room", message);
             });
+        }
+
+        void Sync()
+        {
+            _characters.ForEach(c =>
+            {
+                var client = _updateHub.Clients.Client(c.Player.connectionId);
+                var actors = _actors.Select(a => new ActorInfo(c.Player, a)).ToList();
+                client.gotRoomState(RoomState);
+                client.gotActors(actors);
+            });
+            /*CallPlayers(c =>
+            {
+                var actors = _actors.Select(a => new ActorInfo(a)).ToList();
+                c.gotRoomState(RoomState);
+                c.gotActors(actors);
+            });*/
         }
     }
 }

@@ -331,7 +331,7 @@ namespace GameServer
             }
 
             _rooms.ForEach(r => r.RemoveAll(Player));
-            room.Add(Player.Character);
+            room.Add(this, Player.Character);
             SystemMessage("Joined.");
             BroughtTo(ClientState.Playing);
         }
