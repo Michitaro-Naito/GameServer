@@ -26,6 +26,7 @@ namespace GameServer
 
         public int day;
         public double duration;
+        public double EndingDuration { get; private set; }
         bool _needSync = false;
 
         int _nextMessageId = 0;
@@ -112,17 +113,39 @@ namespace GameServer
 
             ProcessQueues();
 
-            if (RoomState == RoomState.Playing)
+            switch (RoomState)
             {
-                duration -= MyHub.Elapsed;
-                if (duration < 0)
-                    GotoNextDay();
+                case RoomState.Playing:
+                    duration -= MyHub.Elapsed;
+                    if (duration < 0)
+                        GotoNextDay();
+                    break;
+
+                case RoomState.Ending:
+                    EndingDuration -= MyHub.Elapsed;
+                    if (EndingDuration < 0)
+                    {
+                        RoomState = RoomState.Ended;
+                        SystemMessageAll("Game has ended.");
+                        _needSync = true;
+                        //CallAll(client => client.broughtTo(ClientState.Rooms));
+                    }
+                    break;
             }
 
             ProcessMessages();
 
             if (_needSync)
                 Sync();
+        }
+
+        void CallAll(Action<dynamic> action)
+        {
+            _characters.ForEach(c =>
+            {
+                var client = _updateHub.Clients.Client(c.Player.connectionId);
+                action(client);
+            });
         }
 
         void SystemMessageAll(string message)

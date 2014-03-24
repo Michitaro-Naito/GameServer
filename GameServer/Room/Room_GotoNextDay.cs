@@ -63,6 +63,7 @@ namespace GameServer
             {
                 SystemMessageAll("Faction won: " + factionWon.Value);
                 RoomState = RoomState.Ending;
+                EndingDuration = 2 * conf.interval;
                 // Quit GotoNextDay process.
                 return true;
             }
