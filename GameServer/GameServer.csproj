@@ -94,6 +94,7 @@
     <Compile Include="InterText.cs" />
     <Compile Include="Room\RoomCommand.cs" />
     <Compile Include="Room\RoomInfo.cs" />
+    <Compile Include="Room\RoomMessage.cs" />
     <Compile Include="Room\RoomState.cs" />
     <Compile Include="Room\Room_ActorSelectors.cs" />
     <Compile Include="Room\Room_Configuration.cs" />

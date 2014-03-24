@@ -17,43 +17,43 @@ namespace GameServer
             FemaleName
         }
 
-        InterTextType _type;
-        string _key;
+        public InterTextType TextType { get; protected set; }
+        public string Key { get; protected set; }
 
         public InterText(string key, InterTextType type = InterTextType.Text)
         {
             if (key == null)
                 throw new ArgumentNullException("key must not be null.");
-            _type = type;
-            _key = key;
+            TextType = type;
+            Key = key;
         }
 
         public override string ToString()
         {
-            return string.Format("[{0} {1}]", _type, _key);
+            return string.Format("[{0} {1}]", TextType, Key);
             //return string.Format("[InterText {0} {1}]", _type, _key);
         }
 
         public string GetString(CultureInfo culture)
         {
             var str = (string)null;
-            switch (_type)
+            switch (TextType)
             {
                 case InterTextType.Text:
                 default:
-                    str = MyResources._.ResourceManager.GetString(_key, culture);
+                    str = MyResources._.ResourceManager.GetString(Key, culture);
                     break;
 
                 case InterTextType.Title:
-                    str = MyResources._Title.ResourceManager.GetString(_key, culture);
+                    str = MyResources._Title.ResourceManager.GetString(Key, culture);
                     break;
 
                 case InterTextType.MaleName:
-                    str = MyResources._MaleName.ResourceManager.GetString(_key, culture);
+                    str = MyResources._MaleName.ResourceManager.GetString(Key, culture);
                     break;
 
                 case InterTextType.FemaleName:
-                    str = MyResources._FemaleName.ResourceManager.GetString(_key, culture);
+                    str = MyResources._FemaleName.ResourceManager.GetString(Key, culture);
                     break;
             }
             if (str == null)

@@ -92,6 +92,9 @@ namespace GameServer
             _lastUpdate = now;
             var hub = GlobalHost.ConnectionManager.GetHubContext<MyHub>();
             _rooms.ForEach(r => r.Update(hub));
+
+            // Cleans Rooms
+            _rooms.RemoveAll(r => r.ShouldBeDeleted);
         }
 
 
@@ -190,7 +193,10 @@ namespace GameServer
 
         public void RoomSend(int roomSendMode, int actorId, string message)
         {
-            Clients.Caller.addMessage(string.Format("RoomSend called. {0} {1} {2}", roomSendMode, actorId, message));
+            var room = Room;
+            if (room == null)
+                SystemMessage("You are not in Room.");
+            room.Queue(new RoomCommand.Send(Player, roomSendMode, actorId, message));
         }
 
         public void RoomConfigure(string roomName, int maxActors, int intervalSeconds)

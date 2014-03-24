@@ -28,6 +28,10 @@ namespace GameServer
         public double duration;
         bool _needSync = false;
 
+        int _nextMessageId = 0;
+        List<RoomMessage> _messagesWillBeApplied = new List<RoomMessage>();
+        List<RoomMessage> _messages = new List<RoomMessage>();
+
         ConcurrentQueue<RoomCommand.Base> _queue = new ConcurrentQueue<RoomCommand.Base>();
 
         public bool IsVisibleToJoin
@@ -42,8 +46,10 @@ namespace GameServer
             get
             {
                 return
-                    new RoomState[] { RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState)
-                    && _actors.Any(a => a.character == null);
+                    (new RoomState[] { RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState)
+                    //&& _actors.Any(a => a.character == null))
+                    && _characters.Count < conf.max)
+                    || (RoomState == RoomState.Configuring && _characters.Count == 0);
             }
         }
         public RoomState RoomState { get; private set; }
@@ -54,6 +60,13 @@ namespace GameServer
             {
                 return _characters.Count == 0;
             }
+        }
+
+        public bool IsProcessingHistory { get; private set; }
+
+        public bool ShouldBeDeleted
+        {
+            get { return RoomState!=RoomState.Ending && !IsProcessingHistory && _characters.Count == 0; }
         }
 
         public Room()
@@ -72,6 +85,18 @@ namespace GameServer
         public bool HasCharacter(Character character)
         {
             return _characters.Any(c => c == character);
+        }
+
+        public bool IsRoomMaster(Actor actor)
+        {
+            if (actor == null)
+                return false;
+            if (actor.character == null)
+                return false;
+            var firstCharacter = _characters.FirstOrDefault();
+            if(firstCharacter==null)
+                return false;
+            return actor.character.Player == firstCharacter.Player;
         }
 
         /// <summary>
@@ -94,6 +119,8 @@ namespace GameServer
                     GotoNextDay();
             }
 
+            ProcessMessages();
+
             if (_needSync)
                 Sync();
         }
@@ -102,7 +129,8 @@ namespace GameServer
         {
             _characters.ForEach(c =>
             {
-                _updateHub.Clients.Client(c.Player.connectionId).addMessage("SYSTEM.Room", message);
+                //_updateHub.Clients.Client(c.Player.connectionId).addMessage("SYSTEM.Room", message);
+                _updateHub.Clients.Client(c.Player.connectionId).gotRoomMessages(new []{ new { body = message } });
             });
         }
 
@@ -111,11 +139,23 @@ namespace GameServer
             _characters.ForEach(c =>
             {
                 var client = _updateHub.Clients.Client(c.Player.connectionId);
-                var actors = _actors.Select(a => new ActorInfo(c.Player, a)).ToList();
+                var actors = _actors.Select(a => new ActorInfo(this, c.Player, a)).ToList();
                 client.gotRoomState(RoomState);
                 client.gotActors(actors);
             });
             _needSync = false;
+        }
+
+        void AddActorsForCharacters()
+        {
+            //_actors = Actor.Create(_characters.Count);
+            var charactersWithoutActor = _characters.Where(c => !_actors.Any(a => a.character == c)).ToList();
+            charactersWithoutActor.ForEach(c =>
+            {
+                var actor = Actor.CreateUnique(_actors);
+                actor.character = c;
+                _actors.Add(actor);
+            });
         }
     }
 }

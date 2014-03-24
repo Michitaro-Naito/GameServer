@@ -21,6 +21,20 @@ namespace GameServer.RoomCommand
         }
     }
 
+    public class Send : Base
+    {
+        public int RoomSendMode { get; private set; }
+        public int ActorId { get; private set; }
+        public string Message { get; private set; }
+        public Send(Player player, int roomSendMode, int actorId, string message)
+            : base(player)
+        {
+            RoomSendMode = roomSendMode;
+            ActorId = actorId;
+            Message = message;
+        }
+    }
+
     public class AddCharacter : Base
     {
         public Character Character { get; private set; }

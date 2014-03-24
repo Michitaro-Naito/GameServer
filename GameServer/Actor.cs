@@ -21,8 +21,9 @@ namespace GameServer
         public Role role;
         public string character;
         public bool isDead;
+        public bool isRoomMaster;
 
-        public ActorInfo(Player player, Actor actor)
+        public ActorInfo(Room room, Player player, Actor actor)
         {
             id = actor.id;
             title = actor.title.GetStringFor(player);
@@ -32,6 +33,7 @@ namespace GameServer
             if (actor.character != null)
                 character = actor.character.ToString();
             isDead = actor.IsDead;
+            isRoomMaster = room.IsRoomMaster(actor);
         }
     }
 
@@ -50,6 +52,12 @@ namespace GameServer
         public Actor ActorToGuard;
 
         public bool IsDead { get; set; }
+        public bool IsNPC { get { return character == null; } }
+
+        public bool IsOwnedBy(Player player)
+        {
+            return character != null && character.Player == player;
+        }
 
         public static List<Actor> Create(int amount){
             if(amount <= 0)
@@ -102,14 +110,55 @@ namespace GameServer
             return actors;
         }
 
+        public static Actor CreateUnique(List<Actor> existing)
+        {
+            // Remove existing keys
+            var existingTitleKeys = existing.Select(a => a.title.Key);
+            var titleKeys = MyResources._Title.ResourceManager.Keys();
+            titleKeys.RemoveAll(key => existingTitleKeys.Contains(key));
+
+            var existingMaleNameKeys = existing.Where(a=>a.gender==Gender.Male).Select(a => a.name.Key);
+            var maleNameKeys = MyResources._MaleName.ResourceManager.Keys();
+            maleNameKeys.RemoveAll(key => existingMaleNameKeys.Contains(key));
+
+            var existingFemaleNameKeys = existing.Where(a => a.gender == Gender.Female).Select(a => a.name.Key);
+            var femaleNameKeys = MyResources._FemaleName.ResourceManager.Keys();
+            femaleNameKeys.RemoveAll(key => existingFemaleNameKeys.Contains(key));
+
+            var actor = new Actor();
+
+            // Index = max + 1
+            if (existing.Count == 0)
+                actor.id = 0;
+            else
+                actor.id = existing.Max(a => a.id) + 1;
+
+            // Random Gender
+            actor.gender = new Gender[] { Gender.Male, Gender.Female }.RandomElement();
+
+            // Random Title
+            var titleKey = titleKeys.RandomElement();
+            actor.title = new InterText(titleKey, InterText.InterTextType.Title);
+
+            // Random Name
+            InterText name = null;
+            if (actor.gender == Gender.Male)
+            {
+                var maleNameKey = maleNameKeys.RandomElement();
+                name = new InterText(maleNameKey, InterText.InterTextType.MaleName);
+            }
+            else
+            {
+                var femaleNameKey = femaleNameKeys.RandomElement();
+                name = new InterText(femaleNameKey, InterText.InterTextType.FemaleName);
+            }
+            actor.name = name;
+
+            return actor;
+        }
+
         Actor()
         {
-            /*title = new InterText(MyResources._Title.ResourceManager.RandomKey(), InterText.InterTextType.Title);
-            gender = new Gender[] { Gender.Male, Gender.Female }.RandomElement();
-            if (gender == Gender.Male)
-                name = new InterText(MyResources._MaleName.ResourceManager.RandomKey(), InterText.InterTextType.MaleName);
-            else
-                name = new InterText(MyResources._FemaleName.ResourceManager.RandomKey(), InterText.InterTextType.FemaleName);*/
         }
 
         public override string ToString()
