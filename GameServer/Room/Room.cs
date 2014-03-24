@@ -70,6 +70,31 @@ namespace GameServer
             get { return RoomState!=RoomState.Ending && !IsProcessingHistory && _characters.Count == 0; }
         }
 
+        List<RoomMessage.Mode> ModesFor(Actor actor)
+        {
+            if (actor == null)
+                throw new ArgumentNullException("actor must not be null.");
+            var modes = new List<RoomMessage.Mode>();
+            if (actor.IsDead)
+            {
+                // Dead
+                modes.Add(RoomMessage.Mode.Ghost);
+            }
+            else
+            {
+                // Alive
+                modes.Add(RoomMessage.Mode.All);
+                modes.Add(RoomMessage.Mode.Private);
+                switch (actor.role)
+                {
+                    case Role.Werewolf:
+                        modes.Add(RoomMessage.Mode.Wolf);
+                        break;
+                }
+            }
+            return modes;
+        }
+
         public Room()
         {
             guid = Guid.NewGuid().ToString();
@@ -163,8 +188,17 @@ namespace GameServer
             {
                 var client = _updateHub.Clients.Client(c.Player.connectionId);
                 var actors = _actors.Select(a => new ActorInfo(this, c.Player, a)).ToList();
+                var yourActorId = new Nullable<int>();
+                var yourActor = _actors.FirstOrDefault(a => a.IsOwnedBy(c.Player));
+                if (yourActor != null)
+                    yourActorId = yourActor.id;
                 client.gotRoomState(RoomState);
                 client.gotActors(actors);
+                client.gotYourActorId(yourActorId);
+                if (yourActor != null)
+                {
+                    client.gotYourSelections(yourActor.VoteInfo);
+                }
             });
             _needSync = false;
         }

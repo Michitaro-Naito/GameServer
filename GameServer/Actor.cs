@@ -12,6 +12,11 @@ namespace GameServer
         None, Male, Female
     }
 
+    public class VoteInfo
+    {
+        public Nullable<int> executeId, attackId, fortuneTellId, guardId;
+    }
+
     public class ActorInfo
     {
         public int id;
@@ -53,6 +58,23 @@ namespace GameServer
 
         public bool IsDead { get; set; }
         public bool IsNPC { get { return character == null; } }
+
+        public VoteInfo VoteInfo
+        {
+            get
+            {
+                var info = new VoteInfo();
+                if (ActorToExecute != null)
+                    info.executeId = ActorToExecute.id;
+                if (ActorToAttack != null)
+                    info.attackId = ActorToAttack.id;
+                if (ActorToFortuneTell != null)
+                    info.fortuneTellId = ActorToFortuneTell.id;
+                if (ActorToGuard != null)
+                    info.guardId = ActorToGuard.id;
+                return info;
+            }
+        }
 
         public bool IsOwnedBy(Player player)
         {

@@ -75,4 +75,21 @@ namespace GameServer.RoomCommand
         {
         }
     }
+
+    public class Vote : Base
+    {
+        public int ExecutionId { get; private set; }
+        public int AttackId { get; private set; }
+        public int FortuneTellId { get; private set; }
+        public int GuardId { get; private set; }
+
+        public Vote(Player player, int executionId, int attackId, int fortuneTellId, int guardId)
+            : base(player)
+        {
+            ExecutionId = executionId;
+            AttackId = attackId;
+            FortuneTellId = fortuneTellId;
+            GuardId = guardId;
+        }
+    }
 }

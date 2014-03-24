@@ -216,6 +216,15 @@ namespace GameServer
             room.Queue(new RoomCommand.Start(Player));
         }
 
+        public void RoomVote(int executionId, int attackId, int fortuneTellId, int guardId)
+        {
+            var room = Room;
+            if (room == null)
+                SystemMessage("You are not in Room.");
+            SystemMessage("Voting..." + executionId);
+            room.Queue(new RoomCommand.Vote(Player, executionId, attackId, fortuneTellId, guardId));
+        }
+
         void GetCharacters()
         {
             SystemMessage("Getting Characters...");

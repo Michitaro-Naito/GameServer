@@ -46,12 +46,6 @@ namespace GameServer
                     if (npc != null)
                         npc.character = command.Character;
                     AddActorsForCharacters();
-                    /*var actor = _actors.Where(a => a.character == null).RandomElement();
-                    if (actor != null)
-                    {
-                        actor.character = command.Character;
-                        SystemMessageAll(string.Format("{0} joined as {1}", _characters, actor));
-                    }*/
                     client.addMessage("Joined.");
                     client.broughtTo(ClientState.Playing);
 
@@ -65,10 +59,6 @@ namespace GameServer
                     var command = (RoomCommand.RemovePlayer)commandBase;
                     var client = _updateHub.Clients.Client(command.Target.connectionId);
                     _characters.RemoveAll(c => c.Player == command.Target);
-                    /*_actors.RemoveAll(a =>
-                    {
-                        return a.character != null && a.character.Player == command.Target;
-                    });*/
                     _actors.Where(a=>a.IsOwnedBy(command.Target)).ToList().ForEach(a=>a.character = null);
 
                     // Brings removed Player to Rooms scene.
@@ -152,16 +142,55 @@ namespace GameServer
                     var client = _updateHub.Clients.Client(command.Player.connectionId);
 
                     var from = _actors.FirstOrDefault(a => a.character != null && a.character.Player == command.Player);
+                    if (from == null)
+                    {
+                        SystemMessageAll("from must not be null.");
+                        continue;
+                    }
+
+                    var mode = (RoomMessage.Mode)command.RoomSendMode;
+                    if (!ModesFor(from).Contains(mode))
+                    {
+                        SystemMessageAll("Mode not allowed.");
+                        continue;
+                    }
+
                     var to = _actors.FirstOrDefault(a => a.id == command.ActorId);
+                    if (mode == RoomMessage.Mode.Private && to == null)
+                    {
+                        SystemMessageAll("to must not be null for private messages.");
+                        continue;
+                    }
+
                     _messagesWillBeApplied.Add(new RoomMessage()
                     {
                         id = _nextMessageId++,
                         callerUserId = command.Player.userId,
-                        mode = RoomMessage.Mode.All,
+                        mode = mode,
                         from = from,
                         to = to,
                         body = command.Message
                     });
+                }
+
+                // ----- Vote -----
+                if (type == typeof(RoomCommand.Vote))
+                {
+                    var command = (RoomCommand.Vote)commandBase;
+                    var client = _updateHub.Clients.Client(command.Player.connectionId);
+
+                    var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Player));
+                    if (actor == null)
+                    {
+                        client.addMessage("Voting... but your actor not found.");
+                        continue;
+                    }
+
+                    actor.ActorToExecute = _actors.FirstOrDefault(a => a.id == command.ExecutionId);
+                    actor.ActorToAttack = _actors.FirstOrDefault(a => a.id == command.AttackId);
+                    actor.ActorToFortuneTell = _actors.FirstOrDefault(a => a.id == command.FortuneTellId);
+                    actor.ActorToGuard = _actors.FirstOrDefault(a => a.id == command.GuardId);
+                    client.addMessage("Voted. ActorToExecute is: " + actor.ActorToExecute);
                 }
             }
         }
