@@ -16,7 +16,8 @@ namespace GameServer
             _messages.AddRange(_messagesWillBeApplied);
             _characters.ForEach(c =>
             {
-                _updateHub.Clients.Client(c.Player.connectionId).gotRoomMessages(_messagesWillBeApplied.Select(m=>new RoomMessageInfo(m)).ToList());
+                _updateHub.Clients.Client(c.Player.connectionId)
+                    .gotRoomMessages(_messagesWillBeApplied.Select(m=>new RoomMessageInfo(m)).ToList());
             });
             _messagesWillBeApplied.Clear();
         }
@@ -162,9 +163,9 @@ namespace GameServer
                         continue;
                     }
 
-                    _messagesWillBeApplied.Add(new RoomMessage()
+                    AddMessage(new RoomMessage()
                     {
-                        id = _nextMessageId++,
+                        //id = _nextMessageId++,
                         callerUserId = command.Player.userId,
                         mode = mode,
                         from = from,

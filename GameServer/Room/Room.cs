@@ -173,13 +173,19 @@ namespace GameServer
             });
         }
 
+        void AddMessage(RoomMessage message)
+        {
+            message.id = _nextMessageId++;
+            _messagesWillBeApplied.Add(message);
+        }
+
         void SystemMessageAll(string message)
         {
-            _characters.ForEach(c =>
+            AddMessage(new RoomMessage() { body = message });
+            /*_characters.ForEach(c =>
             {
-                //_updateHub.Clients.Client(c.Player.connectionId).addMessage("SYSTEM.Room", message);
                 _updateHub.Clients.Client(c.Player.connectionId).gotRoomMessages(new []{ new { body = message } });
-            });
+            });*/
         }
 
         void Sync()
