@@ -85,7 +85,7 @@ namespace GameServer
 
         public bool HasCharacter(Character character)
         {
-            return _characters.Any(c => c == character);
+            return _characters.Any(c => c.Name == character.Name);
         }
 
         public bool IsRoomMaster(Actor actor)

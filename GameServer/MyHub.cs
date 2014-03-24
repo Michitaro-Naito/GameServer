@@ -338,7 +338,7 @@ namespace GameServer
                 return;
             }
 
-            if (!room.IsEmpty && !room.CanJoin)
+            if (!room.HasCharacter(Character) && !room.IsEmpty && !room.CanJoin)
             {
                 SystemMessage("RoomMaster is configuring Room. Couldn't join at this moment.");
                 return;
