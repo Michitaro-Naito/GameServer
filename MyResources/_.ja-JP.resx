@@ -135,8 +135,17 @@
   <data name="CitizenActions" xml:space="preserve">
     <value>民衆裁判</value>
   </data>
+  <data name="DayADawns" xml:space="preserve">
+    <value>{0}日目になりました。</value>
+  </data>
+  <data name="FactionAWon" xml:space="preserve">
+    <value>{0}が勝利しました。</value>
+  </data>
+  <data name="GameHasEnded" xml:space="preserve">
+    <value>ゲームが終了しました。</value>
+  </data>
   <data name="ItHasBeenProvedThatKilledAIsB" xml:space="preserve">
-    <value>死者との対話により、死亡した{0}さんは{1}だったと分かりました。</value>
+    <value>死者との対話により、{0}さんは{1}だったと分かりました。</value>
   </data>
   <data name="NobodyExecutedBecauseOfInsufficientNumberOfVotes" xml:space="preserve">
     <value>得票数が足りなかったため、誰も処刑されませんでした。</value>

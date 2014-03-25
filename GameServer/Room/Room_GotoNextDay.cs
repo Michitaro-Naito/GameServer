@@ -62,7 +62,8 @@ namespace GameServer
 
             if (factionWon != null)
             {
-                SystemMessageAll("Faction won: " + factionWon.Value);
+                //SystemMessageAll("Faction won: " + factionWon.Value);
+                SystemMessageAll(new InterText("FactionAWon", _.ResourceManager, new[] { factionWon.Value.ToInterText() }));
                 RoomState = RoomState.Ending;
                 EndingDuration = 2 * conf.interval;
                 // Quit GotoNextDay process.
@@ -222,7 +223,6 @@ namespace GameServer
             if (actorsGuarded.Contains(actorToAttack))
             {
                 // Saved by Hunter.
-                //SystemMessageAll("Saved by Hunter.");
                 SystemMessageAll(new InterText("NobodyKilledBecauseOfHuntersActivity", _.ResourceManager));
             }
             else
@@ -247,7 +247,12 @@ namespace GameServer
             duration = conf.interval;
             day++;
 
-            SystemMessageAll(string.Format("Day {0} dawns.", day));
+            //SystemMessageAll(string.Format("Day {0} dawns.", day));
+            var str = new List<InterText>();
+            str.Add(new InterText("--------------------", null));
+            str.Add(new InterText("DayADawns", _.ResourceManager, new[] { new InterText(day.ToString(), null) }));
+            str.Add(new InterText("--------------------", null));
+            SystemMessageAll(str.ToArray());
 
             return false;
         }

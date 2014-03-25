@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Faction_Citizen" xml:space="preserve">
+    <value>Citizen Team</value>
+  </data>
+  <data name="Faction_Fox" xml:space="preserve">
+    <value>Fox Team</value>
+  </data>
+  <data name="Faction_None" xml:space="preserve">
+    <value>No Team</value>
+  </data>
+  <data name="Faction_Werewolf" xml:space="preserve">
+    <value>Werewolf Team</value>
+  </data>
   <data name="Foo_Bar" xml:space="preserve">
     <value>Foo and bar!</value>
   </data>

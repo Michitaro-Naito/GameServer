@@ -61,6 +61,42 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Citizen Team.
+        /// </summary>
+        public static string Faction_Citizen {
+            get {
+                return ResourceManager.GetString("Faction_Citizen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fox Team.
+        /// </summary>
+        public static string Faction_Fox {
+            get {
+                return ResourceManager.GetString("Faction_Fox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Team.
+        /// </summary>
+        public static string Faction_None {
+            get {
+                return ResourceManager.GetString("Faction_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werewolf Team.
+        /// </summary>
+        public static string Faction_Werewolf {
+            get {
+                return ResourceManager.GetString("Faction_Werewolf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Foo and bar!.
         /// </summary>
         public static string Foo_Bar {

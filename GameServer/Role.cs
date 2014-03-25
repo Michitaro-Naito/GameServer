@@ -87,6 +87,10 @@ namespace GameServer
                     return Race.Fox;
             }
         }
+        public static InterText ToInterText(this Faction faction)
+        {
+            return new InterText("[{0}]", null, new[] { new InterText(faction.ToKey(), _Enum.ResourceManager) });
+        }
         public static InterText ToInterText(this Race race)
         {
             return new InterText("[{0}]", null, new[] { new InterText(race.ToKey(), _Enum.ResourceManager) });

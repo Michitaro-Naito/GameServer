@@ -115,6 +115,33 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Day {0} dawns..
+        /// </summary>
+        public static string DayADawns {
+            get {
+                return ResourceManager.GetString("DayADawns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} won..
+        /// </summary>
+        public static string FactionAWon {
+            get {
+                return ResourceManager.GetString("FactionAWon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The game has ended..
+        /// </summary>
+        public static string GameHasEnded {
+            get {
+                return ResourceManager.GetString("GameHasEnded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The dead told that {0} was {1}..
         /// </summary>
         public static string ItHasBeenProvedThatKilledAIsB {

@@ -135,6 +135,15 @@
   <data name="CitizenActions" xml:space="preserve">
     <value>Citizen Actions</value>
   </data>
+  <data name="DayADawns" xml:space="preserve">
+    <value>Day {0} dawns.</value>
+  </data>
+  <data name="FactionAWon" xml:space="preserve">
+    <value>{0} won.</value>
+  </data>
+  <data name="GameHasEnded" xml:space="preserve">
+    <value>The game has ended.</value>
+  </data>
   <data name="ItHasBeenProvedThatKilledAIsB" xml:space="preserve">
     <value>The dead told that {0} was {1}.</value>
   </data>

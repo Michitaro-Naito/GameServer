@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Faction_Citizen" xml:space="preserve">
+    <value>市民チーム</value>
+  </data>
+  <data name="Faction_Fox" xml:space="preserve">
+    <value>妖狐チーム</value>
+  </data>
+  <data name="Faction_None" xml:space="preserve">
+    <value>無所属</value>
+  </data>
+  <data name="Faction_Werewolf" xml:space="preserve">
+    <value>人狼チーム</value>
+  </data>
   <data name="Foo_Bar" xml:space="preserve">
     <value>ほげふが</value>
   </data>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR;
+using MyResources;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -152,7 +153,8 @@ namespace GameServer
                     if (EndingDuration < 0)
                     {
                         RoomState = RoomState.Ended;
-                        SystemMessageAll("Game has ended.");
+                        //SystemMessageAll("Game has ended.");
+                        SystemMessageAll(new InterText("GameHasEnded", _.ResourceManager));
                         _needSync = true;
                         //CallAll(client => client.broughtTo(ClientState.Rooms));
                     }
