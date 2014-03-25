@@ -73,7 +73,8 @@ namespace GameServer
         List<RoomMessage.Mode> ModesFor(Actor actor)
         {
             if (actor == null)
-                throw new ArgumentNullException("actor must not be null.");
+                //throw new ArgumentNullException("actor must not be null.");
+                return new List<RoomMessage.Mode>();
             var modes = new List<RoomMessage.Mode>();
             if (actor.IsDead)
             {
@@ -176,16 +177,13 @@ namespace GameServer
         void AddMessage(RoomMessage message)
         {
             message.id = _nextMessageId++;
+            message.Created = DateTime.UtcNow;
             _messagesWillBeApplied.Add(message);
         }
 
         void SystemMessageAll(string message)
         {
             AddMessage(new RoomMessage() { body = message });
-            /*_characters.ForEach(c =>
-            {
-                _updateHub.Clients.Client(c.Player.connectionId).gotRoomMessages(new []{ new { body = message } });
-            });*/
         }
 
         void Sync()
@@ -205,6 +203,7 @@ namespace GameServer
                 {
                     client.gotYourSelections(yourActor.VoteInfo);
                 }
+                client.gotModes(ModesFor(yourActor).Select(m=>new RoomMessage.ModeInfo(c.Player, m)).ToList());
             });
             _needSync = false;
         }

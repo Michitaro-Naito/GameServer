@@ -9,6 +9,7 @@ namespace GameServer
     class RoomMessageInfo
     {
         public int id;
+        public DateTime Created;
         public string callerUserId;
         public RoomMessage.Mode mode;
         public Nullable<int> fromId;
@@ -18,6 +19,7 @@ namespace GameServer
         public RoomMessageInfo(RoomMessage message)
         {
             id = message.id;
+            Created = message.Created;
             callerUserId = message.callerUserId;
             mode = message.mode;
             if (message.from != null)
@@ -30,7 +32,7 @@ namespace GameServer
 
     class RoomMessage
     {
-        public enum Mode
+        public enum Mode : int
         {
             All = 0,
             Wolf = 1,
@@ -38,7 +40,21 @@ namespace GameServer
             Private = 3
         }
 
+        public class ModeInfo
+        {
+            public Mode id;
+            public string name;
+
+            public ModeInfo(Player player, Mode mode)
+            {
+                id = mode;
+                //name = MyResources._.ResourceManager.GetString("String1", player.Culture);
+                name = mode.ToLocalizedString(player.Culture);
+            }
+        }
+
         public int id;
+        public DateTime Created;
         public string callerUserId;
         public Mode mode;
         public Actor from;
