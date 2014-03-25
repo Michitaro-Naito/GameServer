@@ -8,6 +8,7 @@ using GameServer;
 using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Globalization;
 
 
 namespace GameServerTest
@@ -80,6 +81,20 @@ namespace GameServerTest
             Parallel.Invoke(action, action, action, action);
 
             Assert.AreEqual(49995000, outerSum);
+        }
+
+        public enum Foo
+        {
+            Bar
+        }
+        [TestMethod]
+        public void ToLocalizedString()
+        {
+            var en = new CultureInfo("en-US");
+            var ja = new CultureInfo("ja-JP");
+            Assert.AreEqual("Foo_Bar", Foo.Bar.ToKey());
+            Assert.AreEqual(_Enum.ResourceManager.GetString("Foo_Bar", en), Foo.Bar.ToLocalizedString(en));
+            Assert.AreEqual(_Enum.ResourceManager.GetString("Foo_Bar", ja), Foo.Bar.ToLocalizedString(ja));
         }
     }
 }

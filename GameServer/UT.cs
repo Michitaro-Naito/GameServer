@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -79,6 +81,25 @@ namespace GameServer
             {
                 if (func()) break;
             }
+        }
+
+        /*public static string GetStringFor(this ResourceManager resourceManager, Enum obj, CultureInfo culture)
+        {
+            var name = obj.GetType().Name + "." + obj.ToString();
+            return name;//resourceManager.GetString(name);
+        }*/
+
+        public static string ToKey(this Enum obj)
+        {
+            return obj.GetType().Name + "_" + obj.ToString();
+        }
+        public static string ToLocalizedString(this Enum obj, CultureInfo culture)
+        {
+            var key = obj.ToKey();
+            var str = MyResources._Enum.ResourceManager.GetString(key, culture);
+            if (str == null)
+                return key;
+            return str;
         }
     }
 }

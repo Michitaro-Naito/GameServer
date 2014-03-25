@@ -40,6 +40,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_Enum.ja-JP.Designer.cs">
+      <DependentUpon>_Enum.ja-JP.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="_Enum.Designer.cs">
+      <DependentUpon>_Enum.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="_.Designer.cs">
       <DependentUpon>_.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -82,6 +92,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="_Enum.ja-JP.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>_Enum.ja-JP.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Enum.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>_Enum.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="_.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_.Designer.cs</LastGenOutput>
