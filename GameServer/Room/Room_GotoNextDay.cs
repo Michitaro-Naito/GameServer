@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyResources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -103,12 +104,14 @@ namespace GameServer
 
         bool _Z_Execute()
         {
-            //SystemMessageAll("Executing...");
             if (AliveActors.Count() < 2)
             {
                 SystemMessageAll("Not enough Actors to vote.");
                 return false;
             }
+            var str = new List<InterText>();
+            str.Add(new InterText("CitizenActions", _.ResourceManager));
+            str.Add(new InterText("--------------------", null));
             var dic = new Dictionary<Actor, int>();
             AliveActors.ToList().ForEach(a =>
             {
@@ -122,21 +125,29 @@ namespace GameServer
                 if (!dic.ContainsKey(target))
                     dic[target] = 0;
                 dic[target]++;
+
+                str.Add(new InterText("{0} {1} => {2} {3}", null, new []{a.title, a.name, target.title, target.name}));
             });
-            /*foreach (KeyValuePair<Actor, int> p in dic)
+            str.Add(new InterText("--------------------", null));
+            foreach (KeyValuePair<Actor, int> p in dic)
             {
-                SystemMessageAll(string.Format("{0}:{1}", p.Key, p.Value));
-            }*/
+                str.Add(new InterText("{0} {1} : {2}", null, new []{p.Key.title, p.Key.name, new InterText(p.Value.ToString(), null)}));
+            }
+            str.Add(new InterText("--------------------", null));
+
             var max = dic.Max(p => p.Value);
             if (max <= 1)
             {
-                SystemMessageAll("VoteCount <= 1. Nobody executed.");
-                return false;
+                str.Add(new InterText("NobodyExecutedBecauseOfInsufficientNumberOfVotes", _.ResourceManager));
             }
-            var actorToExecute = dic.Where(p => p.Value == max).RandomElement().Key;
+            else
+            {
+                var actorToExecute = dic.Where(p => p.Value == max).RandomElement().Key;
+                actorToExecute.IsDead = true;
+                str.Add(new InterText("ABIsExecuted", _.ResourceManager, new []{actorToExecute.title, actorToExecute.name}));
+            }
 
-            actorToExecute.IsDead = true;
-            SystemMessageAll(string.Format("Executed:{0}", actorToExecute));
+            SystemMessageAll(str.ToArray());
 
             return false;
         }

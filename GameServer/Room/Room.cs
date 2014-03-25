@@ -181,6 +181,11 @@ namespace GameServer
             _messagesWillBeApplied.Add(message);
         }
 
+        void SystemMessageAll(InterText[] bodyRows)
+        {
+            AddMessage(new RoomMessage() { bodyRows = bodyRows });
+        }
+
         void SystemMessageAll(string message)
         {
             AddMessage(new RoomMessage() { bodyRows = new[] { new InterText(message, null) } });

@@ -61,6 +61,33 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [{0} {1}] has been executed in result of citizen actions..
+        /// </summary>
+        public static string ABIsExecuted {
+            get {
+                return ResourceManager.GetString("ABIsExecuted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Citizen Actions.
+        /// </summary>
+        public static string CitizenActions {
+            get {
+                return ResourceManager.GetString("CitizenActions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nobody executed because of the insufficient number of votes..
+        /// </summary>
+        public static string NobodyExecutedBecauseOfInsufficientNumberOfVotes {
+            get {
+                return ResourceManager.GetString("NobodyExecutedBecauseOfInsufficientNumberOfVotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello!.
         /// </summary>
         public static string String1 {
