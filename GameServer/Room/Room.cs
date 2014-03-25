@@ -27,7 +27,7 @@ namespace GameServer
 
         public int day;
         public double duration;
-        public double EndingDuration { get; private set; }
+        //public double EndingDuration { get; private set; }
         bool _needSync = false;
 
         int _nextMessageId = 0;
@@ -149,8 +149,8 @@ namespace GameServer
                     break;
 
                 case RoomState.Ending:
-                    EndingDuration -= MyHub.Elapsed;
-                    if (EndingDuration < 0)
+                    duration -= MyHub.Elapsed;
+                    if (duration < 0)
                     {
                         RoomState = RoomState.Ended;
                         //SystemMessageAll("Game has ended.");
@@ -212,6 +212,7 @@ namespace GameServer
                 if (yourActor != null)
                     client.gotYourSelections(yourActor.VoteInfo);
                 client.gotModes(ModesFor(yourActor).Select(m=>new RoomMessage.ModeInfo(c.Player, m)).ToList());
+                client.gotTimer(duration);
             });
             _needSync = false;
         }

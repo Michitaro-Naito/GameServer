@@ -105,7 +105,7 @@ namespace GameServer
                 //SystemMessageAll("Faction won: " + factionWon.Value);
                 SystemMessageAll(new InterText("FactionAWon", _.ResourceManager, new[] { factionWon.Value.ToInterText() }));
                 RoomState = RoomState.Ending;
-                EndingDuration = 2 * conf.interval;
+                duration = 2 * conf.interval;
                 // Quit GotoNextDay process.
                 return true;
             }
