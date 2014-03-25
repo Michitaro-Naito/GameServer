@@ -2,63 +2,86 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GameServer
 {
+    /// <summary>
+    /// Represents an international text.
+    /// Can be localized to any languages.
+    /// Can be cascaded like [[Alive] is damaged by [Bob]].
+    /// </summary>
     public class InterText
     {
-        public enum InterTextType
-        {
-            Text,
-            Title,
-            MaleName,
-            FemaleName
-        }
+        /// <summary>
+        /// ResourceManager of ResourceFile(.resx) to look up.
+        /// eg. MyResources._.ResourceManager
+        /// </summary>
+        public ResourceManager ResourceManager { get; protected set; }
 
-        public InterTextType TextType { get; protected set; }
+        /// <summary>
+        /// StringKey to look up like "Foo".
+        /// </summary>
         public string Key { get; protected set; }
 
-        public InterText(string key, InterTextType type = InterTextType.Text)
+        /// <summary>
+        /// Parameters to format final text.
+        /// </summary>
+        public InterText[] Params { get; protected set; }
+
+        /// <summary>
+        /// Allocates InterText.
+        /// </summary>
+        /// <param name="key">String key to look up.</param>
+        /// <param name="resourceManager">ResourceManager to look up. Can be null. (If null, output will be key.)</param>
+        public InterText(string key, ResourceManager resourceManager, InterText[] parameters = null)
         {
             if (key == null)
                 throw new ArgumentNullException("key must not be null.");
-            TextType = type;
             Key = key;
+            ResourceManager = resourceManager;
+            Params = parameters;
         }
 
-        public override string ToString()
-        {
-            return string.Format("[{0} {1}]", TextType, Key);
-            //return string.Format("[InterText {0} {1}]", _type, _key);
-        }
-
+        /// <summary>
+        /// Gets localized string using culture.
+        /// </summary>
+        /// <param name="culture"></param>
+        /// <returns></returns>
         public string GetString(CultureInfo culture)
         {
-            var str = (string)null;
-            switch (TextType)
-            {
-                case InterTextType.Text:
-                default:
-                    str = MyResources._.ResourceManager.GetString(Key, culture);
-                    break;
-
-                case InterTextType.Title:
-                    str = MyResources._Title.ResourceManager.GetString(Key, culture);
-                    break;
-
-                case InterTextType.MaleName:
-                    str = MyResources._MaleName.ResourceManager.GetString(Key, culture);
-                    break;
-
-                case InterTextType.FemaleName:
-                    str = MyResources._FemaleName.ResourceManager.GetString(Key, culture);
-                    break;
-            }
+            string str = null;
+            if (ResourceManager != null)
+                str = ResourceManager.GetString(Key, culture);
             if (str == null)
-                str = ToString();
+                str = Key;
+
+            if (Params != null)
+            {
+                var localizedParams = Params.Select(p => p.GetString(culture)).ToArray();
+                try
+                {
+                    str = string.Format(str, localizedParams);
+                }
+                catch
+                {
+                    // Failed to format. Returns current str...
+                }
+            }
+
             return str;
+        }
+
+        /// <summary>
+        /// Gets localized string using en-US.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return GetString(new CultureInfo("en-US"));
+            //return string.Format("[{0}]", Key);
         }
 
         public string GetStringFor(Player player)

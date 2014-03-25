@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyResources;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,7 +106,7 @@ namespace GameServer
                 // Random Title
                 var titleKey = titleKeys.RandomElement();
                 titleKeys.Remove(titleKey);
-                actor.title = new InterText(titleKey, InterText.InterTextType.Title);
+                actor.title = new InterText(titleKey, _Title.ResourceManager/*InterText.InterTextType.Title*/);
 
                 // Random Gender
                 actor.gender = new Gender[] { Gender.Male, Gender.Female }.RandomElement();
@@ -116,13 +117,13 @@ namespace GameServer
                 {
                     var maleNameKey = maleNameKeys.RandomElement();
                     maleNameKeys.Remove(maleNameKey);
-                    name = new InterText(maleNameKey, InterText.InterTextType.MaleName);
+                    name = new InterText(maleNameKey, _MaleName.ResourceManager /*InterText.InterTextType.MaleName*/);
                 }
                 else
                 {
                     var femaleNameKey = femaleNameKeys.RandomElement();
                     femaleNameKeys.Remove(femaleNameKey);
-                    name = new InterText(femaleNameKey, InterText.InterTextType.FemaleName);
+                    name = new InterText(femaleNameKey, _FemaleName.ResourceManager /*InterText.InterTextType.FemaleName*/);
                 }
                 actor.name = name;
 
@@ -160,19 +161,19 @@ namespace GameServer
 
             // Random Title
             var titleKey = titleKeys.RandomElement();
-            actor.title = new InterText(titleKey, InterText.InterTextType.Title);
+            actor.title = new InterText(titleKey, _Title.ResourceManager /*InterText.InterTextType.Title*/);
 
             // Random Name
             InterText name = null;
             if (actor.gender == Gender.Male)
             {
                 var maleNameKey = maleNameKeys.RandomElement();
-                name = new InterText(maleNameKey, InterText.InterTextType.MaleName);
+                name = new InterText(maleNameKey, _MaleName.ResourceManager);
             }
             else
             {
                 var femaleNameKey = femaleNameKeys.RandomElement();
-                name = new InterText(femaleNameKey, InterText.InterTextType.FemaleName);
+                name = new InterText(femaleNameKey, _FemaleName.ResourceManager);
             }
             actor.name = name;
 
