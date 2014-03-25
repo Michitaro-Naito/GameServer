@@ -64,5 +64,43 @@ namespace GameServer
         public Actor to;
         //public string body;
         public InterText[] bodyRows;
+
+        public bool IsVisibleFor(Room room, Actor viewer)
+        {
+            if (new RoomState[] { RoomState.Matchmaking, RoomState.Playing }.Contains(room.RoomState))
+            {
+                switch (mode)
+                {
+                    case Mode.All:
+                        // Always visible for anybody.
+                        return true;
+
+                    case Mode.Wolf:
+                        // Only for werewolves.
+                        if (viewer != null && viewer.role == Role.Werewolf)
+                            return true;
+                        return false;
+
+                    case Mode.Ghost:
+                        // Only for dead guys.
+                        if (viewer != null && viewer.IsDead)
+                            return true;
+                        return false;
+
+                    case Mode.Private:
+                        // Only for sent or received guys.
+                        return viewer == from || viewer == to;
+
+                    default:
+                        // Unknown
+                        return false;
+                }
+            }
+            else
+            {
+                // Ending or Ended. Always visible.
+                return true;
+            }
+        }
     }
 }

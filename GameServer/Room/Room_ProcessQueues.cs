@@ -16,8 +16,9 @@ namespace GameServer
             _messages.AddRange(_messagesWillBeApplied);
             _characters.ForEach(c =>
             {
+                var actor = _actors.FirstOrDefault(a => a.character == c);
                 _updateHub.Clients.Client(c.Player.connectionId)
-                    .gotRoomMessages(_messagesWillBeApplied.Select(m=>new RoomMessageInfo(m, c.Player.Culture)).ToList());
+                    .gotRoomMessages(_messagesWillBeApplied.Where(m=>m.IsVisibleFor(this, actor)).Select(m=>new RoomMessageInfo(m, c.Player.Culture)).ToList());
             });
             _messagesWillBeApplied.Clear();
         }

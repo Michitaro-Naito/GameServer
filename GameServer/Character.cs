@@ -41,5 +41,38 @@ namespace GameServer
             return string.Format("[{0}({1})]", Name, Player.userId);
             //return string.Format("[Character Player:{0} Name:{1} UserId:{2}]", Player, Name, UserId);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            if (obj.GetType() != GetType())
+                return false;
+            var c = (Character)obj;
+            return c.Player == this.Player;
+        }
+
+        public static bool operator ==(Character a, Character b)
+        {
+            var oa = (object)a;
+            var ob = (object)b;
+            if (oa == null && ob == null)
+                return true;
+            if (oa == null || ob == null)
+                return false;
+            return a.Player == b.Player;
+        }
+
+        public static bool operator !=(Character a, Character b)
+        {
+            return !(a == b);
+            /*var oa = (object)a;
+            var ob = (object)b;
+            if (oa == null && ob == null)
+                return true;
+            if (oa == null || ob == null)
+                return false;
+            return a.Player == b.Player;*/
+        }
     }
 }
