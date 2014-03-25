@@ -101,5 +101,13 @@ namespace GameServer
                 return key;
             return str;
         }
+        public static string GetLocalizedDescription(this Enum obj, CultureInfo culture)
+        {
+            var key = obj.ToKey();
+            var str = MyResources._EnumDescription.ResourceManager.GetString(key, culture);
+            if (str == null)
+                return key;
+            return str;
+        }
     }
 }

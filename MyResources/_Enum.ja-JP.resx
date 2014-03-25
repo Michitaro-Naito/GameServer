@@ -153,4 +153,28 @@
   <data name="Race_Werewolf" xml:space="preserve">
     <value>人狼</value>
   </data>
+  <data name="Role_Citizen" xml:space="preserve">
+    <value>村人</value>
+  </data>
+  <data name="Role_FortuneTeller" xml:space="preserve">
+    <value>占い師</value>
+  </data>
+  <data name="Role_Fox" xml:space="preserve">
+    <value>妖狐</value>
+  </data>
+  <data name="Role_Hunter" xml:space="preserve">
+    <value>狩人</value>
+  </data>
+  <data name="Role_None" xml:space="preserve">
+    <value>役割なし</value>
+  </data>
+  <data name="Role_Psycho" xml:space="preserve">
+    <value>狂人</value>
+  </data>
+  <data name="Role_Shaman" xml:space="preserve">
+    <value>霊媒師</value>
+  </data>
+  <data name="Role_Werewolf" xml:space="preserve">
+    <value>人狼</value>
+  </data>
 </root>

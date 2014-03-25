@@ -117,64 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Faction_Citizen" xml:space="preserve">
-    <value>Citizen Team</value>
-  </data>
-  <data name="Faction_Fox" xml:space="preserve">
-    <value>Fox Team</value>
-  </data>
-  <data name="Faction_None" xml:space="preserve">
-    <value>No Team</value>
-  </data>
-  <data name="Faction_Werewolf" xml:space="preserve">
-    <value>Werewolf Team</value>
-  </data>
-  <data name="Foo_Bar" xml:space="preserve">
-    <value>Foo and bar!</value>
-  </data>
-  <data name="Mode_All" xml:space="preserve">
-    <value>All</value>
-  </data>
-  <data name="Mode_Ghost" xml:space="preserve">
-    <value>Ghost</value>
-  </data>
-  <data name="Mode_Private" xml:space="preserve">
-    <value>Private</value>
-  </data>
-  <data name="Mode_Wolf" xml:space="preserve">
-    <value>Wolf</value>
-  </data>
-  <data name="Race_Fox" xml:space="preserve">
-    <value>Fox</value>
-  </data>
-  <data name="Race_Human" xml:space="preserve">
-    <value>Human</value>
-  </data>
-  <data name="Race_Werewolf" xml:space="preserve">
-    <value>Werewolf</value>
+  <data name="Role_Cat" xml:space="preserve">
+    <value>村人に味方する化け猫です。処刑されると村人チームを、襲撃されると人狼チームを、それぞれひとり道連れにします。</value>
   </data>
   <data name="Role_Citizen" xml:space="preserve">
-    <value>Citizen</value>
+    <value>ごく普通の村人です。投票によって人狼と妖狐を処刑できます。</value>
+  </data>
+  <data name="Role_Fanatic" xml:space="preserve">
+    <value>裏切り者の村人です。村人チームの生存者として扱われますが、人狼チームに所属します。誰が人狼かわかります。</value>
   </data>
   <data name="Role_FortuneTeller" xml:space="preserve">
-    <value>Fortune Teller</value>
+    <value>特殊な能力を持った村人です。毎晩、指定した生存者の正体を確認できます。</value>
   </data>
   <data name="Role_Fox" xml:space="preserve">
-    <value>Fox</value>
+    <value>村人に化けた狐です。人狼に襲われても回避できますが、占い師に占われると弱って死んでしまいます。</value>
   </data>
   <data name="Role_Hunter" xml:space="preserve">
-    <value>Hunter</value>
+    <value>特殊な能力を持った村人です。毎晩、指定した生存者を人狼の襲撃から守ることができます。</value>
+  </data>
+  <data name="Role_Lover" xml:space="preserve">
+    <value>2人で1組の村人です。互いに相方がわかり、相方以外からのささやきは聞こえません。相方が処刑されると自殺し、襲撃されると狩人に転職します。必ず男女のペアになります。</value>
   </data>
   <data name="Role_None" xml:space="preserve">
-    <value>No Role</value>
+    <value>役職はまだ決定していません。</value>
   </data>
   <data name="Role_Psycho" xml:space="preserve">
-    <value>Psycho</value>
+    <value>裏切り者の村人です。村人チームの生存者として扱われますが、人狼チームに所属します。誰が人狼かわかりません。</value>
   </data>
   <data name="Role_Shaman" xml:space="preserve">
-    <value>Shaman</value>
+    <value>特殊な能力を持った村人です。犠牲者の正体を知ることができます。</value>
   </data>
   <data name="Role_Werewolf" xml:space="preserve">
-    <value>Werewolf</value>
+    <value>村人を食べてしまう恐ろしい存在です。毎晩、村人を襲撃できます。</value>
   </data>
 </root>

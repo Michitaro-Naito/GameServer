@@ -22,14 +22,14 @@ namespace MyResources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class _Enum {
+    public class _EnumDescription {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal _Enum() {
+        internal _EnumDescription() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MyResources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyResources._Enum", typeof(_Enum).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyResources._EnumDescription", typeof(_EnumDescription).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,114 +57,6 @@ namespace MyResources {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Citizen Team.
-        /// </summary>
-        public static string Faction_Citizen {
-            get {
-                return ResourceManager.GetString("Faction_Citizen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fox Team.
-        /// </summary>
-        public static string Faction_Fox {
-            get {
-                return ResourceManager.GetString("Faction_Fox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No Team.
-        /// </summary>
-        public static string Faction_None {
-            get {
-                return ResourceManager.GetString("Faction_None", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Werewolf Team.
-        /// </summary>
-        public static string Faction_Werewolf {
-            get {
-                return ResourceManager.GetString("Faction_Werewolf", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Foo and bar!.
-        /// </summary>
-        public static string Foo_Bar {
-            get {
-                return ResourceManager.GetString("Foo_Bar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to All.
-        /// </summary>
-        public static string Mode_All {
-            get {
-                return ResourceManager.GetString("Mode_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ghost.
-        /// </summary>
-        public static string Mode_Ghost {
-            get {
-                return ResourceManager.GetString("Mode_Ghost", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Private.
-        /// </summary>
-        public static string Mode_Private {
-            get {
-                return ResourceManager.GetString("Mode_Private", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wolf.
-        /// </summary>
-        public static string Mode_Wolf {
-            get {
-                return ResourceManager.GetString("Mode_Wolf", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Fox.
-        /// </summary>
-        public static string Race_Fox {
-            get {
-                return ResourceManager.GetString("Race_Fox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Human.
-        /// </summary>
-        public static string Race_Human {
-            get {
-                return ResourceManager.GetString("Race_Human", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Werewolf.
-        /// </summary>
-        public static string Race_Werewolf {
-            get {
-                return ResourceManager.GetString("Race_Werewolf", resourceCulture);
             }
         }
         
@@ -205,7 +97,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Role.
+        ///   Looks up a localized string similar to No role for now..
         /// </summary>
         public static string Role_None {
             get {

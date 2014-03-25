@@ -124,6 +124,10 @@ namespace GameServer
             player.userId = pass.data.userId;
             player.Culture = new System.Globalization.CultureInfo(culture);
             SystemMessage("Authenticated:" + pass.data.userId);
+
+            // Passes Data
+            Clients.Caller.gotRoles(Enum.GetValues(typeof(Role)).Cast<Role>().Select(r=>new RoleInfo(r, player.Culture)));
+
             BroughtTo(ClientState.Characters);
         }
 

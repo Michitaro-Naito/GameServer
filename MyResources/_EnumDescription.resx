@@ -117,42 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Faction_Citizen" xml:space="preserve">
-    <value>Citizen Team</value>
-  </data>
-  <data name="Faction_Fox" xml:space="preserve">
-    <value>Fox Team</value>
-  </data>
-  <data name="Faction_None" xml:space="preserve">
-    <value>No Team</value>
-  </data>
-  <data name="Faction_Werewolf" xml:space="preserve">
-    <value>Werewolf Team</value>
-  </data>
-  <data name="Foo_Bar" xml:space="preserve">
-    <value>Foo and bar!</value>
-  </data>
-  <data name="Mode_All" xml:space="preserve">
-    <value>All</value>
-  </data>
-  <data name="Mode_Ghost" xml:space="preserve">
-    <value>Ghost</value>
-  </data>
-  <data name="Mode_Private" xml:space="preserve">
-    <value>Private</value>
-  </data>
-  <data name="Mode_Wolf" xml:space="preserve">
-    <value>Wolf</value>
-  </data>
-  <data name="Race_Fox" xml:space="preserve">
-    <value>Fox</value>
-  </data>
-  <data name="Race_Human" xml:space="preserve">
-    <value>Human</value>
-  </data>
-  <data name="Race_Werewolf" xml:space="preserve">
-    <value>Werewolf</value>
-  </data>
   <data name="Role_Citizen" xml:space="preserve">
     <value>Citizen</value>
   </data>
@@ -166,7 +130,7 @@
     <value>Hunter</value>
   </data>
   <data name="Role_None" xml:space="preserve">
-    <value>No Role</value>
+    <value>No role for now.</value>
   </data>
   <data name="Role_Psycho" xml:space="preserve">
     <value>Psycho</value>
