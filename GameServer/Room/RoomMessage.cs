@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,10 @@ namespace GameServer
         public RoomMessage.Mode mode;
         public Nullable<int> fromId;
         public Nullable<int> toId;
-        public string body;
+        //public string body;
+        public string[] bodyRows;
 
-        public RoomMessageInfo(RoomMessage message)
+        public RoomMessageInfo(RoomMessage message, CultureInfo culture)
         {
             id = message.id;
             Created = message.Created;
@@ -26,7 +28,8 @@ namespace GameServer
                 fromId = message.from.id;
             if (message.to != null)
                 toId = message.to.id;
-            body = message.body;
+            //body = message.body;
+            bodyRows = message.bodyRows.Select(r => r.GetString(culture)).ToArray();
         }
     }
 
@@ -59,6 +62,7 @@ namespace GameServer
         public Mode mode;
         public Actor from;
         public Actor to;
-        public string body;
+        //public string body;
+        public InterText[] bodyRows;
     }
 }

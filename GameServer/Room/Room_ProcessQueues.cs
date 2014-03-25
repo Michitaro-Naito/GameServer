@@ -17,7 +17,7 @@ namespace GameServer
             _characters.ForEach(c =>
             {
                 _updateHub.Clients.Client(c.Player.connectionId)
-                    .gotRoomMessages(_messagesWillBeApplied.Select(m=>new RoomMessageInfo(m)).ToList());
+                    .gotRoomMessages(_messagesWillBeApplied.Select(m=>new RoomMessageInfo(m, c.Player.Culture)).ToList());
             });
             _messagesWillBeApplied.Clear();
         }
@@ -170,7 +170,8 @@ namespace GameServer
                         mode = mode,
                         from = from,
                         to = to,
-                        body = command.Message
+                        //body = command.Message
+                        bodyRows = new[] { new InterText(command.Message, null) }
                     });
                 }
 

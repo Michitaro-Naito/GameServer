@@ -183,7 +183,7 @@ namespace GameServer
 
         void SystemMessageAll(string message)
         {
-            AddMessage(new RoomMessage() { body = message });
+            AddMessage(new RoomMessage() { bodyRows = new[] { new InterText(message, null) } });
         }
 
         void Sync()
