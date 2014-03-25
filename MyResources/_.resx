@@ -159,4 +159,7 @@
   <data name="String1" xml:space="preserve">
     <value>Hello!</value>
   </data>
+  <data name="AIsTrueFriendOfCitizens" xml:space="preserve">
+    <value>Your clear mind tells that {0} is a true friend of citizens.</value>
+  </data>
 </root>

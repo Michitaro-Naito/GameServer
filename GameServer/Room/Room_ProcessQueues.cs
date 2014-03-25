@@ -106,33 +106,8 @@ namespace GameServer
                         continue;
                     }
 
-                    var min = 7;
-                    var count = Math.Max(min, _characters.Count);
+                    Start();
 
-                    // Adds Actors
-                    while (_actors.Count < count)
-                        _actors.Add(Actor.CreateUnique(_actors));
-
-                    // Remove NPCs
-                    while (_actors.Where(a => a.IsNPC).Count() > 0 && _actors.Count > min)
-                    {
-                        var npcToRemove = _actors.Where(a => a.character == null).RandomElement();
-                        _actors.Remove(npcToRemove);
-                    }
-
-                    // Casts Roles
-                    var dic = RoleHelper.CastRolesAuto(count);
-                    foreach (var p in dic)
-                    {
-                        for (var n = 0; n < p.Value; n++)
-                            _actors.Where(a => a.role == Role.None).RandomElement().role = p.Key;
-                    }
-
-                    // Changes State
-                    RoomState = RoomState.Playing;
-                    duration = conf.interval;
-
-                    client.addMessage("Game started.");
                     _needSync = true;
                 }
 

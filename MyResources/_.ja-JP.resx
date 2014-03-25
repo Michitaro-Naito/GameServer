@@ -159,4 +159,7 @@
   <data name="String1" xml:space="preserve">
     <value>こんにちは！</value>
   </data>
+  <data name="AIsTrueFriendOfCitizens" xml:space="preserve">
+    <value>初日の冴えわたる占いにより、{0}は間違いなく村人の味方であると判明しました。</value>
+  </data>
 </root>

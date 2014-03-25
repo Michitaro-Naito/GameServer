@@ -88,6 +88,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your clear mind tells that {0} is a true friend of citizens..
+        /// </summary>
+        public static string AIsTrueFriendOfCitizens {
+            get {
+                return ResourceManager.GetString("AIsTrueFriendOfCitizens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attacking [{0} {1}] ....
         /// </summary>
         public static string AttackingAB {

@@ -59,8 +59,10 @@ namespace GameServer
 
         public bool IsDead { get; set; }
         public bool IsNPC { get { return character == null; } }
+        public Faction Faction { get { return role.GetFaction(); } }
         public Race Race { get { return role.GetRace(); } }
 
+        public bool CanFortuneTell { get { return role == Role.FortuneTeller; } }
         public bool CanKnowDead { get { return role == Role.Shaman; } }
         public bool CanGuard { get { return role == Role.Hunter; } }
 

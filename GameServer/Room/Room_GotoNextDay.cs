@@ -9,6 +9,46 @@ namespace GameServer
 {
     public partial class Room
     {
+        void Start()
+        {
+            var min = 7;
+            var count = Math.Max(min, _characters.Count);
+
+            // Adds Actors
+            while (_actors.Count < count)
+                _actors.Add(Actor.CreateUnique(_actors));
+
+            // Remove NPCs
+            while (_actors.Where(a => a.IsNPC).Count() > 0 && _actors.Count > min)
+            {
+                var npcToRemove = _actors.Where(a => a.character == null).RandomElement();
+                _actors.Remove(npcToRemove);
+            }
+
+            // Casts Roles
+            var dic = RoleHelper.CastRolesAuto(count);
+            foreach (var p in dic)
+            {
+                for (var n = 0; n < p.Value; n++)
+                    _actors.Where(a => a.role == Role.None).RandomElement().role = p.Key;
+            }
+
+            // Changes State
+            RoomState = RoomState.Playing;
+            duration = conf.interval;
+            day = 1;
+
+            NotifyDayDawns();
+
+            // Tells FortuneTellers who is the true friend.
+            ForEachAliveActors(a => a.CanFortuneTell, a =>
+            {
+                var friend = AliveActors.Where(f => f != a && f.Faction == Faction.Citizen).RandomElement();
+                if (friend != null)
+                    SystemMessageAll(new InterText("AIsTrueFriendOfCitizens", _.ResourceManager, new[] { friend.TitleAndName }));
+            });
+        }
+
         void GotoNextDay()
         {
             new List<Func<bool>>()
@@ -248,13 +288,18 @@ namespace GameServer
             day++;
 
             //SystemMessageAll(string.Format("Day {0} dawns.", day));
+            NotifyDayDawns();
+
+            return false;
+        }
+
+        void NotifyDayDawns()
+        {
             var str = new List<InterText>();
             str.Add(new InterText("--------------------", null));
             str.Add(new InterText("DayADawns", _.ResourceManager, new[] { new InterText(day.ToString(), null) }));
             str.Add(new InterText("--------------------", null));
             SystemMessageAll(str.ToArray());
-
-            return false;
         }
     }
 }
