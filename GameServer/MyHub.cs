@@ -299,6 +299,8 @@ namespace GameServer
         /// <param name="roomId"></param>
         void JoinRoom(int roomId)
         {
+            /*var e = new Error() { Title = new InterText("Fatal like error", null), Body = new InterText("Something went wrong.", null) };
+            Clients.Caller.gotError(e.GetInfo(Player.Culture));*/
             BringPlayerToRoom(roomId);
         }
 

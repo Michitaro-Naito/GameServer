@@ -91,6 +91,7 @@
     <Compile Include="AuthHelper.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="ClientState.cs" />
+    <Compile Include="ErrorInfo.cs" />
     <Compile Include="InterText.cs" />
     <Compile Include="Room\RoomCommand.cs" />
     <Compile Include="Room\RoomInfo.cs" />

@@ -101,15 +101,13 @@ namespace GameServer
                     var command = (RoomCommand.Start)commandBase;
                     var client = _updateHub.Clients.Client(command.Player.connectionId);
 
-                    if (RoomState != RoomState.Matchmaking)
+                    if (RoomState != RoomState.Matchmaking || duration > 0)
                     {
                         client.addMessage("Room can be started only when matchmaking.");
                         continue;
                     }
 
-                    Start();
-
-                    _needSync = true;
+                    CountDownToStart();
                 }
 
                 // ----- Sends Message -----

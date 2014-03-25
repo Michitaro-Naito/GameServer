@@ -9,6 +9,12 @@ namespace GameServer
 {
     public partial class Room
     {
+        void CountDownToStart()
+        {
+            duration = 5;
+            Sync();
+        }
+
         void Start()
         {
             var min = 7;
@@ -47,6 +53,8 @@ namespace GameServer
                 if (friend != null)
                     SystemMessageAll(new InterText("AIsTrueFriendOfCitizens", _.ResourceManager, new[] { friend.TitleAndName }));
             });
+
+            _needSync = true;
         }
 
         void GotoNextDay()

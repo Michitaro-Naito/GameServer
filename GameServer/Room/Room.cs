@@ -142,6 +142,15 @@ namespace GameServer
 
             switch (RoomState)
             {
+                case RoomState.Matchmaking:
+                    if (duration > 0)
+                    {
+                        duration -= MyHub.Elapsed;
+                        if (duration <= 0)
+                            Start();
+                    }
+                    break;
+
                 case RoomState.Playing:
                     duration -= MyHub.Elapsed;
                     if (duration < 0)
