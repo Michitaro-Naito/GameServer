@@ -120,6 +120,12 @@
   <data name="ABIsExecuted" xml:space="preserve">
     <value>民衆裁判の結果、[{0}{1}]さんが処刑されました。</value>
   </data>
+  <data name="AHasBeenKilledByWerewolves" xml:space="preserve">
+    <value>{0}が無残な姿で発見されました。</value>
+  </data>
+  <data name="AIsGuardingB" xml:space="preserve">
+    <value>{0}は{1}を護衛します...</value>
+  </data>
   <data name="AttackingAB" xml:space="preserve">
     <value>[{0} {1}]さんを襲撃します...</value>
   </data>
@@ -129,8 +135,17 @@
   <data name="CitizenActions" xml:space="preserve">
     <value>民衆裁判</value>
   </data>
+  <data name="ItHasBeenProvedThatKilledAIsB" xml:space="preserve">
+    <value>死者との対話により、死亡した{0}さんは{1}だったと分かりました。</value>
+  </data>
   <data name="NobodyExecutedBecauseOfInsufficientNumberOfVotes" xml:space="preserve">
     <value>得票数が足りなかったため、誰も処刑されませんでした。</value>
+  </data>
+  <data name="NobodyKilledBecauseOfHuntersActivity" xml:space="preserve">
+    <value>狩人の活躍により犠牲者はありませんでした。</value>
+  </data>
+  <data name="Random" xml:space="preserve">
+    <value>(ランダム)</value>
   </data>
   <data name="String1" xml:space="preserve">
     <value>こんにちは！</value>

@@ -70,6 +70,24 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} has been killed by werewolves mercilessly..
+        /// </summary>
+        public static string AHasBeenKilledByWerewolves {
+            get {
+                return ResourceManager.GetString("AHasBeenKilledByWerewolves", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is guarding {1} ....
+        /// </summary>
+        public static string AIsGuardingB {
+            get {
+                return ResourceManager.GetString("AIsGuardingB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attacking [{0} {1}] ....
         /// </summary>
         public static string AttackingAB {
@@ -97,11 +115,38 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The dead told that {0} was {1}..
+        /// </summary>
+        public static string ItHasBeenProvedThatKilledAIsB {
+            get {
+                return ResourceManager.GetString("ItHasBeenProvedThatKilledAIsB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nobody executed because of the insufficient number of votes..
         /// </summary>
         public static string NobodyExecutedBecauseOfInsufficientNumberOfVotes {
             get {
                 return ResourceManager.GetString("NobodyExecutedBecauseOfInsufficientNumberOfVotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nobody killed because of hunter&apos;s activity..
+        /// </summary>
+        public static string NobodyKilledBecauseOfHuntersActivity {
+            get {
+                return ResourceManager.GetString("NobodyKilledBecauseOfHuntersActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Random).
+        /// </summary>
+        public static string Random {
+            get {
+                return ResourceManager.GetString("Random", resourceCulture);
             }
         }
         

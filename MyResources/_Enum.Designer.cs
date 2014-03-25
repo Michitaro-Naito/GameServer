@@ -104,5 +104,32 @@ namespace MyResources {
                 return ResourceManager.GetString("Mode_Wolf", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fox.
+        /// </summary>
+        public static string Race_Fox {
+            get {
+                return ResourceManager.GetString("Race_Fox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Human.
+        /// </summary>
+        public static string Race_Human {
+            get {
+                return ResourceManager.GetString("Race_Human", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werewolf.
+        /// </summary>
+        public static string Race_Werewolf {
+            get {
+                return ResourceManager.GetString("Race_Werewolf", resourceCulture);
+            }
+        }
     }
 }

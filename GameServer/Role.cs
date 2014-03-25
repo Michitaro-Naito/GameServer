@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyResources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -85,6 +86,10 @@ namespace GameServer
                 case Role.Fox:
                     return Race.Fox;
             }
+        }
+        public static InterText ToInterText(this Race race)
+        {
+            return new InterText("[{0}]", null, new[] { new InterText(race.ToKey(), _Enum.ResourceManager) });
         }
     }
 

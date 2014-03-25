@@ -132,4 +132,13 @@
   <data name="Mode_Wolf" xml:space="preserve">
     <value>Wolf</value>
   </data>
+  <data name="Race_Fox" xml:space="preserve">
+    <value>Fox</value>
+  </data>
+  <data name="Race_Human" xml:space="preserve">
+    <value>Human</value>
+  </data>
+  <data name="Race_Werewolf" xml:space="preserve">
+    <value>Werewolf</value>
+  </data>
 </root>

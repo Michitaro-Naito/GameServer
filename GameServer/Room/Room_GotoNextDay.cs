@@ -139,15 +139,21 @@ namespace GameServer
             if (max <= 1)
             {
                 str.Add(new InterText("NobodyExecutedBecauseOfInsufficientNumberOfVotes", _.ResourceManager));
+                SystemMessageAll(str.ToArray());
             }
             else
             {
                 var actorToExecute = dic.Where(p => p.Value == max).RandomElement().Key;
                 actorToExecute.IsDead = true;
-                str.Add(new InterText("ABIsExecuted", _.ResourceManager, new []{actorToExecute.title, actorToExecute.name}));
-            }
+                str.Add(new InterText("ABIsExecuted", _.ResourceManager, new[] { actorToExecute.title, actorToExecute.name }));
+                SystemMessageAll(str.ToArray());
 
-            SystemMessageAll(str.ToArray());
+                // Tells Shaman who has been killed.
+                ForEachAliveActors(a => a.CanKnowDead, a =>
+                {
+                    SystemMessageAll(new InterText("ItHasBeenProvedThatKilledAIsB", _.ResourceManager, new []{ actorToExecute.TitleAndName, actorToExecute.Race.ToInterText() }));
+                });
+            }
 
             return false;
         }
@@ -170,6 +176,7 @@ namespace GameServer
                 return false;
             }
 
+            // Werewolves' vote
             var str = new List<InterText>();
             str.Add(new InterText("AttackOfWerewolves", _.ResourceManager));
             str.Add(new InterText("--------------------", null));
@@ -177,34 +184,59 @@ namespace GameServer
             AliveWerewolfRace.ToList().ForEach(w =>
             {
                 var target = w.ActorToExecute;
-                var random = false;
+                var strRandom = new InterText("", null);
                 if (target == null || target.IsDead)
                 {
                     target = AliveActors.RandomElement();
-                    random = true;
+                    strRandom = new InterText("Random", _.ResourceManager);
                 }
                 if (!dic.ContainsKey(target))
                     dic[target] = 0;
                 dic[target]++;
 
-                str.Add(new InterText("{0} {1} => {2} {3}", null, new[] { w.title, w.name, target.title, target.name }));
+                str.Add(new InterText("{0} {1} => {2} {3} {4}", null, new[] { w.title, w.name, target.title, target.name, strRandom }));
             });
             str.Add(new InterText("--------------------", null));
             foreach (KeyValuePair<Actor, int> p in dic)
-            {
-                //SystemMessageAll(string.Format("{0}:{1}", p.Key, p.Value));
                 str.Add(new InterText("{0} {1} : {2}", null, new[] { p.Key.title, p.Key.name, new InterText(p.Value.ToString(), null) }));
-            }
             str.Add(new InterText("--------------------", null));
-
             var max = dic.Max(p => p.Value);
             var actorToAttack = dic.Where(p => p.Value == max).RandomElement().Key;
-
-            actorToAttack.IsDead = true;
-            //SystemMessageAll(string.Format("Killed:{0}", actorToAttack));
             str.Add(new InterText("AttackingAB", _.ResourceManager, new[] { actorToAttack.title, actorToAttack.name }));
-
             SystemMessageAll(str.ToArray());
+
+            // Guards
+            var actorsGuarded = new List<Actor>();
+            AliveActors.Where(a => a.CanGuard).ToList().ForEach(h =>
+            {
+                Actor actorToGuard;
+                if (h.ActorToGuard != null && !h.ActorToGuard.IsDead)
+                    actorToGuard = h.ActorToGuard;
+                else
+                    actorToGuard = AliveActors.Where(a => a != h).RandomElement();
+                actorsGuarded.Add(actorToGuard);
+                SystemMessageAll(new InterText("AIsGuardingB", _.ResourceManager, new []{ h.TitleAndName, actorToGuard.TitleAndName }));
+            });
+
+            // Killed?
+            if (actorsGuarded.Contains(actorToAttack))
+            {
+                // Saved by Hunter.
+                //SystemMessageAll("Saved by Hunter.");
+                SystemMessageAll(new InterText("NobodyKilledBecauseOfHuntersActivity", _.ResourceManager));
+            }
+            else
+            {
+                // Killed
+                actorToAttack.IsDead = true;
+                SystemMessageAll(new InterText("AHasBeenKilledByWerewolves", _.ResourceManager, new[] { actorToAttack.TitleAndName }));
+
+                // Tells Shaman who has been killed.
+                ForEachAliveActors(a => a.CanKnowDead, a =>
+                {
+                    SystemMessageAll(new InterText("ItHasBeenProvedThatKilledAIsB", _.ResourceManager, new[] { actorToAttack.TitleAndName, actorToAttack.Race.ToInterText() }));
+                });
+            }
 
             return false;
         }

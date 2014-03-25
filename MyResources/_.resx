@@ -120,6 +120,12 @@
   <data name="ABIsExecuted" xml:space="preserve">
     <value>[{0} {1}] has been executed in result of citizen actions.</value>
   </data>
+  <data name="AHasBeenKilledByWerewolves" xml:space="preserve">
+    <value>{0} has been killed by werewolves mercilessly.</value>
+  </data>
+  <data name="AIsGuardingB" xml:space="preserve">
+    <value>{0} is guarding {1} ...</value>
+  </data>
   <data name="AttackingAB" xml:space="preserve">
     <value>Attacking [{0} {1}] ...</value>
   </data>
@@ -129,8 +135,17 @@
   <data name="CitizenActions" xml:space="preserve">
     <value>Citizen Actions</value>
   </data>
+  <data name="ItHasBeenProvedThatKilledAIsB" xml:space="preserve">
+    <value>The dead told that {0} was {1}.</value>
+  </data>
   <data name="NobodyExecutedBecauseOfInsufficientNumberOfVotes" xml:space="preserve">
     <value>Nobody executed because of the insufficient number of votes.</value>
+  </data>
+  <data name="NobodyKilledBecauseOfHuntersActivity" xml:space="preserve">
+    <value>Nobody killed because of hunter's activity.</value>
+  </data>
+  <data name="Random" xml:space="preserve">
+    <value>(Random)</value>
   </data>
   <data name="String1" xml:space="preserve">
     <value>Hello!</value>

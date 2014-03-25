@@ -59,6 +59,18 @@ namespace GameServer
 
         public bool IsDead { get; set; }
         public bool IsNPC { get { return character == null; } }
+        public Race Race { get { return role.GetRace(); } }
+
+        public bool CanKnowDead { get { return role == Role.Shaman; } }
+        public bool CanGuard { get { return role == Role.Hunter; } }
+
+        public InterText TitleAndName
+        {
+            get
+            {
+                return new InterText("[{0} {1}]", _.ResourceManager, new[] { title, name });
+            }
+        }
 
         public VoteInfo VoteInfo
         {
@@ -192,6 +204,42 @@ namespace GameServer
                 title, name, character,
                 role, alive);
             //return string.Format("[Actor title:{0} name:{1} role:{2} IsDead:{3} character:{4}]", title, name, role, IsDead, character);
+        }
+
+        public override bool Equals(object obj)
+        {
+            // Not null?
+            if (obj == null)
+                return false;
+
+            // The same type?
+            if (obj.GetType() != GetType())
+                return false;
+
+            var b = (Actor)obj;
+            return this.id == b.id;
+        }
+
+        public static bool operator ==(Actor a, Actor b)
+        {
+            var oa = (object)a;
+            var ob = (object)b;
+            if (oa == null && ob == null)
+                return true;
+            if (oa == null || ob == null)
+                return false;
+            return a.id == b.id;
+        }
+
+        public static bool operator !=(Actor a, Actor b)
+        {
+            var oa = (object)a;
+            var ob = (object)b;
+            if (oa == null && ob == null)
+                return false;
+            if (oa == null || ob == null)
+                return true;
+            return a.id != b.id;
         }
     }
 }
