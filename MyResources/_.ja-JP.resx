@@ -120,6 +120,12 @@
   <data name="ABIsExecuted" xml:space="preserve">
     <value>民衆裁判の結果、[{0}{1}]さんが処刑されました。</value>
   </data>
+  <data name="AttackingAB" xml:space="preserve">
+    <value>[{0} {1}]さんを襲撃します...</value>
+  </data>
+  <data name="AttackOfWerewolves" xml:space="preserve">
+    <value>人狼の襲撃</value>
+  </data>
   <data name="CitizenActions" xml:space="preserve">
     <value>民衆裁判</value>
   </data>

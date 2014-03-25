@@ -70,6 +70,24 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attacking [{0} {1}] ....
+        /// </summary>
+        public static string AttackingAB {
+            get {
+                return ResourceManager.GetString("AttackingAB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attack of Werewolves.
+        /// </summary>
+        public static string AttackOfWerewolves {
+            get {
+                return ResourceManager.GetString("AttackOfWerewolves", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Citizen Actions.
         /// </summary>
         public static string CitizenActions {

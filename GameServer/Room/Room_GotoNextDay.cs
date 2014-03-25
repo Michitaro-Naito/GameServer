@@ -158,17 +158,21 @@ namespace GameServer
         /// <returns></returns>
         bool _Z_Attack()
         {
-            //SystemMessageAll("Attacking...");
             if (AliveActors.Count() < 2)
             {
                 SystemMessageAll("Not enough Actors to eat.");
                 return false;
             }
+
             if (AliveWerewolfRace.Count() == 0)
             {
                 SystemMessageAll("There is no werewolf.");
                 return false;
             }
+
+            var str = new List<InterText>();
+            str.Add(new InterText("AttackOfWerewolves", _.ResourceManager));
+            str.Add(new InterText("--------------------", null));
             var dic = new Dictionary<Actor, int>();
             AliveWerewolfRace.ToList().ForEach(w =>
             {
@@ -182,16 +186,25 @@ namespace GameServer
                 if (!dic.ContainsKey(target))
                     dic[target] = 0;
                 dic[target]++;
+
+                str.Add(new InterText("{0} {1} => {2} {3}", null, new[] { w.title, w.name, target.title, target.name }));
             });
-            /*foreach (KeyValuePair<Actor, int> p in dic)
+            str.Add(new InterText("--------------------", null));
+            foreach (KeyValuePair<Actor, int> p in dic)
             {
-                SystemMessageAll(string.Format("{0}:{1}", p.Key, p.Value));
-            }*/
+                //SystemMessageAll(string.Format("{0}:{1}", p.Key, p.Value));
+                str.Add(new InterText("{0} {1} : {2}", null, new[] { p.Key.title, p.Key.name, new InterText(p.Value.ToString(), null) }));
+            }
+            str.Add(new InterText("--------------------", null));
+
             var max = dic.Max(p => p.Value);
             var actorToAttack = dic.Where(p => p.Value == max).RandomElement().Key;
 
             actorToAttack.IsDead = true;
-            SystemMessageAll(string.Format("Killed:{0}", actorToAttack));
+            //SystemMessageAll(string.Format("Killed:{0}", actorToAttack));
+            str.Add(new InterText("AttackingAB", _.ResourceManager, new[] { actorToAttack.title, actorToAttack.name }));
+
+            SystemMessageAll(str.ToArray());
 
             return false;
         }
