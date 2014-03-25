@@ -201,18 +201,16 @@ namespace GameServer
             _characters.ForEach(c =>
             {
                 var client = _updateHub.Clients.Client(c.Player.connectionId);
-                var actors = _actors.Select(a => new ActorInfo(this, c.Player, a)).ToList();
                 var yourActorId = new Nullable<int>();
                 var yourActor = _actors.FirstOrDefault(a => a.IsOwnedBy(c.Player));
                 if (yourActor != null)
                     yourActorId = yourActor.id;
+                var actors = _actors.Select(a => new ActorInfo(this, c.Player, yourActor, a)).ToList();
                 client.gotRoomState(RoomState);
                 client.gotActors(actors);
                 client.gotYourActorId(yourActorId);
                 if (yourActor != null)
-                {
                     client.gotYourSelections(yourActor.VoteInfo);
-                }
                 client.gotModes(ModesFor(yourActor).Select(m=>new RoomMessage.ModeInfo(c.Player, m)).ToList());
             });
             _needSync = false;

@@ -24,22 +24,45 @@ namespace GameServer
         public string title;
         public string name;
         public Gender gender;
-        public Role role;
         public string character;
         public bool isDead;
         public bool isRoomMaster;
 
-        public ActorInfo(Room room, Player player, Actor actor)
+        public Role role;
+        public bool isRoleSure;
+
+        public ActorInfo(Room room, Player player, Actor viewer, Actor actor)
         {
             id = actor.id;
             title = actor.title.GetStringFor(player);
             name = actor.name.GetStringFor(player);
             gender = actor.gender;
-            role = actor.role;
             if (actor.character != null)
                 character = actor.character.ToString();
             isDead = actor.IsDead;
             isRoomMaster = room.IsRoomMaster(actor);
+
+            if (new[] { RoomState.Matchmaking, RoomState.Playing }.Contains(room.RoomState))
+            {
+                // Filters
+                role = Role.Citizen;
+                isRoleSure = false;
+
+                if ((actor == viewer)   // Alice can see herself.
+                    || (new[] { Role.Werewolf }.Contains(viewer.role) && actor.role == Role.Werewolf))    // Werewolf or Fanatic can see werewolves.
+                {
+                    role = actor.role;
+                    isRoleSure = true;
+                }
+
+                // Lover can see each other.
+            }
+            else
+            {
+                // Ending or Ended. Does not filter
+                role = actor.role;
+                isRoleSure = true;
+            }
         }
     }
 
