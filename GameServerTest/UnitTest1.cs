@@ -96,5 +96,16 @@ namespace GameServerTest
             Assert.AreEqual(_Enum.ResourceManager.GetString("Foo_Bar", en), Foo.Bar.ToLocalizedString(en));
             Assert.AreEqual(_Enum.ResourceManager.GetString("Foo_Bar", ja), Foo.Bar.ToLocalizedString(ja));
         }
+
+        [TestMethod]
+        public void ColorCode()
+        {
+            for (var n = 0; n < 100; n++)
+            {
+                var name = UT.RandomString(10);
+                var colorIdentity = ColorHelper.GenerateColorIdentity(name);
+                Console.WriteLine(colorIdentity);
+            }
+        }
     }
 }

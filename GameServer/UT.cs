@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Resources;
@@ -31,6 +32,31 @@ namespace GameServer
             if (rate == 1)
                 return true;
             return rate > Random(0, 100000000) / 100000000.0;
+        }
+
+        public static string RandomString(uint length)
+        {
+            var builder = new StringBuilder();
+            char ch;
+            for (int i = 0; i < length; i++)
+            {
+                ch = Convert.ToChar(Random(0, 26) + 65);
+                builder.Append(ch);
+            }
+
+            return builder.ToString();
+        }
+
+        public static T Max<T>(params T[] values)
+            where T : IComparable
+        {
+            if (values == null) return default(T);
+            var max = default(T);
+            foreach (var v in values)
+            {
+                if (v.CompareTo(max) > 0) max = v;
+            }
+            return max;
         }
     }
 
@@ -108,6 +134,24 @@ namespace GameServer
             if (str == null)
                 return key;
             return str;
+        }
+
+
+
+        public static Color Elevate(this Color color, int value)
+        {
+            if (color == null) throw new ArgumentNullException();
+
+            return Color.FromArgb(
+                Math.Max(0, Math.Min(255, color.R + value)),
+                Math.Max(0, Math.Min(255, color.G + value)),
+                Math.Max(0, Math.Min(255, color.B + value))
+            );
+        }
+
+        public static byte GetBrightness255(this Color color)
+        {
+            return UT.Max(color.R, color.G, color.B);
         }
     }
 }

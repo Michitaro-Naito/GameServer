@@ -67,6 +67,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Web" />
@@ -91,6 +92,7 @@
     <Compile Include="AuthHelper.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="ClientState.cs" />
+    <Compile Include="ColorHelper.cs" />
     <Compile Include="ErrorInfo.cs" />
     <Compile Include="GenderInfo.cs" />
     <Compile Include="InterText.cs" />
