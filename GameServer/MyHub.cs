@@ -127,6 +127,7 @@ namespace GameServer
 
             // Passes Data
             Clients.Caller.gotRoles(Enum.GetValues(typeof(Role)).Cast<Role>().Select(r=>new RoleInfo(r, player.Culture)));
+            Clients.Caller.gotGenders(Enum.GetValues(typeof(Gender)).Cast<Gender>().Select(g => new GenderInfo(g, player.Culture)));
 
             BroughtTo(ClientState.Characters);
         }

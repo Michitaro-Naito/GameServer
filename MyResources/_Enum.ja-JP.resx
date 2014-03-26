@@ -132,6 +132,15 @@
   <data name="Foo_Bar" xml:space="preserve">
     <value>ほげふが</value>
   </data>
+  <data name="Gender_Female" xml:space="preserve">
+    <value>女性</value>
+  </data>
+  <data name="Gender_Male" xml:space="preserve">
+    <value>男性</value>
+  </data>
+  <data name="Gender_None" xml:space="preserve">
+    <value>性別なし</value>
+  </data>
   <data name="Mode_All" xml:space="preserve">
     <value>全体</value>
   </data>
