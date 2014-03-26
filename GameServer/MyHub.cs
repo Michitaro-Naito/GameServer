@@ -78,6 +78,9 @@ namespace GameServer
 
         public override Task OnDisconnected()
         {
+            var room = Room;
+            if (room != null)
+                room.Queue(new RoomCommand.RemovePlayer(Player, Player));
             _players.RemoveAll(p => p.connectionId == Context.ConnectionId);
             return base.OnDisconnected();
         }
