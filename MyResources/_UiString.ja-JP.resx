@@ -117,10 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CharactersList" xml:space="preserve">
+    <value>キャラクター一覧</value>
+  </data>
+  <data name="Configure" xml:space="preserve">
+    <value>設定する</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>作成する</value>
+  </data>
+  <data name="Join" xml:space="preserve">
+    <value>参加する</value>
+  </data>
+  <data name="QuitRoom" xml:space="preserve">
+    <value>退出する</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>選択する</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>開始する</value>
+  </data>
   <data name="String1" xml:space="preserve">
     <value>こんにちは！</value>
   </data>
   <data name="String2" xml:space="preserve">
     <value>へい！</value>
+  </data>
+  <data name="VillagesList" xml:space="preserve">
+    <value>村一覧</value>
   </data>
 </root>

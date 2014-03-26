@@ -120,7 +120,31 @@
   <data name="String1" xml:space="preserve">
     <value>Hello!</value>
   </data>
+  <data name="CharactersList" xml:space="preserve">
+    <value>Characters List</value>
+  </data>
+  <data name="Configure" xml:space="preserve">
+    <value>Configure</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Join" xml:space="preserve">
+    <value>Join</value>
+  </data>
+  <data name="QuitRoom" xml:space="preserve">
+    <value>Quit Room</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
   <data name="String2" xml:space="preserve">
     <value>Hey</value>
+  </data>
+  <data name="VillagesList" xml:space="preserve">
+    <value>Villages List</value>
   </data>
 </root>
