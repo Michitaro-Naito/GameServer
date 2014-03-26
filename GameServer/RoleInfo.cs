@@ -27,31 +27,31 @@ namespace GameServer
                     y = 0;
                     break;
                 case Role.Citizen:
-                    x = 13;
+                    x = 12;
                     y = 1;
                     break;
                 case Role.FortuneTeller:
-                    x = 10;
+                    x = 9;
                     y = 0;
                     break;
                 case Role.Shaman:
-                    x = 12;
+                    x = 11;
                     y = 7;
                     break;
                 case Role.Hunter:
-                    x = 11;
+                    x = 10;
                     y = 0;
                     break;
                 case Role.Werewolf:
-                    x = 12;
+                    x = 11;
                     y = 12;
                     break;
                 case Role.Psycho:
-                    x = 9;
+                    x = 8;
                     y = 12;
                     break;
                 case Role.Fox:
-                    x = 8;
+                    x = 7;
                     y = 10;
                     break;
             }
