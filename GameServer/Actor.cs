@@ -27,6 +27,7 @@ namespace GameServer
         public string character;
         public bool isDead;
         public bool isRoomMaster;
+        public GameServer.ColorHelper.ColorIdentity ColorIdentity { get; set; }
 
         public Role role;
         public bool isRoleSure;
@@ -41,6 +42,7 @@ namespace GameServer
                 character = actor.character.ToString();
             isDead = actor.IsDead;
             isRoomMaster = room.IsRoomMaster(actor);
+            ColorIdentity = actor.ColorIdentity;
 
             if (new[] { RoomState.Matchmaking, RoomState.Playing }.Contains(room.RoomState))
             {
@@ -74,6 +76,7 @@ namespace GameServer
         public Gender gender;
         public Role role;
         public Character character;
+        public GameServer.ColorHelper.ColorIdentity ColorIdentity { get; set; }
 
         public Actor ActorToExecute;
         public Actor ActorToAttack;
@@ -119,7 +122,7 @@ namespace GameServer
             return character != null && character.Player == player;
         }
 
-        public static List<Actor> Create(int amount){
+        /*public static List<Actor> Create(int amount){
             if(amount <= 0)
                 throw new ArgumentException("amount must be > 0");
             var actors = new List<Actor>();
@@ -143,7 +146,7 @@ namespace GameServer
                 // Random Title
                 var titleKey = titleKeys.RandomElement();
                 titleKeys.Remove(titleKey);
-                actor.title = new InterText(titleKey, _Title.ResourceManager/*InterText.InterTextType.Title*/);
+                actor.title = new InterText(titleKey, _Title.ResourceManager);
 
                 // Random Gender
                 actor.gender = new Gender[] { Gender.Male, Gender.Female }.RandomElement();
@@ -154,13 +157,13 @@ namespace GameServer
                 {
                     var maleNameKey = maleNameKeys.RandomElement();
                     maleNameKeys.Remove(maleNameKey);
-                    name = new InterText(maleNameKey, _MaleName.ResourceManager /*InterText.InterTextType.MaleName*/);
+                    name = new InterText(maleNameKey, _MaleName.ResourceManager);
                 }
                 else
                 {
                     var femaleNameKey = femaleNameKeys.RandomElement();
                     femaleNameKeys.Remove(femaleNameKey);
-                    name = new InterText(femaleNameKey, _FemaleName.ResourceManager /*InterText.InterTextType.FemaleName*/);
+                    name = new InterText(femaleNameKey, _FemaleName.ResourceManager);
                 }
                 actor.name = name;
 
@@ -168,7 +171,7 @@ namespace GameServer
             }
             var dic = new Dictionary<string, int>();
             return actors;
-        }
+        }*/
 
         public static Actor CreateUnique(List<Actor> existing)
         {
@@ -213,6 +216,9 @@ namespace GameServer
                 name = new InterText(femaleNameKey, _FemaleName.ResourceManager);
             }
             actor.name = name;
+
+            // Color
+            actor.ColorIdentity = ColorHelper.GenerateColorIdentity(actor.id.ToString() + actor.title.Key + actor.name.Key);
 
             return actor;
         }
