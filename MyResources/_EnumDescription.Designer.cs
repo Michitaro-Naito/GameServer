@@ -61,7 +61,16 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Citizen.
+        ///   Looks up a localized string similar to A Ghost Cat. Sided with Citizens. Kills one of Citizen Teams if executed. Kills one of Werewolves if attacked..
+        /// </summary>
+        public static string Role_Cat {
+            get {
+                return ResourceManager.GetString("Role_Cat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A regular inhabitant. Sided with Citizens..
         /// </summary>
         public static string Role_Citizen {
             get {
@@ -70,7 +79,16 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fortune Teller.
+        ///   Looks up a localized string similar to A traitor of humans. Sided with Werewolves. Knows who are Werewolves..
+        /// </summary>
+        public static string Role_Fanatic {
+            get {
+                return ResourceManager.GetString("Role_Fanatic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A special citizen. Furtune-tells one inhabitant and knows his race..
         /// </summary>
         public static string Role_FortuneTeller {
             get {
@@ -79,7 +97,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fox.
+        ///   Looks up a localized string similar to A fox who disguised as a human. Dodges Werewolves&apos; attacks. Dies if fortune-telled. Sided with Foxes..
         /// </summary>
         public static string Role_Fox {
             get {
@@ -88,7 +106,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hunter.
+        ///   Looks up a localized string similar to A special citizen. Guards one inhabitant from Werewolves&apos; attacks..
         /// </summary>
         public static string Role_Hunter {
             get {
@@ -97,7 +115,16 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No role for now..
+        ///   Looks up a localized string similar to One of the paired citizens. Sided with Citizens. Knows who is the partner. Ignores any private messages except from the partner. Becomes Hunter if partner has been killed by Werewolves. Suisides if partner has been executed. Always a pair of a male and a female..
+        /// </summary>
+        public static string Role_Lover {
+            get {
+                return ResourceManager.GetString("Role_Lover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The role is not decided yet..
         /// </summary>
         public static string Role_None {
             get {
@@ -106,7 +133,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Psycho.
+        ///   Looks up a localized string similar to A traitor of humans. Sided with Werewolves. Does not know who are Werewolves..
         /// </summary>
         public static string Role_Psycho {
             get {
@@ -115,7 +142,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shaman.
+        ///   Looks up a localized string similar to A special citizen. Knows the race of the dead..
         /// </summary>
         public static string Role_Shaman {
             get {
@@ -124,7 +151,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Werewolf.
+        ///   Looks up a localized string similar to A merciless creature. Attacks an inhabitant every night. Sided with Werewolves..
         /// </summary>
         public static string Role_Werewolf {
             get {

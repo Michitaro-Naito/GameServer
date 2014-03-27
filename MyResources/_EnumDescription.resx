@@ -117,28 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Role_Cat" xml:space="preserve">
+    <value>A Ghost Cat. Sided with Citizens. Kills one of Citizen Teams if executed. Kills one of Werewolves if attacked.</value>
+  </data>
   <data name="Role_Citizen" xml:space="preserve">
-    <value>Citizen</value>
+    <value>A regular inhabitant. Sided with Citizens.</value>
+  </data>
+  <data name="Role_Fanatic" xml:space="preserve">
+    <value>A traitor of humans. Sided with Werewolves. Knows who are Werewolves.</value>
   </data>
   <data name="Role_FortuneTeller" xml:space="preserve">
-    <value>Fortune Teller</value>
+    <value>A special citizen. Furtune-tells one inhabitant and knows his race.</value>
   </data>
   <data name="Role_Fox" xml:space="preserve">
-    <value>Fox</value>
+    <value>A fox who disguised as a human. Dodges Werewolves' attacks. Dies if fortune-telled. Sided with Foxes.</value>
   </data>
   <data name="Role_Hunter" xml:space="preserve">
-    <value>Hunter</value>
+    <value>A special citizen. Guards one inhabitant from Werewolves' attacks.</value>
+  </data>
+  <data name="Role_Lover" xml:space="preserve">
+    <value>One of the paired citizens. Sided with Citizens. Knows who is the partner. Ignores any private messages except from the partner. Becomes Hunter if partner has been killed by Werewolves. Suisides if partner has been executed. Always a pair of a male and a female.</value>
   </data>
   <data name="Role_None" xml:space="preserve">
-    <value>No role for now.</value>
+    <value>The role is not decided yet.</value>
   </data>
   <data name="Role_Psycho" xml:space="preserve">
-    <value>Psycho</value>
+    <value>A traitor of humans. Sided with Werewolves. Does not know who are Werewolves.</value>
   </data>
   <data name="Role_Shaman" xml:space="preserve">
-    <value>Shaman</value>
+    <value>A special citizen. Knows the race of the dead.</value>
   </data>
   <data name="Role_Werewolf" xml:space="preserve">
-    <value>Werewolf</value>
+    <value>A merciless creature. Attacks an inhabitant every night. Sided with Werewolves.</value>
   </data>
 </root>
