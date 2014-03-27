@@ -378,11 +378,11 @@ namespace GameServer
                 return;
             }
 
-            if (!room.HasCharacter(Character) && !room.IsEmpty && !room.CanJoin)
+            /*if (!room.HasCharacter(Character) && !room.IsEmpty && !room.CanJoin)
             {
                 SystemMessage("RoomMaster is configuring Room. Couldn't join at this moment.");
                 return;
-            }
+            }*/
 
             _rooms.ForEach(r => r.Queue(new RoomCommand.RemovePlayer(Player, Player)));
             room.Queue(new RoomCommand.AddCharacter(Player, Player.Character, password));

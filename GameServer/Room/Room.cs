@@ -43,16 +43,37 @@ namespace GameServer
                 return new RoomState[]{ RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState);
             }
         }
-        public bool CanJoin
+        /*public bool CanJoin
         {
             get
             {
                 return
                     (new RoomState[] { RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState)
-                    //&& _actors.Any(a => a.character == null))
-                    && _characters.Count < conf.max)
+                    && _characters.Count < conf.max
+                    && (RoomState == RoomState.Matchmaking && duration > 0))
                     || (RoomState == RoomState.Configuring && _characters.Count == 0);
             }
+        }*/
+        public bool CanJoin(Character character)
+        {
+            if (character == null)
+                return false;
+
+            if (_characters.Count == 0 && RoomState == RoomState.Configuring)
+                // RoomMaster is coming.
+                return true;
+
+            if (!new RoomState[] { RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState))
+                return false;
+
+            if (RoomState == RoomState.Matchmaking && duration > 0)
+                // Just starting
+                return false;
+
+            if (_characters.Count >= conf.max)
+                return false;
+
+            return true;
         }
         public RoomState RoomState { get; private set; }
 
