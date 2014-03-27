@@ -21,6 +21,8 @@ namespace GameServer
                     .gotRoomMessages(_messagesWillBeApplied.Where(m=>m.IsVisibleFor(this, actor)).Select(m=>new RoomMessageInfo(m, c.Player.Culture)).ToList());
             });
             _messagesWillBeApplied.Clear();
+            while (_messages.Count > 1000)
+                _messages.RemoveAt(0);
         }
 
         /// <summary>
