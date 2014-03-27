@@ -301,6 +301,23 @@ namespace GameServer
             str.Add(new InterText("--------------------", null));
             str.Add(new InterText("DayADawns", _.ResourceManager, new[] { new InterText(day.ToString(), null) }));
             str.Add(new InterText("--------------------", null));
+            if (day == 1)
+            {
+                // First day message
+                str.Add(new InterText("FirstVictimFound", _.ResourceManager));
+                var dic = new Dictionary<Role, int>();
+                _actors.ForEach(a =>
+                {
+                    if (!dic.ContainsKey(a.role))
+                        dic[a.role] = 0;
+                    dic[a.role]++;
+                });
+                var orderedDictionary = dic.OrderBy(en => en.Key);
+                foreach (var entry in orderedDictionary)
+                {
+                    str.Add(new InterText("{0}: {1}", null, new []{ new InterText(entry.Key.ToKey(), _Enum.ResourceManager), new InterText(entry.Value.ToString(), null) }));
+                }
+            }
             SystemMessageAll(str.ToArray());
         }
     }

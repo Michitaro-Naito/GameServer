@@ -151,6 +151,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The first victim has been found at the crack of dawn. The message of his last moment tells us that inhabitants are the following:.
+        /// </summary>
+        public static string FirstVictimFound {
+            get {
+                return ResourceManager.GetString("FirstVictimFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The game has ended..
         /// </summary>
         public static string GameHasEnded {

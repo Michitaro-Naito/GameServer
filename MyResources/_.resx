@@ -165,6 +165,9 @@
   <data name="ASenseThatBIsC" xml:space="preserve">
     <value>{0} senses that {1} is {2} in result of a fortune-telling.</value>
   </data>
+  <data name="FirstVictimFound" xml:space="preserve">
+    <value>The first victim has been found at the crack of dawn. The message of his last moment tells us that inhabitants are the following:</value>
+  </data>
   <data name="NotEnoughActorsToVote" xml:space="preserve">
     <value>Not enough actors to vote.</value>
   </data>

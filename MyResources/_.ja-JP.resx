@@ -165,6 +165,9 @@
   <data name="ASenseThatBIsC" xml:space="preserve">
     <value>占いの結果、{0}は{1}が{2}であると感じ取りました。</value>
   </data>
+  <data name="FirstVictimFound" xml:space="preserve">
+    <value>恐ろしい最初の夜が明け、第一の犠牲者が無残な姿で発見されました。彼の残した手がかりからこの村の構成が次のようになっていることが分かりました。</value>
+  </data>
   <data name="NotEnoughActorsToVote" xml:space="preserve">
     <value>参加者が足りないため投票が成立しませんでした。</value>
   </data>
