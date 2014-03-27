@@ -51,6 +51,17 @@ namespace GameServer
                     client.addMessage("Joined.");
                     client.broughtTo(ClientState.Playing);
 
+                    // Sends Messages to newly-joined Player.
+                    var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Player));
+                    if (actor != null)
+                    {
+                        client.gotRoomMessages(
+                            _messages
+                                .Where(m => m.IsVisibleFor(this, actor))
+                                .Select(m=>new RoomMessageInfo(m, command.Player.Culture)),
+                            true);
+                    }
+
                     // Character added. Shares this information later.
                     _needSync = true;
                 }
