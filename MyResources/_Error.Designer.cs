@@ -77,5 +77,14 @@ namespace MyResources {
                 return ResourceManager.GetString("AMustBeBToCCharacters", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} must be up to {1} characters or null..
+        /// </summary>
+        public static string AMustBeUpToBCharactersOrNull {
+            get {
+                return ResourceManager.GetString("AMustBeUpToBCharactersOrNull", resourceCulture);
+            }
+        }
     }
 }

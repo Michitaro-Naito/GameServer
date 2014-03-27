@@ -162,4 +162,13 @@
   <data name="AIsTrueFriendOfCitizens" xml:space="preserve">
     <value>Your clear mind tells that {0} is a true friend of citizens.</value>
   </data>
+  <data name="ASenseThatBIsC" xml:space="preserve">
+    <value>{0} senses that {1} is {2} in result of a fortune-telling.</value>
+  </data>
+  <data name="NotEnoughActorsToVote" xml:space="preserve">
+    <value>Not enough actors to vote.</value>
+  </data>
+  <data name="ThereIsNoWerewolf" xml:space="preserve">
+    <value>There is no werewolf.</value>
+  </data>
 </root>

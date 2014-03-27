@@ -38,11 +38,13 @@ namespace GameServer.RoomCommand
     public class AddCharacter : Base
     {
         public Character Character { get; private set; }
+        public string Password { get; private set; }
 
-        public AddCharacter(Player player, Character character)
+        public AddCharacter(Player player, Character character, string password)
             : base(player)
         {
             Character = character;
+            Password = password;
         }
     }
 

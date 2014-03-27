@@ -15,7 +15,7 @@ namespace GameServer
             // use http://*:8080 to bind to all addresses. 
             // See http://msdn.microsoft.com/en-us/library/system.net.httplistener.aspx 
             // for more information.
-            string url = "http://localhost:8080";
+            string url = "http://*:8080";
             var t = new Thread(new ThreadStart(() =>
             {
                 while(true){

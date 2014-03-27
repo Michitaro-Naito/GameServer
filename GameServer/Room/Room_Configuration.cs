@@ -12,6 +12,7 @@ namespace GameServer
         public class ClientConfiguration : IValidatable
         {
             public string name;
+            public string password;
             public Nullable<int> max;
             public Nullable<int> interval;
 
@@ -24,6 +25,12 @@ namespace GameServer
                     result.Errors.Add(new InterText("AMustBeBToCCharacters", _Error.ResourceManager, new []{
                         new InterText("Room_Name", _Model.ResourceManager),
                         new InterText("1", null),
+                        new InterText("20", null)
+                    }));
+
+                if (password != null && password.Length > 20)
+                    result.Errors.Add(new InterText("AMustBeUpToBCharactersOrNull", _Error.ResourceManager, new[]{
+                        new InterText("Room_Password", _Model.ResourceManager),
                         new InterText("20", null)
                     }));
 
@@ -46,13 +53,14 @@ namespace GameServer
 
             public Configuration ToConfiguration()
             {
-                return new Configuration() { name = name, max = max.Value, interval = interval.Value };
+                return new Configuration() { name = name, password = password, max = max.Value, interval = interval.Value };
             }
         }
 
         public class Configuration
         {
             public string name;
+            public string password;
             public int max;
             public int interval;
         }

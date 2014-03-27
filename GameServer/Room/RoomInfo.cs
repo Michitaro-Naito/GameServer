@@ -13,6 +13,7 @@ namespace GameServer
         public string name;
         public int max;
         public int interval;
+        public bool requiresPassword;
 
         public RoomInfo(Room room)
         {
@@ -21,6 +22,7 @@ namespace GameServer
             name = room.conf.name;
             max = room.conf.max;
             interval = room.conf.interval;
+            requiresPassword = room.RequiresPassword;
         }
     }
 }

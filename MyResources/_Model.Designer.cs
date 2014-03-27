@@ -86,5 +86,14 @@ namespace MyResources {
                 return ResourceManager.GetString("Room_Name", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string Room_Password {
+            get {
+                return ResourceManager.GetString("Room_Password", resourceCulture);
+            }
+        }
     }
 }

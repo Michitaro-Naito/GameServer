@@ -177,9 +177,9 @@ namespace GameServer
                             case "CreateRoom":
                                 CreateRoom();
                                 break;
-                            case "JoinRoom":
+                            /*case "JoinRoom":
                                 JoinRoom(int.Parse(param[0]));
-                                break;
+                                break;*/
                             case "QuitRoom":
                                 QuitRoom();
                                 break;
@@ -211,18 +211,6 @@ namespace GameServer
             }
             room.Queue(new RoomCommand.Send(Player, roomSendMode, actorId, message));
         }
-
-        /*public void RoomConfigure(string roomName, int maxActors, int intervalSeconds)
-        {
-            var room = Room;
-            if (room == null)
-            {
-                SystemMessage("You are not in Room.");
-                return;
-            }
-            var conf = new Room.Configuration() { name = roomName, max = maxActors, interval = intervalSeconds };
-            room.Queue(new RoomCommand.Configure(Player, conf));
-        }*/
 
         public void RoomConfigure(Room.ClientConfiguration conf)
         {
@@ -323,18 +311,26 @@ namespace GameServer
             var room = new Room() { roomId = index };
             _rooms.Add(room);
             SystemMessage(string.Format("Created. Room:{0}", room));
-            BringPlayerToRoom(room.roomId);
+            BringPlayerToRoom(room.roomId, null);
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Join a Room.
         /// </summary>
         /// <param name="roomId"></param>
         void JoinRoom(int roomId)
         {
-            /*var e = new Error() { Title = new InterText("Fatal like error", null), Body = new InterText("Something went wrong.", null) };
-            Clients.Caller.gotError(e.GetInfo(Player.Culture));*/
             BringPlayerToRoom(roomId);
+        }*/
+
+        public void JoinRoom(int roomId, string password)
+        {
+            if (Player.Character == null)
+            {
+                SystemMessage("Select Character first to join room.");
+                return;
+            }
+            BringPlayerToRoom(roomId, password);
         }
 
         void QuitRoom()
@@ -367,7 +363,7 @@ namespace GameServer
 
         // ----- Method (Utility) -----
 
-        void BringPlayerToRoom(int roomId)
+        void BringPlayerToRoom(int roomId, string password)
         {
             var room = _rooms.FirstOrDefault(r => r.roomId == roomId);
             if (room == null)
@@ -389,7 +385,7 @@ namespace GameServer
             }
 
             _rooms.ForEach(r => r.Queue(new RoomCommand.RemovePlayer(Player, Player)));
-            room.Queue(new RoomCommand.AddCharacter(Player, Player.Character));
+            room.Queue(new RoomCommand.AddCharacter(Player, Player.Character, password));
         }
     }
 }

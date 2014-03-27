@@ -126,4 +126,7 @@
   <data name="Room_Name" xml:space="preserve">
     <value>Village Name</value>
   </data>
+  <data name="Room_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
 </root>

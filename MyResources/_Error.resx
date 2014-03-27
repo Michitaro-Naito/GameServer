@@ -123,4 +123,7 @@
   <data name="AMustBeBToCCharacters" xml:space="preserve">
     <value>{0} must be {1} to {2} characters.</value>
   </data>
+  <data name="AMustBeUpToBCharactersOrNull" xml:space="preserve">
+    <value>{0} must be up to {1} characters or null.</value>
+  </data>
 </root>

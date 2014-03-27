@@ -45,6 +45,13 @@ namespace GameServer
                         client.addMessage("Could not join. Room is full.");
                         continue;
                     }
+                    if (RequiresPassword && command.Password != conf.password)
+                    {
+                        client.addMessage("Invalid password. Could not join.");
+                        client.addMessage(command.Password);
+                        client.addMessage(conf.password);
+                        continue;
+                    }
                     _characters.Add(command.Character);
                     var npc = _actors.Where(a => a.IsNPC).FirstOrDefault();
                     if (npc != null)

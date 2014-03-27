@@ -51,7 +51,7 @@ namespace GameServer
             {
                 var friend = AliveActors.Where(f => f != a && f.Faction == Faction.Citizen).RandomElement();
                 if (friend != null)
-                    SystemMessageAll(new InterText("AIsTrueFriendOfCitizens", _.ResourceManager, new[] { friend.TitleAndName }));
+                    SystemMessageTo(a, new InterText("AIsTrueFriendOfCitizens", _.ResourceManager, new[] { friend.TitleAndName }));
             });
 
             _needSync = true;
@@ -75,8 +75,6 @@ namespace GameServer
 
         bool _Z_CheckForVictory()
         {
-            //SystemMessageAll("Checking for victory...");
-
             var factionWon = new Nullable<Faction>();
 
             var citizens = AliveHumanRace.Count();
@@ -110,7 +108,6 @@ namespace GameServer
 
             if (factionWon != null)
             {
-                //SystemMessageAll("Faction won: " + factionWon.Value);
                 SystemMessageAll(new InterText("FactionAWon", _.ResourceManager, new[] { factionWon.Value.ToInterText() }));
                 RoomState = RoomState.Ending;
                 duration = 2 * conf.interval;
@@ -123,7 +120,6 @@ namespace GameServer
 
         bool _Z_NpcVote()
         {
-            //SystemMessageAll("NPC voting...");
             _actors.Where(a => a.character == null).ToList().ForEach(a =>
             {
                 a.ActorToExecute = _actors.RandomElement();
@@ -136,7 +132,6 @@ namespace GameServer
 
         bool _Z_FortuneTell()
         {
-            //SystemMessageAll("FortuneTelling...");
             AliveFortuneTellers.ToList().ForEach(a =>
             {
                 var target = a.ActorToFortuneTell;
@@ -146,7 +141,7 @@ namespace GameServer
                     target = _actors.RandomElement();
                     random = true;
                 }
-                SystemMessageAll(string.Format("{0} fortunetelled {1}. Result: {2} Random:{3}", a, target, target.role, random));
+                SystemMessageTo(a, new InterText("ASenseThatBIsC", _.ResourceManager, new []{ a.TitleAndName, target.TitleAndName, target.Race.ToInterText() }));
             });
             return false;
         }
@@ -155,7 +150,7 @@ namespace GameServer
         {
             if (AliveActors.Count() < 2)
             {
-                SystemMessageAll("Not enough Actors to vote.");
+                SystemMessageAll(new InterText("NotEnoughActorsToVote", _.ResourceManager));
                 return false;
             }
             var str = new List<InterText>();
@@ -200,7 +195,7 @@ namespace GameServer
                 // Tells Shaman who has been killed.
                 ForEachAliveActors(a => a.CanKnowDead, a =>
                 {
-                    SystemMessageAll(new InterText("ItHasBeenProvedThatKilledAIsB", _.ResourceManager, new []{ actorToExecute.TitleAndName, actorToExecute.Race.ToInterText() }));
+                    SystemMessageTo(a, new InterText("ItHasBeenProvedThatKilledAIsB", _.ResourceManager, new []{ actorToExecute.TitleAndName, actorToExecute.Race.ToInterText() }));
                 });
             }
 
@@ -215,13 +210,13 @@ namespace GameServer
         {
             if (AliveActors.Count() < 2)
             {
-                SystemMessageAll("Not enough Actors to eat.");
+                SystemMessageAll(new InterText("NotEnoughActorsToVote", _.ResourceManager));
                 return false;
             }
 
             if (AliveWerewolfRace.Count() == 0)
             {
-                SystemMessageAll("There is no werewolf.");
+                SystemMessageAll(new InterText("ThereIsNoWerewolf", _.ResourceManager));
                 return false;
             }
 
@@ -264,7 +259,7 @@ namespace GameServer
                 else
                     actorToGuard = AliveActors.Where(a => a != h).RandomElement();
                 actorsGuarded.Add(actorToGuard);
-                SystemMessageAll(new InterText("AIsGuardingB", _.ResourceManager, new []{ h.TitleAndName, actorToGuard.TitleAndName }));
+                SystemMessageTo(h, new InterText("AIsGuardingB", _.ResourceManager, new []{ h.TitleAndName, actorToGuard.TitleAndName }));
             });
 
             // Killed?
@@ -282,7 +277,7 @@ namespace GameServer
                 // Tells Shaman who has been killed.
                 ForEachAliveActors(a => a.CanKnowDead, a =>
                 {
-                    SystemMessageAll(new InterText("ItHasBeenProvedThatKilledAIsB", _.ResourceManager, new[] { actorToAttack.TitleAndName, actorToAttack.Race.ToInterText() }));
+                    SystemMessageTo(a, new InterText("ItHasBeenProvedThatKilledAIsB", _.ResourceManager, new[] { actorToAttack.TitleAndName, actorToAttack.Race.ToInterText() }));
                 });
             }
 
@@ -295,7 +290,6 @@ namespace GameServer
             duration = conf.interval;
             day++;
 
-            //SystemMessageAll(string.Format("Day {0} dawns.", day));
             NotifyDayDawns();
 
             return false;

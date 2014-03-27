@@ -65,6 +65,7 @@ namespace GameServer
         }
 
         public bool IsProcessingHistory { get; private set; }
+        public bool RequiresPassword { get { return conf.password != null && conf.password.Length > 0; } }
 
         public bool ShouldBeDeleted
         {
@@ -190,6 +191,15 @@ namespace GameServer
             message.id = _nextMessageId++;
             message.Created = DateTime.UtcNow;
             _messagesWillBeApplied.Add(message);
+        }
+
+        void SystemMessageTo(Actor to, InterText[] bodyRows)
+        {
+            AddMessage(new RoomMessage() { mode = RoomMessage.Mode.Private, to = to, bodyRows = bodyRows });
+        }
+        void SystemMessageTo(Actor to, InterText body)
+        {
+            SystemMessageTo(to, new [] { body });
         }
 
         void SystemMessageAll(InterText[] bodyRows)

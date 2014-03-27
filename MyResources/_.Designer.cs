@@ -97,6 +97,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} senses that {1} is {2} in result of a fortune-telling..
+        /// </summary>
+        public static string ASenseThatBIsC {
+            get {
+                return ResourceManager.GetString("ASenseThatBIsC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attacking [{0} {1}] ....
         /// </summary>
         public static string AttackingAB {
@@ -178,6 +187,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not enough actors to vote..
+        /// </summary>
+        public static string NotEnoughActorsToVote {
+            get {
+                return ResourceManager.GetString("NotEnoughActorsToVote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (Random).
         /// </summary>
         public static string Random {
@@ -192,6 +210,15 @@ namespace MyResources {
         public static string String1 {
             get {
                 return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no werewolf..
+        /// </summary>
+        public static string ThereIsNoWerewolf {
+            get {
+                return ResourceManager.GetString("ThereIsNoWerewolf", resourceCulture);
             }
         }
     }
