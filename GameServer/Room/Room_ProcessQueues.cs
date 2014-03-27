@@ -126,6 +126,13 @@ namespace GameServer
                         continue;
                     }
 
+                    var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Player));
+                    if (actor == null || !IsRoomMaster(actor))
+                    {
+                        client.addMessage("Only the RoomMaster can start.");
+                        continue;
+                    }
+
                     CountDownToStart();
                 }
 
