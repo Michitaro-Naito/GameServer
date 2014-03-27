@@ -144,6 +144,7 @@ namespace GameServer
             if (!Player.IsAuthenticated)
             {
                 SystemMessage("You are not authenticated.");
+                Clients.Caller.gotDisconnectionRequest();
                 return;
             }
             if (message.StartsWith("/"))
@@ -204,16 +205,33 @@ namespace GameServer
         {
             var room = Room;
             if (room == null)
+            {
                 SystemMessage("You are not in Room.");
+                return;
+            }
             room.Queue(new RoomCommand.Send(Player, roomSendMode, actorId, message));
         }
 
-        public void RoomConfigure(string roomName, int maxActors, int intervalSeconds)
+        /*public void RoomConfigure(string roomName, int maxActors, int intervalSeconds)
         {
             var room = Room;
             if (room == null)
+            {
                 SystemMessage("You are not in Room.");
+                return;
+            }
             var conf = new Room.Configuration() { name = roomName, max = maxActors, interval = intervalSeconds };
+            room.Queue(new RoomCommand.Configure(Player, conf));
+        }*/
+
+        public void RoomConfigure(Room.ClientConfiguration conf)
+        {
+            var room = Room;
+            if (room == null)
+            {
+                SystemMessage("You are not in Room.");
+                return;
+            }
             room.Queue(new RoomCommand.Configure(Player, conf));
         }
 
@@ -221,7 +239,10 @@ namespace GameServer
         {
             var room = Room;
             if (room == null)
+            {
                 SystemMessage("You are not in Room.");
+                return;
+            }
             room.Queue(new RoomCommand.Start(Player));
         }
 
@@ -229,7 +250,10 @@ namespace GameServer
         {
             var room = Room;
             if (room == null)
+            {
                 SystemMessage("You are not in Room.");
+                return;
+            }
             SystemMessage("Voting..." + executionId);
             room.Queue(new RoomCommand.Vote(Player, executionId, attackId, fortuneTellId, guardId));
         }
@@ -324,17 +348,17 @@ namespace GameServer
 
         // ----- Method ( Server to Client ) -----
 
-        public void SystemMessage(string message)
+        void SystemMessage(string message)
         {
             Clients.Caller.addMessage("SYSTEM", Player.GetString(message));
         }
 
-        public void SystemMessage(Player player, string message)
+        void SystemMessage(Player player, string message)
         {
             Clients.Client(player.connectionId).addMessage("SYSTEM", Player.GetString(message));
         }
 
-        public void BroughtTo(ClientState state)
+        void BroughtTo(ClientState state)
         {
             Clients.Caller.broughtTo(state);
         }

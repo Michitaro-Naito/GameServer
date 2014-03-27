@@ -59,9 +59,9 @@ namespace GameServer.RoomCommand
 
     public class Configure : Base
     {
-        public Room.Configuration Configuration { get; private set; }
+        public Room.ClientConfiguration Configuration { get; private set; }
 
-        public Configure(Player player, Room.Configuration configuration)
+        public Configure(Player player, Room.ClientConfiguration configuration)
             : base(player)
         {
             Configuration = configuration;

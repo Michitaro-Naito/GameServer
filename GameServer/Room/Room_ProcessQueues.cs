@@ -83,9 +83,17 @@ namespace GameServer
                     }
 
                     // Validates Configuration
+                    var result = command.Configuration.Validate();
+                    if (!result.Success)
+                    {
+                        client.addMessage("Validation failed.");
+                        result.Errors.ForEach(e => client.addMessage(e.GetString(command.Player.Culture)));
+                        client.gotValidationErrors(command.Configuration.ModelName, result.Errors.Select(e => e.GetStringFor(command.Player)));
+                        continue;
+                    }
 
                     // Applies Configutation
-                    conf = command.Configuration;
+                    conf = command.Configuration.ToConfiguration();
 
                     // Initializes Matchmaking
                     AddActorsForCharacters();
