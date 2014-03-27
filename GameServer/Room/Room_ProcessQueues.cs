@@ -165,6 +165,12 @@ namespace GameServer
                         continue;
                     }
 
+                    if (!new[] { RoomState.Matchmaking, RoomState.Playing, RoomState.Ending }.Contains(RoomState))
+                    {
+                        SystemMessageAll("You can chat only when matchmaking, playing, ending");
+                        continue;
+                    }
+
                     AddMessage(new RoomMessage()
                     {
                         //id = _nextMessageId++,
