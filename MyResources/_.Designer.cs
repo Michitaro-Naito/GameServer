@@ -79,6 +79,33 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} has come as {1}..
+        /// </summary>
+        public static string AHasComeAsB {
+            get {
+                return ResourceManager.GetString("AHasComeAsB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} has gone from {1}..
+        /// </summary>
+        public static string AHasGoneFromB {
+            get {
+                return ResourceManager.GetString("AHasGoneFromB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} has joined as {1}..
+        /// </summary>
+        public static string AHasJoinedAsB {
+            get {
+                return ResourceManager.GetString("AHasJoinedAsB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} is guarding {1} ....
         /// </summary>
         public static string AIsGuardingB {

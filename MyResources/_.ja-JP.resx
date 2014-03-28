@@ -162,6 +162,15 @@
   <data name="AIsTrueFriendOfCitizens" xml:space="preserve">
     <value>初日の冴えわたる占いにより、{0}は間違いなく村人の味方であると判明しました。</value>
   </data>
+  <data name="AHasComeAsB" xml:space="preserve">
+    <value>{0}さんが{1}としてこの村にやってきました。</value>
+  </data>
+  <data name="AHasGoneFromB" xml:space="preserve">
+    <value>{1}から{0}さんの魂が抜けました。</value>
+  </data>
+  <data name="AHasJoinedAsB" xml:space="preserve">
+    <value>{1}に{0}さんの魂が入りました。</value>
+  </data>
   <data name="ASenseThatBIsC" xml:space="preserve">
     <value>占いの結果、{0}は{1}が{2}であると感じ取りました。</value>
   </data>

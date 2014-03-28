@@ -162,6 +162,15 @@
   <data name="AIsTrueFriendOfCitizens" xml:space="preserve">
     <value>Your clear mind tells that {0} is a true friend of citizens.</value>
   </data>
+  <data name="AHasComeAsB" xml:space="preserve">
+    <value>{0} has come as {1}.</value>
+  </data>
+  <data name="AHasGoneFromB" xml:space="preserve">
+    <value>{0} has gone from {1}.</value>
+  </data>
+  <data name="AHasJoinedAsB" xml:space="preserve">
+    <value>{0} has joined as {1}.</value>
+  </data>
   <data name="ASenseThatBIsC" xml:space="preserve">
     <value>{0} senses that {1} is {2} in result of a fortune-telling.</value>
   </data>

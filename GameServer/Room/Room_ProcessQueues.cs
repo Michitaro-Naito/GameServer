@@ -57,12 +57,15 @@ namespace GameServer
                     _characters.Add(command.Character);
                     var npc = _actors.Where(a => a.IsNPC).FirstOrDefault();
                     if (npc != null)
+                    {
                         npc.character = command.Character;
+                        SystemMessageAll(new InterText("AHasJoinedAsB", MyResources._.ResourceManager, new[] { new InterText(command.Character.Name, null), npc.TitleAndName }));
+                    }
                     AddActorsForCharacters();
                     client.addMessage("Joined.");
                     client.broughtTo(ClientState.Playing);
 
-                    // Sends Messages to newly-joined Player.
+                    // Sends existing Messages to newly-joined Player.
                     var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Player));
                     if (actor != null)
                     {
@@ -83,7 +86,14 @@ namespace GameServer
                     var command = (RoomCommand.RemovePlayer)commandBase;
                     var client = _updateHub.Clients.Client(command.Target.connectionId);
                     _characters.RemoveAll(c => c.Player == command.Target);
-                    _actors.Where(a=>a.IsOwnedBy(command.Target)).ToList().ForEach(a=>a.character = null);
+                    _actors.Where(a => a.IsOwnedBy(command.Target)).ToList().ForEach(a =>
+                    {
+                        // Notifies players that someone gone.
+                        SystemMessageAll(new InterText("AHasGoneFromB", MyResources._.ResourceManager, new[] { new InterText(a.character.Name, null), a.TitleAndName }));
+
+                        // Removes
+                        a.character = null;
+                    });
 
                     // Brings removed Player to Rooms scene.
                     client.broughtTo(ClientState.Rooms);
