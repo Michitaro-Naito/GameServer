@@ -172,9 +172,6 @@ namespace GameServer
                             case "GetCharacters":
                                 GetCharacters();
                                 break;
-                            case "CreateCharacter":
-                                CreateCharacter(param[0]);
-                                break;
                             case "SelectCharacter":
                                 SelectCharacter(param[0]);
                                 break;
@@ -260,11 +257,28 @@ namespace GameServer
             Clients.Caller.gotCharacters(o.characters);
         }
 
-        void CreateCharacter(string name)
+        public void CreateCharacter(string modelName, string name)
         {
+            if (!Player.IsAuthenticated)
+            {
+                SystemMessage("Not authenticated.");
+                return;
+            }
+            var model = new ClientModel.ClientCreateCharacter() { ModelName = modelName, name = name };
+            var result = model.Validate();
+            if (!result.Success)
+            {
+                var client = Clients.Caller;
+                client.addMessage("Validation failed.");
+                result.Errors.ForEach(e => client.addMessage(e.GetString(Player.Culture)));
+                client.gotValidationErrors(model.ModelName, result.Errors.Select(e => e.GetStringFor(Player)));
+                return;
+            }
             SystemMessage("Creating a Character...");
             var o = Api.Get<CreateCharacterOut>(new CreateCharacterIn() { userId = Player.userId, name = name });
             SystemMessage("Created.");
+
+            BroughtTo(ClientState.Characters);
         }
 
         void SelectCharacter(string name)

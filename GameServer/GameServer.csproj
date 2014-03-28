@@ -91,12 +91,13 @@
     <Compile Include="Actor.cs" />
     <Compile Include="AuthHelper.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="ClientModel\ClientCreateCharacter.cs" />
     <Compile Include="ClientState.cs" />
     <Compile Include="ColorHelper.cs" />
     <Compile Include="ErrorInfo.cs" />
     <Compile Include="GenderInfo.cs" />
     <Compile Include="InterText.cs" />
-    <Compile Include="IValidatable.cs" />
+    <Compile Include="ClientModel\IValidatable.cs" />
     <Compile Include="RoleInfo.cs" />
     <Compile Include="Room\RoomCommand.cs" />
     <Compile Include="Room\RoomInfo.cs" />
