@@ -125,7 +125,14 @@ namespace GameServer
             }
 
             player.userId = pass.data.userId;
-            player.Culture = new System.Globalization.CultureInfo(culture);
+            try
+            {
+                player.Culture = new System.Globalization.CultureInfo(culture);
+            }
+            catch
+            {
+                player.Culture = new System.Globalization.CultureInfo("en-US");
+            }
             SystemMessage("Authenticated:" + pass.data.userId);
 
             // Passes Data
