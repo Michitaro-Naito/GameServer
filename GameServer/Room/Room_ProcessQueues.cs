@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyResources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,6 +51,7 @@ namespace GameServer
                         client.addMessage("Invalid password. Could not join.");
                         client.addMessage(command.Password);
                         client.addMessage(conf.password);
+                        client.gotError(new Error() { Title = new InterText("InvalidPassword", _Error.ResourceManager), Body = new InterText("InvalidPasswordPleaseTryAgain", _Error.ResourceManager) }.GetInfo(command.Player.Culture));
                         continue;
                     }
                     _characters.Add(command.Character);

@@ -126,4 +126,10 @@
   <data name="AMustBeUpToBCharactersOrNull" xml:space="preserve">
     <value>{0} must be up to {1} characters or null.</value>
   </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Invalid Password</value>
+  </data>
+  <data name="InvalidPasswordPleaseTryAgain" xml:space="preserve">
+    <value>Password you have entered was invalid. Please try again later.</value>
+  </data>
 </root>

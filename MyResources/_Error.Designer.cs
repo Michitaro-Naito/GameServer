@@ -86,5 +86,23 @@ namespace MyResources {
                 return ResourceManager.GetString("AMustBeUpToBCharactersOrNull", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Password.
+        /// </summary>
+        public static string InvalidPassword {
+            get {
+                return ResourceManager.GetString("InvalidPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password you have entered was invalid. Please try again later..
+        /// </summary>
+        public static string InvalidPasswordPleaseTryAgain {
+            get {
+                return ResourceManager.GetString("InvalidPasswordPleaseTryAgain", resourceCulture);
+            }
+        }
     }
 }
