@@ -13,10 +13,6 @@ namespace GameServer
         {
             get { return _actors.Where(a => !a.IsDead); }
         }
-        /*public List<Actor> AliveActors(Func<Actor, bool> predicate)
-        {
-            return AliveActors.Where(predicate).ToList();
-        }*/
         public void ForEachAliveActors(Func<Actor, bool> predicate, Action<Actor> action)
         {
             AliveActors.Where(predicate).ToList().ForEach(action);

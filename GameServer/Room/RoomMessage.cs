@@ -15,7 +15,6 @@ namespace GameServer
         public RoomMessage.Mode mode;
         public Nullable<int> fromId;
         public Nullable<int> toId;
-        //public string body;
         public string[] bodyRows;
 
         public RoomMessageInfo(RoomMessage message, CultureInfo culture)
@@ -51,7 +50,6 @@ namespace GameServer
             public ModeInfo(Player player, Mode mode)
             {
                 id = mode;
-                //name = MyResources._.ResourceManager.GetString("String1", player.Culture);
                 name = mode.ToLocalizedString(player.Culture);
             }
         }
@@ -62,7 +60,6 @@ namespace GameServer
         public Mode mode;
         public Actor from;
         public Actor to;
-        //public string body;
         public InterText[] bodyRows;
 
         public bool IsVisibleFor(Room room, Actor viewer)

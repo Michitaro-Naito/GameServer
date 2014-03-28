@@ -122,57 +122,6 @@ namespace GameServer
             return character != null && character.Player == player;
         }
 
-        /*public static List<Actor> Create(int amount){
-            if(amount <= 0)
-                throw new ArgumentException("amount must be > 0");
-            var actors = new List<Actor>();
-            var titleKeys = MyResources._Title.ResourceManager.Keys();
-            if (titleKeys.Count < amount)
-                throw new ArgumentException("Not enough titleKeys");
-            var maleNameKeys = MyResources._MaleName.ResourceManager.Keys();
-            if (maleNameKeys.Count < amount)
-                throw new ArgumentException("Not enough maleNameKeys");
-            var femaleNameKeys = MyResources._FemaleName.ResourceManager.Keys();
-            if (femaleNameKeys.Count < amount)
-                throw new ArgumentException("Not enough femaleNameKeys");
-
-            for (var n = 0; n < amount; n++)
-            {
-                var actor = new Actor();
-
-                // id = index;
-                actor.id = n;
-
-                // Random Title
-                var titleKey = titleKeys.RandomElement();
-                titleKeys.Remove(titleKey);
-                actor.title = new InterText(titleKey, _Title.ResourceManager);
-
-                // Random Gender
-                actor.gender = new Gender[] { Gender.Male, Gender.Female }.RandomElement();
-
-                // Random Name
-                InterText name = null;
-                if (actor.gender == Gender.Male)
-                {
-                    var maleNameKey = maleNameKeys.RandomElement();
-                    maleNameKeys.Remove(maleNameKey);
-                    name = new InterText(maleNameKey, _MaleName.ResourceManager);
-                }
-                else
-                {
-                    var femaleNameKey = femaleNameKeys.RandomElement();
-                    femaleNameKeys.Remove(femaleNameKey);
-                    name = new InterText(femaleNameKey, _FemaleName.ResourceManager);
-                }
-                actor.name = name;
-
-                actors.Add(actor);
-            }
-            var dic = new Dictionary<string, int>();
-            return actors;
-        }*/
-
         public static Actor CreateUnique(List<Actor> existing)
         {
             // Remove existing keys
@@ -234,7 +183,6 @@ namespace GameServer
                 "[{0}{1}({2}) {3} {4}]",
                 title, name, character,
                 role, alive);
-            //return string.Format("[Actor title:{0} name:{1} role:{2} IsDead:{3} character:{4}]", title, name, role, IsDead, character);
         }
 
         public override bool Equals(object obj)

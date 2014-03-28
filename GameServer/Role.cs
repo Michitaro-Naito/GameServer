@@ -104,7 +104,6 @@ namespace GameServer
             var dic = new Dictionary<Role, int>();
             foreach (var role in Enum.GetValues(typeof(Role)).Cast<Role>())
                 dic[role] = 0;
-            //if (removeNone) dic.Remove(Role.None);
 
             return dic;
         }

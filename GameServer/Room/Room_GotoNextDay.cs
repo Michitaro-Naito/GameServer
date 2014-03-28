@@ -137,11 +137,9 @@ namespace GameServer
             AliveFortuneTellers.ToList().ForEach(a =>
             {
                 var target = a.ActorToFortuneTell;
-                var random = false;
                 if (target == null)
                 {
                     target = _actors.RandomElement();
-                    random = true;
                 }
                 SystemMessageTo(a, new InterText("ASenseThatBIsC", _.ResourceManager, new []{ a.TitleAndName, target.TitleAndName, target.Race.ToInterText() }));
             });

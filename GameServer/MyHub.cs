@@ -177,15 +177,9 @@ namespace GameServer
                             case "CreateRoom":
                                 CreateRoom();
                                 break;
-                            /*case "JoinRoom":
-                                JoinRoom(int.Parse(param[0]));
-                                break;*/
                             case "QuitRoom":
                                 QuitRoom();
                                 break;
-                            /*case "Room":
-                                CallRoom(param);
-                                break;*/
                             default:
                                 SystemMessage(string.Format("Unknown command: {0}", command));
                                 break;
@@ -314,15 +308,6 @@ namespace GameServer
             BringPlayerToRoom(room.roomId, null);
         }
 
-        /*/// <summary>
-        /// Join a Room.
-        /// </summary>
-        /// <param name="roomId"></param>
-        void JoinRoom(int roomId)
-        {
-            BringPlayerToRoom(roomId);
-        }*/
-
         public void JoinRoom(int roomId, string password)
         {
             if (Player.Character == null)
@@ -377,12 +362,6 @@ namespace GameServer
                 SystemMessage("Failded to join Room. Character not selected.");
                 return;
             }
-
-            /*if (!room.HasCharacter(Character) && !room.IsEmpty && !room.CanJoin)
-            {
-                SystemMessage("RoomMaster is configuring Room. Couldn't join at this moment.");
-                return;
-            }*/
 
             _rooms.ForEach(r => r.Queue(new RoomCommand.RemovePlayer(Player, Player)));
             room.Queue(new RoomCommand.AddCharacter(Player, Player.Character, password));

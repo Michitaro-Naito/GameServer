@@ -15,7 +15,6 @@ namespace AuthUtility
             public string userId;
 
             // Cache (Server doesn't trust it.)
-            //public string displayName;
         }
 
         public GamePassData data = new GamePassData();

@@ -90,13 +90,6 @@ namespace GameServer
 
         public static string RandomKey(this System.Resources.ResourceManager resourceManager)
         {
-            /*var set = resourceManager.GetResourceSet(new System.Globalization.CultureInfo("en-US"), true, true);
-            var keys = new List<string>();
-            foreach (System.Collections.DictionaryEntry entry in set)
-            {
-                keys.Add(entry.Key.ToString());
-            }
-            return keys.RandomElement();*/
             return resourceManager.Keys().RandomElement();
         }
 
@@ -108,12 +101,6 @@ namespace GameServer
                 if (func()) break;
             }
         }
-
-        /*public static string GetStringFor(this ResourceManager resourceManager, Enum obj, CultureInfo culture)
-        {
-            var name = obj.GetType().Name + "." + obj.ToString();
-            return name;//resourceManager.GetString(name);
-        }*/
 
         public static string ToKey(this Enum obj)
         {

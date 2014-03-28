@@ -40,8 +40,6 @@ namespace GameServer
                 {
                     var command = (RoomCommand.AddCharacter)commandBase;
                     var client = _updateHub.Clients.Client(command.Player.connectionId);
-                    //if (_characters.Count > 0 && _characters.Count >= conf.max)
-                    //if(!CanJoin)
                     if(!CanJoin(command.Character))
                     {
                         client.addMessage("Could not join. Room is full, busy or ended.");

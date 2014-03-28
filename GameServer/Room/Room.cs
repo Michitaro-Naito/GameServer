@@ -27,7 +27,6 @@ namespace GameServer
 
         public int day;
         public double duration;
-        //public double EndingDuration { get; private set; }
         bool _needSync = false;
 
         int _nextMessageId = 0;
@@ -43,17 +42,7 @@ namespace GameServer
                 return new RoomState[]{ RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState);
             }
         }
-        /*public bool CanJoin
-        {
-            get
-            {
-                return
-                    (new RoomState[] { RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState)
-                    && _characters.Count < conf.max
-                    && (RoomState == RoomState.Matchmaking && duration > 0))
-                    || (RoomState == RoomState.Configuring && _characters.Count == 0);
-            }
-        }*/
+
         public bool CanJoin(Character character)
         {
             if (character == null)
@@ -96,7 +85,6 @@ namespace GameServer
         List<RoomMessage.Mode> ModesFor(Actor actor)
         {
             if (actor == null)
-                //throw new ArgumentNullException("actor must not be null.");
                 return new List<RoomMessage.Mode>();
             var modes = new List<RoomMessage.Mode>();
             if (actor.IsDead)
@@ -184,10 +172,8 @@ namespace GameServer
                     if (duration < 0)
                     {
                         RoomState = RoomState.Ended;
-                        //SystemMessageAll("Game has ended.");
                         SystemMessageAll(new InterText("GameHasEnded", _.ResourceManager));
                         _needSync = true;
-                        //CallAll(client => client.broughtTo(ClientState.Rooms));
                     }
                     break;
             }
