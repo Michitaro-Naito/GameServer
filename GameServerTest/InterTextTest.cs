@@ -12,14 +12,6 @@ namespace GameServerTest
         [TestMethod]
         public void TestMethod1()
         {
-            /*Console.WriteLine("Testing...");
-            Console.WriteLine(typeof(_));
-            Console.WriteLine(typeof(_).BaseType);
-            var interfaces = typeof(_).GetInterfaces();
-            foreach (var i in interfaces)
-            {
-                Console.WriteLine(i);
-            }*/
             var str = string.Format("{0},{1}", new[] { "Foo", "Bar" });
             Assert.AreEqual("Foo,Bar", str);
         }
