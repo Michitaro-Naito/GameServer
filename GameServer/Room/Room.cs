@@ -268,5 +268,18 @@ namespace GameServer
                 SystemMessageAll(new InterText("AHasComeAsB", MyResources._.ResourceManager, new[] { new InterText(c.Name, null), actor.TitleAndName }));
             });
         }
+
+        void SendFirstMessagesTo(Actor actor)
+        {
+            if (actor != null && actor.character != null)
+            {
+                var client = _updateHub.Clients.Client(actor.character.Player.connectionId);
+                client.gotRoomMessages(
+                    _messages
+                        .Where(m => m.IsVisibleFor(this, actor))
+                        .Select(m => new RoomMessageInfo(m, actor.character.Player.Culture)),
+                    true);
+            }
+        }
     }
 }
