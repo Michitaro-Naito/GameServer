@@ -1,6 +1,7 @@
 ﻿using MyResources;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +64,12 @@ namespace GameServer
             public string password;
             public int max;
             public int interval;
+            public CultureInfo culture;
+
+            public Configuration()
+            {
+                culture = new CultureInfo("ja-JP");
+            }
         }
     }
 }
