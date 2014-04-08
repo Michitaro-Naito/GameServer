@@ -120,6 +120,9 @@
   <data name="AMustBeBToC" xml:space="preserve">
     <value>{0} must be {1} to {2}.</value>
   </data>
+  <data name="AMustBeBtoCAlphanumericCharacters" xml:space="preserve">
+    <value>{0} must be {1} to {2} alphanumeric characters.</value>
+  </data>
   <data name="AMustBeBToCCharacters" xml:space="preserve">
     <value>{0} must be {1} to {2} characters.</value>
   </data>

@@ -266,16 +266,25 @@ namespace GameServer
             }
             var model = new ClientModel.ClientCreateCharacter() { ModelName = modelName, name = name };
             var result = model.Validate();
+            var client = Clients.Caller;
             if (!result.Success)
             {
-                var client = Clients.Caller;
                 client.addMessage("Validation failed.");
                 result.Errors.ForEach(e => client.addMessage(e.GetString(Player.Culture)));
                 client.gotValidationErrors(model.ModelName, result.Errors.Select(e => e.GetStringFor(Player)));
                 return;
             }
             SystemMessage("Creating a Character...");
-            var o = Api.Get<CreateCharacterOut>(new CreateCharacterIn() { userId = Player.userId, name = name });
+            try
+            {
+                var o = Api.Get<CreateCharacterOut>(new CreateCharacterIn() { userId = Player.userId, name = name });
+            }
+            catch(Exception e)
+            {
+                // Something went wrong
+                client.gotValidationErrors(model.ModelName, new List<string>(){ "API returned error." + e });
+                return;
+            }
             SystemMessage("Created.");
 
             BroughtTo(ClientState.Characters);

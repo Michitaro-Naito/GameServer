@@ -142,7 +142,7 @@
     <value>{0}が勝利しました。</value>
   </data>
   <data name="GameHasEnded" xml:space="preserve">
-    <value>ゲームが終了しました。</value>
+    <value>ゲームが終了しました。これ以降のチャットはできません。</value>
   </data>
   <data name="ItHasBeenProvedThatKilledAIsB" xml:space="preserve">
     <value>死者との対話により、{0}さんは{1}だったと分かりました。</value>

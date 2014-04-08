@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyResources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,12 +18,16 @@ namespace GameServer.ClientModel
         {
             var result = new ValidationResult();
 
-            if (name == null || name.Length == 0 || Regex.IsMatch(name, @"^[a-z]$"))
+            if (name == null || name.Length == 0 || !Regex.IsMatch(name, @"^[a-zA-Z0-9]{1,10}$"))
             {
-                result.Errors.Add(new InterText("Name went wrong.", null));
+                result.Errors.Add(new InterText("AMustBeBToCAlphanumericCharacters", _Error.ResourceManager, new []{
+                    new InterText("Character_Name", _Model.ResourceManager),
+                    new InterText("1", null),
+                    new InterText("10", null)
+                }));
             }
 
-            result.Errors.Add(new InterText("Something went wrong.", null));
+            //result.Errors.Add(new InterText("Something went wrong.", null));
 
             return result;
         }

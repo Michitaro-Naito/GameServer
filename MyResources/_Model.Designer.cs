@@ -61,6 +61,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Character Name.
+        /// </summary>
+        public static string Character_Name {
+            get {
+                return ResourceManager.GetString("Character_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Day Duration.
         /// </summary>
         public static string Room_Interval {

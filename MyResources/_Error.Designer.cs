@@ -70,6 +70,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} must be {1} to {2} alphanumeric characters..
+        /// </summary>
+        public static string AMustBeBtoCAlphanumericCharacters {
+            get {
+                return ResourceManager.GetString("AMustBeBtoCAlphanumericCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} must be {1} to {2} characters..
         /// </summary>
         public static string AMustBeBToCCharacters {

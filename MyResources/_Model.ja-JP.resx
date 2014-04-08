@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Character_Name" xml:space="preserve">
+    <value>キャラクター名</value>
+  </data>
   <data name="Room_Interval" xml:space="preserve">
     <value>1日の長さ</value>
   </data>
