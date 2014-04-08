@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace GameServer
 {
@@ -219,6 +220,23 @@ namespace GameServer
             if (oa == null || ob == null)
                 return true;
             return a.id != b.id;
+        }
+
+        internal string ToHtml(System.Globalization.CultureInfo cultureInfo)
+        {
+            _UiString.Culture = cultureInfo;
+            var internalString = string.Format("{0} {1}",
+                TitleAndName.GetString(cultureInfo),
+                role.ToLocalizedString(cultureInfo));
+            if (character != null)
+                internalString += string.Format("by {0}({1})", character.Name, character.Player.userId);
+            else
+                internalString += "(NPC)";
+            var html = string.Format("<span style=\"color:{0};background-color:{1};\">{2}</span>",
+                ColorIdentity.text,
+                ColorIdentity.background,
+                HttpUtility.HtmlEncode(internalString));
+            return html;
         }
     }
 }

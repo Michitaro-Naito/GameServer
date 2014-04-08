@@ -8,6 +8,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using ApiScheme.Scheme;
+using MyResources;
 
 namespace GameServer
 {
@@ -25,6 +26,18 @@ namespace GameServer
             // Conf
             html += conf.ToHtml();
             // Actors
+            var aliveActorsHtml = "";
+            _actors.Where(a=>!a.IsDead).ToList().ForEach(a =>
+            {
+                aliveActorsHtml += a.ToHtml(conf.culture);
+            });
+            html += string.Format("<div>{0}: {1}</div>", _UiString.Alive, aliveActorsHtml);
+            var deadActorsHtml = "";
+            _actors.Where(a => a.IsDead).ToList().ForEach(a =>
+            {
+                deadActorsHtml += a.ToHtml(conf.culture);
+            });
+            html += string.Format("<div>{0}: {1}</div>", _UiString.Dead, deadActorsHtml);
             // Messages
             _messages.ForEach(m =>
             {

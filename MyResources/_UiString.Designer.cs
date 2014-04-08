@@ -61,6 +61,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alive.
+        /// </summary>
+        public static string Alive {
+            get {
+                return ResourceManager.GetString("Alive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Characters List.
         /// </summary>
         public static string CharactersList {
@@ -84,6 +93,15 @@ namespace MyResources {
         public static string Create {
             get {
                 return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dead.
+        /// </summary>
+        public static string Dead {
+            get {
+                return ResourceManager.GetString("Dead", resourceCulture);
             }
         }
         
