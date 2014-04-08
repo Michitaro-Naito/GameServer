@@ -7,6 +7,7 @@ using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using ApiScheme.Scheme;
 
 namespace GameServer
 {
@@ -35,12 +36,15 @@ namespace GameServer
             container.CreateIfNotExists();
 
             // Names
-            var filename = string.Format("{0}.html", DateTime.UtcNow.ToString("yyyy-MM-dd_hh-mm-ss_fffffff"));
+            var filename = string.Format("{0}.html", DateTime.UtcNow.ToString("yyyy-MM-dd_HH-mm-ss_fffffff"));
             var blockBlob = container.GetBlockBlobReference(filename);
 
             // Creates or overwrites
             var bytes = Encoding.UTF8.GetBytes(html);
             blockBlob.UploadFromByteArray(bytes, 0, bytes.Length);
+
+            // Notifies ApiServer
+            ApiScheme.Client.Api.Get<AddPlayLogOut>(new AddPlayLogIn() { roomName = conf.name, fileName = filename });
 
             // Notifies Players
             SystemMessageAll("Uri: " + blockBlob.Uri);
