@@ -20,8 +20,12 @@ namespace GameServer
         {
             SystemMessageAll("Saving logs...");
 
-            // Forms HTML data
+            // ----- Forms HTML data -----
             var html = "";
+            // Conf
+            html += conf.ToHtml();
+            // Actors
+            // Messages
             _messages.ForEach(m =>
             {
                 html += m.ToHtml(conf.culture);

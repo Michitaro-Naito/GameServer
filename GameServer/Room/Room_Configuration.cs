@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace GameServer
 {
@@ -69,6 +70,23 @@ namespace GameServer
             public Configuration()
             {
                 culture = new CultureInfo("ja-JP");
+            }
+
+            public string ToHtml()
+            {
+                var html = "";
+                html += string.Format(
+                    "<div>{0}: {1}</div>",
+                    _Model.ResourceManager.GetString("Room_Name", culture),
+                    HttpUtility.HtmlEncode(name));
+                html += string.Format(
+                    "<div>{0}: {1}</div>",
+                    _Model.ResourceManager.GetString("Room_Max", culture),
+                    HttpUtility.HtmlEncode(max.ToString()));
+                html += string.Format("<div>{0}: {1}</div>",
+                    _Model.ResourceManager.GetString("Room_Interval", culture),
+                    HttpUtility.HtmlEncode(interval.ToString()));
+                return html;
             }
         }
     }
