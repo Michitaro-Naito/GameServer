@@ -173,6 +173,10 @@ namespace GameServer
                     {
                         RoomState = RoomState.Ended;
                         SystemMessageAll(new InterText("GameHasEnded", _.ResourceManager));
+
+                        // Saves logs to Azure Blob Storage...
+                        SaveLogs();
+
                         _needSync = true;
                     }
                     break;

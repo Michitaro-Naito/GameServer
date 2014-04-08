@@ -9,6 +9,10 @@ using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Globalization;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure;
 
 
 namespace GameServerTest
@@ -106,6 +110,23 @@ namespace GameServerTest
                 var colorIdentity = ColorHelper.GenerateColorIdentity(name);
                 Console.WriteLine(colorIdentity);
             }
+        }
+
+        [TestMethod]
+        public void Blob()
+        {
+            // Retrieve storage account from connection string.
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            // Create the blob client.
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+            // Retrieve a reference to a container. 
+            CloudBlobContainer container = blobClient.GetContainerReference("playlog");
+
+            // Create the container if it doesn't already exist.
+            container.CreateIfNotExists();
         }
     }
 }

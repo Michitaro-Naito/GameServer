@@ -99,5 +99,23 @@ namespace GameServer
                 return true;
             }
         }
+
+        public string ToHtml(CultureInfo culture)
+        {
+            var header = "";
+            header += mode.ToString();
+            if (from != null)
+                header += from.TitleAndName.GetString(culture);
+            else
+                header += "SYSTEM";
+            header += Created.ToString();
+
+            var internalHtml = "";
+            foreach (var row in bodyRows)
+            {
+                internalHtml += string.Format("<div>{0}</div>", System.Web.HttpUtility.HtmlEncode(row.GetString(culture)));
+            }
+            return string.Format("<div><div>{0}</div><div>{1}</div></div>", header, internalHtml);
+        }
     }
 }
