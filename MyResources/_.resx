@@ -183,4 +183,78 @@
   <data name="ThereIsNoWerewolf" xml:space="preserve">
     <value>There is no werewolf.</value>
   </data>
+  <data name="PlayLogCSS" xml:space="preserve">
+    <value>ul.actors{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul.actors li{
+    text-align: center;
+    width: 135px;
+    height: 64px;
+    float: left;
+    border: solid 1px #CCC;
+    white-space: nowrap;
+    overflow: hidden;
+}
+ul.actors li div.name{
+}
+ul.actors li table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul.messages{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ul.messages li{
+    margin: 0;
+    padding: 9px 12px;
+    background: white;
+    border-bottom: solid 1px #e8e8e8;
+    color: #333;
+}
+ul.messages li.mode1 {
+    background: #DFD;
+}
+
+ul.messages li.mode2 {
+    background: #DDD;
+}
+
+ul.messages li.mode3 {
+    background: #FCF;
+}
+ul.messages li div.from:after{
+    content: "";
+    clear: both;
+    height: 0;
+    display: block;
+    visibility: hidden;
+}
+ul.messages li div.from span.name{
+    font-weight: bold;
+    font-size: 14px;
+}
+ul.messages li div.from span.to{
+    font-weight: normal;
+    font-size: 12px;
+    color: #999;
+}
+ul.messages li div.from span.time{
+    float: right;
+    font-weight: normal;
+    font-size: 12px;
+    color: #999;
+}
+ul.messages li div.body{
+    margin-top: 2px;
+    font-weight: normal;
+    font-size: 14px;
+    color: #333;
+}</value>
+  </data>
 </root>

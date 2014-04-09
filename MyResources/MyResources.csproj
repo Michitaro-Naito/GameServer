@@ -192,7 +192,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="_.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>_.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="_.ja-JP.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

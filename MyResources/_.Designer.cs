@@ -232,6 +232,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PlayLogCSS {
+            get {
+                return ResourceManager.GetString("PlayLogCSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (Random).
         /// </summary>
         public static string Random {

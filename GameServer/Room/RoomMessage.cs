@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace GameServer
 {
@@ -102,20 +103,39 @@ namespace GameServer
 
         public string ToHtml(CultureInfo culture)
         {
-            var header = "";
-            header += mode.ToString();
+            var headerHtml = "";
+            var timeZone = TimeZoneInfo.Utc;
+            if(culture.ToString()=="ja-JP")
+                timeZone = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
+            var localCreated = TimeZoneInfo.ConvertTimeFromUtc(Created, timeZone);
+
             if (from != null)
-                header += from.TitleAndName.GetString(culture);
-            else
-                header += "SYSTEM";
-            header += Created.ToString();
+            {
+                var name = "";
+                name = HttpUtility.HtmlEncode(from.TitleAndName.GetString(culture));
+                headerHtml += string.Format("<span class=\"name\" style=\"color:{0};background-color:{1};\">{2}</span>",
+                    from.ColorIdentity.text, from.ColorIdentity.background, name);
+            }
+            
+            headerHtml += string.Format("<span class=\"time\">{0}</span>", localCreated.ToString("HH:mm"));
+
+            if (from != null)
+            {
+                var toString = "";
+                if (mode == Mode.Private && to != null)
+                    toString = to.TitleAndName.GetString(culture);
+                else
+                    toString = mode.ToLocalizedString(culture);
+                headerHtml += string.Format("<span class=\"to\">To {0}</span>", HttpUtility.HtmlEncode(toString));
+            }
 
             var internalHtml = "";
             foreach (var row in bodyRows)
             {
-                internalHtml += string.Format("<div>{0}</div>", System.Web.HttpUtility.HtmlEncode(row.GetString(culture)));
+                internalHtml += string.Format("<div>{0}</div>", HttpUtility.HtmlEncode(row.GetString(culture)));
             }
-            return string.Format("<div><div>{0}</div><div>{1}</div></div>", header, internalHtml);
+            return string.Format("<li class=\"mode{0}\"><div class=\"from\">{1}</div><div class=\"body\">{2}</div></li>",
+                (int)mode, headerHtml, internalHtml);
         }
     }
 }

@@ -23,6 +23,8 @@ namespace GameServer
 
             // ----- Forms HTML data -----
             var html = "";
+            // CSS
+            html += string.Format("<style>{0}</style>", _.PlayLogCSS);
             // Conf
             html += conf.ToHtml();
             // Actors
@@ -39,10 +41,12 @@ namespace GameServer
             });
             html += string.Format("<div>{0}: {1}</div>", _UiString.Dead, deadActorsHtml);
             // Messages
+            var messagesHtml = "";
             _messages.ForEach(m =>
             {
-                html += m.ToHtml(conf.culture);
+                messagesHtml += m.ToHtml(conf.culture);
             });
+            html += string.Format("<ul class=\"messages\">{0}</ul>", messagesHtml);
 
             // ----- Uploads to Blob -----
             // Gets the container
