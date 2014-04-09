@@ -66,6 +66,15 @@ namespace GameServer
             public int max;
             public int interval;
             public CultureInfo culture;
+            public TimeZoneInfo TimeZone
+            {
+                get
+                {
+                    if (culture.ToString() == "ja-JP")
+                        return TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
+                    return TimeZoneInfo.Utc;
+                }
+            }
 
             public Configuration()
             {

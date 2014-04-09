@@ -65,7 +65,7 @@ namespace GameServer
             blockBlob.UploadFromByteArray(bytes, 0, bytes.Length);
 
             // Notifies ApiServer
-            ApiScheme.Client.Api.Get<AddPlayLogOut>(new AddPlayLogIn() { roomName = conf.name, fileName = filename });
+            ApiScheme.Client.Api.Get<AddPlayLogOut>(new AddPlayLogIn() { log = new PlayLogInfo() { culture = conf.culture.ToString(), timezone = conf.TimeZone.Id, roomName = conf.name, fileName = filename } });
 
             // Notifies Players
             SystemMessageAll("Uri: " + blockBlob.Uri);
