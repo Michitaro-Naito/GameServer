@@ -21,7 +21,16 @@ namespace GameServer
         public int roomId;
         public string guid;
         public Configuration conf = new Configuration();
+
+        /// <summary>
+        /// Characters who are playing in this Room.
+        /// (Absent Characters excluded.)
+        /// </summary>
         List<Character> _characters = new List<Character>();
+
+        /// <summary>
+        /// Actors in this Room.
+        /// </summary>
         List<Actor> _actors = new List<Actor>();
         IHubContext _updateHub = null;
 
