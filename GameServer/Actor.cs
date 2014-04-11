@@ -29,6 +29,7 @@ namespace GameServer
         public bool isDead;
         public bool isRoomMaster;
         public GameServer.ColorHelper.ColorIdentity ColorIdentity { get; set; }
+        public bool isPresent;  // isNotAbsent, false if NPC
 
         public Role role;
         public bool isRoleSure;
@@ -44,6 +45,7 @@ namespace GameServer
             isDead = actor.IsDead;
             isRoomMaster = room.IsRoomMaster(actor);
             ColorIdentity = actor.ColorIdentity;
+            isPresent = actor.IsNPC? false: room.HasCharacter(actor.character);
 
             if (new[] { RoomState.Matchmaking, RoomState.Playing }.Contains(room.RoomState))
             {
