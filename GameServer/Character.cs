@@ -38,7 +38,8 @@ namespace GameServer
 
         public override string ToString()
         {
-            return string.Format("[{0}({1})]", Name, Player.userId);
+            return Name;
+            //return string.Format("[{0}({1})]", Name, Player.userId);
         }
 
         public override bool Equals(object obj)
