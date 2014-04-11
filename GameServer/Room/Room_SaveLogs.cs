@@ -9,11 +9,69 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using ApiScheme.Scheme;
 using MyResources;
+using ApiScheme.Client;
 
 namespace GameServer
 {
     partial class Room
     {
+        /// <summary>
+        /// Saves Win/Lose info to ApiServer.
+        /// </summary>
+        public void SavePerks()
+        {
+            try
+            {
+                // Forms request
+                var infos = new List<TransactionInfo>();
+                _actors.ForEach(a =>
+                {
+                    if (a.character == null)
+                        return;
+                    var items = new CharacterItems() { };
+                    if (a.Faction == FactionWon)
+                    {
+                        switch (a.Faction)
+                        {
+                            case Faction.Citizen:
+                                items.WonAsCitizen = 1;
+                                break;
+                            case Faction.Werewolf:
+                                items.WonAsWerewolf = 1;
+                                break;
+                            case Faction.Fox:
+                                items.WonAsFox = 1;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (a.Faction)
+                        {
+                            case Faction.Citizen:
+                                items.LostAsCitizen = 1;
+                                break;
+                            case Faction.Werewolf:
+                                items.LostAsWerewolf = 1;
+                                break;
+                            case Faction.Fox:
+                                items.LostAsFox = 1;
+                                break;
+                        }
+                    }
+                    var info = new TransactionInfo() { characterName = a.character.Name, items = items };
+                    infos.Add(info);
+                });
+
+                // Sends to ApiServer
+                Api.Get<TransactionOut>(new TransactionIn() { infos = infos });
+            }
+            catch
+            {
+                SystemMessageAll("Failed to save win/lose counts.");
+            }
+        }
+
         /// <summary>
         /// Saves logs to Azure Blob Storage.
         /// </summary>

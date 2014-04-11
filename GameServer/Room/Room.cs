@@ -27,6 +27,7 @@ namespace GameServer
 
         public int day;
         public double duration;
+        public Faction FactionWon { get; set; }
         bool _needSync = false;
 
         int _nextMessageId = 0;
@@ -173,6 +174,9 @@ namespace GameServer
                     {
                         RoomState = RoomState.Ended;
                         SystemMessageAll(new InterText("GameHasEnded", _.ResourceManager));
+
+                        // Save Win/Lose info.
+                        SavePerks();
 
                         // Saves logs to Azure Blob Storage...
                         SaveLogs();

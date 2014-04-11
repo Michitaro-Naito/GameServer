@@ -108,6 +108,7 @@ namespace GameServer
 
             if (factionWon != null)
             {
+                FactionWon = factionWon.Value;
                 SystemMessageAll(new InterText("FactionAWon", _.ResourceManager, new[] { factionWon.Value.ToInterText() }));
                 RoomState = RoomState.Ending;
                 duration = 2 * conf.interval;
