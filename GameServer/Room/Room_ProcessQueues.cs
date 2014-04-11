@@ -1,4 +1,5 @@
-﻿using MyResources;
+﻿using ApiScheme.Scheme;
+using MyResources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -186,14 +187,56 @@ namespace GameServer
 
                     AddMessage(new RoomMessage()
                     {
-                        //id = _nextMessageId++,
                         callerUserId = command.Player.userId,
                         mode = mode,
                         from = from,
                         to = to,
-                        //body = command.Message
                         bodyRows = new[] { new InterText(command.Message, null) }
                     });
+                }
+
+                // ----- Reports -----
+                if (type == typeof(RoomCommand.Report))
+                {
+                    var command = (RoomCommand.Report)commandBase;
+                    var client = _updateHub.Clients.Client(command.Player.connectionId);
+
+                    var messageToReport = _messages.FirstOrDefault(m=>m.id==command.MessageId);
+                    if (messageToReport == null)
+                    {
+                        client.addMessage("Message to report not found.");
+                        continue;
+                    }
+                    if (messageToReport.callerUserId == null)
+                    {
+                        client.addMessage("Message to report is not sent by human.");
+                        continue;
+                    }
+                    if (messageToReport.callerUserId == command.Player.userId)
+                    {
+                        client.addMessage("Message to report is sent by you.");
+                        continue;
+                    }
+
+                    var messagesToReport = _messages
+                        .Where(m => m.id <= command.MessageId)
+                        .OrderByDescending(m => m.id)
+                        .Take(50).ToList()
+                        .Select(m => new MessageInfo()
+                        {
+                            from = m.callerUserId,
+                            role = m.from != null ? m.from.role.ToString(): null,
+                            mode = m.mode.ToString(),
+                            body = string.Join(",", m.bodyRows.Select(t=>t.GetStringFor(command.Player)))
+                        }).ToList();
+                    var info = new ReportMessageIn()
+                    {
+                        userId = command.Player.userId,
+                        note = command.Note,
+                        messages = messagesToReport
+                    };
+                    ApiScheme.Client.Api.Get<ReportMessageOut>(info);
+                    client.addMessage("Message reported.");
                 }
 
                 // ----- Vote -----

@@ -314,6 +314,17 @@ namespace GameServer
             room.Queue(new RoomCommand.Send(Player, roomSendMode, actorId, message));
         }
 
+        public void RoomReportMessage(int messageId, string note)
+        {
+            if (Room == null)
+            {
+                SystemMessage("You are not in Room.");
+                return;
+            }
+            SystemMessage("Queueing to report..." + messageId + note);
+            Room.Queue(new RoomCommand.Report(Player, messageId, note));
+        }
+
         public void RoomConfigure(Room.ClientConfiguration conf)
         {
             var room = Room;

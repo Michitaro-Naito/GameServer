@@ -35,6 +35,18 @@ namespace GameServer.RoomCommand
         }
     }
 
+    public class Report : Base
+    {
+        public int MessageId { get; set; }
+        public string Note { get; set; }
+        public Report(Player player, int messageId, string note)
+            : base(player)
+        {
+            MessageId = messageId;
+            Note = note;
+        }
+    }
+
     public class AddCharacter : Base
     {
         public Character Character { get; private set; }
