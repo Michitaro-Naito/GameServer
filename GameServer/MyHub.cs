@@ -135,6 +135,15 @@ namespace GameServer
                 return;
             }
 
+            // Kicks Players who have the same UserId
+            var playersToKick = _players.Where(p => p.userId == pass.data.userId).ToList();
+            playersToKick.ForEach(p =>
+            {
+                Clients.Client(p.connectionId).gotDisconnectionRequest();
+            });
+            _players.RemoveAll(p => playersToKick.Contains(p));
+
+            // Accepts Player
             player.userId = pass.data.userId;
             try
             {
