@@ -15,6 +15,7 @@ namespace GameServer
     public class MyHub : Hub
     {
         // ----- Static Variable -----
+        static DateTime _bootTime = DateTime.UtcNow;
         static List<Player> _players = new List<Player>();
         static List<Room> _rooms = new List<Room>();
         static DateTime _lastUpdate = DateTime.UtcNow;
@@ -109,9 +110,16 @@ namespace GameServer
                 // Accepts Player
                 var p = new Player() { connectionId = Context.ConnectionId };
                 _players.Add(p);
+                Clients.Caller.gotBootTime(_bootTime);
             }
 
             return base.OnConnected();
+        }
+
+        public override Task OnReconnected()
+        {
+            Clients.Caller.gotBootTime(_bootTime);
+            return base.OnReconnected();
         }
 
         public override Task OnDisconnected()
