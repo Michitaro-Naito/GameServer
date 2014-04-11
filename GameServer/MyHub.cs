@@ -17,6 +17,7 @@ namespace GameServer
         static List<Player> _players = new List<Player>();
         static List<Room> _rooms = new List<Room>();
         static DateTime _lastUpdate = DateTime.UtcNow;
+        static List<LobbyMessage> _messages = new List<LobbyMessage>();
         public static double Elapsed { get; private set; }
 
 
@@ -71,8 +72,18 @@ namespace GameServer
         
         public override Task OnConnected()
         {
-            var p = new Player() { connectionId = Context.ConnectionId };
-            _players.Add(p);
+            if (_players.Count >= 400)
+            {
+                // Server is full.
+                Clients.Caller.gotDisconnectionRequest();
+            }
+            else
+            {
+                // Accepts Player
+                var p = new Player() { connectionId = Context.ConnectionId };
+                _players.Add(p);
+            }
+
             return base.OnConnected();
         }
 
@@ -199,6 +210,17 @@ namespace GameServer
             Clients.All.addMessage(Player.userId, message);
         }
 
+        public void LobbySend(string message)
+        {
+            if (Character == null)
+                return;
+            var newMessage = new LobbyMessage() { name = Character.Name, body = message };
+            _messages.Add(newMessage);
+            while (_messages.Count > 50)
+                _messages.RemoveAt(0);
+            Clients.All.gotLobbyMessages(new[] { newMessage });
+        }
+
         public void RoomSend(int roomSendMode, int actorId, string message)
         {
             var room = Room;
@@ -301,6 +323,8 @@ namespace GameServer
             Player.Character = character;
             SystemMessage("Character found and selected.");
             BroughtTo(ClientState.Rooms);
+            Clients.Client(Player.connectionId).gotLobbyMessages(_messages);
+            Clients.Client(Player.connectionId).gotLobbyMessages(new []{ new LobbyMessage(){ name = "SYSTEM", body = string.Format("Players:{0}", _players.Count) }});
         }
 
         void GetRooms()

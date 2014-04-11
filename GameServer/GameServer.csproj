@@ -120,6 +120,7 @@
     <Compile Include="GenderInfo.cs" />
     <Compile Include="InterText.cs" />
     <Compile Include="ClientModel\IValidatable.cs" />
+    <Compile Include="LobbyMessage.cs" />
     <Compile Include="RoleInfo.cs" />
     <Compile Include="Room\RoomCommand.cs" />
     <Compile Include="Room\RoomInfo.cs" />
