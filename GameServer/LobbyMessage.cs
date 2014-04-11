@@ -6,17 +6,33 @@ using System.Threading.Tasks;
 
 namespace GameServer
 {
-    class LobbyMessage
+    public class LobbyMessageInfo
     {
         public DateTime Created;
         public string name;
         public string body;
+    }
+
+    class LobbyMessage
+    {
+        public DateTime Created;
+        public string name;
+        public InterText body;
 
         public LobbyMessage()
         {
             Created = DateTime.UtcNow;
             name = "";
-            body = "";
+        }
+
+        public LobbyMessageInfo ToInfo(Player player)
+        {
+            return new LobbyMessageInfo()
+            {
+                Created = Created,
+                name = name,
+                body = body.GetStringFor(player)
+            };
         }
     }
 }

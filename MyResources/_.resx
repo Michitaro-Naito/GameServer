@@ -257,4 +257,7 @@ ul.messages li div.body{
     color: #333;
 }</value>
   </data>
+  <data name="WelcomeAChattingBPlayingCSelectingCharacterD" xml:space="preserve">
+    <value>Welcome, {0}! {1} players are chatting. {2} players are playing. {3} players are selecting characters.</value>
+  </data>
 </root>

@@ -1,6 +1,7 @@
 ﻿using ApiScheme.Client;
 using ApiScheme.Scheme;
 using Microsoft.AspNet.SignalR;
+using MyResources;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -63,6 +64,28 @@ namespace GameServer
                 if (Character == null)
                     return null;
                 return _rooms.FirstOrDefault(r => r.HasCharacter(Character));
+            }
+        }
+
+        public IEnumerable<Player> PlayersWithoutCharacter
+        {
+            get
+            {
+                return _players.Where(p => p.Character == null);
+            }
+        }
+        public IEnumerable<Player> PlayersInLobby
+        {
+            get
+            {
+                return _players.Where(p => p.Character != null && !_rooms.Any(r => r.HasCharacter(p.Character)));
+            }
+        }
+        public IEnumerable<Player> PlayersInGame
+        {
+            get
+            {
+                return _players.Where(p => p.Character != null && _rooms.Any(r => r.HasCharacter(p.Character)));
             }
         }
 
@@ -223,11 +246,14 @@ namespace GameServer
         {
             if (Character == null)
                 return;
-            var newMessage = new LobbyMessage() { name = Character.Name, body = message };
+            var newMessage = new LobbyMessage() { name = Character.Name, body = new InterText(message, null) };
             _messages.Add(newMessage);
             while (_messages.Count > 50)
                 _messages.RemoveAt(0);
-            Clients.All.gotLobbyMessages(new[] { newMessage });
+            _players.ForEach(p =>
+            {
+                Clients.Client(p.connectionId).gotLobbyMessages(new[] { newMessage }.Select(m => m.ToInfo(p)));
+            });
         }
 
         public void RoomSend(int roomSendMode, int actorId, string message)
@@ -332,8 +358,13 @@ namespace GameServer
             Player.Character = character;
             SystemMessage("Character found and selected.");
             BroughtTo(ClientState.Rooms);
-            Clients.Client(Player.connectionId).gotLobbyMessages(_messages);
-            Clients.Client(Player.connectionId).gotLobbyMessages(new []{ new LobbyMessage(){ name = "SYSTEM", body = string.Format("Players:{0}", _players.Count) }});
+            Clients.Client(Player.connectionId).gotLobbyMessages(_messages.Select(m=>m.ToInfo(Player)), true);
+            Clients.Client(Player.connectionId).gotLobbyMessages(new[] { new LobbyMessage() { name = "SYSTEM", body = new InterText("WelcomeAChattingBPlayingCSelectingCharacterD", _.ResourceManager, new[] {
+                new InterText(Player.Character.Name, null),
+                new InterText(PlayersInLobby.Count().ToString(), null),
+                new InterText(PlayersInGame.Count().ToString(), null),
+                new InterText(PlayersWithoutCharacter.Count().ToString(), null)
+            }) } }.Select(m => m.ToInfo(Player)));
         }
 
         void GetRooms()
