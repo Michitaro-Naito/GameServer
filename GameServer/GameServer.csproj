@@ -132,6 +132,7 @@
     <Compile Include="Room\Room_ProcessQueues.cs" />
     <Compile Include="Room\Room_Queueing.cs" />
     <Compile Include="Room\Room_SaveLogs.cs" />
+    <Compile Include="Room\Room_Utility.cs" />
     <Compile Include="UT.cs" />
     <Compile Include="GamePass.cs" />
     <Compile Include="MyHub.cs" />

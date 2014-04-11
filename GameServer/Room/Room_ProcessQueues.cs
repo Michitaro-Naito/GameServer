@@ -78,7 +78,7 @@ namespace GameServer
                 {
                     var command = (RoomCommand.RemovePlayer)commandBase;
                     var client = _updateHub.Clients.Client(command.Target.connectionId);
-                    _characters.RemoveAll(c => c.Player == command.Target);
+                    /*_characters.RemoveAll(c => c.Player == command.Target);
                     _actors.Where(a => a.IsOwnedBy(command.Target)).ToList().ForEach(a =>
                     {
                         // Notifies players that someone gone.
@@ -86,7 +86,8 @@ namespace GameServer
 
                         // Removes
                         a.character = null;
-                    });
+                    });*/
+                    Kick(command.Target.userId);
 
                     // Brings removed Player to Rooms scene.
                     client.broughtTo(ClientState.Rooms);

@@ -21,6 +21,10 @@ namespace GameServer
         static List<LobbyMessage> _messages = new List<LobbyMessage>();
         public static double Elapsed { get; private set; }
 
+        static List<GetBlacklistOut> _blacklists = new List<GetBlacklistOut>();
+        static int _nexBlacklistPage = 0;
+        static double _durationUntilNextPage = 0;
+
 
 
         // ----- Property -----
@@ -128,6 +132,34 @@ namespace GameServer
             Elapsed = (now - _lastUpdate).TotalSeconds;
             _lastUpdate = now;
             var hub = GlobalHost.ConnectionManager.GetHubContext<MyHub>();
+
+            // Updates Hub
+            _durationUntilNextPage -= Elapsed;
+            if (_durationUntilNextPage < 0)
+            {
+                Console.WriteLine("Getting page " + _nexBlacklistPage);
+                var blacklist = Api.Get<GetBlacklistOut>(new GetBlacklistIn() { page = _nexBlacklistPage });
+                if (_blacklists.Count > _nexBlacklistPage)
+                    _blacklists[_nexBlacklistPage] = blacklist;
+                else
+                    _blacklists.Add(blacklist);
+                _nexBlacklistPage++;
+
+                var str = "";
+                _blacklists.ForEach(b => b.infos.ForEach(info => str += info.userId + ","));
+                Console.WriteLine("CurrentBlacklist: " + str);
+
+                blacklist.infos.ForEach(info =>
+                {
+                    Kick(hub, info.userId);
+                });
+
+                if (blacklist.infos.Count == 0)
+                    _nexBlacklistPage = 0;
+                _durationUntilNextPage = 10;
+            }
+
+            // Updates Rooms
             _rooms.ForEach(r => r.Update(hub));
 
             // Cleans Rooms
@@ -155,6 +187,13 @@ namespace GameServer
             if (pass == null)
             {
                 SystemMessage("Invalid GamePass. Please login again.");
+                return;
+            }
+
+            if (_blacklists.Any(b => b.infos.Any(info => info.userId == pass.data.userId)))
+            {
+                SystemMessage("You are banned.");
+                Clients.Caller.gotDisconnectionRequest();
                 return;
             }
 
@@ -459,6 +498,25 @@ namespace GameServer
 
             _rooms.ForEach(r => r.Queue(new RoomCommand.RemovePlayer(Player, Player)));
             room.Queue(new RoomCommand.AddCharacter(Player, Player.Character, password));
+        }
+
+        /// <summary>
+        /// Kicks Player from this server.
+        /// </summary>
+        /// <param name="userId"></param>
+        internal static void Kick(IHubContext hub, string userId)
+        {
+            // Kicks from Room
+            _rooms.ForEach(r => r.Kick(userId));
+
+            // Kicks from Lobby
+            _players.Where(p => p.userId == userId).ToList().ForEach(p =>
+            {
+                // Tells client to disconnect
+                hub.Clients.Client(p.connectionId).gotDisconnectionRequest();
+            });
+            // Removes from this server
+            _players.RemoveAll(p => p.userId == userId);
         }
     }
 }
