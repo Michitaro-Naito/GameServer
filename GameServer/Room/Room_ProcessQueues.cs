@@ -79,19 +79,10 @@ namespace GameServer
                 {
                     var command = (RoomCommand.RemovePlayer)commandBase;
                     var client = _updateHub.Clients.Client(command.Target.connectionId);
-                    /*_characters.RemoveAll(c => c.Player == command.Target);
-                    _actors.Where(a => a.IsOwnedBy(command.Target)).ToList().ForEach(a =>
-                    {
-                        // Notifies players that someone gone.
-                        SystemMessageAll(new InterText("AHasGoneFromB", MyResources._.ResourceManager, new[] { new InterText(a.character.Name, null), a.TitleAndName }));
 
-                        // Removes
-                        a.character = null;
-                    });*/
-                    Kick(command.Target.userId);
-
-                    // Brings removed Player to Rooms scene.
-                    client.broughtTo(ClientState.Rooms);
+                    if (Kick(command.Target.userId) > 0)
+                        // Brings removed Player to Rooms scene.
+                        client.broughtTo(ClientState.Rooms);
 
                     // Character removed. Shares this information later.
                     _needSync = true;

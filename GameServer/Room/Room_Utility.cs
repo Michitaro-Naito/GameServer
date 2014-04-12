@@ -12,15 +12,15 @@ namespace GameServer
         /// Kicks Player out from this room.
         /// </summary>
         /// <param name="userId"></param>
-        internal void Kick(string userId)
+        internal int Kick(string userId)
         {
             // Removes from connected characters.
-            _characters.RemoveAll(c => c.Player != null && c.Player.userId == userId);
+            var amountKicked = _characters.RemoveAll(c => c.Player != null && c.Player.userId == userId);
 
             // Removes Actors?
             if (!new[] { RoomState.Configuring, RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState))
                 // Don't have to.
-                return;
+                return amountKicked;
             // Kicks
             _actors.Where(a => a.character!=null
                 && a.character.Player.userId==userId    // Owned by Player.
@@ -35,6 +35,8 @@ namespace GameServer
 
                 _needSync = true;
             });
+
+            return amountKicked;
         }
     }
 }
