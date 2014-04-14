@@ -124,7 +124,7 @@
     <value>キャラクター一覧</value>
   </data>
   <data name="Configure" xml:space="preserve">
-    <value>設定する</value>
+    <value>募集を開始する</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>作成する</value>

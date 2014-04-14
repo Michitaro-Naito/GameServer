@@ -135,4 +135,10 @@
   <data name="InvalidPasswordPleaseTryAgain" xml:space="preserve">
     <value>Password you have entered was invalid. Please try again later.</value>
   </data>
+  <data name="MaxReached" xml:space="preserve">
+    <value>Max reached.</value>
+  </data>
+  <data name="NotUnique" xml:space="preserve">
+    <value>Already taken. Try another.</value>
+  </data>
 </root>

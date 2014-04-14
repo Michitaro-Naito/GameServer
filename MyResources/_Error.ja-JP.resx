@@ -135,4 +135,10 @@
   <data name="InvalidPasswordPleaseTryAgain" xml:space="preserve">
     <value>入力したパスワードが村のパスワードと一致しませんでした。よくお確かめの上で再度お試しください。</value>
   </data>
+  <data name="MaxReached" xml:space="preserve">
+    <value>登録上限数に達しています。</value>
+  </data>
+  <data name="NotUnique" xml:space="preserve">
+    <value>既に登録されています。他をお試しください。</value>
+  </data>
 </root>

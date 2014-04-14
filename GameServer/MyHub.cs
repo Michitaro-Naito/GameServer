@@ -394,6 +394,16 @@ namespace GameServer
             {
                 var o = Api.Get<CreateCharacterOut>(new CreateCharacterIn() { userId = Player.userId, name = name });
             }
+            catch (ApiScheme.ApiMaxReachedException)
+            {
+                client.gotValidationErrors(model.ModelName, new List<string>() { _Error.ResourceManager.GetString("MaxReached", Player.Culture) });
+                return;
+            }
+            catch (ApiScheme.ApiNotUniqueException)
+            {
+                client.gotValidationErrors(model.ModelName, new List<string>() { _Error.ResourceManager.GetString("NotUnique", Player.Culture) });
+                return;
+            }
             catch(Exception e)
             {
                 // Something went wrong

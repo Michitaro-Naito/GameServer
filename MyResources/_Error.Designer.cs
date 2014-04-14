@@ -113,5 +113,23 @@ namespace MyResources {
                 return ResourceManager.GetString("InvalidPasswordPleaseTryAgain", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max reached..
+        /// </summary>
+        public static string MaxReached {
+            get {
+                return ResourceManager.GetString("MaxReached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already taken. Try another..
+        /// </summary>
+        public static string NotUnique {
+            get {
+                return ResourceManager.GetString("NotUnique", resourceCulture);
+            }
+        }
     }
 }
