@@ -129,6 +129,9 @@
   <data name="AMustBeUpToBCharactersOrNull" xml:space="preserve">
     <value>{0}は{1}文字以内を入力するか空欄にしてください。</value>
   </data>
+  <data name="CouldNotJoin" xml:space="preserve">
+    <value>参加できませんでした</value>
+  </data>
   <data name="InvalidPassword" xml:space="preserve">
     <value>パスワードが正しくありません</value>
   </data>
@@ -140,5 +143,8 @@
   </data>
   <data name="NotUnique" xml:space="preserve">
     <value>既に登録されています。他をお試しください。</value>
+  </data>
+  <data name="RoomIsFullBusyOrEnded" xml:space="preserve">
+    <value>参加しようとした村は満員か、一時的なビジー状態、もしくはゲームが終了しています。</value>
   </data>
 </root>

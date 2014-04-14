@@ -45,13 +45,14 @@ namespace GameServer
                     if(!CanJoin(command.Character))
                     {
                         client.addMessage("Could not join. Room is full, busy or ended.");
+                        client.gotError(new Error() { Title = new InterText("CouldNotJoin", _Error.ResourceManager), Body = new InterText("RoomIsFullBusyOrEnded", _Error.ResourceManager) }.GetInfo(command.Player.Culture));
                         continue;
                     }
                     if (RequiresPassword && command.Password != conf.password)
                     {
                         client.addMessage("Invalid password. Could not join.");
-                        client.addMessage(command.Password);
-                        client.addMessage(conf.password);
+                        //client.addMessage(command.Password);
+                        //client.addMessage(conf.password);
                         client.gotError(new Error() { Title = new InterText("InvalidPassword", _Error.ResourceManager), Body = new InterText("InvalidPasswordPleaseTryAgain", _Error.ResourceManager) }.GetInfo(command.Player.Culture));
                         continue;
                     }

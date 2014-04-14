@@ -97,6 +97,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not Join.
+        /// </summary>
+        public static string CouldNotJoin {
+            get {
+                return ResourceManager.GetString("CouldNotJoin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Password.
         /// </summary>
         public static string InvalidPassword {
@@ -129,6 +138,15 @@ namespace MyResources {
         public static string NotUnique {
             get {
                 return ResourceManager.GetString("NotUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A room is full, busy or closed..
+        /// </summary>
+        public static string RoomIsFullBusyOrEnded {
+            get {
+                return ResourceManager.GetString("RoomIsFullBusyOrEnded", resourceCulture);
             }
         }
     }

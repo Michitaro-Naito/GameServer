@@ -141,4 +141,10 @@
   <data name="NotUnique" xml:space="preserve">
     <value>Already taken. Try another.</value>
   </data>
+  <data name="CouldNotJoin" xml:space="preserve">
+    <value>Could not Join</value>
+  </data>
+  <data name="RoomIsFullBusyOrEnded" xml:space="preserve">
+    <value>A room is full, busy or closed.</value>
+  </data>
 </root>
