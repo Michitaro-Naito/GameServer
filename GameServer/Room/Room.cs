@@ -69,7 +69,12 @@ namespace GameServer
                 // Just starting
                 return false;
 
-            if (_characters.Count >= conf.max)
+            if (RoomState == RoomState.Matchmaking && _characters.Count >= conf.max)
+                // Full
+                return false;
+
+            if (RoomState==RoomState.Playing && AliveNPCs.Count() == 0)
+                // No empty slot
                 return false;
 
             return true;

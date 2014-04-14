@@ -17,6 +17,10 @@ namespace GameServer
         {
             AliveActors.Where(predicate).ToList().ForEach(action);
         }
+        public IEnumerable<Actor> AliveNPCs
+        {
+            get { return AliveActors.Where(a => a.IsNPC); }
+        }
 
         // ----- Team -----
         public IEnumerable<Actor> AliveCitizenTeam

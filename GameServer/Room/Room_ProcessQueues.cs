@@ -55,14 +55,30 @@ namespace GameServer
                         client.gotError(new Error() { Title = new InterText("InvalidPassword", _Error.ResourceManager), Body = new InterText("InvalidPasswordPleaseTryAgain", _Error.ResourceManager) }.GetInfo(command.Player.Culture));
                         continue;
                     }
+
                     _characters.Add(command.Character);
-                    var npc = _actors.Where(a => a.IsNPC).FirstOrDefault();
-                    if (npc != null)
+                    var existing = _actors.FirstOrDefault(a => a.character == command.Character);
+                    if (existing == null)
                     {
-                        npc.character = command.Character;
-                        SystemMessageAll(new InterText("AHasJoinedAsB", MyResources._.ResourceManager, new[] { new InterText(command.Character.Name, null), npc.TitleAndName }));
+                        // No existing Actor. Adds or Replaces one...
+                        if (RoomState==RoomState.Configuring || RoomState == RoomState.Matchmaking)
+                        {
+                            // Adds Actor
+                            AddActorsForCharacters();
+                        }
+                        else
+                        {
+                            // Replaces NPC
+                            var npc = AliveNPCs.FirstOrDefault();  //_actors.Where(a => a.IsNPC).FirstOrDefault();
+                            if (npc == null)
+                            {
+                                client.addMessage("Could not join");
+                                continue;
+                            }
+                            npc.character = command.Character;
+                            SystemMessageAll(new InterText("AHasJoinedAsB", MyResources._.ResourceManager, new[] { new InterText(command.Character.Name, null), npc.TitleAndName }));
+                        }
                     }
-                    AddActorsForCharacters();
                     client.addMessage("Joined.");
                     client.broughtTo(ClientState.Playing);
 
