@@ -249,6 +249,7 @@ namespace GameServer
                 if (yourActor != null)
                     yourActorId = yourActor.id;
                 var actors = _actors.Select(a => new ActorInfo(this, c.Player, yourActor, a)).ToList();
+                client.gotRoomConfigurations(conf);
                 client.gotRoomState(RoomState);
                 client.gotActors(actors);
                 client.gotYourActorId(yourActorId);
