@@ -117,6 +117,7 @@ namespace GameServer
                     client.addMessage("You have called Configure");
                     SystemMessageAll(new InterText("WerewolvesRumor", _.ResourceManager));
                     SystemMessageAll(new InterText("MatchmakingBegan", _.ResourceManager));
+                    //SendRules();
                     AddActorsForCharacters();
                     RoomState = RoomState.Matchmaking;
 

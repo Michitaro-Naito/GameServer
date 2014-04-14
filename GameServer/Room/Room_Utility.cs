@@ -38,5 +38,24 @@ namespace GameServer
 
             return amountKicked;
         }
+
+        internal void SendRules()
+        {
+            /*村の掟
+--------------------
+・ささやきを使用できます。(恋人だけは受信したささやきを見れません。)
+・初日占いがあります。(占い師はランダムにひとり、村人チームのメンバーがわかった状態でスタートします。)
+・霊媒師が弱体化されています。(霊媒師は犠牲者の種族(村人,人狼,妖狐)しかわかりません。)
+・COボタンがあります。(システムメッセージを使って自らの役職を宣言できます。(使用推奨))
+--------------------*/
+            var messages = new List<InterText>();
+            messages.Add(new InterText("村の掟", null));
+            messages.Add(new InterText("--------------------", null));
+            messages.Add(new InterText("・ささやきを使用できます。", null));
+            messages.Add(new InterText("・初日占いがあります。(占い師はランダムにひとり、村人チームのメンバーがわかった状態でスタートします。)", null));
+            messages.Add(new InterText("・霊媒師が弱体化されています。(霊媒師は犠牲者の種族(村人,人狼,妖狐)しかわかりません。)", null));
+            messages.Add(new InterText("--------------------", null));
+            SystemMessageAll(messages.ToArray());
+        }
     }
 }

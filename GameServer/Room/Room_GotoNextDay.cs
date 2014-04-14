@@ -318,6 +318,8 @@ namespace GameServer
                 {
                     str.Add(new InterText("{0}: {1}", null, new []{ new InterText(entry.Key.ToKey(), _Enum.ResourceManager), new InterText(entry.Value.ToString(), null) }));
                 }
+
+                SendRules();
             }
             SystemMessageAll(str.ToArray());
         }
