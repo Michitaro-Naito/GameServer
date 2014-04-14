@@ -14,8 +14,11 @@ namespace GameServer
         public int max;
         public int interval;
         public bool requiresPassword;
+        public int alivePlayers;
+        public int aliveActors;
+        public RoomState state;
 
-        public RoomInfo(Room room)
+        /*public RoomInfo(Room room)
         {
             roomId = room.roomId;
             guid = room.guid;
@@ -23,6 +26,6 @@ namespace GameServer
             max = room.conf.max;
             interval = room.conf.interval;
             requiresPassword = room.RequiresPassword;
-        }
+        }*/
     }
 }

@@ -451,7 +451,7 @@ namespace GameServer
                 else
                     SystemMessage(r.ToString() + "(Hidden)");
             });
-            var info = _rooms.Select(r => new RoomInfo(r)).ToList();
+            var info = _rooms.Where(r=>new []{RoomState.Matchmaking, RoomState.Playing}.Contains(r.RoomState)).Select(r => /*new RoomInfo(r)*/r.ToInfo()).ToList();
             Clients.Caller.gotRooms(info);
         }
 

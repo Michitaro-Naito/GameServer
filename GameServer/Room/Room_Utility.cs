@@ -22,8 +22,8 @@ namespace GameServer
                 // Don't have to.
                 return amountKicked;
             // Kicks
-            _actors.Where(a => a.character!=null
-                && a.character.Player.userId==userId    // Owned by Player.
+            _actors.Where(a => a.character != null
+                && a.character.Player.userId == userId    // Owned by Player.
                 && !a.IsDead                            // Not dead.
                 ).ToList().ForEach(a =>
             {
@@ -56,6 +56,22 @@ namespace GameServer
             messages.Add(new InterText("・霊媒師が弱体化されています。(霊媒師は犠牲者の種族(村人,人狼,妖狐)しかわかりません。)", null));
             messages.Add(new InterText("--------------------", null));
             SystemMessageAll(messages.ToArray());
+        }
+
+        internal RoomInfo ToInfo()
+        {
+            return new RoomInfo()
+            {
+                roomId = roomId,
+                guid = guid,
+                name = conf.name,
+                max = conf.max,
+                interval = conf.interval,
+                requiresPassword = RequiresPassword,
+                alivePlayers = AliveActors.Count(a=>!a.IsNPC),
+                aliveActors = AliveActors.Count(),
+                state = RoomState
+            };
         }
     }
 }
