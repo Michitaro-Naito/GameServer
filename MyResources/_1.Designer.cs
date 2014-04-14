@@ -205,6 +205,24 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Log can be downloaded from:.
+        /// </summary>
+        public static string LogCanBeDownloaded {
+            get {
+                return ResourceManager.GetString("LogCanBeDownloaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The matchmaking began..
+        /// </summary>
+        public static string MatchmakingBegan {
+            get {
+                return ResourceManager.GetString("MatchmakingBegan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nobody executed because of the insufficient number of votes..
         /// </summary>
         public static string NobodyExecutedBecauseOfInsufficientNumberOfVotes {
@@ -232,7 +250,37 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to ul.actors{
+        ///    margin: 0;
+        ///    padding: 0;
+        ///    list-style: none;
+        ///}
+        ///ul.actors li{
+        ///    text-align: center;
+        ///    width: 135px;
+        ///    height: 64px;
+        ///    float: left;
+        ///    border: solid 1px #CCC;
+        ///    white-space: nowrap;
+        ///    overflow: hidden;
+        ///}
+        ///ul.actors li div.name{
+        ///}
+        ///ul.actors li table{
+        ///    margin-left: auto;
+        ///    margin-right: auto;
+        ///}
+        ///
+        ///ul.messages{
+        ///    margin: 0;
+        ///    padding: 0;
+        ///    list-style: none;
+        ///}
+        ///ul.messages li{
+        ///    margin: 0;
+        ///    padding: 9px 12px;
+        ///    background: white;
+        ///    bord [rest of string was truncated]&quot;;.
         /// </summary>
         public static string PlayLogCSS {
             get {
@@ -264,6 +312,24 @@ namespace MyResources {
         public static string ThereIsNoWerewolf {
             get {
                 return ResourceManager.GetString("ThereIsNoWerewolf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome, {0}! {1} players are chatting. {2} players are playing. {3} players are selecting characters..
+        /// </summary>
+        public static string WelcomeAChattingBPlayingCSelectingCharacterD {
+            get {
+                return ResourceManager.GetString("WelcomeAChattingBPlayingCSelectingCharacterD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a rumor that &quot;Werewolves&quot;; human-like predators have infiltrated into this town..
+        /// </summary>
+        public static string WerewolvesRumor {
+            get {
+                return ResourceManager.GetString("WerewolvesRumor", resourceCulture);
             }
         }
     }

@@ -10,6 +10,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using ApiScheme.Scheme;
 using MyResources;
 using ApiScheme.Client;
+using System.Configuration;
 
 namespace GameServer
 {
@@ -77,8 +78,6 @@ namespace GameServer
         /// </summary>
         public void SaveLogs()
         {
-            SystemMessageAll("Saving logs...");
-
             // ----- Forms HTML data -----
             var html = "";
             // CSS
@@ -123,12 +122,16 @@ namespace GameServer
             blockBlob.UploadFromByteArray(bytes, 0, bytes.Length);
 
             // Notifies ApiServer
-            ApiScheme.Client.Api.Get<AddPlayLogOut>(new AddPlayLogIn() { log = new PlayLogInfo() { culture = conf.culture.ToString(), timezone = conf.TimeZone.Id, roomName = conf.name, fileName = filename } });
+            var o = ApiScheme.Client.Api.Get<AddPlayLogOut>(new AddPlayLogIn() { log = new PlayLogInfo() { culture = conf.culture.ToString(), timezone = conf.TimeZone.Id, roomName = conf.name, fileName = filename } });
 
             // Notifies Players
-            SystemMessageAll("Uri: " + blockBlob.Uri);
-            SystemMessageAll("StorageUri: " + blockBlob.StorageUri);
-            SystemMessageAll(html);
+            SystemMessageAll(new []{
+                new InterText("LogCanBeDownloaded", _.ResourceManager),
+                new InterText(string.Format(ConfigurationManager.AppSettings["PlayLogDownloadUrl"], conf.culture.ToString(), o.id), null)
+            });
+            //SystemMessageAll("Uri: " + blockBlob.Uri);
+            //SystemMessageAll("StorageUri: " + blockBlob.StorageUri);
+            //SystemMessageAll(html);
         }
     }
 }

@@ -40,6 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_.resx</DependentUpon>
+    </Compile>
     <Compile Include="_Error.ja-JP.Designer.cs">
       <DependentUpon>_Error.ja-JP.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -97,11 +102,6 @@
     </Compile>
     <Compile Include="_Enum.Designer.cs">
       <DependentUpon>_Enum.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="_.Designer.cs">
-      <DependentUpon>_.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>

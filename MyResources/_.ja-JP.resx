@@ -186,6 +186,9 @@
   <data name="WelcomeAChattingBPlayingCSelectingCharacterD" xml:space="preserve">
     <value>ようこそ、{0}さん！　{1}人がチャット中、{2}人がプレイ中、{3}人がキャラクター選択中です。</value>
   </data>
+  <data name="LogCanBeDownloaded" xml:space="preserve">
+    <value>以下のURLから記録をダウンロードできます：</value>
+  </data>
   <data name="MatchmakingBegan" xml:space="preserve">
     <value>村人の募集が始まりました。ルームマスターがゲームを開始するまでしばらくお待ちください。</value>
   </data>

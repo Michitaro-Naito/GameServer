@@ -266,4 +266,7 @@ ul.messages li div.body{
   <data name="WerewolvesRumor" xml:space="preserve">
     <value>There is a rumor that "Werewolves"; human-like predators have infiltrated into this town.</value>
   </data>
+  <data name="LogCanBeDownloaded" xml:space="preserve">
+    <value>Log can be downloaded from:</value>
+  </data>
 </root>
