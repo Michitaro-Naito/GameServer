@@ -124,10 +124,11 @@ namespace GameServer
 
         public override Task OnDisconnected()
         {
-            var room = Room;
+            /*var room = Room;
             if (room != null)
                 room.Queue(new RoomCommand.RemovePlayer(Player, Player));
-            _players.RemoveAll(p => p.connectionId == Context.ConnectionId);
+            _players.RemoveAll(p => p.connectionId == Context.ConnectionId);*/
+            Kick(Player.userId);
             return base.OnDisconnected();
         }
 
@@ -206,12 +207,13 @@ namespace GameServer
             }
 
             // Kicks Players who have the same UserId
-            var playersToKick = _players.Where(p => p.userId == pass.data.userId).ToList();
+            /*var playersToKick = _players.Where(p => p.userId == pass.data.userId).ToList();
             playersToKick.ForEach(p =>
             {
                 Clients.Client(p.connectionId).gotDisconnectionRequest();
             });
-            _players.RemoveAll(p => playersToKick.Contains(p));
+            _players.RemoveAll(p => playersToKick.Contains(p));*/
+            Kick(pass.data.userId);
 
             // Accepts Player
             player.userId = pass.data.userId;
@@ -543,6 +545,21 @@ namespace GameServer
             {
                 // Tells client to disconnect
                 hub.Clients.Client(p.connectionId).gotDisconnectionRequest();
+            });
+            // Removes from this server
+            _players.RemoveAll(p => p.userId == userId);
+        }
+
+        internal void Kick(string userId)
+        {
+            // Kicks from Room
+            _rooms.ForEach(r => r.Kick(userId));
+
+            // Kicks from Lobby
+            _players.Where(p => p.userId == userId).ToList().ForEach(p =>
+            {
+                // Tells client to disconnect
+                Clients.Client(p.connectionId).gotDisconnectionRequest();
             });
             // Removes from this server
             _players.RemoveAll(p => p.userId == userId);
