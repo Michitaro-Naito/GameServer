@@ -186,4 +186,10 @@
   <data name="WelcomeAChattingBPlayingCSelectingCharacterD" xml:space="preserve">
     <value>ようこそ、{0}さん！　{1}人がチャット中、{2}人がプレイ中、{3}人がキャラクター選択中です。</value>
   </data>
+  <data name="MatchmakingBegan" xml:space="preserve">
+    <value>村人の募集が始まりました。ルームマスターがゲームを開始するまでしばらくお待ちください。</value>
+  </data>
+  <data name="WerewolvesRumor" xml:space="preserve">
+    <value>人間の姿をした狼『人狼』が、この村に紛れ込んでいるという噂が広まっています。</value>
+  </data>
 </root>

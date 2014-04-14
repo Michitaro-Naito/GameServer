@@ -114,10 +114,12 @@ namespace GameServer
                     conf = command.Configuration.ToConfiguration();
 
                     // Initializes Matchmaking
+                    client.addMessage("You have called Configure");
+                    SystemMessageAll(new InterText("WerewolvesRumor", _.ResourceManager));
+                    SystemMessageAll(new InterText("MatchmakingBegan", _.ResourceManager));
                     AddActorsForCharacters();
                     RoomState = RoomState.Matchmaking;
 
-                    client.addMessage("You have called Configure");
                     _needSync = true;
                 }
 
