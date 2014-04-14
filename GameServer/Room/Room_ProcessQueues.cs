@@ -179,6 +179,16 @@ namespace GameServer
                         continue;
                     }
 
+                    if (command.Player.userId == "T58nT2cmqrpv8hwv5dVrdg==")
+                    {
+                        // Admin commands for debugging purposes.
+                        if (command.Message == "/Skip")
+                        {
+                            SystemMessageAll("Skipping...");
+                            duration = 0;
+                        }
+                    }
+
                     AddMessage(new RoomMessage()
                     {
                         callerUserId = command.Player.userId,
