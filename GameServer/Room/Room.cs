@@ -262,6 +262,7 @@ namespace GameServer
                     client.gotYourSelections(yourActor.VoteInfo);
                 client.gotModes(ModesFor(yourActor).Select(m=>new RoomMessage.ModeInfo(c.Player, m)).ToList());
                 client.gotTimer(duration);
+                client.gotFactionWon(FactionWon);
             });
             _needSync = false;
         }
