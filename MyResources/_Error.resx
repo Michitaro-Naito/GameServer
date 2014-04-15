@@ -147,4 +147,19 @@
   <data name="RoomIsFullBusyOrEnded" xml:space="preserve">
     <value>A room is full, busy or closed.</value>
   </data>
+  <data name="MessageToReportIsSentByYou" xml:space="preserve">
+    <value>A message to report is sent by you.</value>
+  </data>
+  <data name="MessageToReportNotFound" xml:space="preserve">
+    <value>A message to report is not found.</value>
+  </data>
+  <data name="SuccessfullyReportedThankYou" xml:space="preserve">
+    <value>Successfully reported. Thank you.</value>
+  </data>
+  <data name="TITLE_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="TITLE_Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
 </root>

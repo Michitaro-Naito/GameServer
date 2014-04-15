@@ -225,19 +225,21 @@ namespace GameServer
                     var messageToReport = _messages.FirstOrDefault(m=>m.id==command.MessageId);
                     if (messageToReport == null)
                     {
+                        client.gotError(Error.Create("TITLE_Error", "MessageToReportNotFound").GetInfo(command.Player.Culture));
                         client.addMessage("Message to report not found.");
                         continue;
                     }
-                    if (messageToReport.callerUserId == null)
+                    /*if (messageToReport.callerUserId == null)
                     {
                         client.addMessage("Message to report is not sent by human.");
                         continue;
-                    }
-                    if (messageToReport.callerUserId == command.Player.userId)
+                    }*/
+                    /*if (messageToReport.callerUserId == command.Player.userId)
                     {
+                        client.gotError(Error.Create("TITLE_Error", "MessageToReportIsSentByYou").GetInfo(command.Player.Culture));
                         client.addMessage("Message to report is sent by you.");
                         continue;
-                    }
+                    }*/
 
                     var messagesToReport = _messages
                         .Where(m => m.id <= command.MessageId)
@@ -258,6 +260,7 @@ namespace GameServer
                     };
                     ApiScheme.Client.Api.Get<ReportMessageOut>(info);
                     client.addMessage("Message reported.");
+                    client.gotError(Error.Create("TITLE_Success", "SuccessfullyReportedThankYou").GetInfo(command.Player.Culture));
                 }
 
                 // ----- Vote -----

@@ -133,6 +133,24 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A message to report is sent by you..
+        /// </summary>
+        public static string MessageToReportIsSentByYou {
+            get {
+                return ResourceManager.GetString("MessageToReportIsSentByYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A message to report is not found..
+        /// </summary>
+        public static string MessageToReportNotFound {
+            get {
+                return ResourceManager.GetString("MessageToReportNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Already taken. Try another..
         /// </summary>
         public static string NotUnique {
@@ -147,6 +165,33 @@ namespace MyResources {
         public static string RoomIsFullBusyOrEnded {
             get {
                 return ResourceManager.GetString("RoomIsFullBusyOrEnded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully reported. Thank you..
+        /// </summary>
+        public static string SuccessfullyReportedThankYou {
+            get {
+                return ResourceManager.GetString("SuccessfullyReportedThankYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string TITLE_Error {
+            get {
+                return ResourceManager.GetString("TITLE_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string TITLE_Success {
+            get {
+                return ResourceManager.GetString("TITLE_Success", resourceCulture);
             }
         }
     }

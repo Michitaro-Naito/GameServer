@@ -141,10 +141,25 @@
   <data name="MaxReached" xml:space="preserve">
     <value>登録上限数に達しています。</value>
   </data>
+  <data name="MessageToReportIsSentByYou" xml:space="preserve">
+    <value>報告しようとしたメッセージはあなたが送信したものです。</value>
+  </data>
+  <data name="MessageToReportNotFound" xml:space="preserve">
+    <value>報告しようとしたメッセージが見つかりませんでした。</value>
+  </data>
   <data name="NotUnique" xml:space="preserve">
     <value>既に登録されています。他をお試しください。</value>
   </data>
   <data name="RoomIsFullBusyOrEnded" xml:space="preserve">
     <value>参加しようとした村は満員か、一時的なビジー状態、もしくはゲームが終了しています。</value>
+  </data>
+  <data name="SuccessfullyReportedThankYou" xml:space="preserve">
+    <value>正常に報告を完了しました。情報をお寄せいただきありがとうございます。</value>
+  </data>
+  <data name="TITLE_Error" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="TITLE_Success" xml:space="preserve">
+    <value>成功</value>
   </data>
 </root>
