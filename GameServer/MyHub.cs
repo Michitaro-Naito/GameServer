@@ -281,11 +281,6 @@ namespace GameServer
             _messages.Add(newMessage);
             while (_messages.Count > 50)
                 _messages.RemoveAt(0);
-            /*// PFM
-            _players.Select(en=>en.Value).ToList().ForEach(p =>
-            {
-                p.Client.gotLobbyMessages(new[] { newMessage }.Select(m => m.ToInfo(p)));
-            });*/
             foreach(var p in _playersInLobby)
                 p.Value.Client.gotLobbyMessages(new[] { newMessage }.Select(m => m.ToInfo(p.Value)));
         }
@@ -413,6 +408,20 @@ namespace GameServer
             Player.Character = character;
             SystemMessage("Character found and selected.");
             BroughtTo(ClientState.Rooms);
+            /*Clients.Caller.gotLobbyMessages(_messages.Select(m=>m.ToInfo(Player)), true);
+            Clients.Caller.gotLobbyMessages(new[] { new LobbyMessage() { name = "SYSTEM", body = new InterText("WelcomeAChattingBPlayingCSelectingCharacterD", _.ResourceManager, new[] {
+                new InterText(Player.Character.Name, null),
+                new InterText(_playersInLobby.Count.ToString(), null),
+                new InterText(_playersInGame.Count.ToString(), null),
+                new InterText(PlayersWithoutCharacter.Count().ToString(), null)
+            }) } }.Select(m => m.ToInfo(Player)));*/
+        }
+
+        public void GetLobbyMessages()
+        {
+            if (Character == null)
+                return;
+
             Clients.Caller.gotLobbyMessages(_messages.Select(m=>m.ToInfo(Player)), true);
             Clients.Caller.gotLobbyMessages(new[] { new LobbyMessage() { name = "SYSTEM", body = new InterText("WelcomeAChattingBPlayingCSelectingCharacterD", _.ResourceManager, new[] {
                 new InterText(Player.Character.Name, null),
@@ -420,6 +429,13 @@ namespace GameServer
                 new InterText(_playersInGame.Count.ToString(), null),
                 new InterText(PlayersWithoutCharacter.Count().ToString(), null)
             }) } }.Select(m => m.ToInfo(Player)));
+
+            // Add Player to Lobby.
+            if (!_playersInLobby.ContainsKey(Player.connectionId))
+            {
+                _playersInLobby[Player.connectionId] = Player;
+                _playersInGame.Remove(Player.connectionId);
+            }
         }
 
         void GetRooms()
@@ -438,13 +454,6 @@ namespace GameServer
             });
             var info = _rooms.Where(r=>new []{RoomState.Matchmaking, RoomState.Playing}.Contains(r.RoomState)).Select(r => r.ToInfo()).ToList();
             Clients.Caller.gotRooms(info);
-
-            // Add Player to Lobby.
-            if (!_playersInLobby.ContainsKey(Player.connectionId))
-            {
-                _playersInLobby[Player.connectionId] = Player;
-                _playersInGame.Remove(Player.connectionId);
-            }
         }
 
         /// <summary>
