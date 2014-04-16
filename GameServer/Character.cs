@@ -15,6 +15,12 @@ namespace GameServer
         public Player Player { get; private set; }
 
         /// <summary>
+        /// Room which belongs to.
+        /// Can be null.
+        /// </summary>
+        public Room Room { get; set; }
+
+        /// <summary>
         /// Name of Character.
         /// </summary>
         public string Name { get; private set; }

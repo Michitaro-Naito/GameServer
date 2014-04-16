@@ -57,6 +57,7 @@ namespace GameServer
                     }
 
                     _characters.Add(command.Character);
+                    command.Character.Room = this;
                     var existing = _actors.FirstOrDefault(a => a.character == command.Character);
                     if (existing == null)
                     {

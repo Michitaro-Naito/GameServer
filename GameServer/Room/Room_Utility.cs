@@ -15,7 +15,14 @@ namespace GameServer
         internal int Kick(string userId)
         {
             // Removes from connected characters.
-            var amountKicked = _characters.RemoveAll(c => c.Player != null && c.Player.userId == userId);
+            var charactersToRemove = _characters.Where(c => c.Player != null && c.Player.userId == userId).ToList();
+            charactersToRemove.ForEach(c =>
+            {
+                c.Room = null;
+                _characters.Remove(c);
+            });
+            //var amountKicked = _characters.RemoveAll(c => c.Player != null && c.Player.userId == userId);
+            var amountKicked = charactersToRemove.Count;
 
             // Removes Actors?
             if (!new[] { RoomState.Configuring, RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState))

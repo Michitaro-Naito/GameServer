@@ -53,16 +53,10 @@ namespace GameServer
         /// </summary>
         public Character Character { get { return Player.Character; } }
 
-        // PFM
-        public Room Room
-        {
-            get
-            {
-                if (Character == null)
-                    return null;
-                return _rooms.FirstOrDefault(r => r.HasCharacter(Character));
-            }
-        }
+        /// <summary>
+        /// Returns current Room.
+        /// </summary>
+        public Room Room { get { return Character == null ? null : Character.Room; } }
 
         // PFM
         public IEnumerable<Player> PlayersWithoutCharacter
