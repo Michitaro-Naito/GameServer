@@ -129,7 +129,7 @@ namespace GameServer
             var now = DateTime.UtcNow;
             Elapsed = (now - _lastUpdate).TotalSeconds;
             _lastUpdate = now;
-            var hub = GlobalHost.ConnectionManager.GetHubContext<MyHub>();
+            //var hub = GlobalHost.ConnectionManager.GetHubContext<MyHub>();
 
             // Updates Hub
             _durationUntilNextPage -= Elapsed;
@@ -149,7 +149,6 @@ namespace GameServer
 
                 blacklist.infos.ForEach(info =>
                 {
-                    //Kick(hub, info.userId);
                     Kick(info.userId);
                 });
 
@@ -159,7 +158,7 @@ namespace GameServer
             }
 
             // Updates Rooms
-            _rooms.ForEach(r => r.Update(hub));
+            _rooms.ForEach(r => r.Update());
 
             // Cleans Rooms
             _rooms.RemoveAll(r => r.ShouldBeDeleted);

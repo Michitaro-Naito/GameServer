@@ -32,7 +32,7 @@ namespace GameServer
         /// Actors in this Room.
         /// </summary>
         List<Actor> _actors = new List<Actor>();
-        IHubContext _updateHub = null;
+        //IHubContext _updateHub = null;
 
         public int day;
         public double duration;
@@ -159,9 +159,9 @@ namespace GameServer
         /// Calling roomA.Update() and roomA.Update() is not OK. (Just wasting CPU.)
         /// </summary>
         /// <param name="hub"></param>
-        public void Update(IHubContext hub)
+        public void Update()
         {
-            _updateHub = hub;
+            //_updateHub = hub;
 
             ProcessQueues();
 
@@ -208,11 +208,12 @@ namespace GameServer
 
         void CallAll(Action<dynamic> action)
         {
-            _characters.ForEach(c =>
+            /*_characters.ForEach(c =>
             {
                 var client = _updateHub.Clients.Client(c.Player.connectionId);
                 action(client);
-            });
+            });*/
+            _characters.ForEach(c => action(c.Player.Client));
         }
 
         void AddMessage(RoomMessage message)
@@ -248,7 +249,7 @@ namespace GameServer
         {
             _characters.ForEach(c =>
             {
-                var client = _updateHub.Clients.Client(c.Player.connectionId);
+                var client = c.Player.Client;// _updateHub.Clients.Client(c.Player.connectionId);
                 var yourActorId = new Nullable<int>();
                 var yourActor = _actors.FirstOrDefault(a => a.IsOwnedBy(c.Player));
                 if (yourActor != null)
@@ -283,7 +284,7 @@ namespace GameServer
         {
             if (actor != null && actor.character != null)
             {
-                var client = _updateHub.Clients.Client(actor.character.Player.connectionId);
+                var client = actor.character.Player.Client;//_updateHub.Clients.Client(actor.character.Player.connectionId);
                 client.gotRoomMessages(
                     _messages
                         .Where(m => m.IsVisibleFor(this, actor))

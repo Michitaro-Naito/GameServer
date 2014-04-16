@@ -19,7 +19,8 @@ namespace GameServer
             _characters.ForEach(c =>
             {
                 var actor = _actors.FirstOrDefault(a => a.character == c);
-                _updateHub.Clients.Client(c.Player.connectionId)
+                //_updateHub.Clients.Client(c.Player.connectionId)
+                c.Player.Client
                     .gotRoomMessages(_messagesWillBeApplied.Where(m=>m.IsVisibleFor(this, actor)).Select(m=>new RoomMessageInfo(m, c.Player.Culture)).ToList());
             });
             _messagesWillBeApplied.Clear();
@@ -41,7 +42,7 @@ namespace GameServer
                 if (type == typeof(RoomCommand.AddCharacter))
                 {
                     var command = (RoomCommand.AddCharacter)commandBase;
-                    var client = _updateHub.Clients.Client(command.Player.connectionId);
+                    var client = command.Player.Client;
                     if(!CanJoin(command.Character))
                     {
                         client.addMessage("Could not join. Room is full, busy or ended.");
@@ -51,8 +52,6 @@ namespace GameServer
                     if (RequiresPassword && command.Password != conf.password)
                     {
                         client.addMessage("Invalid password. Could not join.");
-                        //client.addMessage(command.Password);
-                        //client.addMessage(conf.password);
                         client.gotError(new Error() { Title = new InterText("InvalidPassword", _Error.ResourceManager), Body = new InterText("InvalidPasswordPleaseTryAgain", _Error.ResourceManager) }.GetInfo(command.Player.Culture));
                         continue;
                     }
@@ -95,7 +94,7 @@ namespace GameServer
                 if (type == typeof(RoomCommand.RemovePlayer))
                 {
                     var command = (RoomCommand.RemovePlayer)commandBase;
-                    var client = _updateHub.Clients.Client(command.Target.connectionId);
+                    var client = command.Target.Client;
 
                     if (Kick(command.Target.userId) > 0)
                         // Brings removed Player to Rooms scene.
@@ -109,7 +108,7 @@ namespace GameServer
                 if (type == typeof(RoomCommand.Configure))
                 {
                     var command = (RoomCommand.Configure)commandBase;
-                    var client = _updateHub.Clients.Client(command.Player.connectionId);
+                    var client = command.Player.Client;
 
                     if (RoomState != RoomState.Configuring)
                     {
@@ -145,7 +144,7 @@ namespace GameServer
                 if (type == typeof(RoomCommand.Start))
                 {
                     var command = (RoomCommand.Start)commandBase;
-                    var client = _updateHub.Clients.Client(command.Player.connectionId);
+                    var client = command.Player.Client;
 
                     if (RoomState != RoomState.Matchmaking || duration > 0)
                     {
@@ -167,7 +166,7 @@ namespace GameServer
                 if (type == typeof(RoomCommand.Send))
                 {
                     var command = (RoomCommand.Send)commandBase;
-                    var client = _updateHub.Clients.Client(command.Player.connectionId);
+                    var client = command.Player.Client;
 
                     var from = _actors.FirstOrDefault(a => a.character != null && a.character.Player == command.Player);
                     if (from == null)
@@ -220,7 +219,7 @@ namespace GameServer
                 if (type == typeof(RoomCommand.Report))
                 {
                     var command = (RoomCommand.Report)commandBase;
-                    var client = _updateHub.Clients.Client(command.Player.connectionId);
+                    var client = command.Player.Client;
 
                     var messageToReport = _messages.FirstOrDefault(m=>m.id==command.MessageId);
                     if (messageToReport == null)
@@ -229,17 +228,6 @@ namespace GameServer
                         client.addMessage("Message to report not found.");
                         continue;
                     }
-                    /*if (messageToReport.callerUserId == null)
-                    {
-                        client.addMessage("Message to report is not sent by human.");
-                        continue;
-                    }*/
-                    /*if (messageToReport.callerUserId == command.Player.userId)
-                    {
-                        client.gotError(Error.Create("TITLE_Error", "MessageToReportIsSentByYou").GetInfo(command.Player.Culture));
-                        client.addMessage("Message to report is sent by you.");
-                        continue;
-                    }*/
 
                     var messagesToReport = _messages
                         .Where(m => m.id <= command.MessageId)
@@ -267,7 +255,7 @@ namespace GameServer
                 if (type == typeof(RoomCommand.Vote))
                 {
                     var command = (RoomCommand.Vote)commandBase;
-                    var client = _updateHub.Clients.Client(command.Player.connectionId);
+                    var client = command.Player.Client;
 
                     var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Player));
                     if (actor == null)
