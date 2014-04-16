@@ -42,17 +42,17 @@ namespace GameServer
                 if (type == typeof(RoomCommand.AddCharacter))
                 {
                     var command = (RoomCommand.AddCharacter)commandBase;
-                    var client = command.Player.Client;
+                    var client = command.Sender.Client;
                     if(!CanJoin(command.Character))
                     {
                         client.addMessage("Could not join. Room is full, busy or ended.");
-                        client.gotError(new Error() { Title = new InterText("CouldNotJoin", _Error.ResourceManager), Body = new InterText("RoomIsFullBusyOrEnded", _Error.ResourceManager) }.GetInfo(command.Player.Culture));
+                        client.gotError(new Error() { Title = new InterText("CouldNotJoin", _Error.ResourceManager), Body = new InterText("RoomIsFullBusyOrEnded", _Error.ResourceManager) }.GetInfo(command.Sender.Culture));
                         continue;
                     }
                     if (RequiresPassword && command.Password != conf.password)
                     {
                         client.addMessage("Invalid password. Could not join.");
-                        client.gotError(new Error() { Title = new InterText("InvalidPassword", _Error.ResourceManager), Body = new InterText("InvalidPasswordPleaseTryAgain", _Error.ResourceManager) }.GetInfo(command.Player.Culture));
+                        client.gotError(new Error() { Title = new InterText("InvalidPassword", _Error.ResourceManager), Body = new InterText("InvalidPasswordPleaseTryAgain", _Error.ResourceManager) }.GetInfo(command.Sender.Culture));
                         continue;
                     }
 
@@ -84,11 +84,11 @@ namespace GameServer
                     client.broughtTo(ClientState.Playing);
 
                     // Sends existing Messages to newly-joined Player.
-                    var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Player));
+                    var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Sender));
                     SendFirstMessagesTo(actor);
 
                     // Notifies Lobby
-                    EnqueueLobby(new LobbyCommand.PlayerJoinedRoom() { Player = command.Player });
+                    EnqueueLobby(new LobbyCommand.PlayerJoinedRoom() { Player = command.Sender });
 
                     // Character added. Shares this information later.
                     _needSync = true;
@@ -98,9 +98,9 @@ namespace GameServer
                 if (type == typeof(RoomCommand.RemovePlayer))
                 {
                     var command = (RoomCommand.RemovePlayer)commandBase;
-                    var client = command.Target.Client;
+                    var client = command.Sender.Client;
 
-                    if (Kick(command.Target.userId) > 0)
+                    if (Kick(command.Sender.userId) > 0)
                         // Brings removed Player to Rooms scene.
                         client.broughtTo(ClientState.Rooms);
 
@@ -112,7 +112,7 @@ namespace GameServer
                 if (type == typeof(RoomCommand.Configure))
                 {
                     var command = (RoomCommand.Configure)commandBase;
-                    var client = command.Player.Client;
+                    var client = command.Sender.Client;
 
                     if (RoomState != RoomState.Configuring)
                     {
@@ -125,8 +125,8 @@ namespace GameServer
                     if (!result.Success)
                     {
                         client.addMessage("Validation failed.");
-                        result.Errors.ForEach(e => client.addMessage(e.GetString(command.Player.Culture)));
-                        client.gotValidationErrors(command.Configuration.ModelName, result.Errors.Select(e => e.GetStringFor(command.Player)));
+                        result.Errors.ForEach(e => client.addMessage(e.GetString(command.Sender.Culture)));
+                        client.gotValidationErrors(command.Configuration.ModelName, result.Errors.Select(e => e.GetStringFor(command.Sender)));
                         continue;
                     }
 
@@ -148,7 +148,7 @@ namespace GameServer
                 if (type == typeof(RoomCommand.Start))
                 {
                     var command = (RoomCommand.Start)commandBase;
-                    var client = command.Player.Client;
+                    var client = command.Sender.Client;
 
                     if (RoomState != RoomState.Matchmaking || duration > 0)
                     {
@@ -156,7 +156,7 @@ namespace GameServer
                         continue;
                     }
 
-                    var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Player));
+                    var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Sender));
                     if (actor == null || !IsRoomMaster(actor))
                     {
                         client.addMessage("Only the RoomMaster can start.");
@@ -170,9 +170,9 @@ namespace GameServer
                 if (type == typeof(RoomCommand.Send))
                 {
                     var command = (RoomCommand.Send)commandBase;
-                    var client = command.Player.Client;
+                    var client = command.Sender.Client;
 
-                    var from = _actors.FirstOrDefault(a => a.character != null && a.character.Player == command.Player);
+                    var from = _actors.FirstOrDefault(a => a.character != null && a.character.Player == command.Sender);
                     if (from == null)
                     {
                         SystemMessageAll("from must not be null.");
@@ -199,7 +199,7 @@ namespace GameServer
                         continue;
                     }
 
-                    if (command.Player.userId == "T58nT2cmqrpv8hwv5dVrdg==")
+                    if (command.Sender.userId == "T58nT2cmqrpv8hwv5dVrdg==")
                     {
                         // Admin commands for debugging purposes.
                         if (command.Message == "/Skip")
@@ -211,7 +211,7 @@ namespace GameServer
 
                     AddMessage(new RoomMessage()
                     {
-                        callerUserId = command.Player.userId,
+                        callerUserId = command.Sender.userId,
                         mode = mode,
                         from = from,
                         to = to,
@@ -223,12 +223,12 @@ namespace GameServer
                 if (type == typeof(RoomCommand.Report))
                 {
                     var command = (RoomCommand.Report)commandBase;
-                    var client = command.Player.Client;
+                    var client = command.Sender.Client;
 
                     var messageToReport = _messages.FirstOrDefault(m=>m.id==command.MessageId);
                     if (messageToReport == null)
                     {
-                        client.gotError(Error.Create("TITLE_Error", "MessageToReportNotFound").GetInfo(command.Player.Culture));
+                        client.gotError(Error.Create("TITLE_Error", "MessageToReportNotFound").GetInfo(command.Sender.Culture));
                         client.addMessage("Message to report not found.");
                         continue;
                     }
@@ -242,26 +242,26 @@ namespace GameServer
                             from = m.callerUserId,
                             role = m.from != null ? m.from.role.ToString(): null,
                             mode = m.mode.ToString(),
-                            body = string.Join(",", m.bodyRows.Select(t=>t.GetStringFor(command.Player)))
+                            body = string.Join(",", m.bodyRows.Select(t=>t.GetStringFor(command.Sender)))
                         }).ToList();
                     var info = new ReportMessageIn()
                     {
-                        userId = command.Player.userId,
+                        userId = command.Sender.userId,
                         note = command.Note,
                         messages = messagesToReport
                     };
                     ApiScheme.Client.Api.Get<ReportMessageOut>(info);
                     client.addMessage("Message reported.");
-                    client.gotError(Error.Create("TITLE_Success", "SuccessfullyReportedThankYou").GetInfo(command.Player.Culture));
+                    client.gotError(Error.Create("TITLE_Success", "SuccessfullyReportedThankYou").GetInfo(command.Sender.Culture));
                 }
 
                 // ----- Vote -----
                 if (type == typeof(RoomCommand.Vote))
                 {
                     var command = (RoomCommand.Vote)commandBase;
-                    var client = command.Player.Client;
+                    var client = command.Sender.Client;
 
-                    var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Player));
+                    var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Sender));
                     if (actor == null)
                     {
                         client.addMessage("Voting... but your actor not found.");

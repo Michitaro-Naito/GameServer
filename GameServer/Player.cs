@@ -117,5 +117,22 @@ namespace GameServer
                 return key;
             return str;
         }
+
+
+
+        // ----- Server to Client -----
+        public void GotBootTime(DateTime bootTime)
+        {
+            Client.gotBootTime(bootTime);
+        }
+        public void GotSystemMessage(string message)
+        {
+            Client.addMessage("SYSTEM", GetString(message));
+        }
+
+        public void BroughtTo(ClientState state)
+        {
+            Client.broughtTo(state);
+        }
     }
 }

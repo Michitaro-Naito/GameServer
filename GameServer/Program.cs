@@ -20,7 +20,7 @@ namespace GameServer
             {
                 while(true){
                     MyHub.Update();
-                    Thread.Sleep(100);
+                    Thread.Sleep(1);
                 }
             }));
             t.Start();

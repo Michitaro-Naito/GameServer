@@ -125,6 +125,9 @@
     <Compile Include="ClientModel\IValidatable.cs" />
     <Compile Include="LobbyCommand.cs" />
     <Compile Include="LobbyMessage.cs" />
+    <Compile Include="Lobby\Lobby_ProcessQueue.cs" />
+    <Compile Include="Lobby\Lobby.cs" />
+    <Compile Include="Lobby\Lobby_Utility.cs" />
     <Compile Include="NGWordHelper.cs" />
     <Compile Include="RoleInfo.cs" />
     <Compile Include="Room\RoomCommand.cs" />

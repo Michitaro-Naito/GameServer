@@ -160,7 +160,7 @@ namespace GameServer
         /// Calling roomA.Update() and roomA.Update() is not OK. (Just wasting CPU.)
         /// </summary>
         /// <param name="hub"></param>
-        public void Update()
+        public void Update(double elapsed)
         {
             //_updateHub = hub;
 
@@ -171,20 +171,20 @@ namespace GameServer
                 case RoomState.Matchmaking:
                     if (duration > 0)
                     {
-                        duration -= MyHub.Elapsed;
+                        duration -= elapsed;
                         if (duration <= 0)
                             Start();
                     }
                     break;
 
                 case RoomState.Playing:
-                    duration -= MyHub.Elapsed;
+                    duration -= elapsed;
                     if (duration < 0)
                         GotoNextDay();
                     break;
 
                 case RoomState.Ending:
-                    duration -= MyHub.Elapsed;
+                    duration -= elapsed;
                     if (duration < 0)
                     {
                         RoomState = RoomState.Ended;
@@ -209,11 +209,6 @@ namespace GameServer
 
         void CallAll(Action<dynamic> action)
         {
-            /*_characters.ForEach(c =>
-            {
-                var client = _updateHub.Clients.Client(c.Player.connectionId);
-                action(client);
-            });*/
             _characters.ForEach(c => action(c.Player.Client));
         }
 

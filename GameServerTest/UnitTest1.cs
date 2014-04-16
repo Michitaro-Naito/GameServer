@@ -185,5 +185,14 @@ namespace GameServerTest
             goodNames.ForEach(name=>Assert.IsFalse(NGWordHelper.Regex.IsMatch(name)));
             badNames.ForEach(name=>Assert.IsTrue(NGWordHelper.Regex.IsMatch(name)));
         }
+
+        [TestMethod]
+        public void Enqueue()
+        {
+            var amount = 100000000;
+            var queue = new ConcurrentQueue<int>();
+            Parallel.For(0, amount, n => queue.Enqueue(n));
+            Assert.AreEqual(queue.Count, amount);
+        }
     }
 }
