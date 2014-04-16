@@ -114,6 +114,7 @@ namespace GameServer
             // Updates Hub
             ProcessQueues();
 
+            // Blacklist
             _durationUntilNextPage -= Elapsed;
             if (_durationUntilNextPage < 0)
             {
@@ -402,13 +403,6 @@ namespace GameServer
             Player.Character = character;
             SystemMessage("Character found and selected.");
             BroughtTo(ClientState.Rooms);
-            /*Clients.Caller.gotLobbyMessages(_messages.Select(m=>m.ToInfo(Player)), true);
-            Clients.Caller.gotLobbyMessages(new[] { new LobbyMessage() { name = "SYSTEM", body = new InterText("WelcomeAChattingBPlayingCSelectingCharacterD", _.ResourceManager, new[] {
-                new InterText(Player.Character.Name, null),
-                new InterText(_playersInLobby.Count.ToString(), null),
-                new InterText(_playersInGame.Count.ToString(), null),
-                new InterText(PlayersWithoutCharacter.Count().ToString(), null)
-            }) } }.Select(m => m.ToInfo(Player)));*/
         }
 
         public void GetLobbyMessages()
