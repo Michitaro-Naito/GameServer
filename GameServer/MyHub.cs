@@ -113,8 +113,7 @@ namespace GameServer
             else
             {
                 // Accepts Player
-                var p = new Player() { connectionId = Context.ConnectionId };
-                //_players.Add(p);
+                var p = new Player() { connectionId = Context.ConnectionId, Client = Clients.Caller };
                 _players[Context.ConnectionId] = p;
                 Clients.Caller.gotBootTime(_bootTime);
             }
@@ -305,7 +304,7 @@ namespace GameServer
             // PFM
             _players.Select(en=>en.Value).ToList().ForEach(p =>
             {
-                Clients.Client(p.connectionId).gotLobbyMessages(new[] { newMessage }.Select(m => m.ToInfo(p)));
+                p.Client.gotLobbyMessages(new[] { newMessage }.Select(m => m.ToInfo(p)));
             });
         }
 
@@ -432,8 +431,8 @@ namespace GameServer
             Player.Character = character;
             SystemMessage("Character found and selected.");
             BroughtTo(ClientState.Rooms);
-            Clients.Client(Player.connectionId).gotLobbyMessages(_messages.Select(m=>m.ToInfo(Player)), true);
-            Clients.Client(Player.connectionId).gotLobbyMessages(new[] { new LobbyMessage() { name = "SYSTEM", body = new InterText("WelcomeAChattingBPlayingCSelectingCharacterD", _.ResourceManager, new[] {
+            Clients.Caller.gotLobbyMessages(_messages.Select(m=>m.ToInfo(Player)), true);
+            Clients.Caller.gotLobbyMessages(new[] { new LobbyMessage() { name = "SYSTEM", body = new InterText("WelcomeAChattingBPlayingCSelectingCharacterD", _.ResourceManager, new[] {
                 new InterText(Player.Character.Name, null),
                 new InterText(PlayersInLobby.Count().ToString(), null),
                 new InterText(PlayersInGame.Count().ToString(), null),
@@ -550,7 +549,7 @@ namespace GameServer
             {
                 keysToRemove.Add(en.Key);
                 // Tells client to disconnect
-                hub.Clients.Client(en.Value.connectionId).gotDisconnectionRequest();
+                en.Value.Client.gotDisconnectionRequest();
             });
             // Removes from this server
             //_players.RemoveAll(en => en.Value.userId == userId);
@@ -568,7 +567,7 @@ namespace GameServer
             {
                 keysToRemove.Add(en.Key);
                 // Tells client to disconnect
-                Clients.Client(en.Value.connectionId).gotDisconnectionRequest();
+                en.Value.Client.gotDisconnectionRequest();
             });
             // Removes from this server
             //_players.RemoveAll(en => en.Value.userId == userId);

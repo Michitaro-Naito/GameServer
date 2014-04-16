@@ -21,6 +21,11 @@ namespace GameServer
         public string connectionId;
 
         /// <summary>
+        /// SignalR Client.
+        /// </summary>
+        public dynamic Client { get; set; }
+
+        /// <summary>
         /// MD5 hashed UserId. Displayed for players.
         /// </summary>
         public string userId;
