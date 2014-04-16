@@ -19,7 +19,6 @@ namespace GameServer
         static DateTime _lastUpdate = DateTime.UtcNow;
         public static double Elapsed { get; private set; }
 
-        //static List<Player> _players = new List<Player>();
         static Dictionary<string, Player> _players = new Dictionary<string, Player>();
         static List<Room> _rooms = new List<Room>();
         static List<LobbyMessage> _messages = new List<LobbyMessage>();
@@ -33,23 +32,12 @@ namespace GameServer
         // ----- Property -----
 
         /// <summary>
-        /// Cached current Player.
-        /// </summary>
-        //Player _player = null;
-
-        /// <summary>
         /// Returns current Player.
         /// </summary>
         public Player Player
         {
             get
             {
-                /*if (_player != null)
-                    return _player;
-                _player = _players.FirstOrDefault(p => p.connectionId == Context.ConnectionId);
-                if (_player == null)
-                    _player = new Player();
-                return _player;*/
                 // KeyNotFoundException
                 return _players[Context.ConnectionId];
             }
@@ -161,7 +149,8 @@ namespace GameServer
 
                 blacklist.infos.ForEach(info =>
                 {
-                    Kick(hub, info.userId);
+                    //Kick(hub, info.userId);
+                    Kick(info.userId);
                 });
 
                 if (blacklist.infos.Count == 0)
@@ -538,7 +527,7 @@ namespace GameServer
         /// Kicks Player from this server.
         /// </summary>
         /// <param name="userId"></param>
-        internal static void Kick(IHubContext hub, string userId)
+        /*internal static void Kick(IHubContext hub, string userId)
         {
             // Kicks from Room
             _rooms.ForEach(r => r.Kick(userId));
@@ -554,9 +543,9 @@ namespace GameServer
             // Removes from this server
             //_players.RemoveAll(en => en.Value.userId == userId);
             keysToRemove.ForEach(key => _players.Remove(key));
-        }
+        }*/
 
-        internal void Kick(string userId)
+        internal static void Kick(string userId)
         {
             // Kicks from Room
             _rooms.ForEach(r => r.Kick(userId));
@@ -566,11 +555,8 @@ namespace GameServer
             _players.Where(en => en.Value.userId == userId).ToList().ForEach(en =>
             {
                 keysToRemove.Add(en.Key);
-                // Tells client to disconnect
                 en.Value.Client.gotDisconnectionRequest();
             });
-            // Removes from this server
-            //_players.RemoveAll(en => en.Value.userId == userId);
             keysToRemove.ForEach(key => _players.Remove(key));
         }
     }
