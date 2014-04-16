@@ -86,6 +86,9 @@ namespace GameServer
                     var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Player));
                     SendFirstMessagesTo(actor);
 
+                    // Notifies Lobby
+                    EnqueueLobby(new LobbyCommand.PlayerJoinedRoom() { Player = command.Player });
+
                     // Character added. Shares this information later.
                     _needSync = true;
                 }

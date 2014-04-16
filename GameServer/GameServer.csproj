@@ -123,6 +123,7 @@
     <Compile Include="GenderInfo.cs" />
     <Compile Include="InterText.cs" />
     <Compile Include="ClientModel\IValidatable.cs" />
+    <Compile Include="LobbyCommand.cs" />
     <Compile Include="LobbyMessage.cs" />
     <Compile Include="NGWordHelper.cs" />
     <Compile Include="RoleInfo.cs" />

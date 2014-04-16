@@ -3,6 +3,7 @@ using ApiScheme.Scheme;
 using Microsoft.AspNet.SignalR;
 using MyResources;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -20,12 +21,15 @@ namespace GameServer
         public static double Elapsed { get; private set; }
 
         static Dictionary<string, Player> _players = new Dictionary<string, Player>();
+        static List<Player> _playersInLobby = new List<Player>();
         static List<Room> _rooms = new List<Room>();
         static List<LobbyMessage> _messages = new List<LobbyMessage>();
 
         static List<GetBlacklistOut> _blacklists = new List<GetBlacklistOut>();
         static int _nexBlacklistPage = 0;
         static double _durationUntilNextPage = 0;
+
+        static ConcurrentQueue<LobbyCommand.Base> _queue = new ConcurrentQueue<LobbyCommand.Base>();
 
 
 
@@ -92,7 +96,6 @@ namespace GameServer
         
         public override Task OnConnected()
         {
-            Console.WriteLine("OnConnected");
             if (_players.Count >= 400)
             {
                 // Server is full.
@@ -132,6 +135,8 @@ namespace GameServer
             //var hub = GlobalHost.ConnectionManager.GetHubContext<MyHub>();
 
             // Updates Hub
+            ProcessQueues();
+
             _durationUntilNextPage -= Elapsed;
             if (_durationUntilNextPage < 0)
             {
@@ -162,11 +167,21 @@ namespace GameServer
 
             // Cleans Rooms
             _rooms.RemoveAll(r => r.ShouldBeDeleted);
+        }
 
-            // Experimental
-            /*Console.WriteLine("Waiting Start.");
-            System.Threading.Thread.Sleep(10000);
-            Console.WriteLine("Waiting End.");*/
+        static void ProcessQueues()
+        {
+            LobbyCommand.Base commandBase;
+            while (_queue.TryDequeue(out commandBase))
+            {
+                var type = commandBase.GetType();
+
+                if (type == typeof(LobbyCommand.PlayerJoinedRoom))
+                {
+                    var command = (LobbyCommand.PlayerJoinedRoom)commandBase;
+                    Console.WriteLine("PlayerJoinedRoom: " + command.Player);
+                }
+            }
         }
 
 
@@ -179,13 +194,6 @@ namespace GameServer
         /// <param name="gamePass"></param>
         public void Authenticate(string culture, string passString)
         {
-            Console.WriteLine("Authenticate");
-            /*var player = _players.FirstOrDefault(p => p.connectionId == Context.ConnectionId);
-            if (player == null)
-            {
-                SystemMessage("You are not connected.");
-                return;
-            }*/
             var player = Player;
 
             var pass = AuthUtility.GamePass.FromCipher(passString, ConfigurationManager.AppSettings["AesKey"], ConfigurationManager.AppSettings["AesIv"]);
@@ -278,7 +286,7 @@ namespace GameServer
                     return;
                 }
             }
-            Clients.All.addMessage(Player.userId, message);
+            Clients.Caller.addMessage(Player.userId, message);
         }
 
         public void LobbySend(string message)
@@ -442,8 +450,12 @@ namespace GameServer
                 else
                     SystemMessage(r.ToString() + "(Hidden)");
             });
-            var info = _rooms.Where(r=>new []{RoomState.Matchmaking, RoomState.Playing}.Contains(r.RoomState)).Select(r => /*new RoomInfo(r)*/r.ToInfo()).ToList();
+            var info = _rooms.Where(r=>new []{RoomState.Matchmaking, RoomState.Playing}.Contains(r.RoomState)).Select(r => r.ToInfo()).ToList();
             Clients.Caller.gotRooms(info);
+
+            /*// Add Player to Lobby.
+            if (!_playersInLobby.Contains(Player))
+                _playersInLobby.Add(Player);*/
         }
 
         /// <summary>
@@ -457,7 +469,7 @@ namespace GameServer
                 if (_rooms.All(r => r.roomId != index))
                     break;
             }
-            var room = new Room() { roomId = index };
+            var room = new Room() { EnqueueLobby = Enqueue, roomId = index };
             _rooms.Add(room);
             SystemMessage(string.Format("Created. Room:{0}", room));
             BringPlayerToRoom(room.roomId, null);
@@ -503,6 +515,12 @@ namespace GameServer
 
         // ----- Method (Utility) -----
 
+        internal void Enqueue(LobbyCommand.Base command)
+        {
+            Console.WriteLine("Enqueued");
+            _queue.Enqueue(command);
+        }
+
         void BringPlayerToRoom(int roomId, string password)
         {
             var room = _rooms.FirstOrDefault(r => r.roomId == roomId);
@@ -526,24 +544,6 @@ namespace GameServer
         /// Kicks Player from this server.
         /// </summary>
         /// <param name="userId"></param>
-        /*internal static void Kick(IHubContext hub, string userId)
-        {
-            // Kicks from Room
-            _rooms.ForEach(r => r.Kick(userId));
-
-            // Kicks from Lobby
-            var keysToRemove = new List<string>();
-            _players.Where(en => en.Value.userId == userId).ToList().ForEach(en =>
-            {
-                keysToRemove.Add(en.Key);
-                // Tells client to disconnect
-                en.Value.Client.gotDisconnectionRequest();
-            });
-            // Removes from this server
-            //_players.RemoveAll(en => en.Value.userId == userId);
-            keysToRemove.ForEach(key => _players.Remove(key));
-        }*/
-
         internal static void Kick(string userId)
         {
             // Kicks from Room

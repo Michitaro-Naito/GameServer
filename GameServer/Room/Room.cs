@@ -18,6 +18,7 @@ namespace GameServer
     /// </summary>
     public partial class Room
     {
+        public Action<LobbyCommand.Base> EnqueueLobby = null;
         public int roomId;
         public string guid;
         public Configuration conf = new Configuration();
@@ -49,7 +50,7 @@ namespace GameServer
         {
             get
             {
-                return new RoomState[]{ RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState);
+                return new []{ RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState);
             }
         }
 
