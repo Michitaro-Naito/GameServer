@@ -16,11 +16,13 @@ namespace GameServer
     {
         // ----- Static Variable -----
         static DateTime _bootTime = DateTime.UtcNow;
-        static List<Player> _players = new List<Player>();
-        static List<Room> _rooms = new List<Room>();
         static DateTime _lastUpdate = DateTime.UtcNow;
-        static List<LobbyMessage> _messages = new List<LobbyMessage>();
         public static double Elapsed { get; private set; }
+
+        //static List<Player> _players = new List<Player>();
+        static Dictionary<string, Player> _players = new Dictionary<string, Player>();
+        static List<Room> _rooms = new List<Room>();
+        static List<LobbyMessage> _messages = new List<LobbyMessage>();
 
         static List<GetBlacklistOut> _blacklists = new List<GetBlacklistOut>();
         static int _nexBlacklistPage = 0;
@@ -33,7 +35,7 @@ namespace GameServer
         /// <summary>
         /// Cached current Player.
         /// </summary>
-        Player _player = null;
+        //Player _player = null;
 
         /// <summary>
         /// Returns current Player.
@@ -42,26 +44,23 @@ namespace GameServer
         {
             get
             {
-                if (_player != null)
+                /*if (_player != null)
                     return _player;
                 _player = _players.FirstOrDefault(p => p.connectionId == Context.ConnectionId);
                 if (_player == null)
                     _player = new Player();
-                return _player;
+                return _player;*/
+                // KeyNotFoundException
+                return _players[Context.ConnectionId];
             }
         }
 
         /// <summary>
         /// Returns current Character.
         /// </summary>
-        public Character Character
-        {
-            get
-            {
-                return Player.Character;
-            }
-        }
+        public Character Character { get { return Player.Character; } }
 
+        // PFM
         public Room Room
         {
             get
@@ -72,25 +71,30 @@ namespace GameServer
             }
         }
 
+        // PFM
         public IEnumerable<Player> PlayersWithoutCharacter
         {
             get
             {
-                return _players.Where(p => p.Character == null);
+                return _players.Where(p => p.Value.Character == null).Select(en=>en.Value);
             }
         }
+        // PFM
         public IEnumerable<Player> PlayersInLobby
         {
             get
             {
-                return _players.Where(p => p.Character != null && !_rooms.Any(r => r.HasCharacter(p.Character)));
+                return _players.Where(p => p.Value.Character != null && !_rooms.Any(r => r.HasCharacter(p.Value.Character)))
+                    .Select(en=>en.Value);
             }
         }
+        // PFM
         public IEnumerable<Player> PlayersInGame
         {
             get
             {
-                return _players.Where(p => p.Character != null && _rooms.Any(r => r.HasCharacter(p.Character)));
+                return _players.Where(p => p.Value.Character != null && _rooms.Any(r => r.HasCharacter(p.Value.Character)))
+                    .Select(en=>en.Value);
             }
         }
 
@@ -100,6 +104,7 @@ namespace GameServer
         
         public override Task OnConnected()
         {
+            Console.WriteLine("OnConnected");
             if (_players.Count >= 400)
             {
                 // Server is full.
@@ -109,7 +114,8 @@ namespace GameServer
             {
                 // Accepts Player
                 var p = new Player() { connectionId = Context.ConnectionId };
-                _players.Add(p);
+                //_players.Add(p);
+                _players[Context.ConnectionId] = p;
                 Clients.Caller.gotBootTime(_bootTime);
             }
 
@@ -124,10 +130,6 @@ namespace GameServer
 
         public override Task OnDisconnected()
         {
-            /*var room = Room;
-            if (room != null)
-                room.Queue(new RoomCommand.RemovePlayer(Player, Player));
-            _players.RemoveAll(p => p.connectionId == Context.ConnectionId);*/
             Kick(Player.userId);
             return base.OnDisconnected();
         }
@@ -173,6 +175,11 @@ namespace GameServer
 
             // Cleans Rooms
             _rooms.RemoveAll(r => r.ShouldBeDeleted);
+
+            // Experimental
+            /*Console.WriteLine("Waiting Start.");
+            System.Threading.Thread.Sleep(10000);
+            Console.WriteLine("Waiting End.");*/
         }
 
 
@@ -185,12 +192,14 @@ namespace GameServer
         /// <param name="gamePass"></param>
         public void Authenticate(string culture, string passString)
         {
-            var player = _players.FirstOrDefault(p => p.connectionId == Context.ConnectionId);
+            Console.WriteLine("Authenticate");
+            /*var player = _players.FirstOrDefault(p => p.connectionId == Context.ConnectionId);
             if (player == null)
             {
                 SystemMessage("You are not connected.");
                 return;
-            }
+            }*/
+            var player = Player;
 
             var pass = AuthUtility.GamePass.FromCipher(passString, ConfigurationManager.AppSettings["AesKey"], ConfigurationManager.AppSettings["AesIv"]);
             if (pass == null)
@@ -207,12 +216,6 @@ namespace GameServer
             }
 
             // Kicks Players who have the same UserId
-            /*var playersToKick = _players.Where(p => p.userId == pass.data.userId).ToList();
-            playersToKick.ForEach(p =>
-            {
-                Clients.Client(p.connectionId).gotDisconnectionRequest();
-            });
-            _players.RemoveAll(p => playersToKick.Contains(p));*/
             Kick(pass.data.userId);
 
             // Accepts Player
@@ -299,7 +302,8 @@ namespace GameServer
             _messages.Add(newMessage);
             while (_messages.Count > 50)
                 _messages.RemoveAt(0);
-            _players.ForEach(p =>
+            // PFM
+            _players.Select(en=>en.Value).ToList().ForEach(p =>
             {
                 Clients.Client(p.connectionId).gotLobbyMessages(new[] { newMessage }.Select(m => m.ToInfo(p)));
             });
@@ -541,13 +545,16 @@ namespace GameServer
             _rooms.ForEach(r => r.Kick(userId));
 
             // Kicks from Lobby
-            _players.Where(p => p.userId == userId).ToList().ForEach(p =>
+            var keysToRemove = new List<string>();
+            _players.Where(en => en.Value.userId == userId).ToList().ForEach(en =>
             {
+                keysToRemove.Add(en.Key);
                 // Tells client to disconnect
-                hub.Clients.Client(p.connectionId).gotDisconnectionRequest();
+                hub.Clients.Client(en.Value.connectionId).gotDisconnectionRequest();
             });
             // Removes from this server
-            _players.RemoveAll(p => p.userId == userId);
+            //_players.RemoveAll(en => en.Value.userId == userId);
+            keysToRemove.ForEach(key => _players.Remove(key));
         }
 
         internal void Kick(string userId)
@@ -556,13 +563,16 @@ namespace GameServer
             _rooms.ForEach(r => r.Kick(userId));
 
             // Kicks from Lobby
-            _players.Where(p => p.userId == userId).ToList().ForEach(p =>
+            var keysToRemove = new List<string>();
+            _players.Where(en => en.Value.userId == userId).ToList().ForEach(en =>
             {
+                keysToRemove.Add(en.Key);
                 // Tells client to disconnect
-                Clients.Client(p.connectionId).gotDisconnectionRequest();
+                Clients.Client(en.Value.connectionId).gotDisconnectionRequest();
             });
             // Removes from this server
-            _players.RemoveAll(p => p.userId == userId);
+            //_players.RemoveAll(en => en.Value.userId == userId);
+            keysToRemove.ForEach(key => _players.Remove(key));
         }
     }
 }
