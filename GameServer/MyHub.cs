@@ -72,15 +72,6 @@ namespace GameServer
                 return _players.Where(p => p.Value.Character == null).Select(en=>en.Value);
             }
         }
-        /*// PFM
-        public IEnumerable<Player> PlayersInGame
-        {
-            get
-            {
-                return _players.Where(p => p.Value.Character != null && _rooms.Any(r => r.HasCharacter(p.Value.Character)))
-                    .Select(en=>en.Value);
-            }
-        }*/
 
 
 
@@ -290,11 +281,13 @@ namespace GameServer
             _messages.Add(newMessage);
             while (_messages.Count > 50)
                 _messages.RemoveAt(0);
-            // PFM
+            /*// PFM
             _players.Select(en=>en.Value).ToList().ForEach(p =>
             {
                 p.Client.gotLobbyMessages(new[] { newMessage }.Select(m => m.ToInfo(p)));
-            });
+            });*/
+            foreach(var p in _playersInLobby)
+                p.Value.Client.gotLobbyMessages(new[] { newMessage }.Select(m => m.ToInfo(p.Value)));
         }
 
         public void RoomSend(int roomSendMode, int actorId, string message)
