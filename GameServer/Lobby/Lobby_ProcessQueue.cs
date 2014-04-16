@@ -28,8 +28,8 @@ namespace GameServer {
 
             LobbyCommand.Base commandBase;
             while (_queue.TryDequeue(out commandBase)) {
-                var type = commandBase.GetType();
                 commandBase.Sender = GetPlayer(commandBase.ConnectionId);
+                var type = commandBase.GetType();
                 /*GetType().InvokeMember(type.Name,
                     System.Reflection.BindingFlags.NonPublic
                     | System.Reflection.BindingFlags.InvokeMethod,

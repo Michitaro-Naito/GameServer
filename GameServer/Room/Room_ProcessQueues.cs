@@ -56,13 +56,11 @@ namespace GameServer
                         continue;
                     }
 
-                    _characters.Add(command.Character);
-                    command.Character.Room = this;
                     var existing = _actors.FirstOrDefault(a => a.character == command.Character);
                     if (existing == null)
                     {
                         // No existing Actor. Adds or Replaces one...
-                        if (RoomState==RoomState.Configuring || RoomState == RoomState.Matchmaking)
+                        /*if (RoomState==RoomState.Configuring || RoomState == RoomState.Matchmaking)
                         {
                             // Adds Actor
                             AddActorsForCharacters();
@@ -78,6 +76,24 @@ namespace GameServer
                             }
                             npc.character = command.Character;
                             SystemMessageAll(new InterText("AHasJoinedAsB", MyResources._.ResourceManager, new[] { new InterText(command.Character.Name, null), npc.TitleAndName }));
+                        }*/
+                        var npc = AliveNPCs.FirstOrDefault();
+                        if (npc != null) {
+                            _characters.Add(command.Character);
+                            command.Character.Room = this;
+                            npc.character = command.Character;
+                            SystemMessageAll(new InterText("AHasJoinedAsB", MyResources._.ResourceManager, new[] { new InterText(command.Character.Name, null), npc.TitleAndName }));
+                        }
+                        else {
+                            if (RoomState == RoomState.Configuring || RoomState == RoomState.Matchmaking) {
+                                _characters.Add(command.Character);
+                                command.Character.Room = this;
+                                AddActorsForCharacters();
+                            }
+                            else {
+                                client.addMessage("Could not join");
+                                continue;
+                            }
                         }
                     }
                     client.addMessage("Joined.");
