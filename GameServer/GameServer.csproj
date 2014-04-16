@@ -81,6 +81,9 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="RegexLib">
+      <HintPath>..\..\PrecompiledRegex\PrecompiledRegex\bin\Debug\RegexLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -121,6 +124,7 @@
     <Compile Include="InterText.cs" />
     <Compile Include="ClientModel\IValidatable.cs" />
     <Compile Include="LobbyMessage.cs" />
+    <Compile Include="NGWordHelper.cs" />
     <Compile Include="RoleInfo.cs" />
     <Compile Include="Room\RoomCommand.cs" />
     <Compile Include="Room\RoomInfo.cs" />

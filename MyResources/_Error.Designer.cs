@@ -61,6 +61,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} contains ngword {1}..
+        /// </summary>
+        public static string AContainsNGWordB {
+            get {
+                return ResourceManager.GetString("AContainsNGWordB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} must be {1} to {2}..
         /// </summary>
         public static string AMustBeBToC {
@@ -84,6 +93,15 @@ namespace MyResources {
         public static string AMustBeBToCCharacters {
             get {
                 return ResourceManager.GetString("AMustBeBToCCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} must be {1} to {2} not-special, not-blank characters..
+        /// </summary>
+        public static string AMustBeBToCNonSpecialCharacters {
+            get {
+                return ResourceManager.GetString("AMustBeBToCNonSpecialCharacters", resourceCulture);
             }
         }
         

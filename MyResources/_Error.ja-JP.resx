@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AContainsNGWordB" xml:space="preserve">
+    <value>{0}にNGワード「{1}」を含めないでください。</value>
+  </data>
   <data name="AMustBeBToC" xml:space="preserve">
     <value>{0}は{1}以上{2}以下で入力してください。</value>
   </data>
@@ -125,6 +128,9 @@
   </data>
   <data name="AMustBeBToCCharacters" xml:space="preserve">
     <value>{0}は{1}から{2}文字で入力してください。</value>
+  </data>
+  <data name="AMustBeBToCNonSpecialCharacters" xml:space="preserve">
+    <value>{0}は{1}から{2}文字で、記号や空白を用いずに入力してください。</value>
   </data>
   <data name="AMustBeUpToBCharactersOrNull" xml:space="preserve">
     <value>{0}は{1}文字以内を入力するか空欄にしてください。</value>

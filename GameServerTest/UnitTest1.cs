@@ -13,6 +13,8 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure;
+using System.Text.RegularExpressions;
+using System.Linq;
 
 
 namespace GameServerTest
@@ -127,6 +129,61 @@ namespace GameServerTest
 
             // Create the container if it doesn't already exist.
             container.CreateIfNotExists();
+        }
+
+        [TestMethod]
+        public void Unicode()
+        {
+            /*var str = "GOOD_STR BAD鿌鿋鼀鐏　STRINGMicrosoft .NET Framework（マイクロソフト ドットネット フレームワーク）は、マイクロソフトが開発したアプリケーション開発、実行環境。"
++ "WindowsアプリケーションだけでなくXML WebサービスやウェブアプリケーションなどWebベースのアプリケーションなどを取り入れた環境。一般に.NETという場合、.NET全体の環境を指す。"
++ "また.NET Frameworkの基盤となっている仕様である共通言語基盤 (CLI) はEcmaインターナショナル、ISO、JISにて標準化されており[1][2][3]、マイクロソフト以外のベンダーが独自に実装することもできる。実際にXamarinによるMonoプロジェクトをはじめ、いくつかのオープンソースによる実装プロジェクトがある。それらを使うことで.NET FrameworkでコンパイルしたプログラムをLinuxやMac OS XなどのWindows以外のOSでも動かすこともできる。なお、CLIのマイクロソフトの実装を共通言語ランタイム (CLR) と呼ぶ。.NET FrameworkはCLRにその他ライブラリ群を加えたものと言える。"
++ "近年では共通言語ランタイム上でJava仮想マシンの実装を試みるIKVM.NETなどのオープンソースプロジェクトも活発化している。";*/
+            var goodNames = new List<string>()
+            {
+                "ABCDEFG",
+                "Foo123",
+                "90Bar90",
+                "日本語の_名前",
+                "____GOD___",
+                "カタカナ",
+                "안녕하세요",
+                "fooༀض"
+            };
+            var badNames = new List<string>()
+            {
+                " test  ",
+                "test　",
+                "foo\u0C80"
+            };
+            var regex = new Regex(@"^\w{1,10}$", RegexOptions.None);
+            /*foreach (Match match in regex.Matches(str))
+            {
+                Console.WriteLine(string.Format("\"{0}\"", match.Value));
+            }*/
+            goodNames.ForEach(name => Assert.IsTrue(regex.IsMatch(name)));
+            badNames.ForEach(name => Assert.IsFalse(regex.IsMatch(name)));
+        }
+
+        [TestMethod]
+        public void NGWord()
+        {
+            var goodNames = new List<string>()
+            {
+                "善意のユーザー",
+                "NiceGuy",
+                "PikkkaChu",
+                "よいユーザー0001０１２３"
+            };
+            var badNames = new List<string>()
+            {
+                "おちんちん",
+                "ちんぽ",
+                "チんコ",
+                "まんまん",
+                "死ね"
+            };
+            goodNames.ForEach(name=>Assert.IsFalse(NGWordHelper.Regex.IsMatch(name)));
+            badNames.ForEach(name=>Assert.IsTrue(NGWordHelper.Regex.IsMatch(name)));
         }
     }
 }

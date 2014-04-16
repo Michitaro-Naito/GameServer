@@ -162,4 +162,10 @@
   <data name="TITLE_Success" xml:space="preserve">
     <value>Success</value>
   </data>
+  <data name="AMustBeBToCNonSpecialCharacters" xml:space="preserve">
+    <value>{0} must be {1} to {2} not-special, not-blank characters.</value>
+  </data>
+  <data name="AContainsNGWordB" xml:space="preserve">
+    <value>{0} contains ngword {1}.</value>
+  </data>
 </root>
