@@ -21,7 +21,8 @@ namespace GameServer
         public static double Elapsed { get; private set; }
 
         static Dictionary<string, Player> _players = new Dictionary<string, Player>();
-        static List<Player> _playersInLobby = new List<Player>();
+        static Dictionary<string, Player> _playersInLobby = new Dictionary<string, Player>();
+        static Dictionary<string, Player> _playersInGame = new Dictionary<string, Player>();
         static List<Room> _rooms = new List<Room>();
         static List<LobbyMessage> _messages = new List<LobbyMessage>();
 
@@ -71,16 +72,7 @@ namespace GameServer
                 return _players.Where(p => p.Value.Character == null).Select(en=>en.Value);
             }
         }
-        // PFM
-        public IEnumerable<Player> PlayersInLobby
-        {
-            get
-            {
-                return _players.Where(p => p.Value.Character != null && !_rooms.Any(r => r.HasCharacter(p.Value.Character)))
-                    .Select(en=>en.Value);
-            }
-        }
-        // PFM
+        /*// PFM
         public IEnumerable<Player> PlayersInGame
         {
             get
@@ -88,7 +80,7 @@ namespace GameServer
                 return _players.Where(p => p.Value.Character != null && _rooms.Any(r => r.HasCharacter(p.Value.Character)))
                     .Select(en=>en.Value);
             }
-        }
+        }*/
 
 
 
@@ -179,7 +171,8 @@ namespace GameServer
                 if (type == typeof(LobbyCommand.PlayerJoinedRoom))
                 {
                     var command = (LobbyCommand.PlayerJoinedRoom)commandBase;
-                    Console.WriteLine("PlayerJoinedRoom: " + command.Player);
+                    _playersInLobby.Remove(command.Player.connectionId);
+                    _playersInGame[command.Player.connectionId] = command.Player;
                 }
             }
         }
@@ -430,8 +423,8 @@ namespace GameServer
             Clients.Caller.gotLobbyMessages(_messages.Select(m=>m.ToInfo(Player)), true);
             Clients.Caller.gotLobbyMessages(new[] { new LobbyMessage() { name = "SYSTEM", body = new InterText("WelcomeAChattingBPlayingCSelectingCharacterD", _.ResourceManager, new[] {
                 new InterText(Player.Character.Name, null),
-                new InterText(PlayersInLobby.Count().ToString(), null),
-                new InterText(PlayersInGame.Count().ToString(), null),
+                new InterText(_playersInLobby.Count.ToString(), null),
+                new InterText(_playersInGame.Count.ToString(), null),
                 new InterText(PlayersWithoutCharacter.Count().ToString(), null)
             }) } }.Select(m => m.ToInfo(Player)));
         }
@@ -453,9 +446,12 @@ namespace GameServer
             var info = _rooms.Where(r=>new []{RoomState.Matchmaking, RoomState.Playing}.Contains(r.RoomState)).Select(r => r.ToInfo()).ToList();
             Clients.Caller.gotRooms(info);
 
-            /*// Add Player to Lobby.
-            if (!_playersInLobby.Contains(Player))
-                _playersInLobby.Add(Player);*/
+            // Add Player to Lobby.
+            if (!_playersInLobby.ContainsKey(Player.connectionId))
+            {
+                _playersInLobby[Player.connectionId] = Player;
+                _playersInGame.Remove(Player.connectionId);
+            }
         }
 
         /// <summary>
@@ -556,7 +552,12 @@ namespace GameServer
                 keysToRemove.Add(en.Key);
                 en.Value.Client.gotDisconnectionRequest();
             });
-            keysToRemove.ForEach(key => _players.Remove(key));
+            keysToRemove.ForEach(key =>
+            {
+                _players.Remove(key);
+                _playersInLobby.Remove(key);
+                _playersInGame.Remove(key);
+            });
         }
     }
 }
