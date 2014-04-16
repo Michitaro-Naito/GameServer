@@ -78,29 +78,6 @@ namespace GameServer.LobbyCommand
         public string Password { get; set; }
     }
 
-    /*public class RoomQuit : Base
-    {
-
-    }
-
-    public class RoomSend : Base
-    {
-        public int RoomSendMode { get; set; }
-        public int ActorId { get; set; }
-        public string Message { get; set; }
-    }
-
-    public class RoomReportMessage : Base
-    {
-
-    }
-
-    public class RoomConfigure : Base { }
-
-    public class RoomStart : Base { }
-
-    public class RoomVote : Base { }*/
-
     // ----- Internal Notification -----
     /// <summary>
     /// Notifies Lobby that Player joined a Room.

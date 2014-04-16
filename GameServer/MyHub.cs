@@ -1,34 +1,25 @@
-﻿using ApiScheme.Client;
-using ApiScheme.Scheme;
-using Microsoft.AspNet.SignalR;
-using MyResources;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using Microsoft.AspNet.SignalR;
 using System.Threading.Tasks;
 
 namespace GameServer {
+
+    /// <summary>
+    /// Accepts connections from Players.
+    /// Just queues everything.
+    /// cf. Lobby for GameLogics.
+    /// </summary>
     public class MyHub : Hub {
+
         // ----- Static Variable -----
+
         static Lobby _lobby = new Lobby();
 
 
 
-        // ----- Property -----
+        // ----- Static Method -----
 
-        /// <summary>
-        /// Returns current Player.
-        /// </summary>
-        public Player Player {
-            get {
-                // KeyNotFoundException
-                //return _players[Context.ConnectionId];
-                return _lobby.GetPlayer(Context.ConnectionId);
-            }
+        public static void Update() {
+            _lobby.Update();
         }
 
 
@@ -52,24 +43,7 @@ namespace GameServer {
 
 
 
-        // ----- Static Method -----
-        public static void Update() {
-            _lobby.Update();
-        }
-
-        public void Enqueue(LobbyCommand.Base command) {
-            command.ConnectionId = Context.ConnectionId;
-            _lobby.Enqueue(command);
-        }
-
-        public void EnqueueRoom(RoomCommand.Base command) {
-            command.ConnectionId = Context.ConnectionId;
-            _lobby.EnqueueRoom(command);
-        }
-
-
-
-        // ----- Method ( Client to Server ) -----
+        // ----- Public Method ( Client to Server ) -----
 
         /// <summary>
         /// Authenticates Player using GamePass.
@@ -115,58 +89,22 @@ namespace GameServer {
         }
 
         public void RoomSend(int roomSendMode, int actorId, string message) {
-            /*var room = Room;
-            if (room == null)
-            {
-                SystemMessage("You are not in Room.");
-                return;
-            }
-            room.Queue(new RoomCommand.Send(Player, roomSendMode, actorId, message));*/
             EnqueueRoom(new RoomCommand.Send() { RoomSendMode = roomSendMode, ActorId = actorId, Message = message });
         }
 
         public void RoomReportMessage(int messageId, string note) {
-            /*if (Room == null)
-            {
-                SystemMessage("You are not in Room.");
-                return;
-            }
-            SystemMessage("Queueing to report..." + messageId + note);
-            Room.Queue(new RoomCommand.Report(Player, messageId, note));*/
             EnqueueRoom(new RoomCommand.Report() { MessageId = messageId, Note = note });
         }
 
         public void RoomConfigure(Room.ClientConfiguration conf) {
-            /*var room = Room;
-            if (room == null)
-            {
-                SystemMessage("You are not in Room.");
-                return;
-            }
-            room.Queue(new RoomCommand.Configure(Player, conf));*/
             EnqueueRoom(new RoomCommand.Configure() { Configuration = conf });
         }
 
         public void RoomStart() {
-            /*var room = Room;
-            if (room == null)
-            {
-                SystemMessage("You are not in Room.");
-                return;
-            }
-            room.Queue(new RoomCommand.Start(Player));*/
             EnqueueRoom(new RoomCommand.Start() { });
         }
 
         public void RoomVote(int executionId, int attackId, int fortuneTellId, int guardId) {
-            /*var room = Room;
-            if (room == null)
-            {
-                SystemMessage("You are not in Room.");
-                return;
-            }
-            SystemMessage("Voting..." + executionId);
-            room.Queue(new RoomCommand.Vote(Player, executionId, attackId, fortuneTellId, guardId));*/
             EnqueueRoom(new RoomCommand.Vote() {
                 ExecutionId = executionId,
                 AttackId = attackId,
@@ -175,12 +113,24 @@ namespace GameServer {
             });
         }
 
-        public void QuitRoom() {
-            /*var room = Room;
-            SystemMessage(string.Format("Quitting from {0}", room));
-            room.Queue(new RoomCommand.RemovePlayer(Player, Player));*/
+        public void RoomQuit() {
             EnqueueRoom(new RoomCommand.RemovePlayer(){ });
         }
 
+
+
+        // ----- Private Method -----
+
+        void Enqueue(LobbyCommand.Base command) {
+            command.ConnectionId = Context.ConnectionId;
+            _lobby.Enqueue(command);
+        }
+
+        void EnqueueRoom(RoomCommand.Base command) {
+            command.ConnectionId = Context.ConnectionId;
+            _lobby.EnqueueRoom(command);
+        }
+
     }
+
 }
