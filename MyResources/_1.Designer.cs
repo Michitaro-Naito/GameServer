@@ -316,11 +316,11 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome, {0}! {1} players are chatting. {2} players are playing. {3} players are selecting characters..
+        ///   Looks up a localized string similar to Welcome to {1}, {0}! {2} players are chatting. {3} players are playing. {4} players are selecting characters..
         /// </summary>
-        public static string WelcomeAChattingBPlayingCSelectingCharacterD {
+        public static string WelcomeAToBChattingCPlayingDSelectingCharacterE {
             get {
-                return ResourceManager.GetString("WelcomeAChattingBPlayingCSelectingCharacterD", resourceCulture);
+                return ResourceManager.GetString("WelcomeAToBChattingCPlayingDSelectingCharacterE", resourceCulture);
             }
         }
         

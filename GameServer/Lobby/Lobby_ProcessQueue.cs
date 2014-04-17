@@ -185,8 +185,9 @@ namespace GameServer {
                 return;
 
             p.Client.gotLobbyMessages(_messages.Select(m => m.ToInfo(p)), true);
-            p.Client.gotLobbyMessages(new[] { new LobbyMessage() { name = "SYSTEM", body = new InterText("WelcomeAChattingBPlayingCSelectingCharacterD", _.ResourceManager, new[] {
+            p.Client.gotLobbyMessages(new[] { new LobbyMessage() { name = "SYSTEM", body = new InterText("WelcomeAToBChattingCPlayingDSelectingCharacterE", _.ResourceManager, new[] {
                 new InterText(p.Character.Name, null),
+                new InterText(GameConfiguration.Name, null),
                 new InterText(_playersInLobby.Count.ToString(), null),
                 new InterText(_playersInGame.Count.ToString(), null),
                 new InterText(_players.Count(pl=>pl.Value.Character==null)/*PlayersWithoutCharacter.Count()*/.ToString(), null)

@@ -183,9 +183,6 @@
   <data name="ThereIsNoWerewolf" xml:space="preserve">
     <value>人狼がいません。</value>
   </data>
-  <data name="WelcomeAChattingBPlayingCSelectingCharacterD" xml:space="preserve">
-    <value>ようこそ、{0}さん！　{1}人がチャット中、{2}人がプレイ中、{3}人がキャラクター選択中です。</value>
-  </data>
   <data name="LogCanBeDownloaded" xml:space="preserve">
     <value>以下のURLから記録をダウンロードできます：</value>
   </data>
@@ -194,5 +191,8 @@
   </data>
   <data name="WerewolvesRumor" xml:space="preserve">
     <value>人間の姿をした狼『人狼』が、この村に紛れ込んでいるという噂が広まっています。</value>
+  </data>
+  <data name="WelcomeAToBChattingCPlayingDSelectingCharacterE" xml:space="preserve">
+    <value>{0}さん、{1}へようこそ！ {2}人がチャット中、{3}人がプレイ中、{4}人がキャラクター選択中です。</value>
   </data>
 </root>
