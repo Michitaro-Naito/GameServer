@@ -19,6 +19,7 @@ namespace GameServer
             // See http://msdn.microsoft.com/en-us/library/system.net.httplistener.aspx 
             // for more information.
             Console.WriteLine(GameConfiguration.ToString());
+            Logger.WriteLine("Starting");
 
             string url = GameConfiguration.ListenUrl;   //"http://*:8080";
             var t = new Thread(new ThreadStart(() =>

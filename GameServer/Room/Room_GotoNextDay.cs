@@ -15,8 +15,7 @@ namespace GameServer
             Sync();
         }
 
-        void Start()
-        {
+        void Start() {
             var min = 7;
             var count = Math.Max(min, _characters.Count);
 

@@ -28,28 +28,35 @@ namespace GameServer {
 
             LobbyCommand.Base commandBase;
             while (_queue.TryDequeue(out commandBase)) {
-                commandBase.Sender = GetPlayer(commandBase.ConnectionId);
-                var type = commandBase.GetType();
-                if (type != typeof(LobbyCommand.OnConnected) && commandBase.Sender == null)
-                    // Sent by Unknown?
-                    continue;
-                /*GetType().InvokeMember(type.Name,
-                    System.Reflection.BindingFlags.NonPublic
-                    | System.Reflection.BindingFlags.InvokeMethod,
-                    null, this, new object[] { commandBase });*/
-                GetType().GetMethod(type.Name, BindingFlags.NonPublic | BindingFlags.Instance).Invoke(this, new object[] { commandBase });
-                //dic[type](commandBase);
-                // TODO: Catch and Log
+                try {
+                    commandBase.Sender = GetPlayer(commandBase.ConnectionId);
+                    var type = commandBase.GetType();
+                    if (type != typeof(LobbyCommand.OnConnected) && commandBase.Sender == null)
+                        // Sent by Unknown?
+                        continue;
+                    GetType().GetMethod(type.Name, BindingFlags.NonPublic | BindingFlags.Instance).Invoke(this, new object[] { commandBase });
+                }
+                catch (Exception e) {
+                    // Unknown Error.
+                    Logger.WriteLine(e.ToString());
+                }
             }
 
             RoomCommand.Base roomCommandBase;
             while (_queueToRoom.TryDequeue(out roomCommandBase)) {
-                roomCommandBase.Sender = GetPlayer(roomCommandBase.ConnectionId);
-                if (roomCommandBase.Sender == null)
-                    // Sent by Unknown?
-                    continue;
-                roomCommandBase.Sender.Character.Room.Queue(roomCommandBase);
-                // TODO: Catch and Log
+                try {
+                    roomCommandBase.Sender = GetPlayer(roomCommandBase.ConnectionId);
+                    if (roomCommandBase.Sender == null
+                        || roomCommandBase.Sender.Character == null
+                        || roomCommandBase.Sender.Character.Room == null)
+                        // Sent by Unknown?
+                        continue;
+                    roomCommandBase.Sender.Character.Room.Queue(roomCommandBase);
+                }
+                catch (Exception e) {
+                    // Unknown Error.
+                    Logger.WriteLine(e.ToString());
+                }
             }
         }
 

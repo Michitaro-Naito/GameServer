@@ -85,7 +85,17 @@ namespace GameServer
             }*/
 
             // Updates Rooms
-            _rooms.ForEach(r => r.Update(_elapsed));
+            var roomsToRemove = new List<Room>();
+            _rooms.ForEach(r => {
+                try {
+                    r.Update(_elapsed);
+                }
+                catch (Exception e) {
+                    roomsToRemove.Add(r);
+                    Logger.WriteLine("Room terminated because Update() thrown an exception. : " + e.ToString());
+                }
+            });
+            _rooms.RemoveAll(r=>roomsToRemove.Contains(r));
 
             // Cleans Rooms
             _rooms.RemoveAll(r => r.ShouldBeDeleted);
