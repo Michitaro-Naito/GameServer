@@ -30,6 +30,9 @@ namespace GameServer {
             while (_queue.TryDequeue(out commandBase)) {
                 commandBase.Sender = GetPlayer(commandBase.ConnectionId);
                 var type = commandBase.GetType();
+                if (type != typeof(LobbyCommand.OnConnected) && commandBase.Sender == null)
+                    // Sent by Unknown?
+                    continue;
                 /*GetType().InvokeMember(type.Name,
                     System.Reflection.BindingFlags.NonPublic
                     | System.Reflection.BindingFlags.InvokeMethod,

@@ -57,28 +57,16 @@ namespace GameServer
                     }
 
                     var existing = _actors.FirstOrDefault(a => a.character == command.Character);
-                    if (existing == null)
-                    {
-                        // No existing Actor. Adds or Replaces one...
-                        /*if (RoomState==RoomState.Configuring || RoomState == RoomState.Matchmaking)
-                        {
-                            // Adds Actor
-                            AddActorsForCharacters();
-                        }
-                        else
-                        {
-                            // Replaces NPC
-                            var npc = AliveNPCs.FirstOrDefault();  //_actors.Where(a => a.IsNPC).FirstOrDefault();
-                            if (npc == null)
-                            {
-                                client.addMessage("Could not join");
-                                continue;
-                            }
-                            npc.character = command.Character;
-                            SystemMessageAll(new InterText("AHasJoinedAsB", MyResources._.ResourceManager, new[] { new InterText(command.Character.Name, null), npc.TitleAndName }));
-                        }*/
+                    if (existing != null) {
+                        // Replaces existing Actor (Player is coming back.)
+                        _characters.Add(command.Character);
+                        command.Character.Room = this;
+                        existing.character = command.Character;
+                    }
+                    else{
                         var npc = AliveNPCs.FirstOrDefault();
                         if (npc != null) {
+                            // Replaces NPC (Players is a new comer.)
                             _characters.Add(command.Character);
                             command.Character.Room = this;
                             npc.character = command.Character;
@@ -86,11 +74,13 @@ namespace GameServer
                         }
                         else {
                             if (RoomState == RoomState.Configuring || RoomState == RoomState.Matchmaking) {
+                                // Adds Actor (Player is a new comer.)
                                 _characters.Add(command.Character);
                                 command.Character.Room = this;
                                 AddActorsForCharacters();
                             }
                             else {
+                                // Failed
                                 client.addMessage("Could not join");
                                 continue;
                             }
