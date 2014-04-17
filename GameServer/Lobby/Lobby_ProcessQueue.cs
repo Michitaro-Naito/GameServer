@@ -62,7 +62,7 @@ namespace GameServer {
 
         void OnConnected(LobbyCommand.OnConnected command) {
             var p = new Player() { connectionId = command.ConnectionId, Client = command.Client };
-            if (_players.Count >= 400)
+            if (_players.Count >= _maxPlayers)
                 // Server is full.
                 p.Client.gotDisconnectionRequest();
             else {

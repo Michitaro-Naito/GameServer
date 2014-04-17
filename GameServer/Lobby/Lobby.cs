@@ -26,6 +26,12 @@ namespace GameServer
         int _nexBlacklistPage = 0;
         double _durationUntilNextPage = 0;
 
+        double _durationUntilNextStatusReport = 0;
+        int _maxPlayers = 400;
+        int _frames = 0;
+        double _statusReportIntervalSeconds = 10;
+        double _maxElapsedSeconds = 0;
+
         public Player GetPlayer(string connectionId)
         {
             try
@@ -57,6 +63,9 @@ namespace GameServer
 
             // Updates Hub
             ProcessQueue();
+
+            // Reports Status
+            ReportGameServerStatus(_elapsed);
 
             /*// Blacklist
             _durationUntilNextPage -= Elapsed;
@@ -99,6 +108,39 @@ namespace GameServer
 
             // Cleans Rooms
             _rooms.RemoveAll(r => r.ShouldBeDeleted);
+        }
+
+        void ReportGameServerStatus(double elapsed) {
+            _maxElapsedSeconds = Math.Max(_maxElapsedSeconds, elapsed);
+            _durationUntilNextStatusReport -= elapsed;
+            _frames++;
+            if (_durationUntilNextStatusReport > 0)
+                return;
+
+            Console.WriteLine("Reporting...");
+            var framesPerInterval = _frames;
+            _frames = 0;
+            var maxElapsedSeconds = _maxElapsedSeconds;
+            _maxElapsedSeconds = 0;
+            _durationUntilNextStatusReport = _statusReportIntervalSeconds;
+
+            try {
+                var o = ApiScheme.Client.Api.Get<ReportGameServerStatusOut>(new ReportGameServerStatusIn() {
+                    host = GameConfiguration.Host,
+                    port = GameConfiguration.Port,
+                    name = GameConfiguration.Name,
+                    players = _players.Count,
+                    maxPlayers = _maxPlayers,
+                    framesPerInterval = framesPerInterval,
+                    reportIntervalSeconds = _statusReportIntervalSeconds,
+                    maxElapsedSeconds = maxElapsedSeconds
+                });
+            }
+            catch (Exception e) {
+                Logger.WriteLine(e.ToString());
+            }
+
+            Console.WriteLine("Reported");
         }
     }
 }

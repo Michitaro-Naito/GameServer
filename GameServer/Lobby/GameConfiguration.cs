@@ -12,8 +12,8 @@ namespace GameServer {
             get { return ConfigurationManager.AppSettings["Host"]; }
         }
 
-        public static string Port {
-            get { return ConfigurationManager.AppSettings["Port"]; }
+        public static int Port {
+            get { return int.Parse(ConfigurationManager.AppSettings["Port"]); }
         }
 
         public static string Name {
