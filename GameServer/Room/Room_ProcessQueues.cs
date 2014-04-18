@@ -103,7 +103,7 @@ namespace GameServer
             SendFirstMessagesTo(actor);
 
             // Notifies Lobby
-            EnqueueLobby(new LobbyCommand.PlayerJoinedRoom() { Player = command.Sender });
+            EnqueueLobby(new LobbyCommand.PlayerJoinedRoom() { ConnectionId = command.ConnectionId, Sender = command.Sender });
 
             // Character added. Shares this information later.
             _needSync = true;

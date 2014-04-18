@@ -239,8 +239,8 @@ namespace GameServer {
 
         void PlayerJoinedRoom(LobbyCommand.Base commandBase) {
             var command = (LobbyCommand.PlayerJoinedRoom)commandBase;
-            _playersInLobby.Remove(command.Player.connectionId);
-            _playersInGame[command.Player.connectionId] = command.Player;
+            _playersInLobby.Remove(command.Sender.connectionId);
+            _playersInGame[command.Sender.connectionId] = command.Sender;
         }
     }
 }

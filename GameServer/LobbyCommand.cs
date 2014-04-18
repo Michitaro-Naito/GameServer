@@ -86,6 +86,6 @@ namespace GameServer.LobbyCommand
     /// </summary>
     public class PlayerJoinedRoom : Base
     {
-        public Player Player { get; set; }
+        //public Player Player { get; set; }
     }
 }
