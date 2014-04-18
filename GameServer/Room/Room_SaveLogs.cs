@@ -88,15 +88,15 @@ namespace GameServer
             var aliveActorsHtml = "";
             _actors.Where(a=>!a.IsDead).ToList().ForEach(a =>
             {
-                aliveActorsHtml += a.ToHtml(conf.culture);
+                aliveActorsHtml += a.ToHtml(conf.culture) + "<br/>";
             });
-            html += string.Format("<div>{0}: {1}</div>", _UiString.Alive, aliveActorsHtml);
+            html += string.Format("<div>{0}:<br/>{1}</div>", _UiString.Alive, aliveActorsHtml);
             var deadActorsHtml = "";
             _actors.Where(a => a.IsDead).ToList().ForEach(a =>
             {
-                deadActorsHtml += a.ToHtml(conf.culture);
+                deadActorsHtml += a.ToHtml(conf.culture) + "<br/>";
             });
-            html += string.Format("<div>{0}: {1}</div>", _UiString.Dead, deadActorsHtml);
+            html += string.Format("<div>{0}:<br/>{1}</div>", _UiString.Dead, deadActorsHtml);
             // Messages
             var messagesHtml = "";
             _messages.ForEach(m =>

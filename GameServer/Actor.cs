@@ -231,7 +231,7 @@ namespace GameServer
                 TitleAndName.GetString(cultureInfo),
                 role.ToLocalizedString(cultureInfo));
             if (character != null)
-                internalString += string.Format("by {0}({1})", character.Name, character.Player.userId);
+                internalString += string.Format(" by {0}", character.Name);
             else
                 internalString += "(NPC)";
             var html = string.Format("<span style=\"color:{0};background-color:{1};\">{2}</span>",
