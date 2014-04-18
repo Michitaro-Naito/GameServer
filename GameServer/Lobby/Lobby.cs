@@ -1,4 +1,5 @@
-﻿using ApiScheme.Scheme;
+﻿using ApiScheme.Client;
+using ApiScheme.Scheme;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -67,8 +68,8 @@ namespace GameServer
             // Reports Status
             ReportGameServerStatus(_elapsed);
 
-            /*// Blacklist
-            _durationUntilNextPage -= Elapsed;
+            // Blacklist
+            _durationUntilNextPage -= _elapsed;
             if (_durationUntilNextPage < 0)
             {
                 Console.WriteLine("Getting page " + _nexBlacklistPage);
@@ -91,7 +92,7 @@ namespace GameServer
                 if (blacklist.infos.Count == 0)
                     _nexBlacklistPage = 0;
                 _durationUntilNextPage = 10;
-            }*/
+            }
 
             // Updates Rooms
             var roomsToRemove = new List<Room>();

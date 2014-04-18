@@ -51,7 +51,7 @@ namespace GameServer {
             var p = new Player() { connectionId = command.ConnectionId, Client = command.Client };
             if (_players.Count >= _maxPlayers)
                 // Server is full.
-                p.Client.gotDisconnectionRequest();
+                p.Client.gotDisconnectionRequest("満員のため接続できませんでした。");
             else {
                 // Accepts Player
                 _players[p.connectionId] = p;
@@ -80,7 +80,7 @@ namespace GameServer {
 
             if (_blacklists.Any(b => b.infos.Any(info => info.userId == pass.data.userId))) {
                 player.GotSystemMessage("You are banned.");
-                player.Client.gotDisconnectionRequest();
+                player.Client.gotDisconnectionRequest("このアカウントは犯罪に使用された可能性があるため接続が拒否されました。");
                 return;
             }
 
