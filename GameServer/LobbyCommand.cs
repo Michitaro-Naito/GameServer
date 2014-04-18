@@ -22,10 +22,11 @@ namespace GameServer.LobbyCommand
         public dynamic Client { get; set; }
     }
 
-    public class OnReconnected : Base
+    // cf. OnConnected
+    /*public class OnReconnected : Base
     {
 
-    }
+    }*/
 
     public class OnDisconnected : Base
     {

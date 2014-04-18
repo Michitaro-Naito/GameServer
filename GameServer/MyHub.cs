@@ -32,7 +32,8 @@ namespace GameServer {
         }
 
         public override Task OnReconnected() {
-            Enqueue(new LobbyCommand.OnReconnected() { });
+            Enqueue(new LobbyCommand.OnConnected() { Client = Clients.Caller });
+            //Enqueue(new LobbyCommand.OnReconnected() { });
             return base.OnReconnected();
         }
 

@@ -27,7 +27,7 @@ namespace GameServer
         double _durationUntilNextPage = 0;
 
         double _durationUntilNextStatusReport = 0;
-        int _maxPlayers = 400;
+        int _maxPlayers = 3;
         int _frames = 0;
         double _statusReportIntervalSeconds = 10;
         double _maxElapsedSeconds = 0;
@@ -126,14 +126,16 @@ namespace GameServer
 
             try {
                 var o = ApiScheme.Client.Api.Get<ReportGameServerStatusOut>(new ReportGameServerStatusIn() {
-                    host = GameConfiguration.Host,
-                    port = GameConfiguration.Port,
-                    name = GameConfiguration.Name,
-                    players = _players.Count,
-                    maxPlayers = _maxPlayers,
-                    framesPerInterval = framesPerInterval,
-                    reportIntervalSeconds = _statusReportIntervalSeconds,
-                    maxElapsedSeconds = maxElapsedSeconds
+                    status = new GameServerStatus() {
+                        host = GameConfiguration.Host,
+                        port = GameConfiguration.Port,
+                        name = GameConfiguration.Name,
+                        players = _players.Count,
+                        maxPlayers = _maxPlayers,
+                        framesPerInterval = framesPerInterval,
+                        reportIntervalSeconds = _statusReportIntervalSeconds,
+                        maxElapsedSeconds = maxElapsedSeconds
+                    }
                 });
             }
             catch (Exception e) {

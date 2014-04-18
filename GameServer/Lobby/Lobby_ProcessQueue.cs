@@ -13,19 +13,6 @@ using System.Threading.Tasks;
 namespace GameServer {
     partial class Lobby {
         void ProcessQueue() {
-            // TODO: const
-            /*var dic = new Dictionary<Type, Action<LobbyCommand.Base>>()
-            {
-                {typeof(LobbyCommand.OnConnected), OnConnected},
-                {typeof(LobbyCommand.OnReconnected), OnReconnected},
-                {typeof(LobbyCommand.OnDisconnected), OnDisconnected},
-                {typeof(LobbyCommand.Authenticate), Authenticate},
-                {typeof(LobbyCommand.GetCharacters), GetCharacters},
-                {typeof(LobbyCommand.CreateCharacter), CreateCharacter},
-                {typeof(LobbyCommand.SelectCharacter), SelectCharacter},
-                {typeof(LobbyCommand.PlayerJoinedRoom), PlayerJoinedRoom},
-            };*/
-
             LobbyCommand.Base commandBase;
             while (_queue.TryDequeue(out commandBase)) {
                 try {
@@ -73,9 +60,9 @@ namespace GameServer {
             }
         }
 
-        void OnReconnected(LobbyCommand.OnReconnected command) {
+        /*void OnReconnected(LobbyCommand.OnReconnected command) {
             command.Sender.GotBootTime(_bootTime);
-        }
+        }*/
 
         void OnDisconnected(LobbyCommand.OnDisconnected command) {
             Kick(command.Sender.userId);
