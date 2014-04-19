@@ -105,6 +105,9 @@ namespace GameServer
             });
             html += string.Format("<ul class=\"messages\">{0}</ul>", messagesHtml);
 
+            // Wraps html tag
+            html = string.Format("<!DOCTYPE html><html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/><meta charset=\"utf-8\" /></head><body>{0}</body></html>", html);
+
             // ----- Uploads to Blob -----
             // Gets the container
             var storageAccount = CloudStorageAccount.Parse(
