@@ -79,6 +79,10 @@ namespace GameServer.LobbyCommand
         public string Password { get; set; }
     }
 
+    public class SpectateRoom : Base {
+        public int RoomId { get; set; }
+    }
+
     // ----- Internal Notification -----
     /// <summary>
     /// Notifies Lobby that Player joined a Room.

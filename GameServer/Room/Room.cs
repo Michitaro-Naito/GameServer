@@ -30,6 +30,16 @@ namespace GameServer
         List<Character> _characters = new List<Character>();
 
         /// <summary>
+        /// Characters who are spectating in this Room.
+        /// Spectators just get Actors and Messages. Does nothing.
+        /// </summary>
+        List<Character> _spectators = new List<Character>();
+
+        IEnumerable<Character> CharactersAndSpectators {
+            get { return _characters.Concat(_spectators); }
+        }
+
+        /// <summary>
         /// Actors in this Room.
         /// </summary>
         List<Actor> _actors = new List<Actor>();
@@ -95,7 +105,7 @@ namespace GameServer
 
         public bool ShouldBeDeleted
         {
-            get { return RoomState!=RoomState.Ending && !IsProcessingHistory && _characters.Count == 0; }
+            get { return RoomState!=RoomState.Ending && !IsProcessingHistory && CharactersAndSpectators.Count() == 0; }
         }
 
         List<RoomMessage.Mode> ModesFor(Actor actor)
@@ -247,14 +257,15 @@ namespace GameServer
 
         void Sync()
         {
-            _characters.ForEach(c =>
+            //_characters.ForEach(c =>
+            CharactersAndSpectators.ToList().ForEach(c =>
             {
                 var client = c.Player.Client;// _updateHub.Clients.Client(c.Player.connectionId);
                 var yourActorId = new Nullable<int>();
                 var yourActor = _actors.FirstOrDefault(a => a.IsOwnedBy(c.Player));
                 if (yourActor != null)
                     yourActorId = yourActor.id;
-                var actors = _actors.Select(a => new ActorInfo(this, c.Player, yourActor, a)).ToList();
+                var actors = _actors.Select(a => a.ToInfo(this, c.Player, yourActor) /*new ActorInfo(this, c.Player, yourActor, a)*/).ToList();
                 client.gotRoomConfigurations(conf);
                 client.gotRoomState(RoomState);
                 client.gotActors(actors);
@@ -284,13 +295,19 @@ namespace GameServer
         {
             if (actor != null && actor.character != null)
             {
-                var client = actor.character.Player.Client;//_updateHub.Clients.Client(actor.character.Player.connectionId);
+                var client = actor.character.Player.Client;
                 client.gotRoomMessages(
                     _messages
                         .Where(m => m.IsVisibleFor(this, actor))
                         .Select(m => new RoomMessageInfo(m, actor.character.Player.Culture)),
                     true);
             }
+        }
+        void SendFirstMessagesTo(Character spectator) {
+            spectator.Player.Client.gotRoomMessages(
+                _messages
+                    .Where(m=>m.IsVisibleFor(this, null))
+                    .Select(m=>new RoomMessageInfo(m, spectator.Player.Culture)));
         }
     }
 }

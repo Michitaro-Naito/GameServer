@@ -37,6 +37,10 @@ namespace GameServer.RoomCommand
         public string Password { get; set; }
     }
 
+    public class SpectateCharacter : Base {
+        public Character Character { get; set; }
+    }
+
     public class RemovePlayer : Base
     {
         //public Player Target { get; set; }

@@ -88,6 +88,10 @@ namespace GameServer {
             Enqueue(new LobbyCommand.JoinRoom() { RoomId = roomId, Password = password });
         }
 
+        public void SpectateRoom(int roomId) {
+            Enqueue(new LobbyCommand.SpectateRoom() { RoomId = roomId });
+        }
+
         public void LobbySend(string message) {
             Enqueue(new LobbyCommand.LobbySend() { Message = message });
         }

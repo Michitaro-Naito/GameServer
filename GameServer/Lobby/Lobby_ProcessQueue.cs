@@ -225,6 +225,15 @@ namespace GameServer {
             BringPlayerToRoom(p, command.RoomId, command.Password);
         }
 
+        void SpectateRoom(LobbyCommand.SpectateRoom command) {
+            var p = command.Sender;
+            if (p.Character == null) {
+                p.GotSystemMessage("Select Character first to spectate room.");
+                return;
+            }
+            LetPlayerSpectate(p, command.RoomId);
+        }
+
         void LobbySend(LobbyCommand.LobbySend command) {
             var p = command.Sender;
             if (p.Character == null)

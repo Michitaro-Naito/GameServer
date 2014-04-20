@@ -17,7 +17,8 @@ namespace GameServer
                 return;
 
             _messages.AddRange(_messagesWillBeApplied);
-            _characters.ForEach(c =>
+            //_characters.ForEach(c =>
+            CharactersAndSpectators.ToList().ForEach(c =>
             {
                 var actor = _actors.FirstOrDefault(a => a.character == c);
                 //_updateHub.Clients.Client(c.Player.connectionId)
@@ -106,6 +107,21 @@ namespace GameServer
             EnqueueLobby(new LobbyCommand.PlayerJoinedRoom() { ConnectionId = command.ConnectionId, Sender = command.Sender });
 
             // Character added. Shares this information later.
+            _needSync = true;
+        }
+
+        /// <summary>
+        /// Adds Character as a Spectator.
+        /// (Player comes to Spectate.)
+        /// </summary>
+        /// <param name="command"></param>
+        void PQ_SpectateCharacter(RoomCommand.SpectateCharacter command) {
+            _spectators.Add(command.Character);
+            command.Character.Room = this;
+            command.Character.Player.BroughtTo(ClientState.Playing);
+            SendFirstMessagesTo(command.Character);
+            EnqueueLobby(new LobbyCommand.PlayerJoinedRoom() { ConnectionId = command.ConnectionId, Sender = command.Sender });
+
             _needSync = true;
         }
 

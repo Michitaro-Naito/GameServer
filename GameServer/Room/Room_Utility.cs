@@ -21,7 +21,6 @@ namespace GameServer
                 c.Room = null;
                 _characters.Remove(c);
             });
-            //var amountKicked = _characters.RemoveAll(c => c.Player != null && c.Player.userId == userId);
             var amountKicked = charactersToRemove.Count;
 
             // Removes Actors?
@@ -42,6 +41,9 @@ namespace GameServer
 
                 _needSync = true;
             });
+
+            // Removes Spectators
+            amountKicked += _spectators.RemoveAll(s => s.Player != null && s.Player.userId == userId);
 
             return amountKicked;
         }

@@ -87,7 +87,7 @@ namespace GameServer
 
                     case Mode.Private:
                         // Only for sent or received guys.
-                        return viewer == from || viewer == to;
+                        return viewer != null && (viewer == from || viewer == to);
 
                     default:
                         // Unknown

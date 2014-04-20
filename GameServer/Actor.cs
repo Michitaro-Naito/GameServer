@@ -34,7 +34,7 @@ namespace GameServer
         public Role role;
         public bool isRoleSure;
 
-        public ActorInfo(Room room, Player player, Actor viewer, Actor actor)
+        /*public ActorInfo(Room room, Player player, Actor viewer, Actor actor)
         {
             id = actor.id;
             title = actor.title.GetStringFor(player);
@@ -68,7 +68,7 @@ namespace GameServer
                 role = actor.role;
                 isRoleSure = true;
             }
-        }
+        }*/
     }
 
     public class Actor
@@ -177,6 +177,42 @@ namespace GameServer
 
         Actor()
         {
+        }
+
+        public ActorInfo ToInfo(Room room, Player player, Actor viewer) {
+            var info = new ActorInfo() {
+                id = id,
+                title = title.GetStringFor(player),
+                name = name.GetStringFor(player),
+                gender = gender,
+                character = character != null ? character.ToString() : null,
+                isDead = IsDead,
+                isRoomMaster = room.IsRoomMaster(this),
+                ColorIdentity = ColorIdentity,
+                isPresent = IsNPC ? false : room.HasCharacter(character)
+            };
+
+            if (new[] { RoomState.Matchmaking, RoomState.Playing }.Contains(room.RoomState)) {
+                // Filters
+                info.role = Role.Citizen;
+                info.isRoleSure = false;
+
+                if (viewer != null
+                    && ((this == viewer)   // Alice can see herself.
+                    || (new[] { Role.Werewolf }.Contains(viewer.role) && role == Role.Werewolf)))    // Werewolf or Fanatic can see werewolves.
+                {
+                    info.role = role;
+                    info.isRoleSure = true;
+                }
+
+                // Lover can see each other.
+            }
+            else {
+                // Ending or Ended. Does not filter
+                info.role = role;
+                info.isRoleSure = true;
+            }
+            return info;
         }
 
         public override string ToString()

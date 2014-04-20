@@ -55,5 +55,24 @@ namespace GameServer
                 Password = password
             });
         }
+
+        void LetPlayerSpectate(Player p, int roomId) {
+            var room = _rooms.FirstOrDefault(r => r.roomId == roomId);
+            if (room == null) {
+                p.GotSystemMessage("Room not found: " + roomId);
+                return;
+            }
+            if (p.Character == null) {
+                p.GotSystemMessage("Failded to join Room. Character not selected.");
+                return;
+            }
+
+            _rooms.ForEach(r => r.Queue(new RoomCommand.RemovePlayer() { ConnectionId = p.connectionId, Sender = GetPlayer(p.connectionId) }));
+            room.Queue(new RoomCommand.SpectateCharacter() {
+                ConnectionId = p.connectionId,
+                Sender = GetPlayer(p.connectionId),
+                Character = p.Character
+            });
+        }
     }
 }
