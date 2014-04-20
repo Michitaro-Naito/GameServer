@@ -33,6 +33,10 @@ namespace GameServer
         double _statusReportIntervalSeconds = 10;
         double _maxElapsedSeconds = 0;
 
+        public Lobby() {
+            _maxPlayers = GameConfiguration.MaxPlayers;
+        }
+
         public Player GetPlayer(string connectionId)
         {
             try
@@ -69,30 +73,7 @@ namespace GameServer
             ReportGameServerStatus(_elapsed);
 
             // Blacklist
-            _durationUntilNextPage -= _elapsed;
-            if (_durationUntilNextPage < 0)
-            {
-                Console.WriteLine("Getting page " + _nexBlacklistPage);
-                var blacklist = Api.Get<GetBlacklistOut>(new GetBlacklistIn() { page = _nexBlacklistPage });
-                if (_blacklists.Count > _nexBlacklistPage)
-                    _blacklists[_nexBlacklistPage] = blacklist;
-                else
-                    _blacklists.Add(blacklist);
-                _nexBlacklistPage++;
-
-                var str = "";
-                _blacklists.ForEach(b => b.infos.ForEach(info => str += info.userId + ","));
-                Console.WriteLine("CurrentBlacklist: " + str);
-
-                blacklist.infos.ForEach(info =>
-                {
-                    Kick(info.userId);
-                });
-
-                if (blacklist.infos.Count == 0)
-                    _nexBlacklistPage = 0;
-                _durationUntilNextPage = 10;
-            }
+            GetBlacklist(_elapsed);
 
             // Updates Rooms
             var roomsToRemove = new List<Room>();
@@ -144,6 +125,37 @@ namespace GameServer
             }
 
             Console.WriteLine("Reported");
+        }
+
+        void GetBlacklist(double elapsed) {
+            _durationUntilNextPage -= elapsed;
+            if (_durationUntilNextPage < 0) {
+                _durationUntilNextPage = 10;
+                Console.WriteLine("Getting page " + _nexBlacklistPage);
+
+                try {
+                    var blacklist = Api.Get<GetBlacklistOut>(new GetBlacklistIn() { page = _nexBlacklistPage });
+                    if (_blacklists.Count > _nexBlacklistPage)
+                        _blacklists[_nexBlacklistPage] = blacklist;
+                    else
+                        _blacklists.Add(blacklist);
+                    _nexBlacklistPage++;
+
+                    var str = "";
+                    _blacklists.ForEach(b => b.infos.ForEach(info => str += info.userId + ","));
+                    Console.WriteLine("CurrentBlacklist: " + str);
+
+                    blacklist.infos.ForEach(info => {
+                        Kick(info.userId);
+                    });
+
+                    if (blacklist.infos.Count == 0)
+                        _nexBlacklistPage = 0;
+                }
+                catch (Exception e){
+                    Logger.WriteLine(e.ToString());
+                }
+            }
         }
     }
 }

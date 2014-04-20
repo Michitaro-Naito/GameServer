@@ -20,6 +20,10 @@ namespace GameServer {
             get { return ConfigurationManager.AppSettings["Name"]; }
         }
 
+        public static int MaxPlayers {
+            get { return int.Parse(ConfigurationManager.AppSettings["MaxPlayers"]); }
+        }
+
         public static string ListenUrl {
             get { return string.Format("http://{0}:{1}", Host, Port); }
         }
@@ -27,15 +31,16 @@ namespace GameServer {
         public static bool HasError {
             get {
                 return Host == null
-                    || Port == null
-                    || Name == null;
+                    || Port == 0
+                    || Name == null
+                    || MaxPlayers == 0;
             }
         }
 
         public static string ToString() {
             if (HasError)
-                return string.Format("[***ERROR*** LobbyConfiguration Host:{0} Port:{1} Name:{2}]", Host, Name);
-            return string.Format("[LobbyConfiguration Host:{0} Port:{1} Name:{2}]", Host, Port, Name);
+                return string.Format("[***ERROR*** LobbyConfiguration Host:{0} Port:{1} Name:{2} MaxPlayers:{3}]", Host, Name, MaxPlayers);
+            return string.Format("[LobbyConfiguration Host:{0} Port:{1} Name:{2} MaxPlayers:{3}]", Host, Port, Name, MaxPlayers);
         }
     }
 }

@@ -227,7 +227,7 @@ namespace GameServer
             var dic = new Dictionary<Actor, int>();
             AliveWerewolfRace.ToList().ForEach(w =>
             {
-                var target = w.ActorToExecute;
+                var target = w.ActorToAttack;
                 var strRandom = new InterText("", null);
                 if (target == null || target.IsDead)
                 {
@@ -247,7 +247,7 @@ namespace GameServer
             var max = dic.Max(p => p.Value);
             var actorToAttack = dic.Where(p => p.Value == max).RandomElement().Key;
             str.Add(new InterText("AttackingAB", _.ResourceManager, new[] { actorToAttack.title, actorToAttack.name }));
-            SystemMessageAll(str.ToArray());
+            SystemMessageWolf(str.ToArray());
 
             // Guards
             var actorsGuarded = new List<Actor>();

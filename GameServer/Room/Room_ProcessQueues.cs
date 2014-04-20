@@ -279,7 +279,10 @@ namespace GameServer
             actor.ActorToAttack = _actors.FirstOrDefault(a => a.id == command.AttackId);
             actor.ActorToFortuneTell = _actors.FirstOrDefault(a => a.id == command.FortuneTellId);
             actor.ActorToGuard = _actors.FirstOrDefault(a => a.id == command.GuardId);
-            client.addMessage("Voted. ActorToExecute is: " + actor.ActorToExecute);
+            /*client.addMessage("Voted. ActorToExecute is: " + actor.ActorToExecute);
+            client.addMessage("Voted. ActorToAttack is: " + actor.ActorToAttack);
+            client.addMessage("Voted. ActorToFortuneTell is: " + actor.ActorToFortuneTell);
+            client.addMessage("Voted. ActorToGuard is: " + actor.ActorToGuard);*/
         }
 
     }

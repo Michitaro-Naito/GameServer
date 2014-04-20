@@ -241,6 +241,10 @@ namespace GameServer
             AddMessage(new RoomMessage() { bodyRows = new[] { new InterText(message, null) } });
         }
 
+        void SystemMessageWolf(InterText[] bodyRows) {
+            AddMessage(new RoomMessage() { mode= RoomMessage.Mode.Wolf, bodyRows = bodyRows });
+        }
+
         void Sync()
         {
             _characters.ForEach(c =>
