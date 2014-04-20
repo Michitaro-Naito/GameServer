@@ -24,6 +24,10 @@ namespace GameServer {
             get { return int.Parse(ConfigurationManager.AppSettings["MaxPlayers"]); }
         }
 
+        public static bool ReportStatus {
+            get { return bool.Parse(ConfigurationManager.AppSettings["ReportStatus"]); }
+        }
+
         public static string ListenUrl {
             get { return string.Format("http://{0}:{1}", Host, Port); }
         }
@@ -38,9 +42,10 @@ namespace GameServer {
         }
 
         public static string ToString() {
+            var error = "";
             if (HasError)
-                return string.Format("[***ERROR*** LobbyConfiguration Host:{0} Port:{1} Name:{2} MaxPlayers:{3}]", Host, Name, MaxPlayers);
-            return string.Format("[LobbyConfiguration Host:{0} Port:{1} Name:{2} MaxPlayers:{3}]", Host, Port, Name, MaxPlayers);
+                error = "***ERROR*** ";
+            return string.Format("[{0}LobbyConfiguration Host:{1} Port:{2} Name:{3} MaxPlayers:{4} ReportStatus:{5}]", error, Host, Port, Name, MaxPlayers, ReportStatus);
         }
     }
 }
