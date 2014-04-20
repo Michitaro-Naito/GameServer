@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using GameServer.ClientModel;
+using Microsoft.AspNet.SignalR;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GameServer {
@@ -103,6 +106,10 @@ namespace GameServer {
 
         public void RoomStart() {
             EnqueueRoom(new RoomCommand.Start() { });
+        }
+
+        public void RoomStart(List<ClientRoleAmount> roles) {
+            EnqueueRoom(new RoomCommand.Start() { Roles = roles });
         }
 
         public void RoomVote(int executionId, int attackId, int fortuneTellId, int guardId) {

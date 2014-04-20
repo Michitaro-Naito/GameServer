@@ -1,4 +1,5 @@
-﻿using MyResources;
+﻿using GameServer.ClientModel;
+using MyResources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,11 @@ namespace GameServer
             Sync();
         }
 
-        void Start() {
+        /// <summary>
+        /// Casts roles.
+        /// </summary>
+        /// <param name="roles"></param>
+        bool CastRoles(List<ClientRoleAmount> roles) {
             var min = 7;
             var count = Math.Max(min, _characters.Count);
 
@@ -24,19 +29,34 @@ namespace GameServer
                 _actors.Add(Actor.CreateUnique(_actors));
 
             // Remove NPCs
-            while (_actors.Where(a => a.IsNPC).Count() > 0 && _actors.Count > min)
-            {
+            while (_actors.Where(a => a.IsNPC).Count() > 0 && _actors.Count > min) {
                 var npcToRemove = _actors.Where(a => a.character == null).RandomElement();
                 _actors.Remove(npcToRemove);
             }
 
             // Casts Roles
             var dic = RoleHelper.CastRolesAuto(count);
-            foreach (var p in dic)
-            {
+            if (roles != null) {
+                // Manual
+                try {
+                    dic = RoleHelper.CastRolesManual(roles, count);
+                }
+                catch (ClientException e) {
+                    SystemMessageAll(e.Errors.ToArray());
+                    SystemMessageAll("配役にエラーがあるため開始できませんでした。");
+                    return false;
+                }
+            }
+            foreach (var p in dic) {
                 for (var n = 0; n < p.Value; n++)
                     _actors.Where(a => a.role == Role.None).RandomElement().role = p.Key;
             }
+
+            return true;
+        }
+
+        void Start() {
+            //CastRoles();
 
             // Changes State
             RoomState = RoomState.Playing;

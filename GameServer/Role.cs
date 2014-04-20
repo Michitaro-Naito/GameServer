@@ -124,5 +124,38 @@ namespace GameServer
 
             return dic;
         }
+
+        internal static Dictionary<Role, int> CastRolesManual(List<ClientModel.ClientRoleAmount> roles, int totalActors) {
+            var dic = GetRoleCountsDictionary();
+
+            roles.ForEach(role => dic[role.id] = role.amount);
+
+            if (dic.Any(en => en.Value < 0))
+                throw new ClientException(InterText.Create("CannotBeMinus", _Error.ResourceManager));
+                /*throw new ClientException(new InterText("AMustBeBToC", _Error.ResourceManager, new InterText[] {
+                    new InterText("")
+                }));///"マイナスは指定できません"*/
+            var sum = dic.Sum(en => en.Value);
+            if (sum != totalActors)
+                throw new ClientException(InterText.Create("SumMustBeA", _Error.ResourceManager, totalActors));
+                //throw new Exception("役職の総数が合いません");
+            if (dic[Role.None] > 0)
+                throw new ClientException(InterText.Create("AMustBeB", _Error.ResourceManager, new InterText(Role.None.ToKey(), _Enum.ResourceManager), 0));
+            //throw new Exception("配役なしは指定できません");
+            if (dic[Role.Fox] > 0)
+                throw new ClientException(InterText.Create("AMustBeB", _Error.ResourceManager, new InterText(Role.Fox.ToKey(), _Enum.ResourceManager), 0));
+            if (dic.Sum(en => en.Key.Is(Faction.Citizen) ? en.Value : 0) == 0)
+                throw new ClientException(InterText.Create("AMustBeBiggerThanB", _Error.ResourceManager, new InterText(Faction.Citizen.ToKey(), _Enum.ResourceManager), 0));
+                //throw new Exception("村人チームを1人以上加えてください。");
+            var werewolfCount = dic[Role.Werewolf];
+            if (werewolfCount == 0)
+                throw new ClientException(InterText.Create("AMustBeBiggerThanB", _Error.ResourceManager, new InterText(Race.Werewolf.ToKey(), _Enum.ResourceManager), 0));
+                //throw new Exception("人狼を1人以上加えてください。");
+            if (werewolfCount >= dic.Sum(en => en.Value) / 2.0)
+                //throw new Exception("人狼はプレイヤー数の半分未満にしてください。");
+                throw new ClientException(InterText.Create("WerewolvesMustBeSmallerThanHalfOfTotal", _Error.ResourceManager));
+
+            return dic;
+        }
     }
 }

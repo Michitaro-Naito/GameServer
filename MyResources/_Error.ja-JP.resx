@@ -120,6 +120,12 @@
   <data name="AContainsNGWordB" xml:space="preserve">
     <value>{0}にNGワード「{1}」を含めないでください。</value>
   </data>
+  <data name="AMustBeB" xml:space="preserve">
+    <value>{0}は{1}にしてください。</value>
+  </data>
+  <data name="AMustBeBiggerThanB" xml:space="preserve">
+    <value>{0}は{1}より大きくしてください。</value>
+  </data>
   <data name="AMustBeBToC" xml:space="preserve">
     <value>{0}は{1}以上{2}以下で入力してください。</value>
   </data>
@@ -134,6 +140,9 @@
   </data>
   <data name="AMustBeUpToBCharactersOrNull" xml:space="preserve">
     <value>{0}は{1}文字以内を入力するか空欄にしてください。</value>
+  </data>
+  <data name="CannotBeMinus" xml:space="preserve">
+    <value>マイナスは指定できません。</value>
   </data>
   <data name="CouldNotJoin" xml:space="preserve">
     <value>参加できませんでした</value>
@@ -162,10 +171,16 @@
   <data name="SuccessfullyReportedThankYou" xml:space="preserve">
     <value>正常に報告を完了しました。情報をお寄せいただきありがとうございます。</value>
   </data>
+  <data name="SumMustBeA" xml:space="preserve">
+    <value>合計は{0}にしてください。</value>
+  </data>
   <data name="TITLE_Error" xml:space="preserve">
     <value>エラー</value>
   </data>
   <data name="TITLE_Success" xml:space="preserve">
     <value>成功</value>
+  </data>
+  <data name="WerewolvesMustBeSmallerThanHalfOfTotal" xml:space="preserve">
+    <value>人狼は全体の半数未満にしてください。</value>
   </data>
 </root>

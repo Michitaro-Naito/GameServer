@@ -178,7 +178,12 @@ namespace GameServer
                 return;
             }
 
-            CountDownToStart();
+            if (command.Roles != null) {
+                command.Roles.ForEach(r => Console.WriteLine(r.id.ToString() + r.amount.ToString()));
+            }
+
+            if(CastRoles(command.Roles))
+                CountDownToStart();
         }
 
         /// <summary>

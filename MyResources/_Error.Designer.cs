@@ -70,6 +70,24 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} must be {1}..
+        /// </summary>
+        public static string AMustBeB {
+            get {
+                return ResourceManager.GetString("AMustBeB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} must be bigger than {1}..
+        /// </summary>
+        public static string AMustBeBiggerThanB {
+            get {
+                return ResourceManager.GetString("AMustBeBiggerThanB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} must be {1} to {2}..
         /// </summary>
         public static string AMustBeBToC {
@@ -111,6 +129,15 @@ namespace MyResources {
         public static string AMustBeUpToBCharactersOrNull {
             get {
                 return ResourceManager.GetString("AMustBeUpToBCharactersOrNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot be minus..
+        /// </summary>
+        public static string CannotBeMinus {
+            get {
+                return ResourceManager.GetString("CannotBeMinus", resourceCulture);
             }
         }
         
@@ -196,6 +223,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sum must be {0}..
+        /// </summary>
+        public static string SumMustBeA {
+            get {
+                return ResourceManager.GetString("SumMustBeA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string TITLE_Error {
@@ -210,6 +246,15 @@ namespace MyResources {
         public static string TITLE_Success {
             get {
                 return ResourceManager.GetString("TITLE_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Werewolves must be smaller than a half of the total..
+        /// </summary>
+        public static string WerewolvesMustBeSmallerThanHalfOfTotal {
+            get {
+                return ResourceManager.GetString("WerewolvesMustBeSmallerThanHalfOfTotal", resourceCulture);
             }
         }
     }

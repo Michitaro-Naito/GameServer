@@ -168,4 +168,19 @@
   <data name="AContainsNGWordB" xml:space="preserve">
     <value>{0} contains ngword {1}.</value>
   </data>
+  <data name="AMustBeB" xml:space="preserve">
+    <value>{0} must be {1}.</value>
+  </data>
+  <data name="AMustBeBiggerThanB" xml:space="preserve">
+    <value>{0} must be bigger than {1}.</value>
+  </data>
+  <data name="CannotBeMinus" xml:space="preserve">
+    <value>Cannot be minus.</value>
+  </data>
+  <data name="SumMustBeA" xml:space="preserve">
+    <value>Sum must be {0}.</value>
+  </data>
+  <data name="WerewolvesMustBeSmallerThanHalfOfTotal" xml:space="preserve">
+    <value>Werewolves must be smaller than a half of the total.</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameServer.ClientModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,6 +49,7 @@ namespace GameServer.RoomCommand
 
     public class Start : Base
     {
+        public List<ClientRoleAmount> Roles { get; set; }
     }
 
     public class Vote : Base

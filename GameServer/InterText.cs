@@ -45,6 +45,21 @@ namespace GameServer
             Params = parameters;
         }
 
+        public static InterText Create(object obj) {
+            if (obj.GetType() == typeof(InterText))
+                return (InterText)obj;
+            return new InterText(obj.ToString(), null);
+        }
+
+        public static InterText Create(string key, ResourceManager resourceManager, params object[] parameters) {
+            if (key == null)
+                throw new ArgumentNullException("key must not be null.");
+            InterText[] ps = null;
+            if (parameters != null)
+                ps = parameters.Select(p => InterText.Create(p)).ToArray();
+            return new InterText(key, resourceManager, ps);
+        }
+
         /// <summary>
         /// Gets localized string using culture.
         /// </summary>
