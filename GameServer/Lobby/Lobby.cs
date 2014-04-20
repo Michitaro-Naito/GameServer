@@ -70,7 +70,8 @@ namespace GameServer
             ProcessQueue();
 
             // Reports Status
-            ReportGameServerStatus(_elapsed);
+            if(GameConfiguration.ReportStatus)
+                ReportGameServerStatus(_elapsed);
 
             // Blacklist
             GetBlacklist(_elapsed);
@@ -92,6 +93,10 @@ namespace GameServer
             _rooms.RemoveAll(r => r.ShouldBeDeleted);
         }
 
+        /// <summary>
+        /// Reports GameServerStatus to ApiServer.
+        /// </summary>
+        /// <param name="elapsed"></param>
         void ReportGameServerStatus(double elapsed) {
             _maxElapsedSeconds = Math.Max(_maxElapsedSeconds, elapsed);
             _durationUntilNextStatusReport -= elapsed;
