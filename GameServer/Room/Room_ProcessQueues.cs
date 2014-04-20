@@ -219,12 +219,15 @@ namespace GameServer
                 }
             }
 
+            var bodyRows = command.Message.Split(new char[]{'\n'}, 15).Select(str=>new InterText(str, null)).ToArray();
+
             AddMessage(new RoomMessage() {
                 callerUserId = command.Sender.userId,
                 mode = mode,
                 from = from,
                 to = to,
-                bodyRows = new[] { new InterText(command.Message, null) }
+                //bodyRows = new[] { new InterText(command.Message, null) }
+                bodyRows = bodyRows
             });
         }
 
