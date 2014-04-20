@@ -22,7 +22,7 @@ namespace GameServer
             _players.Where(en => en.Value.userId == userId).ToList().ForEach(en =>
             {
                 keysToRemove.Add(en.Key);
-                en.Value.Client.gotDisconnectionRequest();
+                en.Value.Client.gotDisconnectionRequest("ゲームから切断されました。別の画面を開いたり端末をスリープモードにすると発生することがあります。");
             });
             keysToRemove.ForEach(key =>
             {
