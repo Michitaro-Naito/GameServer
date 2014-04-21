@@ -281,4 +281,7 @@ ul.messages li div.body{
   <data name="AHasBeenRevivedByRoomMasterB" xml:space="preserve">
     <value>{0} has been revived by RoomMaster {1}.</value>
   </data>
+  <data name="RoomMasterASetRoleOfSomebody" xml:space="preserve">
+    <value>RoomMaster {0} has set a role of somebody.</value>
+  </data>
 </root>

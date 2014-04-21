@@ -207,4 +207,7 @@
   <data name="AHasBeenRevivedByRoomMasterB" xml:space="preserve">
     <value>{0}はルームマスター{1}によって蘇生されました。</value>
   </data>
+  <data name="RoomMasterASetRoleOfSomebody" xml:space="preserve">
+    <value>ルームマスター{0}が誰かの役職を変更しました。</value>
+  </data>
 </root>

@@ -325,6 +325,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RoomMaster {0} has set a role of somebody..
+        /// </summary>
+        public static string RoomMasterASetRoleOfSomebody {
+            get {
+                return ResourceManager.GetString("RoomMasterASetRoleOfSomebody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Skipped by RoomMaster {0}..
         /// </summary>
         public static string SkippedByRoomMasterA {

@@ -106,6 +106,9 @@ namespace GameServer
         {
             return obj.GetType().Name + "_" + obj.ToString();
         }
+        public static InterText ToInterText(this Enum obj) {
+            return InterText.Create(obj.ToKey(), MyResources._Enum.ResourceManager);
+        }
         public static string ToLocalizedString(this Enum obj, CultureInfo culture)
         {
             var key = obj.ToKey();

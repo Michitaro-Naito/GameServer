@@ -382,7 +382,6 @@ namespace GameServer
         }
 
         void PQ_Revive(RoomCommand.Revive command) {
-            Console.WriteLine("Revive?");
             if (command.Sender == null)
                 // Sent by Unknown?
                 return;
@@ -399,6 +398,27 @@ namespace GameServer
             if (actorToRevive != null) {
                 actorToRevive.IsDead = false;
                 SystemMessageAll(InterText.Create("AHasBeenRevivedByRoomMasterB", _.ResourceManager, actorToRevive.TitleAndName, command.Sender.Character.Name));
+                _needSync = true;
+            }
+        }
+
+        void PQ_SetRole(RoomCommand.SetRole command) {
+            if (command.Sender == null)
+                // Sent by Unknown?
+                return;
+
+            if (!IsRoomMaster(command.Sender.Character))
+                // Not RoomMaster.
+                return;
+
+            if (!new[] { RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState))
+                // Only available Matchmaking or Playing.
+                return;
+
+            var actor = _actors.FirstOrDefault(a => a.id == command.ActorId);
+            if (actor != null) {
+                actor.role = command.Role;
+                SystemMessageAll(InterText.Create("RoomMasterASetRoleOfSomebody", _.ResourceManager, command.Sender.Character));
                 _needSync = true;
             }
         }
