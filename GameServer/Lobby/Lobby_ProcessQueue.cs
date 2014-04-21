@@ -194,13 +194,14 @@ namespace GameServer {
                 p.GotSystemMessage("Select Character first to get rooms.");
                 return;
             }
-            _rooms.ForEach(r => {
+            /*_rooms.ForEach(r => {
                 if (r.IsVisibleToJoin)
                     p.GotSystemMessage(r.ToString());
                 else
                     p.GotSystemMessage(r.ToString() + "(Hidden)");
-            });
-            var info = _rooms.Where(r => new[] { RoomState.Matchmaking, RoomState.Playing }.Contains(r.RoomState)).Select(r => r.ToInfo()).ToList();
+            });*/
+            //var info = _rooms.Where(r => new[] { RoomState.Matchmaking, RoomState.Playing }.Contains(r.RoomState)).Select(r => r.ToInfo()).ToList();
+            var info = _rooms.Select(r => r.ToInfo()).ToList();
             p.Client.gotRooms(info);
         }
 
