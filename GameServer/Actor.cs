@@ -199,7 +199,8 @@ namespace GameServer
 
                 if (viewer != null
                     && ((this == viewer)   // Alice can see herself.
-                    || (new[] { Role.Werewolf }.Contains(viewer.role) && role == Role.Werewolf)))    // Werewolf or Fanatic can see werewolves.
+                    || (new[] { Role.Werewolf }.Contains(viewer.role) && role == Role.Werewolf))    // Werewolf or Fanatic can see werewolves.
+                    || (room.IsRoomMaster(viewer) && viewer.IsDead))    // Dead RoomMaster can see anything.
                 {
                     info.role = role;
                     info.isRoleSure = true;
