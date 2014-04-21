@@ -117,6 +117,9 @@ namespace GameServer
             {
                 // Dead
                 modes.Add(RoomMessage.Mode.Ghost);
+                // DeadRoomMaster can send All
+                if (IsRoomMaster(actor))
+                    modes.Add(RoomMessage.Mode.All);
             }
             else
             {
