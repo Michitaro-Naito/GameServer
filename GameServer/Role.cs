@@ -118,7 +118,9 @@ namespace GameServer
             dic[Role.Psycho] = (totalActors / 9.0).RandomRound();
 
             // No Fox
-            dic[Role.Werewolf] = Math.Max(1, (int)Math.Floor(totalActors / 3.5));
+            //dic[Role.Werewolf] = Math.Max(1, (int)Math.Floor(totalActors / 3.5));
+            dic[Role.Werewolf] = Math.Max(1, (int)Math.Floor(totalActors / 4.0));
+            dic[Role.Fox] = Math.Max(1, (int)Math.Floor(totalActors / 12.0));
 
             dic[Role.Citizen] = totalActors - dic.Sum(pair => pair.Value);
 
@@ -142,8 +144,8 @@ namespace GameServer
             if (dic[Role.None] > 0)
                 throw new ClientException(InterText.Create("AMustBeB", _Error.ResourceManager, new InterText(Role.None.ToKey(), _Enum.ResourceManager), 0));
             //throw new Exception("配役なしは指定できません");
-            if (dic[Role.Fox] > 0)
-                throw new ClientException(InterText.Create("AMustBeB", _Error.ResourceManager, new InterText(Role.Fox.ToKey(), _Enum.ResourceManager), 0));
+            //if (dic[Role.Fox] > 0)
+                //throw new ClientException(InterText.Create("AMustBeB", _Error.ResourceManager, new InterText(Role.Fox.ToKey(), _Enum.ResourceManager), 0));
             if (dic.Sum(en => en.Key.Is(Faction.Citizen) ? en.Value : 0) == 0)
                 throw new ClientException(InterText.Create("AMustBeBiggerThanB", _Error.ResourceManager, new InterText(Faction.Citizen.ToKey(), _Enum.ResourceManager), 0));
                 //throw new Exception("村人チームを1人以上加えてください。");

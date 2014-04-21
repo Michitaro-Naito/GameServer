@@ -284,4 +284,7 @@ ul.messages li div.body{
   <data name="RoomMasterASetRoleOfSomebody" xml:space="preserve">
     <value>RoomMaster {0} has set a role of somebody.</value>
   </data>
+  <data name="RunningFoxSpotted" xml:space="preserve">
+    <value>Running fox spotted.</value>
+  </data>
 </root>

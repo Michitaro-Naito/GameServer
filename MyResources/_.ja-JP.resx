@@ -210,4 +210,7 @@
   <data name="RoomMasterASetRoleOfSomebody" xml:space="preserve">
     <value>ルームマスター{0}が誰かの役職を変更しました。</value>
   </data>
+  <data name="RunningFoxSpotted" xml:space="preserve">
+    <value>逃げ回る狐の姿が目撃されました。</value>
+  </data>
 </root>

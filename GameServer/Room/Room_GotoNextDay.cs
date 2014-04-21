@@ -296,8 +296,11 @@ namespace GameServer
                 // Saved by Hunter.
                 SystemMessageAll(new InterText("NobodyKilledBecauseOfHuntersActivity", _.ResourceManager));
             }
-            else
-            {
+            else if (actorToAttack.Race == Race.Fox){
+                // Evaded
+                SystemMessageAll(new InterText("RunningFoxSpotted", _.ResourceManager));
+            }
+            else {
                 // Killed
                 actorToAttack.IsDead = true;
                 SystemMessageAll(new InterText("AHasBeenKilledByWerewolves", _.ResourceManager, new[] { actorToAttack.TitleAndName }));

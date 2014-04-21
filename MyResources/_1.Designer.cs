@@ -334,6 +334,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Running fox spotted..
+        /// </summary>
+        public static string RunningFoxSpotted {
+            get {
+                return ResourceManager.GetString("RunningFoxSpotted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Skipped by RoomMaster {0}..
         /// </summary>
         public static string SkippedByRoomMasterA {
