@@ -37,12 +37,13 @@ namespace GameServer
                 _actors.Remove(npcToRemove);
             }
 
+            var aliveNoRoleCharacters = AliveActors.Count(a => a.role == Role.None);
             // Casts Roles
-            var dic = RoleHelper.CastRolesAuto(count);
+            var dic = RoleHelper.CastRolesAuto(aliveNoRoleCharacters);
             if (roles != null) {
                 // Manual
                 try {
-                    dic = RoleHelper.CastRolesManual(roles, count);
+                    dic = RoleHelper.CastRolesManual(roles, aliveNoRoleCharacters);
                 }
                 catch (ClientException e) {
                     SystemMessageAll(e.Errors.ToArray());
@@ -51,8 +52,11 @@ namespace GameServer
                 }
             }
             foreach (var p in dic) {
-                for (var n = 0; n < p.Value; n++)
-                    AliveActors.Where(a => a.role == Role.None).RandomElement().role = p.Key;
+                for (var n = 0; n < p.Value; n++) {
+                    var actorToSet = AliveActors.Where(a => a.role == Role.None).RandomElement();
+                    if(actorToSet!=null)
+                        actorToSet.role = p.Key;
+                }
                     //_actors.Where(a => a.role == Role.None).RandomElement().role = p.Key;
             }
 
