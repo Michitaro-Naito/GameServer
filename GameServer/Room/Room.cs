@@ -69,12 +69,36 @@ namespace GameServer
             if (character == null)
                 return false;
 
-            if (_characters.Count == 0 && RoomState == RoomState.Configuring)
+            if (RoomState != RoomState.Ended && _actors.Any(a => a.IsOwnedBy(character.Player)))
+                // Already there.
+                return true;
+
+            switch (RoomState) {
+                case RoomState.Configuring:
+                    return _characters.Count == 0;
+
+                case RoomState.Matchmaking:
+                    if (duration > 0)
+                        return false;
+                    return _characters.Count < conf.max;
+
+                case RoomState.Playing:
+                    return AliveNPCs.Count() > 0;
+
+                default:
+                    return false;
+            }
+
+            /*if (_characters.Count == 0 && RoomState == RoomState.Configuring)
                 // RoomMaster is coming.
                 return true;
 
-            if (!new RoomState[] { RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState))
+            if (!new RoomState[] { RoomState.Matchmaking, RoomState.Playing, RoomState.Ending }.Contains(RoomState))
                 return false;
+
+            if (_actors.Any(a => a.IsOwnedBy(character.Player)))
+                // Already there.
+                return true;
 
             if (RoomState == RoomState.Matchmaking && duration > 0)
                 // Just starting
@@ -88,7 +112,7 @@ namespace GameServer
                 // No empty slot
                 return false;
 
-            return true;
+            return true;*/
         }
         public RoomState RoomState { get; private set; }
 
