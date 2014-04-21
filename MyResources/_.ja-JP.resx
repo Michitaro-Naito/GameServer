@@ -195,4 +195,10 @@
   <data name="WelcomeAToBChattingCPlayingDSelectingCharacterE" xml:space="preserve">
     <value>{0}さん、{1}へようこそ！ {2}人がチャット中、{3}人がプレイ中、{4}人がキャラクター選択中です。</value>
   </data>
+  <data name="SkippedRoomMasterA" xml:space="preserve">
+    <value>ルームマスター{0}によってゲームがスキップされました。</value>
+  </data>
+  <data name="RoomMasterAKickedB" xml:space="preserve">
+    <value>{1}はルームマスター{0}によって追放されました。</value>
+  </data>
 </root>

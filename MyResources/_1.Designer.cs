@@ -298,6 +298,24 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {1} has been kicked by RoomMaster{0}..
+        /// </summary>
+        public static string RoomMasterAKickedB {
+            get {
+                return ResourceManager.GetString("RoomMasterAKickedB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skipped by RoomMaster {0}..
+        /// </summary>
+        public static string SkippedRoomMasterA {
+            get {
+                return ResourceManager.GetString("SkippedRoomMasterA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello!.
         /// </summary>
         public static string String1 {

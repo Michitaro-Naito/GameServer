@@ -129,6 +129,16 @@ namespace GameServer {
             EnqueueRoom(new RoomCommand.RemovePlayer(){ });
         }
 
+        // ----- RoomMaster -----
+        public void RoomSkip() {
+            EnqueueRoom(new RoomCommand.Skip() { });
+        }
+
+        public void RoomKick(RoomCommand.Kick command) {
+            Console.WriteLine("Kick: " + command.CharacterName);
+            EnqueueRoom(command);
+        }
+
 
 
         // ----- Private Method -----

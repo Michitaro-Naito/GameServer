@@ -13,7 +13,8 @@ namespace GameServer.RoomCommand
         /// <summary>
         /// Player who queued this RoomCommand.
         /// In another word, Caller.
-        /// Null if queued by System.
+        /// Null if queued by Anonymous.
+        /// Player.System if queued by SYSTEM.
         /// </summary>
         public Player Sender { get; set; }
     }
@@ -62,5 +63,14 @@ namespace GameServer.RoomCommand
         public int AttackId { get; set; }
         public int FortuneTellId { get; set; }
         public int GuardId { get; set; }
+    }
+
+    // ----- RoomMaster -----
+    public class Skip : Base {
+
+    }
+
+    public class Kick : Base {
+        public string CharacterName { get; set; }
     }
 }

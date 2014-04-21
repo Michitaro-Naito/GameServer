@@ -205,6 +205,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please, do not kick test. :(.
+        /// </summary>
+        public static string PleaseDoNotKickTest {
+            get {
+                return ResourceManager.GetString("PleaseDoNotKickTest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A room is full, busy or closed..
         /// </summary>
         public static string RoomIsFullBusyOrEnded {

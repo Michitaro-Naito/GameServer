@@ -269,4 +269,10 @@ ul.messages li div.body{
   <data name="LogCanBeDownloaded" xml:space="preserve">
     <value>Log can be downloaded from:</value>
   </data>
+  <data name="SkippedRoomMasterA" xml:space="preserve">
+    <value>Skipped by RoomMaster {0}.</value>
+  </data>
+  <data name="RoomMasterAKickedB" xml:space="preserve">
+    <value>{1} has been kicked by RoomMaster{0}.</value>
+  </data>
 </root>

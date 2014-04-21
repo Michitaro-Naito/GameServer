@@ -133,9 +133,10 @@ namespace GameServer
         void PQ_RemovePlayer(RoomCommand.RemovePlayer command) {
             var client = command.Sender.Client;
 
-            if (Kick(command.Sender.userId) > 0)
+            /*if (Kick(command.Sender.userId) > 0)
                 // Brings removed Player to Rooms scene.
-                client.broughtTo(ClientState.Rooms);
+                client.broughtTo(ClientState.Rooms);*/
+            Kick(command.Sender.userId);
 
             // Character removed. Shares this information later.
             _needSync = true;
@@ -307,6 +308,56 @@ namespace GameServer
             client.addMessage("Voted. ActorToAttack is: " + actor.ActorToAttack);
             client.addMessage("Voted. ActorToFortuneTell is: " + actor.ActorToFortuneTell);
             client.addMessage("Voted. ActorToGuard is: " + actor.ActorToGuard);*/
+        }
+
+        void PQ_Skip(RoomCommand.Skip command) {
+            //if (command.Sender == null || !IsRoomMaster(command.Sender.Character))
+            //    return;
+            if (command.Sender == null)
+                // Sent by Unknown?
+                return;
+
+            if (!IsRoomMaster(command.Sender.Character))
+                // Not RoomMaster.
+                return;
+
+            if (!new[] { RoomState.Playing, RoomState.Ending }.Contains(RoomState))
+                // Only available Playing or Ending.
+                return;
+
+            SystemMessageAll(InterText.Create("SkippedByRoomMasterA", _.ResourceManager, command.Sender.Character));
+            duration = 0;
+        }
+
+        void PQ_Kick(RoomCommand.Kick command) {
+            if (command.Sender == null)
+                // Sent by Unknown?
+                return;
+
+            if (!IsRoomMaster(command.Sender.Character))
+                // Not RoomMaster.
+                return;
+
+            if (!new[] { RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState))
+                // Only available Matchmaking or Playing.
+                return;
+
+            if (command.CharacterName == null || command.CharacterName == "")
+                // Empty
+                return;
+
+            if (command.CharacterName == "test") {
+                // Kicking Admin.
+                SystemMessageAll(InterText.Create("PleaseDoNotKickTest", _Error.ResourceManager));
+                return;
+            }
+
+            // OK. Kicks.
+            var characterToKick = _characters.FirstOrDefault(c => c.Name == command.CharacterName);
+            if (characterToKick != null && characterToKick.Player != null) {
+                SystemMessageAll(InterText.Create("RoomMasterAKickedB", _.ResourceManager, command.Sender.Character, characterToKick.Name));
+                Kick(characterToKick.Player.userId);
+            }
         }
 
     }

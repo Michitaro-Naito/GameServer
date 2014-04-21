@@ -183,4 +183,7 @@
   <data name="WerewolvesMustBeSmallerThanHalfOfTotal" xml:space="preserve">
     <value>Werewolves must be smaller than a half of the total.</value>
   </data>
+  <data name="PleaseDoNotKickTest" xml:space="preserve">
+    <value>Please, do not kick test. :(</value>
+  </data>
 </root>

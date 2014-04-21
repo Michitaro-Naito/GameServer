@@ -151,6 +151,11 @@ namespace GameServer
             return _characters.Any(c => c.Name == character.Name);
         }
 
+        public bool IsRoomMaster(Character character) {
+            if (character == null)
+                return false;
+            return character == _characters.FirstOrDefault();
+        }
         public bool IsRoomMaster(Actor actor)
         {
             if (actor == null)
@@ -307,7 +312,8 @@ namespace GameServer
             spectator.Player.Client.gotRoomMessages(
                 _messages
                     .Where(m=>m.IsVisibleFor(this, null))
-                    .Select(m=>new RoomMessageInfo(m, spectator.Player.Culture)));
+                    .Select(m=>new RoomMessageInfo(m, spectator.Player.Culture)),
+                true);
         }
     }
 }

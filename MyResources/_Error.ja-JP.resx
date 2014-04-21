@@ -183,4 +183,7 @@
   <data name="WerewolvesMustBeSmallerThanHalfOfTotal" xml:space="preserve">
     <value>人狼は全体の半数未満にしてください。</value>
   </data>
+  <data name="PleaseDoNotKickTest" xml:space="preserve">
+    <value>どうかtestをけらないであげてください。(´・ω・｀)</value>
+  </data>
 </root>

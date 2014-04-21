@@ -33,6 +33,9 @@ namespace GameServer
                 && !a.IsDead                            // Not dead.
                 ).ToList().ForEach(a =>
             {
+                // Notifies Kicked Player that he is gone.
+                a.character.Player.BroughtTo(ClientState.Rooms);
+
                 // Notifies players that someone gone.
                 SystemMessageAll(new InterText("AHasGoneFromB", MyResources._.ResourceManager, new[] { new InterText(a.character.Name, null), a.TitleAndName }));
 
