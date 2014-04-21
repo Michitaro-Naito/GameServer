@@ -25,6 +25,13 @@ namespace GameServer
             });
             var amountKicked = charactersToRemove.Count;
 
+            // Removes Spectators
+            _spectators.Where(s => s.Player != null && s.Player.userId == userId).ToList().ForEach(s => {
+                if (s.Player != null)
+                    s.Player.BroughtTo(ClientState.Rooms);
+            });
+            amountKicked += _spectators.RemoveAll(s => s.Player != null && s.Player.userId == userId);
+
             // Removes Actors?
             if (!new[] { RoomState.Configuring, RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState))
                 // Don't have to.
@@ -46,13 +53,6 @@ namespace GameServer
 
                 _needSync = true;
             });
-
-            // Removes Spectators
-            _spectators.Where(s => s.Player != null && s.Player.userId == userId).ToList().ForEach(s => {
-                if(s.Player!=null)
-                    s.Player.BroughtTo(ClientState.Rooms);
-            });
-            amountKicked += _spectators.RemoveAll(s => s.Player != null && s.Player.userId == userId);
 
             return amountKicked;
         }
