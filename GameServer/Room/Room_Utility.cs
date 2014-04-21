@@ -48,6 +48,10 @@ namespace GameServer
             });
 
             // Removes Spectators
+            _spectators.Where(s => s.Player != null && s.Player.userId == userId).ToList().ForEach(s => {
+                if(s.Player!=null)
+                    s.Player.BroughtTo(ClientState.Rooms);
+            });
             amountKicked += _spectators.RemoveAll(s => s.Player != null && s.Player.userId == userId);
 
             return amountKicked;
