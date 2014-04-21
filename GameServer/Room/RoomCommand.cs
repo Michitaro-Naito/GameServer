@@ -73,4 +73,8 @@ namespace GameServer.RoomCommand
     public class Kick : Base {
         public string CharacterName { get; set; }
     }
+
+    public class Kill : Base {
+        public int ActorId { get; set; }
+    }
 }

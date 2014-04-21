@@ -135,7 +135,10 @@ namespace GameServer {
         }
 
         public void RoomKick(RoomCommand.Kick command) {
-            Console.WriteLine("Kick: " + command.CharacterName);
+            EnqueueRoom(command);
+        }
+
+        public void RoomKill(RoomCommand.Kill command) {
             EnqueueRoom(command);
         }
 

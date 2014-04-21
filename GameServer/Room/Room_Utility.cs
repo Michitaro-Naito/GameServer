@@ -19,6 +19,8 @@ namespace GameServer
             charactersToRemove.ForEach(c =>
             {
                 c.Room = null;
+                if(c.Player != null)
+                    c.Player.BroughtTo(ClientState.Rooms);
                 _characters.Remove(c);
             });
             var amountKicked = charactersToRemove.Count;

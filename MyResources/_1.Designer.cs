@@ -70,6 +70,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} has been killed by RoomMaster {1}..
+        /// </summary>
+        public static string AHasBeenKilledByRoomMasterB {
+            get {
+                return ResourceManager.GetString("AHasBeenKilledByRoomMasterB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} has been killed by werewolves mercilessly..
         /// </summary>
         public static string AHasBeenKilledByWerewolves {
@@ -309,9 +318,9 @@ namespace MyResources {
         /// <summary>
         ///   Looks up a localized string similar to Skipped by RoomMaster {0}..
         /// </summary>
-        public static string SkippedRoomMasterA {
+        public static string SkippedByRoomMasterA {
             get {
-                return ResourceManager.GetString("SkippedRoomMasterA", resourceCulture);
+                return ResourceManager.GetString("SkippedByRoomMasterA", resourceCulture);
             }
         }
         

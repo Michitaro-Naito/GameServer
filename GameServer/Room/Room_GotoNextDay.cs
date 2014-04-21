@@ -22,15 +22,18 @@ namespace GameServer
         /// <param name="roles"></param>
         bool CastRoles(List<ClientRoleAmount> roles) {
             var min = 7;
-            var count = Math.Max(min, _characters.Count);
+            //var count = Math.Max(min, _characters.Count);
+            var count = Math.Max(min, AliveActors.Count());
 
             // Adds Actors
-            while (_actors.Count < count)
+            //while (_actors.Count < count)
+            while (AliveActors.Count() < count)
                 _actors.Add(Actor.CreateUnique(_actors));
 
             // Remove NPCs
-            while (_actors.Where(a => a.IsNPC).Count() > 0 && _actors.Count > min) {
-                var npcToRemove = _actors.Where(a => a.character == null).RandomElement();
+            //while (_actors.Where(a => a.IsNPC).Count() > 0 && _actors.Count > min) {
+            while (AliveActors.Where(a => a.IsNPC).Count() > 0 && AliveActors.Count() > min) {
+                var npcToRemove = AliveActors.Where(a => a.character == null).RandomElement();
                 _actors.Remove(npcToRemove);
             }
 
@@ -49,7 +52,8 @@ namespace GameServer
             }
             foreach (var p in dic) {
                 for (var n = 0; n < p.Value; n++)
-                    _actors.Where(a => a.role == Role.None).RandomElement().role = p.Key;
+                    AliveActors.Where(a => a.role == Role.None).RandomElement().role = p.Key;
+                    //_actors.Where(a => a.role == Role.None).RandomElement().role = p.Key;
             }
 
             return true;
