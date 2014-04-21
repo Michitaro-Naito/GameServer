@@ -295,7 +295,7 @@ namespace GameServer
                 var client = c.Player.Client;// _updateHub.Clients.Client(c.Player.connectionId);
                 var yourActorId = new Nullable<int>();
                 var yourActor = _actors.FirstOrDefault(a => a.IsOwnedBy(c.Player));
-                if (yourActor != null)
+                if (yourActor != null && _characters.Contains(c))   // yourActor = null if spectating
                     yourActorId = yourActor.id;
                 var actors = _actors.Select(a => a.ToInfo(this, c.Player, yourActor) /*new ActorInfo(this, c.Player, yourActor, a)*/).ToList();
                 client.gotRoomConfigurations(conf);
