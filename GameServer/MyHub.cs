@@ -142,6 +142,14 @@ namespace GameServer {
             EnqueueRoom(command);
         }
 
+        public void RoomRevive(RoomCommand.Revive command) {
+            EnqueueRoom(command);
+        }
+
+        public void RoomSetRole(RoomCommand.SetRole command) {
+            EnqueueRoom(command);
+        }
+
 
 
         // ----- Private Method -----

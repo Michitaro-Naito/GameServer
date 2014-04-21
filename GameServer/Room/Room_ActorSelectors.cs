@@ -13,6 +13,9 @@ namespace GameServer
         {
             get { return _actors.Where(a => !a.IsDead); }
         }
+        public IEnumerable<Actor> DeadActors {
+            get { return _actors.Where(a => a.IsDead); }
+        }
         public void ForEachAliveActors(Func<Actor, bool> predicate, Action<Actor> action)
         {
             AliveActors.Where(predicate).ToList().ForEach(action);

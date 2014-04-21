@@ -101,6 +101,7 @@ namespace GameServer {
             player.Client.gotRoles(Enum.GetValues(typeof(Role)).Cast<Role>().Select(r => new RoleInfo(r, player.Culture)));
             player.Client.gotGenders(Enum.GetValues(typeof(Gender)).Cast<Gender>().Select(g => new GenderInfo(g, player.Culture)));
             player.Client.gotStrings(MyResources._UiString.ResourceManager.GetResourceSet(player.Culture, true, true));
+            player.Client.gotAllModes(Enum.GetValues(typeof(GameServer.RoomMessage.Mode)).Cast<RoomMessage.Mode>().Select(m=>new RoomMessage.ModeInfo(player, m)));
 
             player.BroughtTo(ClientState.Characters);
         }

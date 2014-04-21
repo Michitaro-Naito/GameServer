@@ -278,4 +278,7 @@ ul.messages li div.body{
   <data name="AHasBeenKilledByRoomMasterB" xml:space="preserve">
     <value>{0} has been killed by RoomMaster {1}.</value>
   </data>
+  <data name="AHasBeenRevivedByRoomMasterB" xml:space="preserve">
+    <value>{0} has been revived by RoomMaster {1}.</value>
+  </data>
 </root>

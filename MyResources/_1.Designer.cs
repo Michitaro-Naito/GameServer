@@ -88,6 +88,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} has been revived by RoomMaster {1}..
+        /// </summary>
+        public static string AHasBeenRevivedByRoomMasterB {
+            get {
+                return ResourceManager.GetString("AHasBeenRevivedByRoomMasterB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} has come as {1}..
         /// </summary>
         public static string AHasComeAsB {

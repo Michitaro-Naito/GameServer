@@ -77,4 +77,13 @@ namespace GameServer.RoomCommand
     public class Kill : Base {
         public int ActorId { get; set; }
     }
+
+    public class Revive : Base {
+        public int ActorId { get; set; }
+    }
+
+    public class SetRole : Base {
+        public int ActorId { get; set; }
+        public Role Role { get; set; }
+    }
 }

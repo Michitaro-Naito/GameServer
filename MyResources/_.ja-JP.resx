@@ -204,4 +204,7 @@
   <data name="AHasBeenKilledByRoomMasterB" xml:space="preserve">
     <value>{0}はルームマスター{1}によって殺害されました。</value>
   </data>
+  <data name="AHasBeenRevivedByRoomMasterB" xml:space="preserve">
+    <value>{0}はルームマスター{1}によって蘇生されました。</value>
+  </data>
 </root>
