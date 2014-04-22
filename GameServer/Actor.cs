@@ -107,6 +107,7 @@ namespace GameServer
         }
         public bool CanRevenge { get { return role == Role.Cat; } }
         public bool CanShareLoverCommunity { get { return role == Role.Lover; } }
+        public bool CanShareFoxCommunity { get { return role == Role.Fox || role == Role.ShintoPriest; } }
 
         public InterText TitleAndName
         {
@@ -212,9 +213,9 @@ namespace GameServer
 
                 if (viewer != null
                     && ((this == viewer)   // Alice can see herself.
-                    ||(viewer.CanShareWerewolfCommunity && this.CanShareWerewolfCommunity)  // Werewolf friends.
-                    ||(viewer.CanShareLoverCommunity && this.CanShareLoverCommunity)    // Lovers.
-                    //|| (new[] { Role.Werewolf, Role.Fanatic }.Contains(viewer.role) && new[]{Role.Werewolf, Role.Fanatic}.Contains(role))   // Werewolf or Fanatic can see werewolves.
+                    || (viewer.CanShareWerewolfCommunity && this.CanShareWerewolfCommunity)  // Werewolf friends.
+                    || (viewer.CanShareLoverCommunity && this.CanShareLoverCommunity)    // Lovers.
+                    || (viewer.CanShareFoxCommunity && this.CanShareFoxCommunity)           // Fox mates.
                     || (room.IsRoomMaster(viewer) && viewer.IsDead)))    // Dead RoomMaster can see anything.
                 {
                     info.role = role;
