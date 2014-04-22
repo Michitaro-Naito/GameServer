@@ -94,6 +94,17 @@ namespace GameServer
         public bool CanFortuneTell { get { return role == Role.FortuneTeller; } }
         public bool CanKnowDead { get { return role == Role.Shaman; } }
         public bool CanGuard { get { return role == Role.Hunter || role == Role.Poacher; } }
+        public bool CanShareWerewolfCommunity {
+            get {
+                switch (role) {
+                    case Role.Werewolf:
+                    case Role.ElderWolf:
+                    case Role.Fanatic:
+                        return true;
+                }
+                return false;
+            }
+        }
 
         public InterText TitleAndName
         {
@@ -199,8 +210,9 @@ namespace GameServer
 
                 if (viewer != null
                     && ((this == viewer)   // Alice can see herself.
-                    || (new[] { Role.Werewolf }.Contains(viewer.role) && role == Role.Werewolf))    // Werewolf or Fanatic can see werewolves.
-                    || (room.IsRoomMaster(viewer) && viewer.IsDead))    // Dead RoomMaster can see anything.
+                    ||(viewer.CanShareWerewolfCommunity && this.CanShareWerewolfCommunity)  // Werewolf friends.
+                    //|| (new[] { Role.Werewolf, Role.Fanatic }.Contains(viewer.role) && new[]{Role.Werewolf, Role.Fanatic}.Contains(role))   // Werewolf or Fanatic can see werewolves.
+                    || (room.IsRoomMaster(viewer) && viewer.IsDead)))    // Dead RoomMaster can see anything.
                 {
                     info.role = role;
                     info.isRoleSure = true;
