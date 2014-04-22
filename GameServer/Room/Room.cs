@@ -150,12 +150,14 @@ namespace GameServer
                 // Alive
                 modes.Add(RoomMessage.Mode.All);
                 modes.Add(RoomMessage.Mode.Private);
-                switch (actor.role)
+                /*switch (actor.role)
                 {
                     case Role.Werewolf:
                         modes.Add(RoomMessage.Mode.Wolf);
                         break;
-                }
+                }*/
+                if(actor.CanShareWerewolfCommunity)
+                    modes.Add(RoomMessage.Mode.Wolf);
             }
             return modes;
         }

@@ -75,7 +75,7 @@ namespace GameServer
 
                     case Mode.Wolf:
                         // Only for werewolves.
-                        if (viewer != null && viewer.role == Role.Werewolf)
+                        if (viewer != null && /*viewer.role == Role.Werewolf*/ viewer.CanShareWerewolfCommunity)
                             return true;
                         return false;
 
