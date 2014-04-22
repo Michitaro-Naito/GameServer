@@ -139,7 +139,7 @@
     <value>A special citizen. Guards one inhabitant from Werewolves' attacks.</value>
   </data>
   <data name="Role_Lover" xml:space="preserve">
-    <value>One of the paired citizens. Sided with Citizens. Knows who is the partner. Ignores any private messages except from the partner. Becomes Hunter if partner has been killed by Werewolves. Suisides if partner has been executed. Always a pair of a male and a female.</value>
+    <value>One of the paired citizens. Sided with Citizens. Knows who is the partner. Ignores any private messages except from the partner. Becomes Hunter if partner has been killed by Werewolves. Suisides if partner has been executed.</value>
   </data>
   <data name="Role_None" xml:space="preserve">
     <value>The role is not decided yet.</value>

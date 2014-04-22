@@ -124,7 +124,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to One of the paired citizens. Sided with Citizens. Knows who is the partner. Ignores any private messages except from the partner. Becomes Hunter if partner has been killed by Werewolves. Suisides if partner has been executed. Always a pair of a male and a female..
+        ///   Looks up a localized string similar to One of the paired citizens. Sided with Citizens. Knows who is the partner. Ignores any private messages except from the partner. Becomes Hunter if partner has been killed by Werewolves. Suisides if partner has been executed..
         /// </summary>
         public static string Role_Lover {
             get {
