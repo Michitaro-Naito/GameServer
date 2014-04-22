@@ -162,8 +162,17 @@
   <data name="Race_Werewolf" xml:space="preserve">
     <value>人狼</value>
   </data>
+  <data name="Role_Cat" xml:space="preserve">
+    <value>猫又</value>
+  </data>
   <data name="Role_Citizen" xml:space="preserve">
     <value>村人</value>
+  </data>
+  <data name="Role_ElderWolf" xml:space="preserve">
+    <value>大狼</value>
+  </data>
+  <data name="Role_Fanatic" xml:space="preserve">
+    <value>狂信者</value>
   </data>
   <data name="Role_FortuneTeller" xml:space="preserve">
     <value>占い師</value>
@@ -174,14 +183,23 @@
   <data name="Role_Hunter" xml:space="preserve">
     <value>狩人</value>
   </data>
+  <data name="Role_Lover" xml:space="preserve">
+    <value>恋人</value>
+  </data>
   <data name="Role_None" xml:space="preserve">
     <value>役割なし</value>
+  </data>
+  <data name="Role_Poacher" xml:space="preserve">
+    <value>密猟者</value>
   </data>
   <data name="Role_Psycho" xml:space="preserve">
     <value>狂人</value>
   </data>
   <data name="Role_Shaman" xml:space="preserve">
     <value>霊媒師</value>
+  </data>
+  <data name="Role_ShintoPriest" xml:space="preserve">
+    <value>神主</value>
   </data>
   <data name="Role_Werewolf" xml:space="preserve">
     <value>人狼</value>

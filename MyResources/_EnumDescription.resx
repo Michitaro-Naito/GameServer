@@ -123,6 +123,9 @@
   <data name="Role_Citizen" xml:space="preserve">
     <value>A regular inhabitant. Sided with Citizens.</value>
   </data>
+  <data name="Role_ElderWolf" xml:space="preserve">
+    <value>A great werewolf. Attacks an inhabitant every night. Human for Fortune-tellers. Sided with Werewolves.</value>
+  </data>
   <data name="Role_Fanatic" xml:space="preserve">
     <value>A traitor of humans. Sided with Werewolves. Knows who are Werewolves.</value>
   </data>
@@ -141,11 +144,17 @@
   <data name="Role_None" xml:space="preserve">
     <value>The role is not decided yet.</value>
   </data>
+  <data name="Role_Poacher" xml:space="preserve">
+    <value>A criminal hunter. Guards one inhabitant from Werewolves' attacks. Werewolf for Fortune-tellers. Sided with Citizens.</value>
+  </data>
   <data name="Role_Psycho" xml:space="preserve">
     <value>A traitor of humans. Sided with Werewolves. Does not know who are Werewolves.</value>
   </data>
   <data name="Role_Shaman" xml:space="preserve">
     <value>A special citizen. Knows the race of the dead.</value>
+  </data>
+  <data name="Role_ShintoPriest" xml:space="preserve">
+    <value>An oriental priest who worships foxes as superior begings. Sided with Foxes.</value>
   </data>
   <data name="Role_Werewolf" xml:space="preserve">
     <value>A merciless creature. Attacks an inhabitant every night. Sided with Werewolves.</value>

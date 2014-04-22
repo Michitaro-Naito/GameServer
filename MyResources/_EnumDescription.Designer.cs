@@ -79,6 +79,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A great werewolf. Attacks an inhabitant every night. Human for Fortune-tellers. Sided with Werewolves..
+        /// </summary>
+        public static string Role_ElderWolf {
+            get {
+                return ResourceManager.GetString("Role_ElderWolf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A traitor of humans. Sided with Werewolves. Knows who are Werewolves..
         /// </summary>
         public static string Role_Fanatic {
@@ -133,6 +142,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A criminal hunter. Guards one inhabitant from Werewolves&apos; attacks. Werewolf for Fortune-tellers. Sided with Citizens..
+        /// </summary>
+        public static string Role_Poacher {
+            get {
+                return ResourceManager.GetString("Role_Poacher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A traitor of humans. Sided with Werewolves. Does not know who are Werewolves..
         /// </summary>
         public static string Role_Psycho {
@@ -147,6 +165,15 @@ namespace MyResources {
         public static string Role_Shaman {
             get {
                 return ResourceManager.GetString("Role_Shaman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An oriental priest who worships foxes as superior begings. Sided with Foxes..
+        /// </summary>
+        public static string Role_ShintoPriest {
+            get {
+                return ResourceManager.GetString("Role_ShintoPriest", resourceCulture);
             }
         }
         

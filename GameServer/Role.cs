@@ -31,11 +31,17 @@ namespace GameServer
         FortuneTeller   = 1001,
         Shaman          = 1002,
         Hunter          = 1003,
+        Cat             = 1004,//
+        Lover           = 1005,//
+        Poacher         = 1006,//
 
         Werewolf        = 2000,
         Psycho          = 2001,
+        Fanatic         = 2002,//
+        ElderWolf       = 2003,//
 
-        Fox             = 3000
+        Fox             = 3000,
+        ShintoPriest    = 3001,//
     }
 
     public static class RoleExtension

@@ -196,11 +196,38 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cat.
+        /// </summary>
+        public static string Role_Cat {
+            get {
+                return ResourceManager.GetString("Role_Cat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Citizen.
         /// </summary>
         public static string Role_Citizen {
             get {
                 return ResourceManager.GetString("Role_Citizen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elder Wolf.
+        /// </summary>
+        public static string Role_ElderWolf {
+            get {
+                return ResourceManager.GetString("Role_ElderWolf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fanatic.
+        /// </summary>
+        public static string Role_Fanatic {
+            get {
+                return ResourceManager.GetString("Role_Fanatic", resourceCulture);
             }
         }
         
@@ -232,11 +259,29 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lover.
+        /// </summary>
+        public static string Role_Lover {
+            get {
+                return ResourceManager.GetString("Role_Lover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Role.
         /// </summary>
         public static string Role_None {
             get {
                 return ResourceManager.GetString("Role_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poacher.
+        /// </summary>
+        public static string Role_Poacher {
+            get {
+                return ResourceManager.GetString("Role_Poacher", resourceCulture);
             }
         }
         
@@ -255,6 +300,15 @@ namespace MyResources {
         public static string Role_Shaman {
             get {
                 return ResourceManager.GetString("Role_Shaman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shinto Priest.
+        /// </summary>
+        public static string Role_ShintoPriest {
+            get {
+                return ResourceManager.GetString("Role_ShintoPriest", resourceCulture);
             }
         }
         
