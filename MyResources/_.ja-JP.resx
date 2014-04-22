@@ -219,4 +219,13 @@
   <data name="AHasBeenKilledByCatsRevenge" xml:space="preserve">
     <value>猫又の呪いにより{0}が道連れにされました。</value>
   </data>
+  <data name="AHasComittedSuicideBecauseOfDeathOfLover" xml:space="preserve">
+    <value>恋人の死に耐え切れず、{0}はそのあとを追いました。</value>
+  </data>
+  <data name="SomeoneHasBecomeHunterBecauseOfDeathOfLover" xml:space="preserve">
+    <value>恋人の死により誰かが狩人に転職しました。</value>
+  </data>
+  <data name="YourPartnerHasBeenKilledByWerewolvesBeHunter" xml:space="preserve">
+    <value>あなたは残忍な人狼によって最愛の人を失いました。弓を取り、狩人となって彼らの暴虐に立ち向かいましょう！</value>
+  </data>
 </root>

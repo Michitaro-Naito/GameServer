@@ -237,6 +237,14 @@ namespace GameServer
                     }
                 }
 
+                if (actorToExecute.role == Role.Lover) {
+                    // Lover executed. Kill the other Lovers.
+                    AliveActors.Where(a => a.role == Role.Lover).ToList().ForEach(a => {
+                        a.IsDead = true;
+                        SystemMessageAll(InterText.Create("AHasComittedSuicideBecauseOfDeathOfLover", _.ResourceManager, a.TitleAndName));
+                    });
+                }
+
                 // Tells Shaman who has been killed.
                 ForEachAliveActors(a => a.CanKnowDead, a =>
                 {
@@ -329,6 +337,15 @@ namespace GameServer
                         aliveWerewolf.IsDead = true;
                         SystemMessageAll(InterText.Create("AHasBeenKilledByCatsRevenge", _.ResourceManager, aliveWerewolf.TitleAndName));
                     }
+                }
+
+                if (actorToAttack.role == Role.Lover) {
+                    // Lover killed. Turn the other Lovers Hunters.
+                    AliveActors.Where(a => a.role == Role.Lover).ToList().ForEach(a => {
+                        a.role = Role.Hunter;
+                        SystemMessageAll(InterText.Create("SomeoneHasBecomeHunterBecauseOfDeathOfLover", _.ResourceManager));
+                        SystemMessageTo(a, InterText.Create("YourPartnerHasBeenKilledByWerewolvesBeHunter", _.ResourceManager));
+                    });
                 }
 
                 // Tells Shaman who has been killed.

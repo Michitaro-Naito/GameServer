@@ -293,4 +293,13 @@ ul.messages li div.body{
   <data name="AHasBeenKilledByCatsRevenge" xml:space="preserve">
     <value>{0} has been killed by cat's revenge.</value>
   </data>
+  <data name="AHasComittedSuicideBecauseOfDeathOfLover" xml:space="preserve">
+    <value>{0} has comitted suicide because of the death of the lover.</value>
+  </data>
+  <data name="SomeoneHasBecomeHunterBecauseOfDeathOfLover" xml:space="preserve">
+    <value>Someone has become a Hunter because of the partner has been killed by Werewolves.</value>
+  </data>
+  <data name="YourPartnerHasBeenKilledByWerewolvesBeHunter" xml:space="preserve">
+    <value>Your partner has been killed by merciless Werewolves. Be a Hunter and fight back!</value>
+  </data>
 </root>

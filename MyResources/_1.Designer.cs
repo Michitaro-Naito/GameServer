@@ -124,6 +124,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} has comitted suicide because of the death of the lover..
+        /// </summary>
+        public static string AHasComittedSuicideBecauseOfDeathOfLover {
+            get {
+                return ResourceManager.GetString("AHasComittedSuicideBecauseOfDeathOfLover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} has gone from {1}..
         /// </summary>
         public static string AHasGoneFromB {
@@ -370,6 +379,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Someone has become a Hunter because of the partner has been killed by Werewolves..
+        /// </summary>
+        public static string SomeoneHasBecomeHunterBecauseOfDeathOfLover {
+            get {
+                return ResourceManager.GetString("SomeoneHasBecomeHunterBecauseOfDeathOfLover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello!.
         /// </summary>
         public static string String1 {
@@ -402,6 +420,15 @@ namespace MyResources {
         public static string WerewolvesRumor {
             get {
                 return ResourceManager.GetString("WerewolvesRumor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your partner has been killed by merciless Werewolves. Be a Hunter and fight back!.
+        /// </summary>
+        public static string YourPartnerHasBeenKilledByWerewolvesBeHunter {
+            get {
+                return ResourceManager.GetString("YourPartnerHasBeenKilledByWerewolvesBeHunter", resourceCulture);
             }
         }
     }
