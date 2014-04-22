@@ -169,7 +169,7 @@ namespace MyResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An oriental priest who worships foxes as superior begings. Sided with Foxes..
+        ///   Looks up a localized string similar to An oriental priest who worships foxes as superior begings. Knows who is fox. Suisides when there is no fox. Sided with Foxes..
         /// </summary>
         public static string Role_ShintoPriest {
             get {

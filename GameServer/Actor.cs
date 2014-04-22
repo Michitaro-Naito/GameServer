@@ -93,7 +93,7 @@ namespace GameServer
 
         public bool CanFortuneTell { get { return role == Role.FortuneTeller; } }
         public bool CanKnowDead { get { return role == Role.Shaman; } }
-        public bool CanGuard { get { return role == Role.Hunter; } }
+        public bool CanGuard { get { return role == Role.Hunter || role == Role.Poacher; } }
 
         public InterText TitleAndName
         {

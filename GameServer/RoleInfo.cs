@@ -42,6 +42,19 @@ namespace GameServer
                     x = 10;
                     y = 0;
                     break;
+                case Role.Cat:
+                    x = 8;
+                    y = 5;
+                    break;
+                case Role.Lover:
+                    x = 1;
+                    y = 2;
+                    break;
+                case Role.Poacher:
+                    x = 11;
+                    y = 0;
+                    break;
+
                 case Role.Werewolf:
                     x = 11;
                     y = 12;
@@ -50,8 +63,21 @@ namespace GameServer
                     x = 8;
                     y = 12;
                     break;
+                case Role.Fanatic:
+                    x = 9;
+                    y = 12;
+                    break;
+                case Role.ElderWolf:
+                    x = 10;
+                    y = 12;
+                    break;
+
                 case Role.Fox:
                     x = 7;
+                    y = 10;
+                    break;
+                case Role.ShintoPriest:
+                    x = 1;
                     y = 10;
                     break;
             }

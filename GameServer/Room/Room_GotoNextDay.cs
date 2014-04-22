@@ -104,12 +104,13 @@ namespace GameServer
         {
             var factionWon = new Nullable<Faction>();
 
-            var citizens = AliveHumanRace.Count();
-            var wolves = AliveWerewolfRace.Count();
-            var foxes = AliveFoxRace.Count();
+            var citizens = AliveActors.Where(a => a.role.CountAs(Race.Human)).Count();
+            var wolves = AliveActors.Where(a=>a.role.CountAs(Race.Werewolf)).Count();
+            var foxes = AliveActors.Where(a=>a.role.CountAs(Race.Fox)).Count();
+            SystemMessageAll(string.Format("Alive: {0}, {1}, {2}", citizens, wolves, foxes));
 
             // Important: Alive citizens include FOX
-            citizens += foxes;
+            //citizens += foxes;
 
             // Citizens won?
             if (citizens > 0 && wolves == 0)
@@ -258,7 +259,7 @@ namespace GameServer
             str.Add(new InterText("AttackOfWerewolves", _.ResourceManager));
             str.Add(new InterText("--------------------", null));
             var dic = new Dictionary<Actor, int>();
-            AliveWerewolfRace.ToList().ForEach(w =>
+            AliveActors.Where(a=>a.role.CountAs(Race.Werewolf)).ToList().ForEach(w =>
             {
                 var target = w.ActorToAttack;
                 var strRandom = new InterText("", null);

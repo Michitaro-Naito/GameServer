@@ -63,14 +63,20 @@ namespace GameServer
                 case Role.FortuneTeller:
                 case Role.Shaman:
                 case Role.Hunter:
+                case Role.Cat:
+                case Role.Lover:
+                case Role.Poacher:
                 default:
                     return Faction.Citizen;
 
                 case Role.Werewolf:
                 case Role.Psycho:
+                case Role.Fanatic:
+                case Role.ElderWolf:
                     return Faction.Werewolf;
 
                 case Role.Fox:
+                case Role.ShintoPriest:
                     return Faction.Fox;
             }
         }
@@ -83,15 +89,51 @@ namespace GameServer
                 case Role.Shaman:
                 case Role.Hunter:
                 case Role.Psycho:
+                case Role.Fanatic:
+                case Role.Cat:
+                case Role.Lover:
+                case Role.ElderWolf:
+                case Role.ShintoPriest:
                 default:
                     return Race.Human;
 
                 case Role.Werewolf:
+                case Role.Poacher:
                     return Race.Werewolf;
 
                 case Role.Fox:
                     return Race.Fox;
             }
+        }
+        public static bool CountAs(this Role role, Race race) {
+            switch (race) {
+                case Race.Human:
+                    switch (role) {
+                        case Role.Werewolf:
+                        case Role.ElderWolf:
+                            // All except Werewolves count as Human.
+                            return false;
+                    }
+                    return true;
+
+                case Race.Werewolf:
+                    switch (role) {
+                        case Role.Werewolf:
+                        case Role.ElderWolf:
+                            // Only Werewolves count as Werewolves.
+                            return true;
+                    }
+                    return false;
+
+                case Race.Fox:
+                    switch (role) {
+                        case Role.Fox:
+                            // Only Fox count as Fox.
+                            return true;
+                    }
+                    return false;
+            }
+            return false;
         }
         public static InterText ToInterText(this Faction faction)
         {
@@ -140,22 +182,18 @@ namespace GameServer
 
             if (dic.Any(en => en.Value < 0))
                 throw new ClientException(InterText.Create("CannotBeMinus", _Error.ResourceManager));
-                /*throw new ClientException(new InterText("AMustBeBToC", _Error.ResourceManager, new InterText[] {
-                    new InterText("")
-                }));///"マイナスは指定できません"*/
+
             var sum = dic.Sum(en => en.Value);
             if (sum != totalActors)
                 throw new ClientException(InterText.Create("SumMustBeA", _Error.ResourceManager, totalActors));
-                //throw new Exception("役職の総数が合いません");
+
             if (dic[Role.None] > 0)
                 throw new ClientException(InterText.Create("AMustBeB", _Error.ResourceManager, new InterText(Role.None.ToKey(), _Enum.ResourceManager), 0));
-            //throw new Exception("配役なしは指定できません");
-            //if (dic[Role.Fox] > 0)
-                //throw new ClientException(InterText.Create("AMustBeB", _Error.ResourceManager, new InterText(Role.Fox.ToKey(), _Enum.ResourceManager), 0));
+
             if (dic.Sum(en => en.Key.Is(Faction.Citizen) ? en.Value : 0) == 0)
                 throw new ClientException(InterText.Create("AMustBeBiggerThanB", _Error.ResourceManager, new InterText(Faction.Citizen.ToKey(), _Enum.ResourceManager), 0));
-                //throw new Exception("村人チームを1人以上加えてください。");
-            var werewolfCount = dic[Role.Werewolf];
+
+            var werewolfCount = dic.Sum(en => en.Key.CountAs(Race.Werewolf) ? en.Value : 0);// dic[Role.Werewolf];
             if (werewolfCount == 0)
                 throw new ClientException(InterText.Create("AMustBeBiggerThanB", _Error.ResourceManager, new InterText(Race.Werewolf.ToKey(), _Enum.ResourceManager), 0));
                 //throw new Exception("人狼を1人以上加えてください。");

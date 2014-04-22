@@ -154,7 +154,7 @@
     <value>特殊な能力を持った村人です。犠牲者の正体を知ることができます。</value>
   </data>
   <data name="Role_ShintoPriest" xml:space="preserve">
-    <value>狐を神とあがめる東洋の呪術師です。人間ですが、妖狐チームに所属します。全ての妖狐が死亡すると自害します。</value>
+    <value>狐を神とあがめる東洋の呪術師です。誰が妖狐かわかります。人間ですが、妖狐チームに所属します。全ての妖狐が死亡すると自害します。</value>
   </data>
   <data name="Role_Werewolf" xml:space="preserve">
     <value>村人を食べてしまう恐ろしい存在です。毎晩、村人を襲撃できます。</value>

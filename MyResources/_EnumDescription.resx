@@ -154,7 +154,7 @@
     <value>A special citizen. Knows the race of the dead.</value>
   </data>
   <data name="Role_ShintoPriest" xml:space="preserve">
-    <value>An oriental priest who worships foxes as superior begings. Sided with Foxes.</value>
+    <value>An oriental priest who worships foxes as superior begings. Knows who is fox. Suisides when there is no fox. Sided with Foxes.</value>
   </data>
   <data name="Role_Werewolf" xml:space="preserve">
     <value>A merciless creature. Attacks an inhabitant every night. Sided with Werewolves.</value>
