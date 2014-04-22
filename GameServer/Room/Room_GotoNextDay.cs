@@ -154,10 +154,10 @@ namespace GameServer
         {
             _actors.Where(a => a.character == null).ToList().ForEach(a =>
             {
-                a.ActorToExecute = _actors.RandomElement();
-                a.ActorToAttack = _actors.RandomElement();
-                a.ActorToFortuneTell = _actors.RandomElement();
-                a.ActorToGuard = _actors.RandomElement();
+                a.ActorToExecute = _actors.Where(t=>t!=a).RandomElement();
+                a.ActorToAttack = _actors.Where(t => t != a).RandomElement();
+                a.ActorToFortuneTell = _actors.Where(t => t != a).RandomElement();
+                a.ActorToGuard = _actors.Where(t => t != a).RandomElement();
             });
             return false;
         }
@@ -195,17 +195,19 @@ namespace GameServer
             AliveActors.ToList().ForEach(a =>
             {
                 var target = a.ActorToExecute;
-                var random = false;
+                //var random = false;
                 if (target == null || target.IsDead)
                 {
-                    target = AliveActors.RandomElement();
-                    random = true;
+                    target = AliveActors.Where(t=>t!=a).RandomElement();
+                    //random = true;
                 }
-                if (!dic.ContainsKey(target))
-                    dic[target] = 0;
-                dic[target]++;
+                if (target != null) {
+                    if (!dic.ContainsKey(target))
+                        dic[target] = 0;
+                    dic[target]++;
 
-                str.Add(new InterText("{0} {1} => {2} {3}", null, new []{a.title, a.name, target.title, target.name}));
+                    str.Add(new InterText("{0} {1} => {2} {3}", null, new[] { a.title, a.name, target.title, target.name }));
+                }
             });
             str.Add(new InterText("--------------------", null));
             foreach (KeyValuePair<Actor, int> p in dic)
@@ -285,14 +287,16 @@ namespace GameServer
                 var strRandom = new InterText("", null);
                 if (target == null || target.IsDead)
                 {
-                    target = AliveActors.RandomElement();
+                    target = AliveActors.Where(t=>t!=w).RandomElement();
                     strRandom = new InterText("Random", _.ResourceManager);
                 }
-                if (!dic.ContainsKey(target))
-                    dic[target] = 0;
-                dic[target]++;
+                if (target != null) {
+                    if (!dic.ContainsKey(target))
+                        dic[target] = 0;
+                    dic[target]++;
 
-                str.Add(new InterText("{0} {1} => {2} {3} {4}", null, new[] { w.title, w.name, target.title, target.name, strRandom }));
+                    str.Add(new InterText("{0} {1} => {2} {3} {4}", null, new[] { w.title, w.name, target.title, target.name, strRandom }));
+                }
             });
             str.Add(new InterText("--------------------", null));
             foreach (KeyValuePair<Actor, int> p in dic)
