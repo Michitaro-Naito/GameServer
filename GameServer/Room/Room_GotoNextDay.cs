@@ -108,7 +108,7 @@ namespace GameServer
             var citizens = AliveActors.Where(a => a.role.CountAs(Race.Human)).Count();
             var wolves = AliveActors.Where(a=>a.role.CountAs(Race.Werewolf)).Count();
             var foxes = AliveActors.Where(a=>a.role.CountAs(Race.Fox)).Count();
-            SystemMessageAll(string.Format("Alive: {0}, {1}, {2}", citizens, wolves, foxes));
+            //SystemMessageAll(string.Format("Alive: {0}, {1}, {2}", citizens, wolves, foxes));
 
             // Important: Alive citizens include FOX
             //citizens += foxes;
