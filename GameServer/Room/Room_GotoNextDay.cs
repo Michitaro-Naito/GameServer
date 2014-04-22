@@ -268,7 +268,7 @@ namespace GameServer
                 return false;
             }
 
-            if (AliveWerewolfRace.Count() == 0)
+            if (AliveActors.Count(a=>a.role.CountAs(Race.Werewolf)) /*AliveWerewolfRace.Count()*/ == 0)
             {
                 SystemMessageAll(new InterText("ThereIsNoWerewolf", _.ResourceManager));
                 return false;
