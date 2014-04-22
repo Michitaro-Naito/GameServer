@@ -290,4 +290,7 @@ ul.messages li div.body{
   <data name="AHasBeenKilledByFortuneTelling" xml:space="preserve">
     <value>{0} has been killed by fortune-telling.</value>
   </data>
+  <data name="AHasBeenKilledByCatsRevenge" xml:space="preserve">
+    <value>{0} has been killed by cat's revenge.</value>
+  </data>
 </root>

@@ -216,15 +216,26 @@ namespace GameServer
             var max = dic.Max(p => p.Value);
             if (max <= 1)
             {
+                // Nobody Executed
                 str.Add(new InterText("NobodyExecutedBecauseOfInsufficientNumberOfVotes", _.ResourceManager));
                 SystemMessageAll(str.ToArray());
             }
             else
             {
+                // Executed
                 var actorToExecute = dic.Where(p => p.Value == max).RandomElement().Key;
                 actorToExecute.IsDead = true;
                 str.Add(new InterText("ABIsExecuted", _.ResourceManager, new[] { actorToExecute.title, actorToExecute.name }));
                 SystemMessageAll(str.ToArray());
+
+                if (actorToExecute.CanRevenge) {
+                    // Cat's Revenge
+                    var aliveCitizen = AliveActors.FirstOrDefault(a => a.Faction == Faction.Citizen);
+                    if (aliveCitizen != null) {
+                        aliveCitizen.IsDead = true;
+                        SystemMessageAll(InterText.Create("AHasBeenKilledByCatsRevenge", _.ResourceManager, aliveCitizen.TitleAndName));
+                    }
+                }
 
                 // Tells Shaman who has been killed.
                 ForEachAliveActors(a => a.CanKnowDead, a =>
@@ -310,6 +321,15 @@ namespace GameServer
                 // Killed
                 actorToAttack.IsDead = true;
                 SystemMessageAll(new InterText("AHasBeenKilledByWerewolves", _.ResourceManager, new[] { actorToAttack.TitleAndName }));
+
+                if (actorToAttack.CanRevenge) {
+                    // Cat's Revenge
+                    var aliveWerewolf = AliveActors.FirstOrDefault(a => a.role.CountAs(Race.Werewolf));
+                    if (aliveWerewolf != null) {
+                        aliveWerewolf.IsDead = true;
+                        SystemMessageAll(InterText.Create("AHasBeenKilledByCatsRevenge", _.ResourceManager, aliveWerewolf.TitleAndName));
+                    }
+                }
 
                 // Tells Shaman who has been killed.
                 ForEachAliveActors(a => a.CanKnowDead, a =>

@@ -105,6 +105,7 @@ namespace GameServer
                 return false;
             }
         }
+        public bool CanRevenge { get { return role == Role.Cat; } }
 
         public InterText TitleAndName
         {

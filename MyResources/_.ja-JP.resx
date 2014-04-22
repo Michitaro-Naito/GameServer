@@ -216,4 +216,7 @@
   <data name="AHasBeenKilledByFortuneTelling" xml:space="preserve">
     <value>誰かに占われたため、{0}は衰弱して死んでしまいました。</value>
   </data>
+  <data name="AHasBeenKilledByCatsRevenge" xml:space="preserve">
+    <value>猫又の呪いにより{0}が道連れにされました。</value>
+  </data>
 </root>
