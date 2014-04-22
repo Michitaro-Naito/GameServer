@@ -94,6 +94,7 @@ namespace GameServer
                 _Z_Execute,
                 _Z_CheckForVictory,
                 _Z_Attack,
+                _Z_SuicideTime,
                 _Z_CheckForVictory,
                 _Z_IncrementDay
             }.Do();
@@ -355,6 +356,16 @@ namespace GameServer
                 });
             }
 
+            return false;
+        }
+
+        bool _Z_SuicideTime() {
+            if (AliveActors.Count(a => a.Race == Race.Fox) == 0) {
+                AliveActors.Where(a => a.role == Role.ShintoPriest).ToList().ForEach(p => {
+                    p.IsDead = true;
+                    SystemMessageAll(InterText.Create("AHasCommitSuicideBecauseOfDeathOfFox", _.ResourceManager, p.TitleAndName));
+                });
+            }
             return false;
         }
 

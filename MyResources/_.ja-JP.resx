@@ -222,6 +222,9 @@
   <data name="AHasComittedSuicideBecauseOfDeathOfLover" xml:space="preserve">
     <value>恋人の死に耐え切れず、{0}はそのあとを追いました。</value>
   </data>
+  <data name="AHasCommitSuicideBecauseOfDeathOfFox" xml:space="preserve">
+    <value>{0}は信仰の対象を失ったためそのあとを追いました。</value>
+  </data>
   <data name="SomeoneHasBecomeHunterBecauseOfDeathOfLover" xml:space="preserve">
     <value>恋人の死により誰かが狩人に転職しました。</value>
   </data>

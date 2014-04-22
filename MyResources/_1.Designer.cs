@@ -133,6 +133,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} has commit suicide because of the death of fox..
+        /// </summary>
+        public static string AHasCommitSuicideBecauseOfDeathOfFox {
+            get {
+                return ResourceManager.GetString("AHasCommitSuicideBecauseOfDeathOfFox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} has gone from {1}..
         /// </summary>
         public static string AHasGoneFromB {

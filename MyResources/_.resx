@@ -296,6 +296,9 @@ ul.messages li div.body{
   <data name="AHasComittedSuicideBecauseOfDeathOfLover" xml:space="preserve">
     <value>{0} has comitted suicide because of the death of the lover.</value>
   </data>
+  <data name="AHasCommitSuicideBecauseOfDeathOfFox" xml:space="preserve">
+    <value>{0} has commit suicide because of the death of fox.</value>
+  </data>
   <data name="SomeoneHasBecomeHunterBecauseOfDeathOfLover" xml:space="preserve">
     <value>Someone has become a Hunter because of the partner has been killed by Werewolves.</value>
   </data>
