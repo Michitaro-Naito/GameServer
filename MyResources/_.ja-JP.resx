@@ -213,4 +213,7 @@
   <data name="RunningFoxSpotted" xml:space="preserve">
     <value>逃げ回る狐の姿が目撃されました。</value>
   </data>
+  <data name="AHasBeenKilledByFortuneTelling" xml:space="preserve">
+    <value>誰かに占われたため、{0}は衰弱して死んでしまいました。</value>
+  </data>
 </root>

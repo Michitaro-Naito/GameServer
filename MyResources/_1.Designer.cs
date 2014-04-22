@@ -70,6 +70,15 @@ namespace MyResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} has been killed by fortune-telling..
+        /// </summary>
+        public static string AHasBeenKilledByFortuneTelling {
+            get {
+                return ResourceManager.GetString("AHasBeenKilledByFortuneTelling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} has been killed by RoomMaster {1}..
         /// </summary>
         public static string AHasBeenKilledByRoomMasterB {

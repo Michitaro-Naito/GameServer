@@ -169,6 +169,11 @@ namespace GameServer
                 {
                     target = _actors.RandomElement();
                 }
+                if (target.Race == Race.Fox) {
+                    // Target is Fox. Killed.
+                    target.IsDead = true;
+                    SystemMessageAll(InterText.Create("AHasBeenKilledByFortuneTelling", _.ResourceManager, target.TitleAndName));
+                }
                 SystemMessageTo(a, new InterText("ASenseThatBIsC", _.ResourceManager, new []{ a.TitleAndName, target.TitleAndName, target.Race.ToInterText() }));
             });
             return false;

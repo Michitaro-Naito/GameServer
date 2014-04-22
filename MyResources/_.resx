@@ -287,4 +287,7 @@ ul.messages li div.body{
   <data name="RunningFoxSpotted" xml:space="preserve">
     <value>Running fox spotted.</value>
   </data>
+  <data name="AHasBeenKilledByFortuneTelling" xml:space="preserve">
+    <value>{0} has been killed by fortune-telling.</value>
+  </data>
 </root>
