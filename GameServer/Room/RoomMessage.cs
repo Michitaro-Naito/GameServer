@@ -86,7 +86,7 @@ namespace GameServer
                         return false;
 
                     case Mode.Private:
-                        if (viewer.CanShareLoverCommunity && !from.CanShareLoverCommunity)
+                        if (viewer != null && viewer.CanShareLoverCommunity && !from.CanShareLoverCommunity)
                             // Sent from Non-lover to Lover. Lover never read mesages except from the partner. ;)
                             return false;
                         // Only for sent or received guys.
