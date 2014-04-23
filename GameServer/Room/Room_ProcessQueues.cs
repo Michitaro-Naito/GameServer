@@ -174,12 +174,7 @@ namespace GameServer
             AddActorsForCharacters();
             RoomState = RoomState.Matchmaking;
 
-            // DEBUG
-            for (var n = 0; n < 200; n++) {
-                SystemMessageAll(n.ToString());
-            }
-
-                _needSync = true;
+            _needSync = true;
         }
 
         /// <summary>
