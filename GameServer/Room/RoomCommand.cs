@@ -65,6 +65,13 @@ namespace GameServer.RoomCommand
         public int GuardId { get; set; }
     }
 
+    public class GetOlderMessages : Base {
+        /// <summary>
+        /// The oldest MessageId which Player already has.
+        /// </summary>
+        public int? Id { get; set; }
+    }
+
     // ----- RoomMaster -----
     public class Skip : Base {
 

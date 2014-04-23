@@ -100,8 +100,8 @@ namespace GameServer
             client.broughtTo(ClientState.Playing);
 
             // Sends existing Messages to newly-joined Player.
-            var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Sender));
-            SendFirstMessagesTo(actor);
+            //var actor = _actors.FirstOrDefault(a => a.IsOwnedBy(command.Sender));
+            SendFirstMessagesTo(command.Sender.Character);
 
             // Notifies Lobby
             EnqueueLobby(new LobbyCommand.PlayerJoinedRoom() { ConnectionId = command.ConnectionId, Sender = command.Sender });
@@ -174,7 +174,12 @@ namespace GameServer
             AddActorsForCharacters();
             RoomState = RoomState.Matchmaking;
 
-            _needSync = true;
+            // DEBUG
+            for (var n = 0; n < 200; n++) {
+                SystemMessageAll(n.ToString());
+            }
+
+                _needSync = true;
         }
 
         /// <summary>
@@ -309,6 +314,13 @@ namespace GameServer
             client.addMessage("Voted. ActorToFortuneTell is: " + actor.ActorToFortuneTell);
             client.addMessage("Voted. ActorToGuard is: " + actor.ActorToGuard);*/
         }
+
+        void PQ_GetOlderMessages(RoomCommand.GetOlderMessages command) {
+            var messages = GetOlderMessagesFor(command.Sender.Character, command.Id);
+            command.Sender.Client.roomGotOlderMessages(messages);
+        }
+
+        // ----- RoomMaster -----
 
         void PQ_Skip(RoomCommand.Skip command) {
             //if (command.Sender == null || !IsRoomMaster(command.Sender.Character))

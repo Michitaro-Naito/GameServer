@@ -325,24 +325,40 @@ namespace GameServer
             });
         }
 
-        void SendFirstMessagesTo(Actor actor)
+        IEnumerable<RoomMessageInfo> GetOlderMessagesFor(Character character, int? currentOldestId) {
+            if (character == null || character.Player == null)
+                return new List<RoomMessageInfo>();
+
+            Actor actor = null;
+            if (_characters.Contains(character))
+                // Not Spectator
+                actor = _actors.FirstOrDefault(a => a.IsOwnedBy(character.Player));
+
+            IEnumerable<RoomMessage> q = _messages.OrderByDescending(m => m.id);
+            if (currentOldestId != null)
+                q = q.SkipWhile(m => m.id >= currentOldestId.Value);
+            var messages = q.Where(m=>m.IsVisibleFor(this, actor)).Take(50).OrderBy(m => m.id)
+                .Select(m => new RoomMessageInfo(m, character.Player.Culture));
+            return messages;
+        }
+
+        void SendFirstMessagesTo(/*Actor actor*/Character character)
         {
-            if (actor != null && actor.character != null)
+            if (character.Player == null)
+                return;
+            character.Player.Client.gotRoomMessages(GetOlderMessagesFor(character, null), true);
+            /*if (actor != null && actor.character != null)
             {
                 var client = actor.character.Player.Client;
                 client.gotRoomMessages(
-                    _messages
-                        .Where(m => m.IsVisibleFor(this, actor))
-                        .Select(m => new RoomMessageInfo(m, actor.character.Player.Culture)),
+                    GetOlderMessagesFor(actor.character, null),
                     true);
-            }
+            }*/
         }
-        void SendFirstMessagesTo(Character spectator) {
+        /*void SendFirstMessagesTo(Character spectator) {
             spectator.Player.Client.gotRoomMessages(
-                _messages
-                    .Where(m=>m.IsVisibleFor(this, null))
-                    .Select(m=>new RoomMessageInfo(m, spectator.Player.Culture)),
+                GetOlderMessagesFor(spectator, null),
                 true);
-        }
+        }*/
     }
 }

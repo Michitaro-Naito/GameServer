@@ -141,8 +141,9 @@ namespace GameServer
                 SystemMessageAll(new InterText("FactionAWon", _.ResourceManager, new[] { factionWon.Value.ToInterText() }));
                 RoomState = RoomState.Ending;
                 duration = 2 * conf.interval;
-                // Opens Messages
-                _actors.ForEach(a => SendFirstMessagesTo(a));
+                // Opens Messages for Players and Spectators
+                //_actors.ForEach(a => SendFirstMessagesTo(a));
+                CharactersAndSpectators.ToList().ForEach(c => SendFirstMessagesTo(c));
                 // Quit GotoNextDay process.
                 return true;
             }

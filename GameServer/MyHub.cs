@@ -129,6 +129,10 @@ namespace GameServer {
             EnqueueRoom(new RoomCommand.RemovePlayer(){ });
         }
 
+        public void RoomGetOlderMessages(RoomCommand.GetOlderMessages command) {
+            EnqueueRoom(command);
+        }
+
         // ----- RoomMaster -----
         public void RoomSkip() {
             EnqueueRoom(new RoomCommand.Skip() { });
