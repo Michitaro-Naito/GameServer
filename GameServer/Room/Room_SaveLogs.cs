@@ -11,6 +11,7 @@ using ApiScheme.Scheme;
 using MyResources;
 using ApiScheme.Client;
 using System.Configuration;
+using System.Threading;
 
 namespace GameServer
 {
@@ -71,6 +72,22 @@ namespace GameServer
             {
                 SystemMessageAll("Failed to save win/lose counts.");
             }
+        }
+
+        public void SaveLogsAsync() {
+            var t = new Thread(() => {
+                try {
+                    SavePerks();
+                    SaveLogs();
+                }
+                finally {
+                    isProcessingHistory = false;
+                }
+            });
+
+            t.Priority = ThreadPriority.Lowest;
+            isProcessingHistory = true;
+            t.Start();
         }
 
         /// <summary>

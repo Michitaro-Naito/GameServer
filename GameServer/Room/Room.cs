@@ -124,12 +124,12 @@ namespace GameServer
             }
         }
 
-        public bool IsProcessingHistory { get; private set; }
+        public bool isProcessingHistory = false;
         public bool RequiresPassword { get { return conf.password != null && conf.password.Length > 0; } }
 
         public bool ShouldBeDeleted
         {
-            get { return RoomState!=RoomState.Ending && !IsProcessingHistory && CharactersAndSpectators.Count() == 0; }
+            get { return RoomState!=RoomState.Ending && !isProcessingHistory && CharactersAndSpectators.Count() == 0; }
         }
 
         List<RoomMessage.Mode> ModesFor(Actor actor)
@@ -235,10 +235,8 @@ namespace GameServer
                         SystemMessageAll(new InterText("GameHasEnded", _.ResourceManager));
 
                         // Save Win/Lose info.
-                        SavePerks();
-
                         // Saves logs to Azure Blob Storage...
-                        SaveLogs();
+                        SaveLogsAsync();
 
                         _needSync = true;
                     }

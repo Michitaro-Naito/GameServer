@@ -237,7 +237,7 @@ namespace GameServer
                 // Admin commands for debugging purposes.
                 if (command.Message == "/Skip") {
                     SystemMessageAll("Skipping...");
-                    duration = 0;
+                    duration = 5;
                 }
             }
 
