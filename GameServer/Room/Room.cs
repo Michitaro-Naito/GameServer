@@ -237,6 +237,9 @@ namespace GameServer
                     break;
 
                 case RoomState.Ending:
+                    if (_characters.Count == 0)
+                        // No Player. Terminate this Room immediately.
+                        duration = 0;
                     duration -= elapsed;
                     if (duration < 0)
                     {
