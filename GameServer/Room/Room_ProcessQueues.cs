@@ -134,13 +134,7 @@ namespace GameServer
         void PQ_RemovePlayer(RoomCommand.RemovePlayer command) {
             var client = command.Sender.Client;
 
-            /*if (Kick(command.Sender.userId) > 0)
-                // Brings removed Player to Rooms scene.
-                client.broughtTo(ClientState.Rooms);*/
             Kick(command.Sender.userId);
-
-            // Character removed. Shares this information later.
-            _needSync = true;
         }
 
         /// <summary>

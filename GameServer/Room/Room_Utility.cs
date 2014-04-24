@@ -12,7 +12,7 @@ namespace GameServer
         /// Kicks Player out from this room.
         /// </summary>
         /// <param name="userId"></param>
-        internal int Kick(string userId)
+        internal void Kick(string userId)
         {
             // Removes from connected characters.
             var charactersToRemove = _characters.Where(c => c.Player != null && c.Player.userId == userId).ToList();
@@ -24,39 +24,25 @@ namespace GameServer
                     c.Player.BroughtTo(ClientState.Rooms);
                 _characters.Remove(c);
             });
-            var amountKicked = charactersToRemove.Count;
+            //var amountKicked = charactersToRemove.Count;
 
             // Removes Spectators
-            _spectators.Where(s => s.Player != null && s.Player.userId == userId).ToList().ForEach(s => {
+            var spectatorsToRemove = _spectators.Where(s => s.Player != null && s.Player.userId == userId).ToList();
+            spectatorsToRemove.ForEach(s => {
+                if (s.Player != null)
+                    s.Player.BroughtTo(ClientState.Rooms);
+                _spectators.Remove(s);
+            });
+            //amountKicked += spectatorsToRemove.Count;
+            /*_spectators.Where(s => s.Player != null && s.Player.userId == userId).ToList().ForEach(s => {
                 if (s.Player != null)
                     s.Player.BroughtTo(ClientState.Rooms);
             });
-            amountKicked += _spectators.RemoveAll(s => s.Player != null && s.Player.userId == userId);
+            amountKicked += _spectators.RemoveAll(s => s.Player != null && s.Player.userId == userId);*/
 
-            /*// Removes Actors?
-            if (!new[] { RoomState.Configuring, RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState))
-                // Don't have to.
-                return amountKicked;
-            // Kicks
-            _actors.Where(a => a.character != null
-                && a.character.Player.userId == userId    // Owned by Player.
-                && !a.IsDead                            // Not dead.
-                ).ToList().ForEach(a =>
-            {
-                // Notifies Kicked Player that he is gone.
-                a.character.Player.BroughtTo(ClientState.Rooms);
-
-                // Notifies players that someone gone.
-                SystemMessageAll(new InterText("AHasGoneFromB", MyResources._.ResourceManager, new[] { new InterText(a.character.Name, null), a.TitleAndName }));
-
-                // Removes
-                a.character = null;
-
+            if(charactersToRemove.Count > 0)
+                // Sync only when Character kicked.
                 _needSync = true;
-            });*/
-            _needSync = true;
-
-            return amountKicked;
         }
 
         void QueueSyncForCharacter(Character c) {
