@@ -66,11 +66,11 @@ namespace GameServer
                 });
 
                 // Sends to ApiServer
-                Api.Get<TransactionOut>(new TransactionIn() { infos = infos });
+                Api.Post<TransactionOut>(new TransactionIn() { infos = infos });
             }
-            catch
+            catch(Exception e)
             {
-                SystemMessageAll("Failed to save win/lose counts.");
+                Logger.WriteLine(e.ToString());
             }
         }
 
