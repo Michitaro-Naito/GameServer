@@ -13,7 +13,7 @@ namespace GameServer
         void CountDownToStart()
         {
             duration = 5;
-            Sync();
+            _needSync = true;
         }
 
         /// <summary>

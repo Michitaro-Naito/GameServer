@@ -48,7 +48,16 @@ namespace GameServer
         public int day;
         public double duration;
         public Faction FactionWon { get; set; }
+
+        /// <summary>
+        /// Need sync for all characters and spectators?
+        /// </summary>
         bool _needSync = false;
+
+        /// <summary>
+        /// Characters and Spectators who need sync.
+        /// </summary>
+        List<Character> charactersNeedSync = new List<Character>();
 
         int _nextMessageId = 0;
         List<RoomMessage> _messagesWillBeApplied = new List<RoomMessage>();
@@ -247,8 +256,7 @@ namespace GameServer
 
             UpdateActors();
 
-            if (_needSync)
-                Sync();
+            Sync();
         }
 
         void UpdateActors() {
@@ -308,15 +316,21 @@ namespace GameServer
 
         void Sync()
         {
-            //_characters.ForEach(c =>
-            CharactersAndSpectators.ToList().ForEach(c =>
+            if (_needSync) {
+                charactersNeedSync = CharactersAndSpectators.ToList();
+                _needSync = false;
+            }
+
+            //CharactersAndSpectators.ToList().ForEach(c =>
+            charactersNeedSync.ForEach(c =>
             {
-                var client = c.Player.Client;// _updateHub.Clients.Client(c.Player.connectionId);
+                var client = c.Player.Client;
+                client.addMessage("Sync...");
                 var yourActorId = new Nullable<int>();
                 var yourActor = _actors.FirstOrDefault(a => a.IsOwnedBy(c.Player));
                 if (yourActor != null && _characters.Contains(c))   // yourActor = null if spectating
                     yourActorId = yourActor.id;
-                var actors = _actors.Select(a => a.ToInfo(this, c.Player, yourActor) /*new ActorInfo(this, c.Player, yourActor, a)*/).ToList();
+                var actors = _actors.Select(a => a.ToInfo(this, c.Player, yourActor)).ToList();
                 client.gotRoomConfigurations(conf);
                 client.gotRoomState(RoomState);
                 client.gotActors(actors);
@@ -327,7 +341,8 @@ namespace GameServer
                 client.gotTimer(duration);
                 client.gotFactionWon(FactionWon);
             });
-            _needSync = false;
+
+            charactersNeedSync.Clear();
         }
 
         void AddActorsForCharacters()

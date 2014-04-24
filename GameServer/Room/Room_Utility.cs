@@ -59,6 +59,11 @@ namespace GameServer
             return amountKicked;
         }
 
+        void QueueSyncForCharacter(Character c) {
+            if (!charactersNeedSync.Contains(c))
+                charactersNeedSync.Add(c);
+        }
+
         internal void SendRules()
         {
             /*村の掟

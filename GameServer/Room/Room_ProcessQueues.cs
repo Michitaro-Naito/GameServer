@@ -122,7 +122,8 @@ namespace GameServer
             SendFirstMessagesTo(command.Character);
             EnqueueLobby(new LobbyCommand.PlayerJoinedRoom() { ConnectionId = command.ConnectionId, Sender = command.Sender });
 
-            _needSync = true;
+            //_needSync = true;
+            QueueSyncForCharacter(command.Character);
         }
 
         /// <summary>
