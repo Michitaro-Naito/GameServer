@@ -81,6 +81,12 @@ namespace GameServer
         public Character character;
         public GameServer.ColorHelper.ColorIdentity ColorIdentity { get; set; }
 
+        /// <summary>
+        /// The UTC time when Character has been disconnected.
+        /// (Tens seconds later, removes Character.)
+        /// </summary>
+        public DateTime lastAccess;
+
         public Actor ActorToExecute;
         public Actor ActorToAttack;
         public Actor ActorToFortuneTell;

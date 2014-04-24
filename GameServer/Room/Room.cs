@@ -247,8 +247,27 @@ namespace GameServer
 
             ProcessMessages();
 
+            UpdateActors();
+
             if (_needSync)
                 Sync();
+        }
+
+        void UpdateActors() {
+            if (!new[] { RoomState.Configuring, RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState))
+                return;
+
+            // Removes long-absent Characters
+            _actors.ForEach(a => {
+                if(a.character != null
+                    //&& a.lastAccess != null   // non-nullable
+                    && a.lastAccess < DateTime.UtcNow.AddSeconds(-60)
+                    && !_characters.Any(c => c == a.character)) {
+                        SystemMessageAll(new InterText("AHasGoneFromB", MyResources._.ResourceManager, new[] { new InterText(a.character.Name, null), a.TitleAndName }));
+                        a.character = null;
+                        _needSync = true;
+                }
+            });
         }
 
         void CallAll(Action<dynamic> action)

@@ -18,6 +18,7 @@ namespace GameServer
             var charactersToRemove = _characters.Where(c => c.Player != null && c.Player.userId == userId).ToList();
             charactersToRemove.ForEach(c =>
             {
+                _actors.Where(a => a.character == c).ToList().ForEach(a => a.lastAccess = DateTime.UtcNow);
                 c.Room = null;
                 if(c.Player != null)
                     c.Player.BroughtTo(ClientState.Rooms);
@@ -32,7 +33,7 @@ namespace GameServer
             });
             amountKicked += _spectators.RemoveAll(s => s.Player != null && s.Player.userId == userId);
 
-            // Removes Actors?
+            /*// Removes Actors?
             if (!new[] { RoomState.Configuring, RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState))
                 // Don't have to.
                 return amountKicked;
@@ -52,7 +53,8 @@ namespace GameServer
                 a.character = null;
 
                 _needSync = true;
-            });
+            });*/
+            _needSync = true;
 
             return amountKicked;
         }
