@@ -277,7 +277,7 @@ namespace GameServer
                 note = command.Note,
                 messages = messagesToReport
             };
-            ApiScheme.Client.Api.Get<ReportMessageOut>(info);
+            ApiScheme.Client.Api.Post<ReportMessageOut>(info);
             client.addMessage("Message reported.");
             client.gotError(Error.Create("TITLE_Success", "SuccessfullyReportedThankYou").GetInfo(command.Sender.Culture));
         }
