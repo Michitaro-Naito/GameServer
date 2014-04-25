@@ -153,13 +153,13 @@ namespace GameServer
 
         bool _Z_NpcVote()
         {
-            _actors.Where(a => a.character == null).ToList().ForEach(a =>
+            /*_actors.Where(a => a.character == null).ToList().ForEach(a =>
             {
                 a.ActorToExecute = _actors.Where(t=>t!=a).RandomElement();
                 a.ActorToAttack = _actors.Where(t => t != a).RandomElement();
                 a.ActorToFortuneTell = _actors.Where(t => t != a).RandomElement();
                 a.ActorToGuard = _actors.Where(t => t != a).RandomElement();
-            });
+            });*/
             return false;
         }
 
@@ -196,20 +196,37 @@ namespace GameServer
             AliveActors.ToList().ForEach(a =>
             {
                 var target = a.ActorToExecute;
-                //var random = false;
+                var strRandom = new InterText("", null);
                 if (target == null || target.IsDead)
                 {
-                    target = AliveActors.Where(t=>t!=a).RandomElement();
-                    //random = true;
+                    // Invalid target. Select one except mates.
+                    if (a.CanShareWerewolfCommunity)
+                        target = AliveActors.Where(t => !t.CanShareWerewolfCommunity).RandomElement();
+                    else if (a.CanShareFoxCommunity)
+                        target = AliveActors.Where(t => !t.CanShareFoxCommunity).RandomElement();
+                    else if (a.CanShareLoverCommunity)
+                        target = AliveActors.Where(t => !t.CanShareLoverCommunity).RandomElement();
+                    else
+                        target = AliveActors.Where(t => t != a).RandomElement();
+
+                    if (target == null)
+                        // Still invalid. Select one randomly.
+                        target = AliveActors.RandomElement();
+
+                    strRandom = new InterText("Random", _.ResourceManager);
                 }
                 if (target != null) {
                     if (!dic.ContainsKey(target))
                         dic[target] = 0;
                     dic[target]++;
 
-                    str.Add(new InterText("{0} {1} => {2} {3}", null, new[] { a.title, a.name, target.title, target.name }));
+                    str.Add(new InterText("{0} {1} => {2} {3} {4}", null, new[] { a.title, a.name, target.title, target.name, strRandom }));
                 }
             });
+            if (dic.Count == 0)
+                // No votes.
+                return false;
+
             str.Add(new InterText("--------------------", null));
             foreach (KeyValuePair<Actor, int> p in dic)
             {
@@ -288,7 +305,13 @@ namespace GameServer
                 var strRandom = new InterText("", null);
                 if (target == null || target.IsDead)
                 {
-                    target = AliveActors.Where(t=>t!=w).RandomElement();
+                    // Invalid target. Select randomly except mates.
+                    target = AliveActors.Where(t => !t.CanShareWerewolfCommunity).RandomElement();
+
+                    if (target == null)
+                        // Still invalid. Select one randomly.
+                        target = AliveActors.RandomElement();
+
                     strRandom = new InterText("Random", _.ResourceManager);
                 }
                 if (target != null) {
@@ -299,6 +322,10 @@ namespace GameServer
                     str.Add(new InterText("{0} {1} => {2} {3} {4}", null, new[] { w.title, w.name, target.title, target.name, strRandom }));
                 }
             });
+            if (dic.Count == 0)
+                // No votes. Skip attacking.
+                return false;
+
             str.Add(new InterText("--------------------", null));
             foreach (KeyValuePair<Actor, int> p in dic)
                 str.Add(new InterText("{0} {1} : {2}", null, new[] { p.Key.title, p.Key.name, new InterText(p.Value.ToString(), null) }));
