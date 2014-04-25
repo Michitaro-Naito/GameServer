@@ -75,19 +75,27 @@ namespace GameServer
         }
 
         public void SaveLogsAsync() {
-            var t = new Thread(() => {
-                try {
-                    SavePerks();
-                    SaveLogs();
-                }
-                finally {
-                    isProcessingHistory = false;
-                }
-            });
+            try {
+                var t = new Thread(() => {
+                    try {
+                        SavePerks();
+                        SaveLogs();
+                    }
+                    catch (Exception e){
+                        Logger.WriteLine(e.ToString());
+                    }
+                    finally {
+                        isProcessingHistory = false;
+                    }
+                });
 
-            t.Priority = ThreadPriority.Lowest;
-            isProcessingHistory = true;
-            t.Start();
+                t.Priority = ThreadPriority.Lowest;
+                isProcessingHistory = true;
+                t.Start();
+            }
+            catch (Exception e) {
+                Logger.WriteLine(e.ToString());
+            }
         }
 
         /// <summary>

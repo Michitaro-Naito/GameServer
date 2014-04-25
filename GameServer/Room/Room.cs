@@ -336,6 +336,8 @@ namespace GameServer
                 var actors = _actors.Select(a => a.ToInfo(this, c.Player, yourActor)).ToList();
                 VoteInfo voteInfo = yourActor != null ? yourActor.VoteInfo : null;
                 var chatModes = ModesFor(yourActor).Select(m => new RoomMessage.ModeInfo(c.Player, m)).ToList();
+                var rolesInRoom = RoleHelper.GetRoleCountsDictionary();
+                _actors.ForEach(a => rolesInRoom[a.role]++);
                 /*client.gotRoomConfigurations(conf);
                 client.gotRoomState(RoomState);
                 client.gotActors(actors);
@@ -354,7 +356,8 @@ namespace GameServer
                     VoteInfo = voteInfo,
                     ChatModes = chatModes,
                     Duration = duration,
-                    FactionWon = FactionWon
+                    FactionWon = FactionWon,
+                    RolesInRoom = rolesInRoom.Select(en => new { Id = (int)en.Key, Amount = en.Value })
                 });
             });
 
