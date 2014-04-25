@@ -266,8 +266,8 @@ namespace GameServer
             if (!new[] { RoomState.Configuring, RoomState.Matchmaking, RoomState.Playing }.Contains(RoomState))
                 return;
 
-            // Removes long-absent Characters
-            _actors.ForEach(a => {
+            // Removes long-absent Characters from alive Actors.
+            AliveActors.ToList().ForEach(a => {
                 if(a.character != null
                     //&& a.lastAccess != null   // non-nullable
                     && a.lastAccess < DateTime.UtcNow.AddSeconds(-60)
