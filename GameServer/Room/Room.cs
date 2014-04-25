@@ -334,15 +334,28 @@ namespace GameServer
                 if (yourActor != null && _characters.Contains(c))   // yourActor = null if spectating
                     yourActorId = yourActor.id;
                 var actors = _actors.Select(a => a.ToInfo(this, c.Player, yourActor)).ToList();
-                client.gotRoomConfigurations(conf);
+                VoteInfo voteInfo = yourActor != null ? yourActor.VoteInfo : null;
+                var chatModes = ModesFor(yourActor).Select(m => new RoomMessage.ModeInfo(c.Player, m)).ToList();
+                /*client.gotRoomConfigurations(conf);
                 client.gotRoomState(RoomState);
                 client.gotActors(actors);
                 client.gotYourActorId(yourActorId);
-                if (yourActor != null)
-                    client.gotYourSelections(yourActor.VoteInfo);
+                //if (yourActor != null)
+                //    client.gotYourSelections(yourActor.VoteInfo);
+                client.gotYourSelections(yourActor != null ? yourActor.VoteInfo : null);
                 client.gotModes(ModesFor(yourActor).Select(m=>new RoomMessage.ModeInfo(c.Player, m)).ToList());
                 client.gotTimer(duration);
-                client.gotFactionWon(FactionWon);
+                client.gotFactionWon(FactionWon);*/
+                client.gotRoomData(new {
+                    Configurations = conf,
+                    State = RoomState,
+                    Actors = actors,
+                    YourActorId = yourActorId,
+                    VoteInfo = voteInfo,
+                    ChatModes = chatModes,
+                    Duration = duration,
+                    FactionWon = FactionWon
+                });
             });
 
             charactersNeedSync.Clear();
