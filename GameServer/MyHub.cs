@@ -93,6 +93,8 @@ namespace GameServer {
         }
 
         public void LobbySend(string message) {
+            if (message.Length > 50)
+                return;
             Enqueue(new LobbyCommand.LobbySend() { Message = message });
         }
 
