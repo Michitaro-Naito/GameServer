@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GameServer {
@@ -186,6 +187,24 @@ namespace GameServer {
                 _playersInLobby[p.connectionId] = p;
                 _playersInGame.Remove(p.connectionId);
             }
+        }
+
+        void GetGoods(LobbyCommand.GetGoods command) {
+            var p = command.Sender;
+            var t = new Thread(() => {
+                try {
+                    var o = Api.Post<GetPurchasableGoodsOut>(new GetPurchasableGoodsIn() { userId = p.userId });
+                    /*o.goods.ForEach(g => {
+                        p.GotSystemMessage(g.name);
+                    });
+                    p.Client.log(o.goods);*/
+                    p.Client.gotGoods(o.goods);
+                }
+                catch (Exception e){
+                    p.GotSystemMessage("Failed to get goods." + e.ToString());
+                }
+            });
+            t.Start();
         }
 
         void GetRooms(LobbyCommand.GetRooms command) {

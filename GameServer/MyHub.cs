@@ -73,6 +73,10 @@ namespace GameServer {
             Enqueue(new LobbyCommand.GetLobbyMessages() { });
         }
 
+        public void GetGoods() {
+            Enqueue(new LobbyCommand.GetGoods() { });
+        }
+
         public void GetRooms() {
             Enqueue(new LobbyCommand.GetRooms() { });
         }

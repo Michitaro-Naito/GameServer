@@ -63,6 +63,8 @@ namespace GameServer.LobbyCommand
 
     public class GetLobbyMessages : Base { }
 
+    public class GetGoods : Base { }
+
     public class LobbySend : Base
     {
         public string Message { get; set; }
