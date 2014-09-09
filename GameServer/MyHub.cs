@@ -103,6 +103,8 @@ namespace GameServer {
         }
 
         public void RoomSend(int roomSendMode, int actorId, string message) {
+            if (message.Length > 300)
+                return;
             EnqueueRoom(new RoomCommand.Send() { RoomSendMode = roomSendMode, ActorId = actorId, Message = message });
         }
 
