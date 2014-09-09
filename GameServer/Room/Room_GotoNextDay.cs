@@ -251,7 +251,7 @@ namespace GameServer
 
                 if (actorToExecute.CanRevenge) {
                     // Cat's Revenge
-                    var aliveCitizen = AliveActors.FirstOrDefault(a => a.Faction == Faction.Citizen);
+                    var aliveCitizen = AliveActors.Where(a => a.Faction == Faction.Citizen).RandomElement();
                     if (aliveCitizen != null) {
                         aliveCitizen.IsDead = true;
                         SystemMessageAll(InterText.Create("AHasBeenKilledByCatsRevenge", _.ResourceManager, aliveCitizen.TitleAndName));
@@ -365,7 +365,7 @@ namespace GameServer
 
                 if (actorToAttack.CanRevenge) {
                     // Cat's Revenge
-                    var aliveWerewolf = AliveActors.FirstOrDefault(a => a.role.CountAs(Race.Werewolf));
+                    var aliveWerewolf = AliveActors.Where(a => a.role.CountAs(Race.Werewolf)).RandomElement();
                     if (aliveWerewolf != null) {
                         aliveWerewolf.IsDead = true;
                         SystemMessageAll(InterText.Create("AHasBeenKilledByCatsRevenge", _.ResourceManager, aliveWerewolf.TitleAndName));
