@@ -107,6 +107,8 @@ namespace GameServer
             var html = "";
             // CSS
             html += string.Format("<style>{0}</style>", _.PlayLogCSS);
+            // Title
+            html += "<a href=\"http://人狼ゲーム.com/\"><h1>人狼ゲームオンライン2</h1></a>";
             // Conf
             html += conf.ToHtml();
             // Actors

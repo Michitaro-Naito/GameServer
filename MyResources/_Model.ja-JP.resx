@@ -120,6 +120,9 @@
   <data name="Character_Name" xml:space="preserve">
     <value>キャラクター名</value>
   </data>
+  <data name="Room_CharacterNameSet" xml:space="preserve">
+    <value>キャラクター名セット</value>
+  </data>
   <data name="Room_Interval" xml:space="preserve">
     <value>1日の長さ</value>
   </data>
@@ -129,7 +132,16 @@
   <data name="Room_Name" xml:space="preserve">
     <value>村の名前</value>
   </data>
+  <data name="Room_NoFirstDayFortuneTelling" xml:space="preserve">
+    <value>初日占いなし</value>
+  </data>
+  <data name="Room_NoPrivateMessage" xml:space="preserve">
+    <value>ささやきなし</value>
+  </data>
   <data name="Room_Password" xml:space="preserve">
     <value>パスワード</value>
+  </data>
+  <data name="Room_StrongShaman" xml:space="preserve">
+    <value>強化霊媒師</value>
   </data>
 </root>
