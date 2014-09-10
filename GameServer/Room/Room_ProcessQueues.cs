@@ -83,7 +83,13 @@ namespace GameServer
                     SystemMessageAll(new InterText("AHasJoinedAsB", MyResources._.ResourceManager, new[] { new InterText(command.Character.Name, null), npc.TitleAndName }));
                 }
                 else {
-                    if (RoomState == RoomState.Configuring || RoomState == RoomState.Matchmaking) {
+                    if (RoomState == RoomState.Configuring){
+                        // Incoming RoomMaster
+                        _characters.Add(command.Character);
+                        command.Character.Room = this;
+                        // RoomMaster gets Actor OnConfigure
+
+                    }else if(RoomState == RoomState.Matchmaking) {
                         // Adds Actor (Player is a new comer.)
                         _characters.Add(command.Character);
                         command.Character.Room = this;

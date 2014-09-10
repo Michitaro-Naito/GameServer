@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abe" xml:space="preserve">
+    <value>阿部</value>
+  </data>
+  <data name="Ando" xml:space="preserve">
+    <value>安藤</value>
+  </data>
+  <data name="Aoki" xml:space="preserve">
+    <value>青木</value>
+  </data>
+  <data name="Arai" xml:space="preserve">
+    <value>新井</value>
+  </data>
+  <data name="Chiba" xml:space="preserve">
+    <value>千葉</value>
+  </data>
+  <data name="Endo" xml:space="preserve">
+    <value>遠藤</value>
+  </data>
+  <data name="Fujihara" xml:space="preserve">
+    <value>藤原</value>
+  </data>
+  <data name="Fujii" xml:space="preserve">
+    <value>藤井</value>
+  </data>
+  <data name="Fujimoto" xml:space="preserve">
+    <value>藤本</value>
+  </data>
+  <data name="Fujita" xml:space="preserve">
+    <value>藤田</value>
+  </data>
+  <data name="Fukuda" xml:space="preserve">
+    <value>福田</value>
+  </data>
+  <data name="Goto" xml:space="preserve">
+    <value>後藤</value>
+  </data>
+  <data name="Hara" xml:space="preserve">
+    <value>原</value>
+  </data>
+  <data name="Harada" xml:space="preserve">
+    <value>原田</value>
+  </data>
+  <data name="Hasegawa" xml:space="preserve">
+    <value>長谷川</value>
+  </data>
+  <data name="Hashimoto" xml:space="preserve">
+    <value>橋本</value>
+  </data>
+  <data name="Hayashi" xml:space="preserve">
+    <value>林</value>
+  </data>
+  <data name="Hirano" xml:space="preserve">
+    <value>平野</value>
+  </data>
+  <data name="Ikeda" xml:space="preserve">
+    <value>池田</value>
+  </data>
+  <data name="Imai" xml:space="preserve">
+    <value>今井</value>
+  </data>
+  <data name="Inoue" xml:space="preserve">
+    <value>井上</value>
+  </data>
+  <data name="Ishida" xml:space="preserve">
+    <value>石田</value>
+  </data>
+  <data name="Ishii" xml:space="preserve">
+    <value>石井</value>
+  </data>
+  <data name="Ishikawa" xml:space="preserve">
+    <value>石川</value>
+  </data>
+  <data name="Ito" xml:space="preserve">
+    <value>伊藤</value>
+  </data>
+  <data name="Iwazaki" xml:space="preserve">
+    <value>岩崎</value>
+  </data>
+  <data name="Kaneko" xml:space="preserve">
+    <value>金子</value>
+  </data>
+  <data name="Kato" xml:space="preserve">
+    <value>加藤</value>
+  </data>
+  <data name="Kikuchi" xml:space="preserve">
+    <value>菊池</value>
+  </data>
+  <data name="Kimura" xml:space="preserve">
+    <value>木村</value>
+  </data>
+  <data name="Kinoshita" xml:space="preserve">
+    <value>木下</value>
+  </data>
+  <data name="Kobayashi" xml:space="preserve">
+    <value>小林</value>
+  </data>
+  <data name="Kojima" xml:space="preserve">
+    <value>小島</value>
+  </data>
+  <data name="Kondo" xml:space="preserve">
+    <value>近藤</value>
+  </data>
+  <data name="Kouno" xml:space="preserve">
+    <value>高野</value>
+  </data>
+  <data name="Koyama" xml:space="preserve">
+    <value>小山</value>
+  </data>
+  <data name="Kubo" xml:space="preserve">
+    <value>久保</value>
+  </data>
+  <data name="Kudo" xml:space="preserve">
+    <value>工藤</value>
+  </data>
+  <data name="Maeda" xml:space="preserve">
+    <value>前田</value>
+  </data>
+  <data name="Maruyama" xml:space="preserve">
+    <value>丸山</value>
+  </data>
+  <data name="Masuda" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Matsuda" xml:space="preserve">
+    <value>松田</value>
+  </data>
+  <data name="Matsui" xml:space="preserve">
+    <value>松井</value>
+  </data>
+  <data name="Matsumoto" xml:space="preserve">
+    <value>松本</value>
+  </data>
+  <data name="Matsuo" xml:space="preserve">
+    <value>松尾</value>
+  </data>
+  <data name="Miura" xml:space="preserve">
+    <value>三浦</value>
+  </data>
+  <data name="Miyamoto" xml:space="preserve">
+    <value>宮本</value>
+  </data>
+  <data name="Miyazaki" xml:space="preserve">
+    <value>宮崎</value>
+  </data>
+  <data name="Mori" xml:space="preserve">
+    <value>森</value>
+  </data>
+  <data name="Morita" xml:space="preserve">
+    <value>森田</value>
+  </data>
+  <data name="Murakami" xml:space="preserve">
+    <value>村上</value>
+  </data>
+  <data name="Murata" xml:space="preserve">
+    <value>村田</value>
+  </data>
+  <data name="Nakagawa" xml:space="preserve">
+    <value>中川</value>
+  </data>
+  <data name="Nakajima" xml:space="preserve">
+    <value>中島</value>
+  </data>
+  <data name="Nakamura" xml:space="preserve">
+    <value>中村</value>
+  </data>
+  <data name="Nakano" xml:space="preserve">
+    <value>中野</value>
+  </data>
+  <data name="Nakayama" xml:space="preserve">
+    <value>中山</value>
+  </data>
+  <data name="Nishimura" xml:space="preserve">
+    <value>西村</value>
+  </data>
+  <data name="Noguchi" xml:space="preserve">
+    <value>野口</value>
+  </data>
+  <data name="Nomura" xml:space="preserve">
+    <value>野村</value>
+  </data>
+  <data name="Ogawa" xml:space="preserve">
+    <value>小川</value>
+  </data>
+  <data name="Okada" xml:space="preserve">
+    <value>岡田</value>
+  </data>
+  <data name="Okamoto" xml:space="preserve">
+    <value>岡本</value>
+  </data>
+  <data name="Ono" xml:space="preserve">
+    <value>小野</value>
+  </data>
+  <data name="Oono" xml:space="preserve">
+    <value>大野</value>
+  </data>
+  <data name="Oota" xml:space="preserve">
+    <value>太田</value>
+  </data>
+  <data name="Ootsuka" xml:space="preserve">
+    <value>大塚</value>
+  </data>
+  <data name="Saito" xml:space="preserve">
+    <value>斎藤</value>
+  </data>
+  <data name="Saito_Simple" xml:space="preserve">
+    <value>斉藤</value>
+  </data>
+  <data name="Sakai" xml:space="preserve">
+    <value>酒井</value>
+  </data>
+  <data name="Sakamoto" xml:space="preserve">
+    <value>坂本</value>
+  </data>
+  <data name="Sano" xml:space="preserve">
+    <value>佐野</value>
+  </data>
+  <data name="Sasaki" xml:space="preserve">
+    <value>佐々木</value>
+  </data>
+  <data name="Sato" xml:space="preserve">
+    <value>佐藤</value>
+  </data>
+  <data name="Shibata" xml:space="preserve">
+    <value>柴田</value>
+  </data>
+  <data name="Shimizu" xml:space="preserve">
+    <value>清水</value>
+  </data>
+  <data name="Sugahara" xml:space="preserve">
+    <value>菅原</value>
+  </data>
+  <data name="Sugiyama" xml:space="preserve">
+    <value>杉山</value>
+  </data>
+  <data name="Suzuki" xml:space="preserve">
+    <value>鈴木</value>
+  </data>
+  <data name="Takada" xml:space="preserve">
+    <value>武田</value>
+  </data>
+  <data name="Takagi" xml:space="preserve">
+    <value>高木</value>
+  </data>
+  <data name="Takahashi" xml:space="preserve">
+    <value>高橋</value>
+  </data>
+  <data name="Takeda" xml:space="preserve">
+    <value>武田</value>
+  </data>
+  <data name="Takeuchi" xml:space="preserve">
+    <value>竹内</value>
+  </data>
+  <data name="Tamura" xml:space="preserve">
+    <value>田村</value>
+  </data>
+  <data name="Tanaka" xml:space="preserve">
+    <value>田中</value>
+  </data>
+  <data name="Taniguchi" xml:space="preserve">
+    <value>谷口</value>
+  </data>
+  <data name="Uchida" xml:space="preserve">
+    <value>内田</value>
+  </data>
+  <data name="Ueda" xml:space="preserve">
+    <value>上田</value>
+  </data>
+  <data name="Ueno" xml:space="preserve">
+    <value>上野</value>
+  </data>
+  <data name="Wada" xml:space="preserve">
+    <value>和田</value>
+  </data>
+  <data name="Watabe" xml:space="preserve">
+    <value>渡部</value>
+  </data>
+  <data name="Watanabe" xml:space="preserve">
+    <value>渡辺</value>
+  </data>
+  <data name="Yamada" xml:space="preserve">
+    <value>山田</value>
+  </data>
+  <data name="Yamaguchi" xml:space="preserve">
+    <value>山口</value>
+  </data>
+  <data name="Yamamoto" xml:space="preserve">
+    <value>山本</value>
+  </data>
+  <data name="Yamashita" xml:space="preserve">
+    <value>山下</value>
+  </data>
+  <data name="Yamazaki" xml:space="preserve">
+    <value>山崎</value>
+  </data>
+  <data name="Yokoyama" xml:space="preserve">
+    <value>横山</value>
+  </data>
+  <data name="Yoshida" xml:space="preserve">
+    <value>吉田</value>
+  </data>
+</root>

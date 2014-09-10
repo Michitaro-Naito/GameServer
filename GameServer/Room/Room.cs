@@ -370,7 +370,7 @@ namespace GameServer
             var charactersWithoutActor = _characters.Where(c => !_actors.Any(a => a.character == c)).ToList();
             charactersWithoutActor.ForEach(c =>
             {
-                var actor = Actor.CreateUnique(_actors);
+                var actor = Actor.CreateUnique(_actors, conf.characterNameSet);
                 actor.character = c;
                 _actors.Add(actor);
                 SystemMessageAll(new InterText("AHasComeAsB", MyResources._.ResourceManager, new[] { new InterText(c.Name, null), actor.TitleAndName }));

@@ -28,7 +28,7 @@ namespace GameServer
             // Adds Actors
             //while (_actors.Count < count)
             while (AliveActors.Count() < count)
-                _actors.Add(Actor.CreateUnique(_actors));
+                _actors.Add(Actor.CreateUnique(_actors, conf.characterNameSet));
 
             // Remove NPCs
             //while (_actors.Where(a => a.IsNPC).Count() > 0 && _actors.Count > min) {

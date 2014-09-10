@@ -55,6 +55,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="_JapaneseFamilyName.ja-JP.Designer.cs">
+      <DependentUpon>_JapaneseFamilyName.ja-JP.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="_JapaneseFamilyName.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_JapaneseFamilyName.resx</DependentUpon>
+    </Compile>
     <Compile Include="_Model.ja-JP.Designer.cs">
       <DependentUpon>_Model.ja-JP.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -149,6 +159,14 @@
     <EmbeddedResource Include="_Error.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>_Error.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_JapaneseFamilyName.ja-JP.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>_JapaneseFamilyName.ja-JP.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_JapaneseFamilyName.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>_JapaneseFamilyName.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="_Model.ja-JP.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

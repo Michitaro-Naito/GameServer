@@ -145,20 +145,12 @@ namespace GameServer
             return character != null && character.Player == player;
         }
 
-        public static Actor CreateUnique(List<Actor> existing)
+        public static Actor CreateUnique(List<Actor> existing, GameServer.Room.CharacterNameSet nameSet)
         {
             // Remove existing keys
             var existingTitleKeys = existing.Select(a => a.title.Key);
             var titleKeys = MyResources._Title.ResourceManager.Keys();
             titleKeys.RemoveAll(key => existingTitleKeys.Contains(key));
-
-            var existingMaleNameKeys = existing.Where(a=>a.gender==Gender.Male).Select(a => a.name.Key);
-            var maleNameKeys = MyResources._MaleName.ResourceManager.Keys();
-            maleNameKeys.RemoveAll(key => existingMaleNameKeys.Contains(key));
-
-            var existingFemaleNameKeys = existing.Where(a => a.gender == Gender.Female).Select(a => a.name.Key);
-            var femaleNameKeys = MyResources._FemaleName.ResourceManager.Keys();
-            femaleNameKeys.RemoveAll(key => existingFemaleNameKeys.Contains(key));
 
             var actor = new Actor();
 
@@ -177,16 +169,36 @@ namespace GameServer
 
             // Random Name
             InterText name = null;
-            if (actor.gender == Gender.Male)
-            {
-                var maleNameKey = maleNameKeys.RandomElement();
-                name = new InterText(maleNameKey, _MaleName.ResourceManager);
+
+            switch (nameSet) {
+                case Room.CharacterNameSet.Default:
+                default:
+                    // Europeans call first names.
+                    if (actor.gender == Gender.Male) {
+                        var existingMaleNameKeys = existing.Where(a => a.gender == Gender.Male).Select(a => a.name.Key);
+                        var maleNameKeys = MyResources._MaleName.ResourceManager.Keys();
+                        maleNameKeys.RemoveAll(key => existingMaleNameKeys.Contains(key));
+                        var maleNameKey = maleNameKeys.RandomElement();
+                        name = new InterText(maleNameKey, _MaleName.ResourceManager);
+                    }
+                    else {
+                        var existingFemaleNameKeys = existing.Where(a => a.gender == Gender.Female).Select(a => a.name.Key);
+                        var femaleNameKeys = MyResources._FemaleName.ResourceManager.Keys();
+                        femaleNameKeys.RemoveAll(key => existingFemaleNameKeys.Contains(key));
+                        var femaleNameKey = femaleNameKeys.RandomElement();
+                        name = new InterText(femaleNameKey, _FemaleName.ResourceManager);
+                    }
+                    break;
+
+                case Room.CharacterNameSet.Japanese:
+                    // Japanese call family names.
+                    var existingNameKeys = existing.Select(a => a.name.Key);
+                    var nameKeys = MyResources._JapaneseFamilyName.ResourceManager.Keys();
+                    nameKeys.RemoveAll(key => existingNameKeys.Contains(key));
+                    name = new InterText(nameKeys.RandomElement(), _JapaneseFamilyName.ResourceManager);
+                    break;
             }
-            else
-            {
-                var femaleNameKey = femaleNameKeys.RandomElement();
-                name = new InterText(femaleNameKey, _FemaleName.ResourceManager);
-            }
+
             actor.name = name;
 
             // Color
