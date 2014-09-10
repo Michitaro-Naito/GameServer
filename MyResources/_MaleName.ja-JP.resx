@@ -417,4 +417,973 @@
   <data name="Conrad" xml:space="preserve">
     <value>コンラッド</value>
   </data>
+  <data name="Constance" xml:space="preserve">
+    <value>コンスタンス</value>
+  </data>
+  <data name="Constant" xml:space="preserve">
+    <value>コンスタント</value>
+  </data>
+  <data name="Cornelius" xml:space="preserve">
+    <value>コーネリアス</value>
+  </data>
+  <data name="Cory" xml:space="preserve">
+    <value>コリー</value>
+  </data>
+  <data name="Craig" xml:space="preserve">
+    <value>クレイグ</value>
+  </data>
+  <data name="Curtis" xml:space="preserve">
+    <value>カーティス</value>
+  </data>
+  <data name="Cyril" xml:space="preserve">
+    <value>シリル</value>
+  </data>
+  <data name="Cyrus" xml:space="preserve">
+    <value>サイラス</value>
+  </data>
+  <data name="Dale" xml:space="preserve">
+    <value>デール</value>
+  </data>
+  <data name="Damian" xml:space="preserve">
+    <value>デイミアン</value>
+  </data>
+  <data name="Damon" xml:space="preserve">
+    <value>デイモン</value>
+  </data>
+  <data name="Dan" xml:space="preserve">
+    <value>ダン</value>
+  </data>
+  <data name="Daniel" xml:space="preserve">
+    <value>ダニエル</value>
+  </data>
+  <data name="Danny" xml:space="preserve">
+    <value>ダニー</value>
+  </data>
+  <data name="Darius" xml:space="preserve">
+    <value>ダリウス</value>
+  </data>
+  <data name="Darrell" xml:space="preserve">
+    <value>ダレル</value>
+  </data>
+  <data name="Darren" xml:space="preserve">
+    <value>ダーレン</value>
+  </data>
+  <data name="Darryl" xml:space="preserve">
+    <value>ダリル</value>
+  </data>
+  <data name="Daryl" xml:space="preserve">
+    <value>ダリル</value>
+  </data>
+  <data name="Dave" xml:space="preserve">
+    <value>デイヴ</value>
+  </data>
+  <data name="David" xml:space="preserve">
+    <value>デーヴィッド</value>
+  </data>
+  <data name="Dean" xml:space="preserve">
+    <value>ディーン</value>
+  </data>
+  <data name="Dennis" xml:space="preserve">
+    <value>デニス</value>
+  </data>
+  <data name="Derek" xml:space="preserve">
+    <value>デレク</value>
+  </data>
+  <data name="Derick" xml:space="preserve">
+    <value>デリック</value>
+  </data>
+  <data name="Derrick" xml:space="preserve">
+    <value>デリック</value>
+  </data>
+  <data name="Desmond" xml:space="preserve">
+    <value>デズモンド</value>
+  </data>
+  <data name="Dexter" xml:space="preserve">
+    <value>デクスター</value>
+  </data>
+  <data name="Dick" xml:space="preserve">
+    <value>ディック</value>
+  </data>
+  <data name="Dominic" xml:space="preserve">
+    <value>ドミニク</value>
+  </data>
+  <data name="Don" xml:space="preserve">
+    <value>ドン</value>
+  </data>
+  <data name="Donald" xml:space="preserve">
+    <value>ドナルド</value>
+  </data>
+  <data name="Douglas" xml:space="preserve">
+    <value>ダグラス</value>
+  </data>
+  <data name="Dudley" xml:space="preserve">
+    <value>ダドリー</value>
+  </data>
+  <data name="Duke" xml:space="preserve">
+    <value>デューク</value>
+  </data>
+  <data name="Duncan" xml:space="preserve">
+    <value>ダンカン</value>
+  </data>
+  <data name="Dustin" xml:space="preserve">
+    <value>ダスティン</value>
+  </data>
+  <data name="Dwayne" xml:space="preserve">
+    <value>ドウェイン</value>
+  </data>
+  <data name="Eamon" xml:space="preserve">
+    <value>イーモン</value>
+  </data>
+  <data name="Earl" xml:space="preserve">
+    <value>アール</value>
+  </data>
+  <data name="Eddie" xml:space="preserve">
+    <value>エディー</value>
+  </data>
+  <data name="Eden" xml:space="preserve">
+    <value>イーデン</value>
+  </data>
+  <data name="Edgar" xml:space="preserve">
+    <value>エドガー</value>
+  </data>
+  <data name="Edmond" xml:space="preserve">
+    <value>エドモンド</value>
+  </data>
+  <data name="Edmund" xml:space="preserve">
+    <value>エドマンド</value>
+  </data>
+  <data name="Edward" xml:space="preserve">
+    <value>エドワード</value>
+  </data>
+  <data name="Edwin" xml:space="preserve">
+    <value>エドウィン</value>
+  </data>
+  <data name="Egbert" xml:space="preserve">
+    <value>エグバート</value>
+  </data>
+  <data name="Elbert" xml:space="preserve">
+    <value>エルバート</value>
+  </data>
+  <data name="Eldred" xml:space="preserve">
+    <value>エルドレッド</value>
+  </data>
+  <data name="Elias" xml:space="preserve">
+    <value>イライアス</value>
+  </data>
+  <data name="Elliot" xml:space="preserve">
+    <value>エリオット</value>
+  </data>
+  <data name="Ellis" xml:space="preserve">
+    <value>エリス</value>
+  </data>
+  <data name="Elmer" xml:space="preserve">
+    <value>エルマー</value>
+  </data>
+  <data name="Elvis" xml:space="preserve">
+    <value>エルヴィス</value>
+  </data>
+  <data name="Emery" xml:space="preserve">
+    <value>エメリー</value>
+  </data>
+  <data name="Enoch" xml:space="preserve">
+    <value>イーノック</value>
+  </data>
+  <data name="Enos" xml:space="preserve">
+    <value>イーノス</value>
+  </data>
+  <data name="Eric" xml:space="preserve">
+    <value>エリック</value>
+  </data>
+  <data name="Ernest" xml:space="preserve">
+    <value>アーネスト</value>
+  </data>
+  <data name="Ethan" xml:space="preserve">
+    <value>イーサン</value>
+  </data>
+  <data name="Ethelbert" xml:space="preserve">
+    <value>エセルバート</value>
+  </data>
+  <data name="Eugene" xml:space="preserve">
+    <value>ユージン</value>
+  </data>
+  <data name="Evan" xml:space="preserve">
+    <value>エヴァン</value>
+  </data>
+  <data name="Ewen" xml:space="preserve">
+    <value>ユーイン</value>
+  </data>
+  <data name="Fabian" xml:space="preserve">
+    <value>フェビアン</value>
+  </data>
+  <data name="Felix" xml:space="preserve">
+    <value>フェリックス</value>
+  </data>
+  <data name="Ferdinand" xml:space="preserve">
+    <value>フェルディナンド</value>
+  </data>
+  <data name="Francis" xml:space="preserve">
+    <value>フランシス</value>
+  </data>
+  <data name="Frank" xml:space="preserve">
+    <value>フランク</value>
+  </data>
+  <data name="Franklin" xml:space="preserve">
+    <value>フランクリン</value>
+  </data>
+  <data name="Fred" xml:space="preserve">
+    <value>フレッド</value>
+  </data>
+  <data name="Freddie" xml:space="preserve">
+    <value>フレディ</value>
+  </data>
+  <data name="Frederic" xml:space="preserve">
+    <value>フレデリック</value>
+  </data>
+  <data name="Frederick" xml:space="preserve">
+    <value>フレデリック</value>
+  </data>
+  <data name="Gabriel" xml:space="preserve">
+    <value>ガブリエル</value>
+  </data>
+  <data name="Gary" xml:space="preserve">
+    <value>ゲイリー</value>
+  </data>
+  <data name="Gaston" xml:space="preserve">
+    <value>ガストン</value>
+  </data>
+  <data name="Gene" xml:space="preserve">
+    <value>ジーン</value>
+  </data>
+  <data name="Geoff" xml:space="preserve">
+    <value>ジェフ</value>
+  </data>
+  <data name="Geoffrey" xml:space="preserve">
+    <value>ジェフリー</value>
+  </data>
+  <data name="George" xml:space="preserve">
+    <value>ジョージ</value>
+  </data>
+  <data name="Gerald" xml:space="preserve">
+    <value>ジェラルド</value>
+  </data>
+  <data name="Gerard" xml:space="preserve">
+    <value>ジェラード</value>
+  </data>
+  <data name="Gideon" xml:space="preserve">
+    <value>ギデオン</value>
+  </data>
+  <data name="Gil" xml:space="preserve">
+    <value>ギル</value>
+  </data>
+  <data name="Gilbert" xml:space="preserve">
+    <value>ギルバート</value>
+  </data>
+  <data name="Giles" xml:space="preserve">
+    <value>ジャイルズ</value>
+  </data>
+  <data name="Glen" xml:space="preserve">
+    <value>グレン</value>
+  </data>
+  <data name="Glenn" xml:space="preserve">
+    <value>グレン</value>
+  </data>
+  <data name="Godfrey" xml:space="preserve">
+    <value>ゴドフリー</value>
+  </data>
+  <data name="Godwin" xml:space="preserve">
+    <value>ゴドウィン</value>
+  </data>
+  <data name="Gordon" xml:space="preserve">
+    <value>ゴードン</value>
+  </data>
+  <data name="Graham" xml:space="preserve">
+    <value>グレアム</value>
+  </data>
+  <data name="Grantley" xml:space="preserve">
+    <value>グラントリー</value>
+  </data>
+  <data name="Greg" xml:space="preserve">
+    <value>グレッグ</value>
+  </data>
+  <data name="Gregory" xml:space="preserve">
+    <value>グレゴリー</value>
+  </data>
+  <data name="Gus" xml:space="preserve">
+    <value>ガス</value>
+  </data>
+  <data name="Guy" xml:space="preserve">
+    <value>ガイ</value>
+  </data>
+  <data name="Hadley" xml:space="preserve">
+    <value>ハドリー</value>
+  </data>
+  <data name="Hamilton" xml:space="preserve">
+    <value>ハミルトン</value>
+  </data>
+  <data name="Harold" xml:space="preserve">
+    <value>ハロルド</value>
+  </data>
+  <data name="Harry" xml:space="preserve">
+    <value>ハリー</value>
+  </data>
+  <data name="Harvey" xml:space="preserve">
+    <value>ハーヴェイ</value>
+  </data>
+  <data name="Hayden" xml:space="preserve">
+    <value>ヘイデン</value>
+  </data>
+  <data name="Hector" xml:space="preserve">
+    <value>ヘクター</value>
+  </data>
+  <data name="Henry" xml:space="preserve">
+    <value>ヘンリー</value>
+  </data>
+  <data name="Herbert" xml:space="preserve">
+    <value>ハーバート</value>
+  </data>
+  <data name="Hercules" xml:space="preserve">
+    <value>ハーキュリーズ</value>
+  </data>
+  <data name="Herman" xml:space="preserve">
+    <value>ヘルマン</value>
+  </data>
+  <data name="Hilary" xml:space="preserve">
+    <value>ヒラリー</value>
+  </data>
+  <data name="Horace" xml:space="preserve">
+    <value>ホレス</value>
+  </data>
+  <data name="Horatio" xml:space="preserve">
+    <value>ホレイシオ</value>
+  </data>
+  <data name="Howard" xml:space="preserve">
+    <value>ハワード</value>
+  </data>
+  <data name="Hubert" xml:space="preserve">
+    <value>ヒューバート</value>
+  </data>
+  <data name="Hugh" xml:space="preserve">
+    <value>ヒュー</value>
+  </data>
+  <data name="Hugo" xml:space="preserve">
+    <value>ヒューゴー</value>
+  </data>
+  <data name="Humphrey" xml:space="preserve">
+    <value>ハンフリー</value>
+  </data>
+  <data name="Ian" xml:space="preserve">
+    <value>イアン</value>
+  </data>
+  <data name="Innocent" xml:space="preserve">
+    <value>イノセント</value>
+  </data>
+  <data name="Irvine" xml:space="preserve">
+    <value>アーヴィン</value>
+  </data>
+  <data name="Irving" xml:space="preserve">
+    <value>アーヴィング</value>
+  </data>
+  <data name="Isaac" xml:space="preserve">
+    <value>アイザック</value>
+  </data>
+  <data name="Ishmael" xml:space="preserve">
+    <value>イシュメル</value>
+  </data>
+  <data name="Ivan" xml:space="preserve">
+    <value>アイヴァン</value>
+  </data>
+  <data name="Jack" xml:space="preserve">
+    <value>ジャック</value>
+  </data>
+  <data name="Jackie" xml:space="preserve">
+    <value>ジャッキー</value>
+  </data>
+  <data name="Jackson" xml:space="preserve">
+    <value>ジャクソン</value>
+  </data>
+  <data name="Jacob" xml:space="preserve">
+    <value>ジェイコブ</value>
+  </data>
+  <data name="Jairus" xml:space="preserve">
+    <value>ジェイラス</value>
+  </data>
+  <data name="Jake" xml:space="preserve">
+    <value>ジェイク</value>
+  </data>
+  <data name="James" xml:space="preserve">
+    <value>ジェームズ</value>
+  </data>
+  <data name="Jamie" xml:space="preserve">
+    <value>ジェイミー</value>
+  </data>
+  <data name="Jared" xml:space="preserve">
+    <value>ジャレッド</value>
+  </data>
+  <data name="Jason" xml:space="preserve">
+    <value>ジェイソン</value>
+  </data>
+  <data name="Jasper" xml:space="preserve">
+    <value>ジャスパー</value>
+  </data>
+  <data name="Jeff" xml:space="preserve">
+    <value>ジェフ</value>
+  </data>
+  <data name="Jeffery" xml:space="preserve">
+    <value>ジェフリー</value>
+  </data>
+  <data name="Jeffrey" xml:space="preserve">
+    <value>ジェフリー</value>
+  </data>
+  <data name="Jeremiah" xml:space="preserve">
+    <value>ジェレミア</value>
+  </data>
+  <data name="Jeremy" xml:space="preserve">
+    <value>ジェレミー</value>
+  </data>
+  <data name="Jerome" xml:space="preserve">
+    <value>ジェローム</value>
+  </data>
+  <data name="Jerry" xml:space="preserve">
+    <value>ジェリー</value>
+  </data>
+  <data name="Jesse" xml:space="preserve">
+    <value>ジェシー</value>
+  </data>
+  <data name="Jim" xml:space="preserve">
+    <value>ジム</value>
+  </data>
+  <data name="Jimmie" xml:space="preserve">
+    <value>ジミー</value>
+  </data>
+  <data name="Jocelyn" xml:space="preserve">
+    <value>ジョスリン</value>
+  </data>
+  <data name="Joel" xml:space="preserve">
+    <value>ジョーエル</value>
+  </data>
+  <data name="John" xml:space="preserve">
+    <value>ジョン</value>
+  </data>
+  <data name="Johnny" xml:space="preserve">
+    <value>ジョニー</value>
+  </data>
+  <data name="Jon" xml:space="preserve">
+    <value>ジョン</value>
+  </data>
+  <data name="Jonas" xml:space="preserve">
+    <value>ジョナス</value>
+  </data>
+  <data name="Jonathan" xml:space="preserve">
+    <value>ジョナサン</value>
+  </data>
+  <data name="Jordan" xml:space="preserve">
+    <value>ジョーダン</value>
+  </data>
+  <data name="Joseph" xml:space="preserve">
+    <value>ジョセフ</value>
+  </data>
+  <data name="Josh" xml:space="preserve">
+    <value>ジョッシュ</value>
+  </data>
+  <data name="Joshua" xml:space="preserve">
+    <value>ジョシュア</value>
+  </data>
+  <data name="Josiah" xml:space="preserve">
+    <value>ジョシア</value>
+  </data>
+  <data name="Jude" xml:space="preserve">
+    <value>ジュード</value>
+  </data>
+  <data name="Julian" xml:space="preserve">
+    <value>ジュリアン</value>
+  </data>
+  <data name="Justin" xml:space="preserve">
+    <value>ジャスティン</value>
+  </data>
+  <data name="Keith" xml:space="preserve">
+    <value>キース</value>
+  </data>
+  <data name="Kenneth" xml:space="preserve">
+    <value>ケネス</value>
+  </data>
+  <data name="Kent" xml:space="preserve">
+    <value>ケント</value>
+  </data>
+  <data name="Kevin" xml:space="preserve">
+    <value>ケヴィン</value>
+  </data>
+  <data name="Kim" xml:space="preserve">
+    <value>キム</value>
+  </data>
+  <data name="Kyle" xml:space="preserve">
+    <value>カイル</value>
+  </data>
+  <data name="Landon" xml:space="preserve">
+    <value>ランドン</value>
+  </data>
+  <data name="Laurence" xml:space="preserve">
+    <value>ローレンス</value>
+  </data>
+  <data name="Lawrence" xml:space="preserve">
+    <value>ローレンス</value>
+  </data>
+  <data name="Lee" xml:space="preserve">
+    <value>リー</value>
+  </data>
+  <data name="Leo" xml:space="preserve">
+    <value>レオ</value>
+  </data>
+  <data name="Leon" xml:space="preserve">
+    <value>レオン</value>
+  </data>
+  <data name="Leonard" xml:space="preserve">
+    <value>レオナルド</value>
+  </data>
+  <data name="Leslie" xml:space="preserve">
+    <value>レスリー</value>
+  </data>
+  <data name="Lester" xml:space="preserve">
+    <value>レスター</value>
+  </data>
+  <data name="Lewis" xml:space="preserve">
+    <value>ルイス</value>
+  </data>
+  <data name="Liam" xml:space="preserve">
+    <value>リアム</value>
+  </data>
+  <data name="Lindsay" xml:space="preserve">
+    <value>リンジー</value>
+  </data>
+  <data name="Lindsey" xml:space="preserve">
+    <value>リンジー</value>
+  </data>
+  <data name="Linus" xml:space="preserve">
+    <value>ライナス</value>
+  </data>
+  <data name="Lionel" xml:space="preserve">
+    <value>ライオネル</value>
+  </data>
+  <data name="Lloyd" xml:space="preserve">
+    <value>ロイド</value>
+  </data>
+  <data name="Lonnie" xml:space="preserve">
+    <value>ロニー</value>
+  </data>
+  <data name="Louis" xml:space="preserve">
+    <value>ルイス</value>
+  </data>
+  <data name="Lucas" xml:space="preserve">
+    <value>ルーカス</value>
+  </data>
+  <data name="Luke" xml:space="preserve">
+    <value>ルーク</value>
+  </data>
+  <data name="Luther" xml:space="preserve">
+    <value>ルーサー</value>
+  </data>
+  <data name="Malcolm" xml:space="preserve">
+    <value>マルコム</value>
+  </data>
+  <data name="Marcus" xml:space="preserve">
+    <value>マーカス</value>
+  </data>
+  <data name="Mark" xml:space="preserve">
+    <value>マーク</value>
+  </data>
+  <data name="Martin" xml:space="preserve">
+    <value>マーティン</value>
+  </data>
+  <data name="Marvin" xml:space="preserve">
+    <value>マーヴィン</value>
+  </data>
+  <data name="Mathew" xml:space="preserve">
+    <value>マシュー</value>
+  </data>
+  <data name="Matthew" xml:space="preserve">
+    <value>マシュー</value>
+  </data>
+  <data name="Maurice" xml:space="preserve">
+    <value>モーリス</value>
+  </data>
+  <data name="Max" xml:space="preserve">
+    <value>マックス</value>
+  </data>
+  <data name="Maynard" xml:space="preserve">
+    <value>メイナード</value>
+  </data>
+  <data name="Melvin" xml:space="preserve">
+    <value>メルヴィン</value>
+  </data>
+  <data name="Meredith" xml:space="preserve">
+    <value>メレディス</value>
+  </data>
+  <data name="Michael" xml:space="preserve">
+    <value>マイケル</value>
+  </data>
+  <data name="Mick" xml:space="preserve">
+    <value>ミック</value>
+  </data>
+  <data name="Micky" xml:space="preserve">
+    <value>ミッキー</value>
+  </data>
+  <data name="Mike" xml:space="preserve">
+    <value>マイク</value>
+  </data>
+  <data name="Miles" xml:space="preserve">
+    <value>マイルズ</value>
+  </data>
+  <data name="Mitchell" xml:space="preserve">
+    <value>ミッチェル</value>
+  </data>
+  <data name="Montague" xml:space="preserve">
+    <value>モンタギュー</value>
+  </data>
+  <data name="Morgan" xml:space="preserve">
+    <value>モーガン</value>
+  </data>
+  <data name="Morris" xml:space="preserve">
+    <value>モリス</value>
+  </data>
+  <data name="Moses" xml:space="preserve">
+    <value>モーゼズ</value>
+  </data>
+  <data name="Nathan" xml:space="preserve">
+    <value>ネイサン</value>
+  </data>
+  <data name="Nathaniel" xml:space="preserve">
+    <value>ナサニエル</value>
+  </data>
+  <data name="Neil" xml:space="preserve">
+    <value>ネイル</value>
+  </data>
+  <data name="Nicholas" xml:space="preserve">
+    <value>ニコラス</value>
+  </data>
+  <data name="Nicolas" xml:space="preserve">
+    <value>ニコラス</value>
+  </data>
+  <data name="Nigel" xml:space="preserve">
+    <value>ナイジェル</value>
+  </data>
+  <data name="Noah" xml:space="preserve">
+    <value>ノア</value>
+  </data>
+  <data name="Noel" xml:space="preserve">
+    <value>ノエル</value>
+  </data>
+  <data name="Norman" xml:space="preserve">
+    <value>ノーマン</value>
+  </data>
+  <data name="Oliver" xml:space="preserve">
+    <value>オリヴァー</value>
+  </data>
+  <data name="Oscar" xml:space="preserve">
+    <value>オスカー</value>
+  </data>
+  <data name="Oswald" xml:space="preserve">
+    <value>オズワルド</value>
+  </data>
+  <data name="Oswell" xml:space="preserve">
+    <value>オズウェル</value>
+  </data>
+  <data name="Othniel" xml:space="preserve">
+    <value>オスニエル</value>
+  </data>
+  <data name="Owen" xml:space="preserve">
+    <value>オーウェン</value>
+  </data>
+  <data name="Pascal" xml:space="preserve">
+    <value>パスカル</value>
+  </data>
+  <data name="Pat" xml:space="preserve">
+    <value>パット</value>
+  </data>
+  <data name="Patrick" xml:space="preserve">
+    <value>パトリック</value>
+  </data>
+  <data name="Paul" xml:space="preserve">
+    <value>ポール</value>
+  </data>
+  <data name="Perceval" xml:space="preserve">
+    <value>パーシヴァル</value>
+  </data>
+  <data name="Percival" xml:space="preserve">
+    <value>パーシヴァル</value>
+  </data>
+  <data name="Percy" xml:space="preserve">
+    <value>パーシー</value>
+  </data>
+  <data name="Peter" xml:space="preserve">
+    <value>ピーター</value>
+  </data>
+  <data name="Philander" xml:space="preserve">
+    <value>フィランダー</value>
+  </data>
+  <data name="Philip" xml:space="preserve">
+    <value>フィリップ</value>
+  </data>
+  <data name="Phillip" xml:space="preserve">
+    <value>フィリップ</value>
+  </data>
+  <data name="Powell" xml:space="preserve">
+    <value>パウエル</value>
+  </data>
+  <data name="Quentin" xml:space="preserve">
+    <value>クェンティン</value>
+  </data>
+  <data name="Quincy" xml:space="preserve">
+    <value>クインシー</value>
+  </data>
+  <data name="Rafe" xml:space="preserve">
+    <value>レイフ</value>
+  </data>
+  <data name="Ralph" xml:space="preserve">
+    <value>ラルフ</value>
+  </data>
+  <data name="Randolph" xml:space="preserve">
+    <value>ランドルフ</value>
+  </data>
+  <data name="Randy" xml:space="preserve">
+    <value>ランディー</value>
+  </data>
+  <data name="Raphael" xml:space="preserve">
+    <value>ラファエル</value>
+  </data>
+  <data name="Ray" xml:space="preserve">
+    <value>レイ</value>
+  </data>
+  <data name="Raymond" xml:space="preserve">
+    <value>レイモンド</value>
+  </data>
+  <data name="Reginald" xml:space="preserve">
+    <value>レジナルド</value>
+  </data>
+  <data name="Rex" xml:space="preserve">
+    <value>レックス</value>
+  </data>
+  <data name="Ricard" xml:space="preserve">
+    <value>リカード</value>
+  </data>
+  <data name="Richard" xml:space="preserve">
+    <value>リチャード</value>
+  </data>
+  <data name="Rick" xml:space="preserve">
+    <value>リック</value>
+  </data>
+  <data name="Ricky" xml:space="preserve">
+    <value>リッキー</value>
+  </data>
+  <data name="Rob" xml:space="preserve">
+    <value>ロブ</value>
+  </data>
+  <data name="Robbert" xml:space="preserve">
+    <value>ロバート</value>
+  </data>
+  <data name="Robin" xml:space="preserve">
+    <value>ロビン</value>
+  </data>
+  <data name="Rodger" xml:space="preserve">
+    <value>ロジャー</value>
+  </data>
+  <data name="Rodney" xml:space="preserve">
+    <value>ロドニー</value>
+  </data>
+  <data name="Roger" xml:space="preserve">
+    <value>ロジャー</value>
+  </data>
+  <data name="Roland" xml:space="preserve">
+    <value>ローランド</value>
+  </data>
+  <data name="Roman" xml:space="preserve">
+    <value>ローマン</value>
+  </data>
+  <data name="Ronald" xml:space="preserve">
+    <value>ロナルド</value>
+  </data>
+  <data name="Ronnie" xml:space="preserve">
+    <value>ロニー</value>
+  </data>
+  <data name="Rowland" xml:space="preserve">
+    <value>ローランド</value>
+  </data>
+  <data name="Roy" xml:space="preserve">
+    <value>ロイ</value>
+  </data>
+  <data name="Rufus" xml:space="preserve">
+    <value>ルーファス</value>
+  </data>
+  <data name="Rupert" xml:space="preserve">
+    <value>ルパート</value>
+  </data>
+  <data name="Russel" xml:space="preserve">
+    <value>ラッセル</value>
+  </data>
+  <data name="Russell" xml:space="preserve">
+    <value>ラッセル</value>
+  </data>
+  <data name="Sam" xml:space="preserve">
+    <value>サム</value>
+  </data>
+  <data name="Sammy" xml:space="preserve">
+    <value>サミー</value>
+  </data>
+  <data name="Samuel" xml:space="preserve">
+    <value>サムエル</value>
+  </data>
+  <data name="Sandy" xml:space="preserve">
+    <value>サンディー</value>
+  </data>
+  <data name="Scott" xml:space="preserve">
+    <value>スコット</value>
+  </data>
+  <data name="Sebastian" xml:space="preserve">
+    <value>セバスチャン</value>
+  </data>
+  <data name="Sidney" xml:space="preserve">
+    <value>シドニー</value>
+  </data>
+  <data name="Silas" xml:space="preserve">
+    <value>サイラス</value>
+  </data>
+  <data name="Simeon" xml:space="preserve">
+    <value>シミオン</value>
+  </data>
+  <data name="Simon" xml:space="preserve">
+    <value>サイモン</value>
+  </data>
+  <data name="Spencer" xml:space="preserve">
+    <value>スペンサー</value>
+  </data>
+  <data name="Stanley" xml:space="preserve">
+    <value>スタンリー</value>
+  </data>
+  <data name="Stephen" xml:space="preserve">
+    <value>ステファン</value>
+  </data>
+  <data name="Steve" xml:space="preserve">
+    <value>スティーブ</value>
+  </data>
+  <data name="Steven" xml:space="preserve">
+    <value>スティーブン</value>
+  </data>
+  <data name="Stevie" xml:space="preserve">
+    <value>スティーヴィー</value>
+  </data>
+  <data name="Stewart" xml:space="preserve">
+    <value>スチュアート</value>
+  </data>
+  <data name="Stuart" xml:space="preserve">
+    <value>スチュアート</value>
+  </data>
+  <data name="Sylvester" xml:space="preserve">
+    <value>スルヴェスター</value>
+  </data>
+  <data name="Talcott" xml:space="preserve">
+    <value>タルコット</value>
+  </data>
+  <data name="Ted" xml:space="preserve">
+    <value>テッド</value>
+  </data>
+  <data name="Teddy" xml:space="preserve">
+    <value>テディー</value>
+  </data>
+  <data name="Terence" xml:space="preserve">
+    <value>テレンス</value>
+  </data>
+  <data name="Terrence" xml:space="preserve">
+    <value>テレンス</value>
+  </data>
+  <data name="Terry" xml:space="preserve">
+    <value>テリー</value>
+  </data>
+  <data name="Thaddeus" xml:space="preserve">
+    <value>サディアス</value>
+  </data>
+  <data name="Theodor" xml:space="preserve">
+    <value>セオドア</value>
+  </data>
+  <data name="Theodore" xml:space="preserve">
+    <value>セオドア</value>
+  </data>
+  <data name="Theodoric" xml:space="preserve">
+    <value>セオドリク</value>
+  </data>
+  <data name="Thom" xml:space="preserve">
+    <value>トム</value>
+  </data>
+  <data name="Thomas" xml:space="preserve">
+    <value>トーマス</value>
+  </data>
+  <data name="Tim" xml:space="preserve">
+    <value>ティム</value>
+  </data>
+  <data name="Timothy" xml:space="preserve">
+    <value>ティモシー</value>
+  </data>
+  <data name="Tobias" xml:space="preserve">
+    <value>トバイアス</value>
+  </data>
+  <data name="Toby" xml:space="preserve">
+    <value>トビー</value>
+  </data>
+  <data name="Tom" xml:space="preserve">
+    <value>トム</value>
+  </data>
+  <data name="Tommy" xml:space="preserve">
+    <value>トミー</value>
+  </data>
+  <data name="Tony" xml:space="preserve">
+    <value>トニー</value>
+  </data>
+  <data name="Tracy" xml:space="preserve">
+    <value>トレイシー</value>
+  </data>
+  <data name="Travis" xml:space="preserve">
+    <value>トラヴィス</value>
+  </data>
+  <data name="Trevor" xml:space="preserve">
+    <value>トレヴァー</value>
+  </data>
+  <data name="Ulysses" xml:space="preserve">
+    <value>ユリシーズ</value>
+  </data>
+  <data name="Valentine" xml:space="preserve">
+    <value>ヴァレンタイン</value>
+  </data>
+  <data name="Victor" xml:space="preserve">
+    <value>ヴィクター</value>
+  </data>
+  <data name="Vince" xml:space="preserve">
+    <value>ヴィンス</value>
+  </data>
+  <data name="Vincent" xml:space="preserve">
+    <value>ヴィンセント</value>
+  </data>
+  <data name="Virgil" xml:space="preserve">
+    <value>ヴァージル</value>
+  </data>
+  <data name="Vivian" xml:space="preserve">
+    <value>ヴィヴィアン</value>
+  </data>
+  <data name="Wallace" xml:space="preserve">
+    <value>ウォーレス</value>
+  </data>
+  <data name="Walt" xml:space="preserve">
+    <value>ウォルト</value>
+  </data>
+  <data name="Walter" xml:space="preserve">
+    <value>ウォルター</value>
+  </data>
+  <data name="Warren" xml:space="preserve">
+    <value>ウォーレン</value>
+  </data>
+  <data name="Wilfred" xml:space="preserve">
+    <value>ウィルフレッド</value>
+  </data>
+  <data name="William" xml:space="preserve">
+    <value>ウィリアム</value>
+  </data>
+  <data name="Zachary" xml:space="preserve">
+    <value>ザカリー</value>
+  </data>
 </root>
