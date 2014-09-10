@@ -268,9 +268,11 @@ namespace GameServer
                 }
 
                 // Tells Shaman who has been killed.
-                ForEachAliveActors(a => a.CanKnowDead, a =>
-                {
-                    SystemMessageTo(a, new InterText("ItHasBeenProvedThatKilledAIsB", _.ResourceManager, new []{ actorToExecute.TitleAndName, actorToExecute.Race.ToInterText() }));
+                ForEachAliveActors(a => a.CanKnowDead, a => {
+                    InterText victim = actorToExecute.Race.ToInterText();
+                    if (conf.strongShaman)
+                        victim = actorToExecute.role.ToInterText();
+                    SystemMessageTo(a, new InterText("ItHasBeenProvedThatKilledAIsB", _.ResourceManager, new []{ actorToExecute.TitleAndName, victim }));
                 });
             }
 
@@ -385,7 +387,10 @@ namespace GameServer
                 // Tells Shaman who has been killed.
                 ForEachAliveActors(a => a.CanKnowDead, a =>
                 {
-                    SystemMessageTo(a, new InterText("ItHasBeenProvedThatKilledAIsB", _.ResourceManager, new[] { actorToAttack.TitleAndName, actorToAttack.Race.ToInterText() }));
+                    InterText victim = actorToAttack.Race.ToInterText();
+                    if (conf.strongShaman)
+                        victim = actorToAttack.role.ToInterText();
+                    SystemMessageTo(a, new InterText("ItHasBeenProvedThatKilledAIsB", _.ResourceManager, new[] { actorToAttack.TitleAndName, victim }));
                 });
             }
 
