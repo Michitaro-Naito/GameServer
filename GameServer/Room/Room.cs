@@ -158,7 +158,8 @@ namespace GameServer
             {
                 // Alive
                 modes.Add(RoomMessage.Mode.All);
-                modes.Add(RoomMessage.Mode.Private);
+                if(!conf.noPrivateMessage)
+                    modes.Add(RoomMessage.Mode.Private);
                 /*switch (actor.role)
                 {
                     case Role.Werewolf:
