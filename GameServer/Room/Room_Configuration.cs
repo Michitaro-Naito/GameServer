@@ -11,12 +11,25 @@ namespace GameServer
 {
     public partial class Room
     {
+        public enum CharacterNameSet {
+            Default,
+            Japanese
+        }
+
+        /// <summary>
+        /// Client model to validate.
+        /// </summary>
         public class ClientConfiguration : IValidatable
         {
             public string name;
             public string password;
             public Nullable<int> max;
             public Nullable<int> interval;
+
+            public bool noFirstDayFortuneTelling = false;
+            public bool noPrivateMessage = false;
+            public bool strongShaman = false;
+            public CharacterNameSet characterNameSet;
 
             public string ModelName { get; set; }
             public ValidationResult Validate()
@@ -55,16 +68,35 @@ namespace GameServer
 
             public Configuration ToConfiguration()
             {
-                return new Configuration() { name = name, password = password, max = max.Value, interval = interval.Value };
+                return new Configuration() {
+                    name = name,
+                    password = password,
+                    max = max.Value,
+                    interval = interval.Value,
+
+                    noFirstDayFortuneTelling = noFirstDayFortuneTelling,
+                    noPrivateMessage = noPrivateMessage,
+                    strongShaman = strongShaman,
+                    characterNameSet = characterNameSet
+                };
             }
         }
 
+        /// <summary>
+        /// Internal, real model.
+        /// </summary>
         public class Configuration
         {
             public string name;
             public string password;
             public int max;
             public int interval;
+
+            public bool noFirstDayFortuneTelling = false;
+            public bool noPrivateMessage = false;
+            public bool strongShaman = false;
+            public CharacterNameSet characterNameSet;
+
             public CultureInfo culture;
             public TimeZoneInfo TimeZone
             {
@@ -95,6 +127,19 @@ namespace GameServer
                 html += string.Format("<div>{0}: {1}</div>",
                     _Model.ResourceManager.GetString("Room_Interval", culture),
                     HttpUtility.HtmlEncode(interval.ToString()));
+                // TODO: add here
+                html += string.Format("<div>{0}: {1}</div>",
+                    _Model.ResourceManager.GetString("Room_NoFirstDayFortuneTelling", culture),
+                    HttpUtility.HtmlEncode(noFirstDayFortuneTelling.ToString()));
+                html += string.Format("<div>{0}: {1}</div>",
+                    _Model.ResourceManager.GetString("Room_NoPrivateMessage", culture),
+                    HttpUtility.HtmlEncode(noPrivateMessage.ToString()));
+                html += string.Format("<div>{0}: {1}</div>",
+                    _Model.ResourceManager.GetString("Room_StrongShaman", culture),
+                    HttpUtility.HtmlEncode(strongShaman.ToString()));
+                html += string.Format("<div>{0}: {1}</div>",
+                    _Model.ResourceManager.GetString("Room_CharacterNameSet", culture),
+                    HttpUtility.HtmlEncode(characterNameSet.ToString()));
                 return html;
             }
         }
