@@ -104,36 +104,36 @@ namespace GameServer
         public void SaveLogs()
         {
             // ----- Forms HTML data -----
-            var html = "";
+            var html = new StringBuilder();//"";
             // CSS
-            html += string.Format("<style>{0}</style>", _.PlayLogCSS);
+            html.AppendFormat("<style>{0}</style>", _.PlayLogCSS);
             // Title
-            html += "<a href=\"http://人狼ゲーム.com/\"><h1>人狼ゲームオンライン2</h1></a>";
+            html.Append("<a href=\"http://人狼ゲーム.com/\"><h1>人狼ゲームオンライン2</h1></a>");
             // Conf
-            html += conf.ToHtml();
+            html.Append(conf.ToHtml());
             // Actors
             var aliveActorsHtml = "";
             _actors.Where(a=>!a.IsDead).ToList().ForEach(a =>
             {
                 aliveActorsHtml += a.ToHtml(conf.culture) + "<br/>";
             });
-            html += string.Format("<div>{0}:<br/>{1}</div>", _UiString.Alive, aliveActorsHtml);
+            html.AppendFormat("<div>{0}:<br/>{1}</div>", _UiString.Alive, aliveActorsHtml);
             var deadActorsHtml = "";
             _actors.Where(a => a.IsDead).ToList().ForEach(a =>
             {
                 deadActorsHtml += a.ToHtml(conf.culture) + "<br/>";
             });
-            html += string.Format("<div>{0}:<br/>{1}</div>", _UiString.Dead, deadActorsHtml);
+            html.AppendFormat("<div>{0}:<br/>{1}</div>", _UiString.Dead, deadActorsHtml);
             // Messages
             var messagesHtml = "";
             _messages.ForEach(m =>
             {
                 messagesHtml += m.ToHtml(conf.culture);
             });
-            html += string.Format("<ul class=\"messages\">{0}</ul>", messagesHtml);
+            html.AppendFormat("<ul class=\"messages\">{0}</ul>", messagesHtml);
 
             // Wraps html tag
-            html = string.Format("<!DOCTYPE html><html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/><meta charset=\"utf-8\" /></head><body>{0}</body></html>", html);
+            var finalHtml = string.Format("<!DOCTYPE html><html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/><meta charset=\"utf-8\" /></head><body>{0}</body></html>", html);
 
             // ----- Uploads to Blob -----
             // Gets the container
@@ -148,7 +148,7 @@ namespace GameServer
             var blockBlob = container.GetBlockBlobReference(filename);
 
             // Creates or overwrites
-            var bytes = Encoding.UTF8.GetBytes(html);
+            var bytes = Encoding.UTF8.GetBytes(finalHtml);
             blockBlob.UploadFromByteArray(bytes, 0, bytes.Length);
 
             // Notifies ApiServer
