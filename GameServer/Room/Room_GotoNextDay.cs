@@ -73,13 +73,14 @@ namespace GameServer
 
             NotifyDayDawns();
 
-            // Tells FortuneTellers who is the true friend.
-            ForEachAliveActors(a => a.CanFortuneTell, a =>
-            {
-                var friend = AliveActors.Where(f => f != a && f.Faction == Faction.Citizen).RandomElement();
-                if (friend != null)
-                    SystemMessageTo(a, new InterText("AIsTrueFriendOfCitizens", _.ResourceManager, new[] { friend.TitleAndName }));
-            });
+            if (!conf.noFirstDayFortuneTelling) {
+                // Tells FortuneTellers who is the true friend.
+                ForEachAliveActors(a => a.CanFortuneTell, a => {
+                    var friend = AliveActors.Where(f => f != a && f.Faction == Faction.Citizen).RandomElement();
+                    if (friend != null)
+                        SystemMessageTo(a, new InterText("AIsTrueFriendOfCitizens", _.ResourceManager, new[] { friend.TitleAndName }));
+                });
+            }
 
             _needSync = true;
         }
