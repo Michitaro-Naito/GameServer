@@ -62,9 +62,18 @@ namespace GameServer
             var messages = new List<InterText>();
             messages.Add(new InterText("村の掟", null));
             messages.Add(new InterText("--------------------", null));
-            messages.Add(new InterText("・ささやきを使用できます。", null));
-            messages.Add(new InterText("・初日占いがあります。(占い師はランダムにひとり、村人チームのメンバーがわかった状態でスタートします。)", null));
-            messages.Add(new InterText("・霊媒師が弱体化されています。(霊媒師は犠牲者の種族(村人,人狼,妖狐)しかわかりません。)", null));
+            if(conf.noPrivateMessage)
+                messages.Add(new InterText("・ささやきを使用できません。", null));
+            else
+                messages.Add(new InterText("・ささやきを使用できます。", null));
+            if (conf.noFirstDayFortuneTelling)
+                messages.Add(new InterText("・初日占いがありません。(占い師は翌日まで手がかりを得ることができません。)", null));
+            else
+                messages.Add(new InterText("・初日占いがあります。(占い師はランダムにひとり、村人チームのメンバーがわかった状態でスタートします。)", null));
+            if(conf.strongShaman)
+                messages.Add(new InterText("・霊媒師が強化されています。(霊媒師は犠牲者の職業を知ることができます。)", null));
+            else
+                messages.Add(new InterText("・霊媒師が弱体化されています。(霊媒師は犠牲者の種族(村人,人狼,妖狐)しかわかりません。)", null));
             messages.Add(new InterText("--------------------", null));
             SystemMessageAll(messages.ToArray());
         }
