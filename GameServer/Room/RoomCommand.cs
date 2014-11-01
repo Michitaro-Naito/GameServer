@@ -9,6 +9,7 @@ namespace GameServer.RoomCommand
 {
     public abstract class Base
     {
+        public string IpAddress { get; set; }
         public string ConnectionId { get; set; }
         /// <summary>
         /// Player who queued this RoomCommand.

@@ -171,13 +171,25 @@ namespace GameServer {
         // ----- Private Method -----
 
         void Enqueue(LobbyCommand.Base command) {
+            command.IpAddress = GetIpAddress();
             command.ConnectionId = Context.ConnectionId;
             _lobby.Enqueue(command);
         }
 
         void EnqueueRoom(RoomCommand.Base command) {
+            command.IpAddress = GetIpAddress();
             command.ConnectionId = Context.ConnectionId;
             _lobby.EnqueueRoom(command);
+        }
+
+        string GetIpAddress() {
+            var ipAddress = Get<string>(Context.Request.Environment, "server.RemoteIpAddress");
+            return ipAddress;
+        }
+
+        static T Get<T>(IDictionary<string, object> env, string key) {
+            object value;
+            return env.TryGetValue(key, out value) ? (T)value : default(T);
         }
 
     }

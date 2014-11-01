@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GameServer.LobbyCommand
 {
-    public abstract class Base
-    {
+    public abstract class Base {
+        public string IpAddress { get; set; }
         public string ConnectionId { get; set; }
         /// <summary>
         /// Player who has sent this Command.

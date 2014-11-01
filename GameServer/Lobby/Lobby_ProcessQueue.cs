@@ -137,7 +137,8 @@ namespace GameServer {
             }
             p.GotSystemMessage("Creating a Character...");
             try {
-                var o = Api.Get<CreateCharacterOut>(new CreateCharacterIn() { userId = p.userId, name = command.Name });
+                var hostEntry = System.Net.Dns.GetHostEntry(command.IpAddress);
+                var o = Api.Get<CreateCharacterOut>(new CreateCharacterIn() { userId = p.userId, name = command.Name, ipAddress = command.IpAddress, host = hostEntry.HostName });
             }
             catch (ApiScheme.ApiMaxReachedException) {
                 client.gotValidationErrors(model.ModelName, new List<string>() { _Error.ResourceManager.GetString("MaxReached", p.Culture) });
