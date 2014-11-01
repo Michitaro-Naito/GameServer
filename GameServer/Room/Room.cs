@@ -50,6 +50,8 @@ namespace GameServer
         /// </summary>
         List<string> _userIdsBanned = new List<string>();
 
+        Character _roomMaster = null;
+
         public int day;
         public double duration;
         public Faction FactionWon { get; set; }
@@ -198,18 +200,17 @@ namespace GameServer
         public bool IsRoomMaster(Character character) {
             if (character == null)
                 return false;
-            return character == _characters.FirstOrDefault();
+            if (!(_roomMaster != null && _actors.Any(a=>a.character == (_roomMaster)))) {
+                // RoomMaster has gone. Promote another as RoomMaster.
+                _roomMaster = _characters.FirstOrDefault();
+            }
+            return character == _roomMaster;
         }
         public bool IsRoomMaster(Actor actor)
         {
             if (actor == null)
                 return false;
-            if (actor.character == null)
-                return false;
-            var firstCharacter = _characters.FirstOrDefault();
-            if(firstCharacter==null)
-                return false;
-            return actor.character.Player == firstCharacter.Player;
+            return IsRoomMaster(actor.character);
         }
 
         /// <summary>
