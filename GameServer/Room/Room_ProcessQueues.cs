@@ -65,6 +65,11 @@ namespace GameServer
                 client.gotError(new Error() { Title = new InterText("InvalidPassword", _Error.ResourceManager), Body = new InterText("InvalidPasswordPleaseTryAgain", _Error.ResourceManager) }.GetInfo(command.Sender.Culture));
                 return;
             }
+            if (_userIdsBanned.Contains(command.Character.Player.userId)) {
+                client.addMessage("You are banned.");
+                client.gotError(new Error() { Title = new InterText("YouAreBanned", _Error.ResourceManager), Body = new InterText("YouAreBannedByRoomMaster", _Error.ResourceManager) }.GetInfo(command.Sender.Culture));
+                return;
+            }
 
             var existing = _actors.FirstOrDefault(a => a.character == command.Character);
             if (existing != null) {
@@ -140,7 +145,7 @@ namespace GameServer
         void PQ_RemovePlayer(RoomCommand.RemovePlayer command) {
             var client = command.Sender.Client;
 
-            Kick(command.Sender.userId);
+            Kick(command.Sender.userId, false, false);
         }
 
         /// <summary>
@@ -360,11 +365,11 @@ namespace GameServer
                 return;
             }
 
-            // OK. Kicks.
+            // OK. Kicks (or Bans)
             var characterToKick = _characters.FirstOrDefault(c => c.Name == command.CharacterName);
             if (characterToKick != null && characterToKick.Player != null) {
                 SystemMessageAll(InterText.Create("RoomMasterAKickedB", _.ResourceManager, command.Sender.Character, characterToKick.Name));
-                Kick(characterToKick.Player.userId);
+                Kick(characterToKick.Player.userId, true, command.Ban);
             }
         }
 

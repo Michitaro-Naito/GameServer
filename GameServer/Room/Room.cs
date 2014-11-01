@@ -45,6 +45,11 @@ namespace GameServer
         List<Actor> _actors = new List<Actor>();
         //IHubContext _updateHub = null;
 
+        /// <summary>
+        /// UserIds banned in this Room.
+        /// </summary>
+        List<string> _userIdsBanned = new List<string>();
+
         public int day;
         public double duration;
         public Faction FactionWon { get; set; }

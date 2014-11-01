@@ -186,4 +186,10 @@
   <data name="PleaseDoNotKickTest" xml:space="preserve">
     <value>どうかtestをけらないであげてください。(´・ω・｀)</value>
   </data>
+  <data name="YouAreBanned" xml:space="preserve">
+    <value>永久追放されました。</value>
+  </data>
+  <data name="YouAreBannedByRoomMaster" xml:space="preserve">
+    <value>ルームマスターによって永久追放されたため村に参加できませんでした。他の村で遊んでみましょう。</value>
+  </data>
 </root>

@@ -24,7 +24,7 @@ namespace GameServer
         /// (Actor become NPC 60 secs later.)
         /// </summary>
         /// <param name="userId"></param>
-        internal void Kick(string userId)
+        internal void Kick(string userId, bool immediate, bool ban)
         {
             // Removes from connected characters.
             var charactersToRemove = _characters.Where(c => c.Player != null && c.Player.userId == userId).ToList();
@@ -45,9 +45,16 @@ namespace GameServer
                 _spectators.Remove(s);
             });
 
-            // Removes from Actors
-            foreach (var a in _actors.Where(a => a.character != null && a.character.UserId == userId)) {
-                RemoveCharacterFromActorImmediately(a);
+            if (immediate) {
+                // Removes from Actors
+                foreach (var a in _actors.Where(a => a.character != null && a.character.UserId == userId)) {
+                    RemoveCharacterFromActorImmediately(a);
+                }
+            }
+
+            if (ban) {
+                // Adds to Room's blacklist.
+                _userIdsBanned.Add(userId);
             }
 
             if(charactersToRemove.Count > 0)

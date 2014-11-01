@@ -186,4 +186,10 @@
   <data name="PleaseDoNotKickTest" xml:space="preserve">
     <value>Please, do not kick test. :(</value>
   </data>
+  <data name="YouAreBanned" xml:space="preserve">
+    <value>You are banned.</value>
+  </data>
+  <data name="YouAreBannedByRoomMaster" xml:space="preserve">
+    <value>You are banned by the room master. Try another room.</value>
+  </data>
 </root>

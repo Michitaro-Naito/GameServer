@@ -15,7 +15,7 @@ namespace GameServer
         void Kick(string userId)
         {
             // Kicks from Room
-            _rooms.ForEach(r => r.Kick(userId));
+            _rooms.ForEach(r => r.Kick(userId, false, false));
 
             // Kicks from Lobby
             var keysToRemove = new List<string>();

@@ -79,6 +79,7 @@ namespace GameServer.RoomCommand
 
     public class Kick : Base {
         public string CharacterName { get; set; }
+        public bool Ban { get; set; }
     }
 
     public class Kill : Base {
