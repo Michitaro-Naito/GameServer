@@ -82,7 +82,7 @@ namespace GameServer {
 
             if (_blacklists.Any(b => b.infos.Any(info => info.userId == pass.data.userId))) {
                 player.GotSystemMessage("You are banned.");
-                player.Client.gotDisconnectionRequest("このアカウントは犯罪に使用された可能性があるため接続が拒否されました。");
+                player.Client.gotDisconnectionRequest("血に飢えた管理人が襲い掛かってきました！(アカウントは凍結されました)");
                 return;
             }
 
