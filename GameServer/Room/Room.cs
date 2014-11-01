@@ -343,16 +343,7 @@ namespace GameServer
                 var chatModes = ModesFor(yourActor).Select(m => new RoomMessage.ModeInfo(c.Player, m)).ToList();
                 var rolesInRoom = RoleHelper.GetRoleCountsDictionary();
                 _actors.ForEach(a => rolesInRoom[a.role]++);
-                /*client.gotRoomConfigurations(conf);
-                client.gotRoomState(RoomState);
-                client.gotActors(actors);
-                client.gotYourActorId(yourActorId);
-                //if (yourActor != null)
-                //    client.gotYourSelections(yourActor.VoteInfo);
-                client.gotYourSelections(yourActor != null ? yourActor.VoteInfo : null);
-                client.gotModes(ModesFor(yourActor).Select(m=>new RoomMessage.ModeInfo(c.Player, m)).ToList());
-                client.gotTimer(duration);
-                client.gotFactionWon(FactionWon);*/
+
                 client.gotRoomData(new {
                     Configurations = conf,
                     State = RoomState,
@@ -377,7 +368,10 @@ namespace GameServer
                 var actor = Actor.CreateUnique(_actors, conf.characterNameSet);
                 actor.character = c;
                 _actors.Add(actor);
-                SystemMessageAll(new InterText("AHasComeAsB", MyResources._.ResourceManager, new[] { new InterText(c.Name, null), actor.TitleAndName }));
+                if (conf.hideCharacterNames)
+                    SystemMessageAll(new InterText("AHasCome", MyResources._.ResourceManager, new[] { actor.TitleAndName }));
+                else
+                    SystemMessageAll(new InterText("AHasComeAsB", MyResources._.ResourceManager, new[] { new InterText(c.Name, null), actor.TitleAndName }));
             });
         }
 

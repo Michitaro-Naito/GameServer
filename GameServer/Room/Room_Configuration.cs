@@ -29,6 +29,7 @@ namespace GameServer
             public bool noFirstDayFortuneTelling = false;
             public bool noPrivateMessage = false;
             public bool strongShaman = false;
+            public bool hideCharacterNames = false;
             public CharacterNameSet characterNameSet;
 
             public string ModelName { get; set; }
@@ -77,6 +78,7 @@ namespace GameServer
                     noFirstDayFortuneTelling = noFirstDayFortuneTelling,
                     noPrivateMessage = noPrivateMessage,
                     strongShaman = strongShaman,
+                    hideCharacterNames = hideCharacterNames,
                     characterNameSet = characterNameSet
                 };
             }
@@ -95,6 +97,7 @@ namespace GameServer
             public bool noFirstDayFortuneTelling = false;
             public bool noPrivateMessage = false;
             public bool strongShaman = false;
+            public bool hideCharacterNames = false;
             public CharacterNameSet characterNameSet;
 
             public CultureInfo culture;

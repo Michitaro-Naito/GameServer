@@ -224,6 +224,12 @@ namespace GameServer
                 isPresent = IsNPC ? false : room.HasCharacter(character)
             };
 
+            if (room.conf.hideCharacterNames) {
+                // Hides this CharacterName
+                if (info.character != null && this != viewer && !(room.IsRoomMaster(this) || room.IsRoomMaster(viewer)))
+                    info.character = "プレイヤー";
+            }
+
             if (new[] { RoomState.Matchmaking, RoomState.Playing }.Contains(room.RoomState)) {
                 // Filters
                 info.role = Role.Citizen;

@@ -305,4 +305,10 @@ ul.messages li div.body{
   <data name="YourPartnerHasBeenKilledByWerewolvesBeHunter" xml:space="preserve">
     <value>Your partner has been killed by merciless Werewolves. Be a Hunter and fight back!</value>
   </data>
+  <data name="AHasCome" xml:space="preserve">
+    <value>{0} has come.</value>
+  </data>
+  <data name="AHasJoined" xml:space="preserve">
+    <value>{0} has joined.</value>
+  </data>
 </root>

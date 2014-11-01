@@ -231,4 +231,10 @@
   <data name="YourPartnerHasBeenKilledByWerewolvesBeHunter" xml:space="preserve">
     <value>あなたは残忍な人狼によって最愛の人を失いました。弓を取り、狩人となって彼らの暴虐に立ち向かいましょう！</value>
   </data>
+  <data name="AHasCome" xml:space="preserve">
+    <value>{0}がこの村にやってきました。</value>
+  </data>
+  <data name="AHasJoined" xml:space="preserve">
+    <value>{0}に魂が入りました。</value>
+  </data>
 </root>

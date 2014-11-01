@@ -85,7 +85,10 @@ namespace GameServer
                     _characters.Add(command.Character);
                     command.Character.Room = this;
                     npc.character = command.Character;
-                    SystemMessageAll(new InterText("AHasJoinedAsB", MyResources._.ResourceManager, new[] { new InterText(command.Character.Name, null), npc.TitleAndName }));
+                    if (conf.hideCharacterNames)
+                        SystemMessageAll(new InterText("AHasJoined", MyResources._.ResourceManager, new[] { npc.TitleAndName }));
+                    else
+                        SystemMessageAll(new InterText("AHasJoinedAsB", MyResources._.ResourceManager, new[] { new InterText(command.Character.Name, null), npc.TitleAndName }));
                 }
                 else {
                     if (RoomState == RoomState.Configuring){
