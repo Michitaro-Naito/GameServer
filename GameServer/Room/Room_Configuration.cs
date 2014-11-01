@@ -56,10 +56,10 @@ namespace GameServer
                         new InterText("32", null)
                     }));
 
-                if (interval == null || interval < 300 || interval > 900)
+                if (interval == null || interval < 30 || interval > 900)
                     result.Errors.Add(new InterText("AMustBeBToC", _Error.ResourceManager, new[]{
                         new InterText("Room_Interval", _Model.ResourceManager),
-                        new InterText("300", null),
+                        new InterText("30", null),
                         new InterText("900", null)
                     }));
 
