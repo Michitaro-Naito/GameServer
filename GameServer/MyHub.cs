@@ -69,6 +69,10 @@ namespace GameServer {
             Enqueue(new LobbyCommand.SelectCharacter() { Name = name });
         }
 
+        public void GetCharacterItems() {
+            Enqueue(new LobbyCommand.GetCharacterItems());
+        }
+
         public void GetLobbyMessages() {
             Enqueue(new LobbyCommand.GetLobbyMessages() { });
         }

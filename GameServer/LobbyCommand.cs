@@ -55,6 +55,10 @@ namespace GameServer.LobbyCommand
         public string Name { get; set; }
     }
 
+    public class GetCharacterItems : Base {
+        
+    }
+
     // ----- Lobby -----
     public class GetRooms : Base
     {

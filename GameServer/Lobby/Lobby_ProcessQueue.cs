@@ -1,6 +1,7 @@
 ﻿using ApiScheme.Client;
 using ApiScheme.Scheme;
 using MyResources;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -166,6 +167,19 @@ namespace GameServer {
             p.Character = character;
             p.GotSystemMessage("Character found and selected.");
             p.BroughtTo(ClientState.Rooms);
+        }
+
+        void GetCharacterItems(LobbyCommand.GetCharacterItems command) {
+            var p = command.Sender;
+            if (p.Character == null) {
+                p.GotSystemMessage("Select a character first.");
+                return;
+            }
+            var o = Api.Get<GetCharacterItemsOut>(new GetCharacterItemsIn() { characterName = p.Character.Name });
+            /*p.Client.gotLobbyMessages(new[]{
+                new LobbyMessage() { name = "SYSTEM", body = new InterText(JsonConvert.SerializeObject(o.items), null) }.ToInfo(p)
+            });*/
+            p.Client.gotCharacterItems(o.items);
         }
 
         void GetLobbyMessages(LobbyCommand.GetLobbyMessages command) {
