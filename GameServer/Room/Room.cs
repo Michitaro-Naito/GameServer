@@ -273,9 +273,7 @@ namespace GameServer
                     //&& a.lastAccess != null   // non-nullable
                     && a.lastAccess < DateTime.UtcNow.AddSeconds(-60)
                     && !_characters.Any(c => c == a.character)) {
-                        SystemMessageAll(new InterText("AHasGoneFromB", MyResources._.ResourceManager, new[] { new InterText(a.character.Name, null), a.TitleAndName }));
-                        a.character = null;
-                        _needSync = true;
+                        RemoveCharacterFromActorImmediately(a);
                 }
             });
         }

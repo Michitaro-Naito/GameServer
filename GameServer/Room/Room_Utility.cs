@@ -9,7 +9,19 @@ namespace GameServer
     partial class Room
     {
         /// <summary>
+        /// Removes Character from Actor immediately.
+        /// (Actor become NPC now.)
+        /// </summary>
+        /// <param name="a"></param>
+        internal void RemoveCharacterFromActorImmediately(Actor a) {
+            SystemMessageAll(new InterText("AHasGoneFromB", MyResources._.ResourceManager, new[] { new InterText(a.character.Name, null), a.TitleAndName }));
+            a.character = null;
+            _needSync = true;
+        }
+
+        /// <summary>
         /// Kicks Player out from this room.
+        /// (Actor become NPC 60 secs later.)
         /// </summary>
         /// <param name="userId"></param>
         internal void Kick(string userId)
@@ -24,7 +36,6 @@ namespace GameServer
                     c.Player.BroughtTo(ClientState.Rooms);
                 _characters.Remove(c);
             });
-            //var amountKicked = charactersToRemove.Count;
 
             // Removes Spectators
             var spectatorsToRemove = _spectators.Where(s => s.Player != null && s.Player.userId == userId).ToList();
@@ -33,12 +44,11 @@ namespace GameServer
                     s.Player.BroughtTo(ClientState.Rooms);
                 _spectators.Remove(s);
             });
-            //amountKicked += spectatorsToRemove.Count;
-            /*_spectators.Where(s => s.Player != null && s.Player.userId == userId).ToList().ForEach(s => {
-                if (s.Player != null)
-                    s.Player.BroughtTo(ClientState.Rooms);
-            });
-            amountKicked += _spectators.RemoveAll(s => s.Player != null && s.Player.userId == userId);*/
+
+            // Removes from Actors
+            foreach (var a in _actors.Where(a => a.character != null && a.character.UserId == userId)) {
+                RemoveCharacterFromActorImmediately(a);
+            }
 
             if(charactersToRemove.Count > 0)
                 // Sync only when Character kicked.
